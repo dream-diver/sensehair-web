@@ -77,39 +77,116 @@ button,
 
 /* color */
 .text-light {
-  color: #e5e5e5;
+  color: #e5e5e5 !important;
 }
 
 .bg-light {
-  background: #e5e5e5;
+  background: #e5e5e5 !important;
 }
 
 .border-light {
-  border-color: #e5e5e5;
+  border-color: #e5e5e5 !important;
+}
+
+.btn-light {
+  background: #e5e5e5 !important;
+  border-color: #e5e5e5 !important;
+}
+
+.btn-light:hover {
+  background: #cccccc !important;
+  border-color: #cccccc !important;
 }
 
 .text-primary {
-  background: #f86624;
+  color: #f86624 !important;
 }
 
 .bg-primary {
-  background: #f86624;
+  background: #f86624 !important;
 }
 
 .border-primary {
-  border-color: #f86624;
+  border-color: #f86624 !important;
+}
+
+.btn-primary {
+  background: #f86624 !important;
+  border-color: #f86624 !important;
+}
+
+.btn-primary:hover {
+  background: #e44d07 !important;
+  border-color: #e44d07 !important;
 }
 
 .text-secondary {
-  background: #f43315;
+  color: #f43315 !important;
 }
 
 .bg-secondary {
-  background: #f43315;
+  background: #f43315 !important;
 }
 
 .border-secondary {
-  border-color: #f43315;
+  border-color: #f43315 !important;
+}
+
+.btn-primary {
+  background: #f43315 !important;
+  border-color: #f43315 !important;
+}
+
+.btn-primary:hover {
+  background: #cd240a !important;
+  border-color: #cd240a !important;
+}
+
+.btn-book-now {
+  padding: 0;
+  display: flex;
+  font-size: 1.3rem;
+}
+
+.btn-book-now img {
+  padding: .375rem .75rem .375rem .75rem;
+}
+
+.btn-book-now span {
+  border-width: 0;
+  border-left-width: 2px;
+  border-style: solid;
+  border-color: #fff;
+  padding: .375rem .75rem .375rem .75rem;
+}
+
+
+.btn-book-now.btn-sm {
+  font-size: 0.8rem;
 }
 
 /* Custom Styles */
+/* #header */
+#header {
+  background-image: url('../images/scissor.png'), url('../images/overlay.png'), url('../images/slider1.png');
+  background-repeat: no-repeat, no-repeat, no-repeat;
+  background-position: center bottom, center, center;
+  background-size: 60%, cover, cover;
+}
+
+#header h1 {
+  font-size: 3.125rem;
+}
+
+/* #top-menu */
+#top-menu {}
+
+/* #main-menu */
+#main-menu {
+  background-color: hsla(0, 0%, 0%, 0.7);
+}
+
+#main-menu .nav-link {
+  color: #fff;
+  font-weight: 700;
+}

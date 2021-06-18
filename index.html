@@ -14,9 +14,79 @@
 </head>
 
 <body>
-  <div class="d-flex align-items-center justify-content-center vh-100">
-    <h1 class="font-handwriting">Ridwan Malik</h1>
-  </div>
+  <!-- #header -->
+  <header id="header" class="d-flex flex-column vh-100">
+    <!-- #main-menu -->
+    <nav id="main-menu" class="navbar navbar-expand-lg navbar-dark">
+      <div class="container">
+
+        <a class="navbar-brand" href="#">
+          <img src="./images/logo.png" alt="logo" width="121px" class="d-inline-block align-text-top">
+        </a>
+
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="">
+          <div class="row mb-3">
+            <div class="col">
+              <ul id="top-menu" class="nav">
+                <li class="nav-item">
+                  <a class="nav-link text-primary" href="#">+31 10 123 456 78</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link py-1" href="#"><img src="./images/doutch.png" width="40" alt="doutch"></a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link py-1" href="#"><img src="./images/english.png" width="40" alt="doutch"></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col">
+              <div class="collapse navbar-collapse" id="navbarNav">
+
+                <ul class="navbar-nav ms-auto">
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link 1</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#">Link 2</a>
+                  </li>
+                </ul>
+
+                <form class="d-flex ms-2">
+                  <button class="btn-book-now btn btn-sm btn-primary rounded-0 font-weight-900">
+                    <img src="./images/schedule.png" height="31" alt="schedule">
+                    <span>BOOK NOW</span>
+                  </button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </nav>
+    <!-- /#main-menu -->
+    <div class="header-content flex-grow-1">
+      <div class="container h-100">
+        <div class="row h-100">
+          <div class="col-md-8 offset-md-2 h-100 d-flex flex-column align-items-center justify-content-center text-white text-center">
+            <h1 class="font-weight-600">Consectetur adipisicing elit. Iste, eligendi.</h1>
+            <p class="font-weight-600">Lorem ipsum dolor sit amet consectetur adipisicing elit. Expedita minus fuga placeat temporibus sequi dolorem ea beatae, eum unde omnis?</p>
+            <button class="btn-book-now btn btn-primary rounded-0 font-weight-900">
+              <img src="./images/schedule.png" height="43" alt="schedule">
+              <span>BOOK NOW</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- /#header -->
 
   <!-- JS -->
   <script src="./node_modules/jquery/dist/jquery.min.js"></script>
