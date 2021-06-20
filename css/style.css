@@ -187,6 +187,16 @@ button,
   font-size: 0.8rem;
 }
 
+.btn-book-now.btn-book-now-footer {
+  background-color: #fff !important;
+  border-color: #fff !important;
+  color: #000 !important;
+}
+
+.btn-book-now.btn-book-now-footer span {
+  border-color: #000;
+}
+
 /* .h1-margin-bottom */
 .h1-margin-bottom {
   text-transform: uppercase;
@@ -304,4 +314,15 @@ button,
 #review .review-text {
   font-size: 1.8rem;
   font-style: italic;
+}
+
+/* #lookbook */
+#lookbook .nav-link {
+  color: #f86624;
+}
+
+#lookbook .nav-pills .nav-link.active,
+#lookbook .nav-pills .show>.nav-link {
+  /* color: #f86624; */
+  background-color: transparent;
 }
