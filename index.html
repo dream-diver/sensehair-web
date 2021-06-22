@@ -9,13 +9,15 @@
 
   <!-- Bootstrap CSS -->
   <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css">
+  <!-- Owl Carousel CSS -->
+  <link rel="stylesheet" href="./node_modules/owl.carousel/dist/assets/owl.carousel.min.css">
   <!-- Custom CSS -->
   <link rel="stylesheet" href="./css/style.css">
 </head>
 
 <body>
   <!-- #header -->
-  <header id="header" class="d-flex flex-column vh-100">
+  <header id="header" class="vh-100">
     <!-- #main-menu -->
     <nav id="main-menu" class="navbar navbar-expand-lg navbar-dark">
       <div class="container">
@@ -86,7 +88,8 @@
       </div>
     </nav>
     <!-- /#main-menu -->
-    <div class="header-content flex-grow-1">
+    <!-- static content -->
+    <div class="header-content flex-grow-1 d-none">
       <div class="container h-100">
         <div class="row h-100">
           <div class="col-md-8 offset-md-2 h-100 d-flex flex-column align-items-center justify-content-center text-white text-center">
@@ -100,13 +103,44 @@
         </div>
       </div>
     </div>
+    <!-- static content end -->
+    <!-- Slider -->
+    <div id="carouselHeader" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
+      <div class="carousel-indicators">
+        <button type="button" data-bs-target="#carouselHeader" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+        <button type="button" data-bs-target="#carouselHeader" data-bs-slide-to="1" aria-label="Slide 2"></button>
+        <button type="button" data-bs-target="#carouselHeader" data-bs-slide-to="2" aria-label="Slide 3"></button>
+      </div>
+      <div class="carousel-inner">
+        <div class="carousel-item active vh-100">
+          <img src="./images/slider1.png" alt="slider1">
+          <div class="carousel-caption">
+            <h1 class="font-weight-600">Only THE BEST TEAM FOR YOUR HAIR</h1>
+            <p class="font-weight-600">For fresh cuts, styling and coloring, our team is up to date with the latest trends and techniques. Your wishes are key by Sense Hair.</p>
+            <button class="btn-book-now btn btn-primary rounded-0 font-weight-900 mx-auto">
+              <img src="./images/schedule.png" height="43" alt="schedule">
+              <span>BOOK NOW</span>
+            </button>
+          </div>
+        </div>
+        <div class="carousel-item vh-100">
+          <img src="./images/slider1.png" alt="slider1">
+        </div>
+        <div class="carousel-item vh-100">
+          <img src="./images/slider1.png" alt="slider1">
+        </div>
+      </div>
+    </div>
+    <!-- Slider End -->
+
+
   </header>
   <!-- /#header -->
 
   <!-- #award -->
   <section id="award" class="bg-black">
     <div class="container">
-      <div class="row">
+      <div class="row pt-5">
         <div class="col-8 offset-2 d-flex justify-content-around py-5">
           <img src="./images/award-1.png" alt="award-1">
           <img src="./images/award-2.png" alt="award-2">
@@ -328,30 +362,60 @@
   <section id="review" class="text-center py-5">
     <h1 class="quotation">“WE ARE HAPPY,<br> IF YOU ARE HAPPY”</h1>
 
-    <div class="bg-light w-100 py-3">
-      <h1 class="h1-margin-bottom">REVIEW</h1>
-      <br>
-      <h2 class="h2-margin-bottom">WHAT OTHER PEOPLE SAY</h2>
-      <div class="container">
-        <div class="row mb-3">
-          <div class="col-4 offset-3">
-            <img src="./images/rating.png" alt="rating" class="img-fluid">
-          </div>
-          <div class="col text-start">
-            <h2 class="review-count d-inline-block font-weight-700 mb-0">658 reviews</h2>
+    <div class="bg-light w-100 pt-3 pb-4">
+      <div class="owl-carousel owl-theme">
+        <div class="">
+          <h1 class="h1-margin-bottom">REVIEW</h1>
+          <br>
+          <h2 class="h2-margin-bottom">WHAT OTHER PEOPLE SAY</h2>
+          <div class="container">
+            <div class="row mb-3">
+              <div class="col-4 offset-3">
+                <img src="./images/rating.png" alt="rating" class="img-fluid">
+              </div>
+              <div class="col text-start">
+                <h2 class="review-count d-inline-block font-weight-700 mb-0">658 reviews</h2>
+              </div>
+            </div>
+
+            <div class="row">
+              <div class="col-md-6">
+                <img src="./images/image rvw.png" alt="image_rvw" class="img-fluid">
+              </div>
+              <div class="col-md-6 d-flex align-items-center">
+                <p class="review-text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore cumsan lacus vel facilisis.”</p>
+              </div>
+            </div>
+
           </div>
         </div>
+        <div class="">
+          <h1 class="h1-margin-bottom">REVIEW</h1>
+          <br>
+          <h2 class="h2-margin-bottom">WHAT OTHER PEOPLE SAY</h2>
+          <div class="container">
+            <div class="row mb-3">
+              <div class="col-4 offset-3">
+                <img src="./images/rating.png" alt="rating" class="img-fluid">
+              </div>
+              <div class="col text-start">
+                <h2 class="review-count d-inline-block font-weight-700 mb-0">658 reviews</h2>
+              </div>
+            </div>
 
-        <div class="row">
-          <div class="col-md-6">
-            <img src="./images/image rvw.png" alt="image_rvw" class="img-fluid">
-          </div>
-          <div class="col-md-6 d-flex align-items-center">
-            <p class="review-text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore cumsan lacus vel facilisis.”</p>
+            <div class="row">
+              <div class="col-md-6">
+                <img src="./images/image rvw.png" alt="image_rvw" class="img-fluid">
+              </div>
+              <div class="col-md-6 d-flex align-items-center">
+                <p class="review-text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore cumsan lacus vel facilisis.”</p>
+              </div>
+            </div>
+
           </div>
         </div>
-
       </div>
+
     </div>
   </section>
   <!-- /#review -->
@@ -462,7 +526,18 @@
   <!-- /#footer -->
 
   <!-- JS -->
+  <script src="./node_modules/jquery/dist/jquery.js"></script>
   <script src="./node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="./node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
+  <script>
+    $(document).ready(function () {
+      $('.owl-carousel').owlCarousel({
+        loop: true,
+        dots: true,
+        items: 1
+      });
+    });
+  </script>
 </body>
 
 </html>

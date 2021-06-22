@@ -235,7 +235,25 @@ button,
   transform: translate(-4.5%, 0);
 }
 
+.owl-carousel button.owl-dot:not(:last-child) {
+  padding-right: 10px !important;
+}
 
+.owl-carousel button.owl-dot span {
+  width: 15px;
+  height: 15px;
+  display: block;
+  border-radius: 50%;
+  background-color: #fff;
+}
+
+.owl-carousel button.owl-dot.active span {
+  background-color: #464646 !important;
+}
+
+.owl-dots {
+  padding-top: 2rem;
+}
 
 /* Custom Styles */
 /* #header */
@@ -244,10 +262,31 @@ button,
   background-repeat: no-repeat, no-repeat, no-repeat;
   background-position: center bottom, center, center;
   background-size: 60%, cover, cover;
+  position: relative;
 }
 
 #header h1 {
   font-size: 3.125rem;
+}
+
+#header .carousel-item>img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
+#header .carousel-indicators {
+  bottom: -60px;
+}
+
+#header .carousel-indicators [data-bs-target] {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+}
+
+#header .carousel-caption {
+  bottom: 30%;
 }
 
 /* #top-menu */
@@ -256,6 +295,11 @@ button,
 /* #main-menu */
 #main-menu {
   background-color: hsla(0, 0%, 0%, 0.7);
+  z-index: 10;
+  left: 0;
+  top: 0;
+  position: absolute;
+  width: 100%;
 }
 
 #main-menu .nav-link {
