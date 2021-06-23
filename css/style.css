@@ -172,7 +172,7 @@ button,
 }
 
 .btn-book-now img {
-  padding: .375rem .75rem .375rem .75rem;
+  padding: .375rem .75rem;
 }
 
 .btn-book-now span {
@@ -180,11 +180,11 @@ button,
   border-left-width: 2px;
   border-style: solid;
   border-color: #fff;
-  padding: .375rem .75rem .375rem .75rem;
+  padding: .375rem .75rem;
 }
 
 .btn-book-now.btn-sm {
-  font-size: 0.8rem;
+  font-size: 1.25rem;
 }
 
 .btn-book-now.btn-book-now-footer {
@@ -255,6 +255,10 @@ button,
   padding-top: 2rem;
 }
 
+.dropdown-menu {
+  min-width: unset;
+}
+
 /* Custom Styles */
 /* #header */
 #header {
@@ -295,17 +299,23 @@ button,
 /* #main-menu */
 #main-menu {
   background-color: hsla(0, 0%, 0%, 0.7);
-  z-index: 10;
   left: 0;
   top: 0;
-  position: absolute;
+  position: fixed;
+  z-index: 1020;
   width: 100%;
 }
 
 #main-menu .nav-link {
   color: #fff;
   font-weight: 700;
+  font-size: 1.2rem;
 }
+
+#main-menu.navbar-shrink {
+  background-color: #000;
+}
+
 
 /* #award */
 #award img {
