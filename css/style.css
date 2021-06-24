@@ -187,6 +187,14 @@ button,
   font-size: 1.25rem;
 }
 
+.btn-book-now.btn-lg img {
+  padding: .375rem 0.75rem .375rem 2rem;
+}
+
+.btn-book-now.btn-lg span {
+  padding: .375rem 2rem .375rem 0.75rem;
+}
+
 .btn-book-now.btn-book-now-footer {
   background-color: #fff !important;
   border-color: #fff !important;
@@ -195,6 +203,11 @@ button,
 
 .btn-book-now.btn-book-now-footer span {
   border-color: #000;
+}
+
+/* btn-find */
+.btn-find {
+  padding: .375rem 2rem;
 }
 
 /* .h1-margin-bottom */
@@ -316,7 +329,6 @@ button,
   background-color: #000;
 }
 
-
 /* #award */
 #award img {
   height: 120px;
@@ -329,7 +341,7 @@ button,
 
 /* #contact */
 #contact .contact-row {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
 }
 
 /* #services */
@@ -358,7 +370,8 @@ button,
 
 /* #review */
 #review .quotation {
-  font-size: 3.25rem;
+  font-size: 6.25rem;
+  margin-bottom: 8rem;
 }
 
 #review .review-count {
