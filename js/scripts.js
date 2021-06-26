@@ -22,7 +22,14 @@ window.addEventListener('DOMContentLoaded', event => {
 
 // Activate Owl Carousel
 $(document).ready(() => {
-    $('.owl-carousel').owlCarousel({
+    $('.owl-carousel.owl-carousel-team').owlCarousel({
+        loop: true,
+        dots: true,
+        items: 1,
+        animateOut: 'fadeOut',
+        animateIn: 'fadeIn'
+    });
+    $('.owl-carousel.owl-carousel-review').owlCarousel({
         loop: true,
         dots: true,
         items: 1
