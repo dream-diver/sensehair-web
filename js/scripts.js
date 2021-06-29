@@ -37,7 +37,7 @@ $(document).ready(() => {
     });
     // Language Dropdown Change Flag
     $('.language-dropdown .dropdown-item').click(function (e) {
-        e.preventDefault();
+        // e.Prevent Default();
         $(this).parent().siblings().removeClass('d-none');
         $(this).parent().addClass('d-none');
         let languageImg = $(this).children().clone();
