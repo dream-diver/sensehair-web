@@ -339,6 +339,26 @@ button,
   font-size: 1.5rem;
 }
 
+#services .img-overlay {
+  position: relative;
+  margin-bottom: 1.3rem;
+}
+
+#services .img-overlay .overlay {
+  background-color: #00000000;
+  color: #fff;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  padding: 0.5rem 1rem;
+}
+
 /* #team */
 /* #team .team-text {
   transform: translate(0, 50px);

@@ -20,8 +20,8 @@ window.addEventListener('DOMContentLoaded', event => {
     document.addEventListener('scroll', navbarShrink);
 });
 
-// Activate Owl Carousel
 $(document).ready(() => {
+    // Activate Owl Carousel on Team Section
     $('.owl-carousel.owl-carousel-team').owlCarousel({
         loop: true,
         dots: true,
@@ -29,9 +29,18 @@ $(document).ready(() => {
         animateOut: 'fadeOut',
         animateIn: 'fadeIn'
     });
+    // Activate Owl Carousel on Review Section
     $('.owl-carousel.owl-carousel-review').owlCarousel({
         loop: true,
         dots: true,
         items: 1
+    });
+    // Language Dropdown Change Flag
+    $('.language-dropdown .dropdown-item').click(function (e) {
+        e.preventDefault();
+        $(this).parent().siblings().removeClass('d-none');
+        $(this).parent().addClass('d-none');
+        let languageImg = $(this).children().clone();
+        $(this).parents('.language-dropdown').children('.nav-link').html(languageImg);
     });
 });
