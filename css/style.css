@@ -315,6 +315,15 @@ button,
   height: 120px;
 }
 
+#award .award-col .hr-v {
+  height: 100%;
+  width: 1px;
+  background-color: #fff;
+}
+
+#award .award-col img:not(:last-child) {
+}
+
 /* #why-us */
 #why-us img {
   height: 120px;
