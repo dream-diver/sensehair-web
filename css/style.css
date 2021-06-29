@@ -254,13 +254,13 @@ button,
 
 /* Custom Styles */
 /* #header */
-#header {
+/*#header {
   background-image: url("../images/scissor.png"), url("../images/overlay.png"), url("../images/slider1.png");
   background-repeat: no-repeat, no-repeat, no-repeat;
   background-position: center bottom, center, center;
   background-size: 60%, cover, cover;
   position: relative;
-}
+}*/
 
 #header h1 {
   font-size: 3.125rem;
@@ -321,8 +321,8 @@ button,
   background-color: #fff;
 }
 
-#award .award-col img:not(:last-child) {
-}
+/* #award .award-col img:not(:last-child) {
+} */
 
 /* #why-us */
 #why-us img {
