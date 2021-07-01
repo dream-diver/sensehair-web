@@ -14,6 +14,8 @@
     <link rel="stylesheet" href="./node_modules/@fortawesome/fontawesome-free/css/all.min.css" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="./css/style.css" />
+    <!-- Responsive CSS -->
+    <link rel="stylesheet" href="./css/responsive.css" />
   </head>
 
   <body>
@@ -29,10 +31,10 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-          <div class="">
-            <div class="row mb-3">
+          <div class="w-100">
+            <div class="row mb-mb-3">
               <div class="col d-flex">
-                <ul id="top-menu" class="nav ms-auto">
+                <ul id="top-menu" class="nav mx-auto mx-md-0 ms-md-auto">
                   <li class="nav-item">
                     <a class="nav-link text-primary" href="#"><i class="fas fa-phone-alt me-1"></i> +31 10 123 456 78</a>
                   </li>
@@ -84,7 +86,7 @@
                     </li>
                   </ul>
 
-                  <form class="d-flex ms-2">
+                  <form class="d-flex ms-md-2">
                     <button class="btn-book-now btn btn-sm btn-primary rounded-0 font-weight-900">
                       <img src="./images/schedule.png" height="42" alt="schedule" />
                       <span>BOOK NOW</span>
@@ -97,22 +99,6 @@
         </div>
       </nav>
       <!-- /#main-menu -->
-      <!-- static content -->
-      <div class="header-content flex-grow-1 d-none">
-        <div class="container h-100">
-          <div class="row h-100">
-            <div class="col-md-8 offset-md-2 h-100 d-flex flex-column align-items-center justify-content-center text-white text-center">
-              <h1 class="font-weight-600">Only THE BEST TEAM FOR YOUR HAIR</h1>
-              <p class="font-weight-600">For fresh cuts, styling and coloring, our team is up to date with the latest trends and techniques. Your wishes are key by Sense Hair.</p>
-              <button class="btn-book-now btn btn-primary rounded-0 font-weight-900">
-                <img src="./images/schedule.png" height="43" alt="schedule" />
-                <span>BOOK NOW</span>
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <!-- static content end -->
       <!-- Slider -->
       <div id="carouselHeader" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
         <div class="carousel-indicators">
@@ -148,9 +134,9 @@
     <section id="award" class="bg-black">
       <div class="container">
         <div class="row pt-5">
-          <div class="award-col col-md-8 offset-md-2 d-flex justify-content-between py-5">
-            <img src="./images/award-coffure.png" alt="award-coffure" />
-            <div class="hr-v"></div>
+          <div class="award-col col-lg-8 offset-lg-2 d-flex justify-content-between flex-column flex-md-row py-5 px-4 px-lg-0">
+            <img src="./images/award-coffure.png" alt="award-coffure" class="mb-5 mb-md-0" />
+            <div class="hr-v d-none d-md-block"></div>
             <img src="./images/award-keune-white.png" alt="award-keune-white" />
           </div>
         </div>
@@ -308,7 +294,7 @@
           <div class="col-md-6">
             <img src="./images/team 1.png" alt="team 1" class="img-fluid" />
           </div>
-          <div class="col-md-6 bg-black d-flex flex-column justify-content-center align-items-center py-3 px-5">
+          <div class="col-md-6 bg-black d-flex flex-column justify-content-center align-items-center pt-5 pt-md-3 py-3 px-2 px-md-5">
             <div class="team-text flex-grow-1 d-flex align-items-center justify-content-center flex-column">
               <h1 class="font-weight-700">Your Hair Expert</h1>
               <p class="mb-4">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam et vel perspiciatis veritatis doloribus aliquid perferendis voluptates nihil cumque. Culpa excepturi blanditiis unde numquam doloribus quas. Deserunt earum quas cum.</p>
@@ -341,9 +327,9 @@
             <h1 class="h1-margin-bottom ms-4">HOW WE WORK</h1>
 
             <div class="row">
-              <div class="col-md-9">
-                <div class="box-border border border-black py-3 ps-4 pe-3">
-                  <div class="row mb-3">
+              <div class="col-md-8 col-lg-9">
+                <div class="box-border border border-black py-3 ps-4 pe-3 mb-3">
+                  <div class="row g-1 g-md-4 mb-3">
                     <div class="col-1">
                       <img src="./images/how-we-work/checkmark.png" alt="checkmark" class="img-fluid" />
                     </div>
@@ -352,7 +338,7 @@
                     </div>
                   </div>
 
-                  <div class="row mb-3">
+                  <div class="row g-1 g-md-4 mb-3">
                     <div class="col-1">
                       <img src="./images/how-we-work/checkmark.png" alt="checkmark" class="img-fluid" />
                     </div>
@@ -361,7 +347,7 @@
                     </div>
                   </div>
 
-                  <div class="row">
+                  <div class="row g-1 g-md-4">
                     <div class="col-1">
                       <img src="./images/how-we-work/checkmark.png" alt="checkmark" class="img-fluid" />
                     </div>
@@ -371,15 +357,15 @@
                   </div>
                 </div>
               </div>
-              <div class="col-md-3">
-                <img src="./images/how-we-work/keune.png" alt="keune" class="img-fluid mb-3" />
-                <img src="./images/how-we-work/treatwell.png" alt="treatwell" class="img-fluid mb-3" />
+              <div class="col-md-4 col-lg-3">
+                <img src="./images/how-we-work/keune.png" alt="keune" class="img-fluid mb-5 mb-lg-3" />
+                <img src="./images/how-we-work/treatwell.png" alt="treatwell" class="img-fluid mb-5 mb-lg-3" />
                 <div class="row">
                   <div class="col-6">
-                    <img src="./images/how-we-work/Top Rated.png" alt="Top Rated" class="img-fluid mb-3" />
+                    <img src="./images/how-we-work/Top Rated.png" alt="Top Rated" class="img-fluid mb-5 mb-lg-3" />
                   </div>
                   <div class="col-6">
-                    <img src="./images/how-we-work/most booked .png" alt="most booked" class="img-fluid mb-3" />
+                    <img src="./images/how-we-work/most booked .png" alt="most booked" class="img-fluid mb-5 mb-lg-3" />
                   </div>
                 </div>
               </div>
@@ -403,7 +389,7 @@
           <div class="">
             <div class="container">
               <div class="row mb-5">
-                <div class="col-4 offset-3">
+                <div class="col-6 col-md-4 offset-md-3">
                   <img src="./images/rating.png" alt="rating" class="img-fluid" />
                 </div>
                 <div class="col text-start">
@@ -416,7 +402,7 @@
                   <img src="./images/image rvw.png" alt="image_rvw" class="img-fluid" />
                 </div>
                 <div class="col-md-8 d-flex align-items-center">
-                  <p class="review-text">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore cumsan lacus vel facilisis.”</p>
+                  <p class="review-text mt-3">“Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore cumsan lacus vel facilisis.”</p>
                 </div>
               </div>
             </div>
@@ -484,24 +470,24 @@
     </section>
     <!-- /#lookbook -->
     <!-- #footer -->
-    <footer id="footer" class="bg-black text-white py-5">
+    <footer id="footer" class="bg-black text-white text-center text-md-start py-5">
       <div class="container">
         <div class="row">
-          <div class="col-md-3">
+          <div class="col-md-6 col-lg-3 mb-3">
             <img src="./images/logo2x.png" alt="logo2x" class="mb-3" width="60%" />
             <p class="mb-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem perspiciatis, assumenda placeat cum vel fugit.</p>
-            <button class="btn-book-now btn-book-now-footer btn btn-primary rounded-0 font-weight-900">
+            <button class="btn-book-now btn-book-now-footer btn btn-primary rounded-0 font-weight-900 mx-auto mx-md-0">
               <img src="./images/schedule-dark.png" height="43" alt="schedule" />
               <span>BOOK NOW</span>
             </button>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-6 col-lg-3 mb-3">
             <h2>CONTACT</h2>
             <p class="font-weight-700">Address :House :134<br />Road 12, Netharland</p>
             <p>Info@sensehair.nl</p>
             <p>carlos@sensehair.nl</p>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-6 col-lg-3 mb-3">
             <h2>INFO</h2>
             <p>
               Sunday: 9AM-PM<br />
@@ -513,7 +499,7 @@
               Sunday: 9AM-PM
             </p>
           </div>
-          <div class="col-md-3">
+          <div class="col-md-6 col-lg-3 mb-3">
             <h2>MAPS</h2>
             <img src="./images/map.png" alt="map" class="img-fluid" />
           </div>

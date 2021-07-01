@@ -1,0 +1,48 @@
+/* For Tablet And Mobile Size Devices */
+@media (max-width: 768px) {
+  .navbar-brand img {
+    width: 100px;
+  }
+
+  #header .carousel-caption {
+    /* bottom: 20%; */
+    left: 4%;
+    right: 4%;
+  }
+
+  #award img {
+    height: 110px;
+  }
+
+  #header h1 {
+    font-size: 2.125rem;
+  }
+
+  #review .quotation {
+    font-size: 4.25rem;
+    margin-bottom: 6rem;
+  }
+
+  #review .review-text {
+    font-size: 1.5rem;
+  }
+
+  #review .review-count {
+    font-size: 1.5rem;
+  }
+
+  #team .team-text h1 {
+    font-size: 2.3rem;
+  }
+
+  #team .font-handwriting {
+    font-size: 2.5rem;
+  }
+}
+/* Only For Mobile Size Devices */
+@media (max-width: 767px) {
+  #award img {
+    height: unset;
+    width: 100%;
+  }
+}
