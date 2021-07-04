@@ -44,3 +44,11 @@ $(document).ready(() => {
         $(this).parents('.language-dropdown').children('.nav-link').html(languageImg);
     });
 });
+// parallax carousel
+$('.carousel-item>img').ready(() => {
+    $('.carousel-item>img').each(function (index, value) {
+        let imgSrc = $(this).attr('src');
+        $(this).css({ "opacity": "0" });
+        $(this).parent().css({ "background": `url('${imgSrc}') center no-repeat`, "background-size": "cover", "background-attachment": "fixed" });
+    });
+});

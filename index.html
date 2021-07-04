@@ -24,15 +24,19 @@
       <!-- #main-menu -->
       <nav id="main-menu" class="navbar sticky-top navbar-expand-lg navbar-dark">
         <div class="container">
-          <a class="navbar-brand" href="#">
-            <img src="./images/logo2x.png" alt="logo2x" width="121px" class="d-inline-block align-text-top" />
-          </a>
-
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+          <a class="navbar-brand me-0" href="#">
+            <img src="./images/logo2x.png" alt="logo2x" width="121px" class="d-inline-block align-text-top" />
+          </a>
+
+          <form class="d-flex d-lg-none">
+            <button class="btn btn-sm btn-light rounded-0 font-weight-900">BOOK NOW</button>
+          </form>
+
           <div class="w-100">
-            <div class="row mb-mb-3">
+            <div class="row mb-3 d-none d-lg-block">
               <div class="col d-flex">
                 <ul id="top-menu" class="nav mx-auto mx-md-0 ms-md-auto">
                   <li class="nav-item">
@@ -86,7 +90,7 @@
                     </li>
                   </ul>
 
-                  <form class="d-flex ms-md-2">
+                  <form class="d-none d-lg-flex ms-lg-2">
                     <button class="btn-book-now btn btn-sm btn-primary rounded-0 font-weight-900">
                       <img src="./images/schedule.png" height="42" alt="schedule" />
                       <span>BOOK NOW</span>
@@ -176,12 +180,12 @@
     <section id="contact">
       <div class="container">
         <div class="row">
-          <div class="col py-5 text-center">
+          <div class="col-md-10 offset-md-1 col-lg-8 offset-lg-2 py-5 text-center">
             <div class="contact-row row text-start mb-4">
               <div class="col-md-6">
-                <div class="row">
+                <div class="row g-0">
                   <div class="col-2 mb-3 d-flex justify-content-center align-items-start">
-                    <img src="./images/clock.png" alt="clock" width="60%" />
+                    <img src="./images/clock.png" alt="clock" width="20px" class="mt-1" />
                   </div>
                   <div class="col-10 mb-3">
                     <p>
@@ -196,9 +200,9 @@
                 </div>
               </div>
               <div class="col-md-6">
-                <div class="row">
+                <div class="row g-0">
                   <div class="col-2 mb-3 d-flex justify-content-center align-items-start">
-                    <img src="./images/location.png" alt="maps-and-flags" width="60%" />
+                    <img src="./images/location.png" alt="maps-and-flags" width="20px" class="mt-1" />
                   </div>
                   <div class="col-10 mb-3">
                     <p>
@@ -208,9 +212,9 @@
                     </p>
                   </div>
                 </div>
-                <div class="row">
+                <div class="row g-0">
                   <div class="col-2 mb-3 d-flex justify-content-center align-items-start">
-                    <img src="./images/phone-call.png" alt="phone-call" width="60%" />
+                    <img src="./images/phone-call.png" alt="phone-call" width="20px" class="mt-1" />
                   </div>
                   <div class="col-10 mb-3 d-flex align-items-center">
                     <p class="mb-0">+31 10 123 456 78</p>
