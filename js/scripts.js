@@ -3,13 +3,20 @@ window.addEventListener('DOMContentLoaded', event => {
     // Navbar shrink function
     var navbarShrink = () => {
         const navbarCollapsible = document.body.querySelector('#main-menu');
+        const navbarTopRow = document.body.querySelector('.top-row');
+        const navbarBrandImage = document.body.querySelector('.navbar-brand-img');
         if (!navbarCollapsible) {
             return;
         }
         if (window.scrollY === 0) {
-            navbarCollapsible.classList.remove('navbar-shrink')
+            navbarCollapsible.classList.remove('navbar-shrink');
+            navbarTopRow.classList.add('d-lg-block');
+            navbarBrandImage.setAttribute("width", "121px");
         } else {
-            navbarCollapsible.classList.add('navbar-shrink')
+            navbarCollapsible.classList.add('navbar-shrink');
+            navbarTopRow.classList.remove('d-lg-block');
+            navbarBrandImage.setAttribute("width", "71px");
+
         }
     };
 

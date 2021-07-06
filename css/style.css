@@ -298,6 +298,7 @@ button,
   position: fixed;
   z-index: 1020;
   width: 100%;
+  transition: height 1s ease-out;
 }
 
 #main-menu .nav-link {
@@ -310,6 +311,9 @@ button,
   background-color: #000;
 }
 
+#main-menu .navbar-brand-img {
+  transition: width 1s ease-out;
+}
 /* #award */
 #award img {
   height: 90px;
