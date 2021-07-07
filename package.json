@@ -11,6 +11,7 @@
   "license": "ISC",
   "dependencies": {
     "@fortawesome/fontawesome-free": "^5.15.3",
+    "aos": "^2.3.4",
     "bootstrap": "^5.0.1",
     "jquery": "^3.6.0",
     "owl.carousel": "^2.3.4"

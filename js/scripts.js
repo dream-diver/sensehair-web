@@ -1,4 +1,6 @@
 window.addEventListener('DOMContentLoaded', event => {
+    // Initializing AOS
+    AOS.init();
 
     // Navbar shrink function
     var navbarShrink = () => {
