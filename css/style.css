@@ -25,6 +25,7 @@ h6 {
   font-weight: 400;
 }
 
+legend,
 p {
   font-family: "Open Sans", sans-serif;
   font-weight: 600;
@@ -181,6 +182,9 @@ button,
   color: #4c4a4f !important;
 }
 
+.bg-cultured {
+  background: #f1f1ef !important;
+}
 /* btn-book-now */
 .btn-book-now {
   padding: 0;
