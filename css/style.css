@@ -475,3 +475,13 @@ button,
 #lookbook .nav-pills .show>.nav-link {
   background-color: transparent;
 } */
+
+/* Career Page */
+/* application-form-bg-cultured */
+.application-form-bg-cultured {
+  background-image: url("../images/career/form_bg_2.png") !important;
+  background-position: center bottom !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  padding-bottom: 55vw !important;
+}
