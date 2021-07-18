@@ -287,11 +287,11 @@
                   <div class="row mb-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
                     <div class="col">
                       <label for="email" class="form-label">Email</label>
-                      <input class="form-control" type="email" name="email" id="email" />
+                      <input class="form-control" type="email" name="email" id="email" placeholder="Email" />
                     </div>
                     <div class="col">
                       <label for="phone" class="form-label">Phone</label>
-                      <input class="form-control" type="text" name="phone" id="phone" />
+                      <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone" />
                     </div>
                   </div>
                   <div class="mb-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
@@ -309,17 +309,25 @@
                 </fieldset>
                 <fieldset class="mb-3">
                   <legend class="text-danger fw-bold" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">Education</legend>
-                  <div class="row mb-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
+                  <div class="row">
                     <div class="col">
                       <label for="school" class="form-label">School</label>
+                    </div>
+                    <div class="col">
+                      <label for="when" class="form-label">When</label>
+                    </div>
+                    <div class="col">
+                      <label for="finished" class="form-label">Finished?</label>
+                    </div>
+                  </div>
+                  <div class="row mb-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
+                    <div class="col">
                       <input class="form-control mb-3" type="text" name="school[]" id="school_1" placeholder="School" />
                     </div>
-                    <div class="col px-0 px-md-2">
-                      <label for="when" class="form-label">When</label>
+                    <div class="col">
                       <input class="form-control mb-3" type="date" name="when[]" id="when_1" placeholder="When" />
                     </div>
-                    <div class="col-2">
-                      <label for="finished" class="form-label">Finished?</label>
+                    <div class="col">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="finished[]" value="1" id="finished_1" />
                         <label class="form-check-label" for="finished_1">Yes</label>
@@ -330,10 +338,10 @@
                     <div class="col">
                       <input class="form-control mb-3" type="text" name="school[]" id="school_2" placeholder="School" />
                     </div>
-                    <div class="col px-0 px-md-2">
+                    <div class="col">
                       <input class="form-control mb-3" type="date" name="when[]" id="when_2" placeholder="When" />
                     </div>
-                    <div class="col-2">
+                    <div class="col">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="finished[]" value="2" id="finished_2" />
                         <label class="form-check-label" for="finished_2">Yes</label>
@@ -344,10 +352,10 @@
                     <div class="col">
                       <input class="form-control mb-3" type="text" name="school[]" id="school_3" placeholder="School" />
                     </div>
-                    <div class="col px-0 px-md-2">
+                    <div class="col">
                       <input class="form-control mb-3" type="date" name="when[]" id="when_3" placeholder="When" />
                     </div>
-                    <div class="col-2">
+                    <div class="col">
                       <div class="form-check">
                         <input class="form-check-input" type="checkbox" name="finished[]" value="3" id="finished_3" />
                         <label class="form-check-label" for="finished_3">Yes</label>
@@ -362,7 +370,7 @@
                       <label for="company" class="form-label">Company</label>
                       <input class="form-control mb-3" type="text" name="company[]" id="company" placeholder="Company" />
                     </div>
-                    <div class="col px-0 px-md-2">
+                    <div class="col">
                       <label for="company_when" class="form-label">When</label>
                       <input class="form-control mb-3" type="date" name="company_when[]" id="company_when_1" placeholder="When" />
                     </div>
@@ -371,7 +379,7 @@
                     <div class="col">
                       <input class="form-control mb-3" type="text" name="company[]" id="company" placeholder="Company" />
                     </div>
-                    <div class="col px-0 px-md-2">
+                    <div class="col">
                       <input class="form-control mb-3" type="date" name="company_when[]" id="company_when_2" placeholder="When" />
                     </div>
                   </div>
@@ -379,7 +387,7 @@
                     <div class="col">
                       <input class="form-control mb-3" type="text" name="company[]" id="company" placeholder="Company" />
                     </div>
-                    <div class="col px-0 px-md-2">
+                    <div class="col">
                       <input class="form-control mb-3" type="date" name="company_when[]" id="company_when_3" placeholder="When" />
                     </div>
                   </div>
