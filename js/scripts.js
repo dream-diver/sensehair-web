@@ -61,3 +61,45 @@ $('.carousel-item>img').ready(() => {
         $(this).parent().css({ "background": `url('${imgSrc}') center no-repeat`, "background-size": "cover", "background-attachment": "fixed" });
     });
 });
+
+
+
+// Detect Element In Viewport Or Not For Image Background Section
+const inViewport = (element, percent) => {
+    // Get the elements position relative to the viewport
+    var bb = element.getBoundingClientRect();
+    // Check if the element is outside the viewport
+    // Then invert the returned value because you want to know the opposite
+    return !(bb.top > innerHeight - (window.innerHeight / (100 / (100 - percent))));
+}
+
+const changeBgColorOnScroll = (selector, percent, color1, color2, innerElementsSelector = false) => {
+    // Element Section
+    var elements = Array.from(document.querySelectorAll(selector));
+    // Inner Element Section
+    if (innerElementsSelector) {
+        var innerElements = Array.from(document.querySelectorAll(selector.concat(" ").concat(innerElementsSelector)));
+    }
+    // Listen for the scroll event
+    document.addEventListener('scroll', event => {
+        // Check the viewport status
+        elements.map((item, index) => {
+            if (item) {
+                item.style.transition = 'all 250ms ease-in-out';
+                if (inViewport(item, percent)) {
+                    item.style.backgroundColor = color1;
+                    if (innerElementsSelector) {
+                        innerElements[index].style.backgroundColor = color1;
+                    }
+                } else {
+                    item.style.backgroundColor = color2;
+                    if (innerElementsSelector) {
+                        innerElements[index].style.backgroundColor = color2;
+                    }
+                }
+            }
+        });
+    })
+}
+changeBgColorOnScroll(".timeline-circle", 50, "#000", "#f43315");
+changeBgColorOnScroll(".timeline-box", 35, "#f43315", "#e5e5e5", ".timeline-box-arrow");

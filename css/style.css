@@ -273,6 +273,19 @@ button,
   min-width: unset;
 }
 
+/* rounded */
+.rounded-4 {
+  border-radius: 0.5rem;
+}
+
+.rounded-5 {
+  border-radius: 0.75rem;
+}
+
+.rounded-6 {
+  border-radius: 1rem;
+}
+
 /* img-overlay */
 .img-overlay {
   position: relative;
@@ -295,6 +308,50 @@ button,
   flex-direction: column;
   padding: 0.5rem 1rem;
 }
+
+/* timeline */
+.timeline .timeline-item {
+  position: relative;
+}
+
+.timeline .timeline-circle {
+  width: 64px;
+  height: 64px;
+  background-color: #f43315;
+}
+
+.timeline .timeline-line {
+  width: 2px;
+  height: 100%;
+  position: absolute;
+  left: 32px;
+  background-color: #f43315;
+  z-index: -1;
+}
+
+.timeline .timeline-item-start .timeline-line {
+  height: 50%;
+  bottom: 0;
+}
+.timeline .timeline-item-end .timeline-line {
+  height: 50%;
+  top: 0;
+}
+.timeline .timeline-box {
+  position: relative;
+  background-color: #e5e5e5;
+}
+.timeline .timeline-box .timeline-box-arrow {
+  width: 10px;
+  height: 10px;
+  background-color: #e5e5e5;
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translate(-50%, -50%) rotate(45deg);
+  z-index: -1;
+}
+
 /* Custom Styles */
 /* #header */
 /*#header {
@@ -424,8 +481,8 @@ button,
 }
 
 /* #how-we-work */
-#how-we-work .box-border {
-  font-size: 1.5rem;
+#how-we-work .heading {
+  font-size: 2.6rem;
 }
 
 /* #review */
