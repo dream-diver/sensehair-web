@@ -329,6 +329,13 @@ button,
   z-index: -1;
 }
 
+.timeline .timeline-line-hover {
+  width: 100%;
+  height: 0;
+  max-height: 100%;
+  background-color: #000;
+}
+
 .timeline .timeline-item-start .timeline-line {
   height: 50%;
   bottom: 0;

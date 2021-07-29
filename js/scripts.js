@@ -102,4 +102,34 @@ const changeBgColorOnScroll = (selector, percent, color1, color2, innerElementsS
     })
 }
 changeBgColorOnScroll(".timeline-circle", 50, "#000", "#f43315");
-changeBgColorOnScroll(".timeline-box", 35, "#f43315", "#e5e5e5", ".timeline-box-arrow");
+changeBgColorOnScroll(".timeline-box", 38, "#f43315", "#e5e5e5", ".timeline-box-arrow");
+
+const pxScrolled = (element, percent) => {
+    // Get the elements position relative to the viewport
+    var bb = element.getBoundingClientRect();
+    // Check if the element is outside the viewport
+    // Then invert the returned value because you want to know the opposite
+    return -(bb.top - (innerHeight - (window.innerHeight / (100 / (100 - percent)))));
+}
+
+const changeBgColorOfTimelineLine = (selector, percent) => {
+    // Element Section
+    var elements = Array.from(document.querySelectorAll(selector));
+    // Inner Element Section
+    var innerElements = Array.from(document.querySelectorAll(".timeline-line-hover"));
+    // Listen for the scroll event
+    document.addEventListener('scroll', event => {
+        // Check the viewport status
+        elements.map((item, index) => {
+            if (item) {
+                item.style.transition = 'all 250ms ease-in-out';
+                if (pxScrolled(item, percent) > 0) {
+                    innerElements[index].style.height = pxScrolled(item, percent).toString(10).concat("px");
+                } else {
+                    innerElements[index].style.height = "0";
+                }
+            }
+        });
+    })
+}
+changeBgColorOfTimelineLine(".timeline-line", 50);
