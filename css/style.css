@@ -451,6 +451,10 @@ button,
 }
 
 /* #team */
+#team {
+  min-height: 400px;
+}
+
 /* #team .team-text {
   transform: translate(0, 50px);
 }*/
@@ -485,6 +489,10 @@ button,
 
 #team .owl-carousel button.owl-dot.active span {
   background-color: #fff !important;
+}
+#team .owl-carousel .owl-item img {
+  height: 100%;
+  object-fit: cover;
 }
 
 /* #how-we-work */
