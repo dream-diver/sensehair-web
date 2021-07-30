@@ -101,8 +101,8 @@ const changeBgColorOnScroll = (selector, percent, color1, color2, innerElementsS
         });
     })
 }
-changeBgColorOnScroll(".timeline-circle", 50, "#000", "#f43315");
-changeBgColorOnScroll(".timeline-box", 38, "#f43315", "#e5e5e5", ".timeline-box-arrow");
+changeBgColorOnScroll(".timeline-circle", 50, "#000", "#f86624");
+changeBgColorOnScroll(".timeline-box", 38, "#f86624", "#e5e5e5", ".timeline-box-arrow");
 
 const pxScrolled = (element, percent) => {
     // Get the elements position relative to the viewport
