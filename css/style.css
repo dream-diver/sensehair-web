@@ -361,14 +361,6 @@ button,
 
 /* Custom Styles */
 /* #header */
-/*#header {
-  background-image: url("../images/scissor.png"), url("../images/overlay.png"), url("../images/slider1.png");
-  background-repeat: no-repeat, no-repeat, no-repeat;
-  background-position: center bottom, center, center;
-  background-size: 60%, cover, cover;
-  position: relative;
-}*/
-
 #header h1 {
   font-size: 3.125rem;
 }
@@ -556,4 +548,35 @@ button,
   background-size: contain !important;
   background-repeat: no-repeat !important;
   padding-bottom: 50vw !important;
+}
+
+/* Lookbook Page */
+/* .lookbook-header */
+.lookbook-header {
+  background-image: url("../images/lookbook-page/banner_lookbook.png");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  height: 140vh;
+}
+.header-collapse .header-collapse-link {
+  display: block;
+  color: #fff;
+  text-decoration: none;
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  margin-top: 0.75rem;
+}
+
+.header-collapse .header-collapse-link[aria-expanded="true"] {
+  background: #3d3d3d;
+}
+
+.header-collapse-nav .nav-link {
+  color: #000;
+  text-transform: uppercase;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 0.5rem;
 }

@@ -4,7 +4,7 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no" />
-    <title>Contact | Sense Hair</title>
+    <title>Lookbook | Sense Hair</title>
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="./node_modules/bootstrap/dist/css/bootstrap.min.css" />
@@ -22,7 +22,7 @@
 
   <body>
     <!-- #header -->
-    <header id="header" class="vh-100">
+    <header id="header" class="lookbook-header">
       <!-- #main-menu -->
       <nav id="main-menu" class="navbar navbar-expand-lg navbar-dark">
         <div class="container">
@@ -105,127 +105,101 @@
         </div>
       </nav>
       <!-- /#main-menu -->
-      <!-- Slider -->
-      <div id="carouselHeader" class="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselHeader" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-          <button type="button" data-bs-target="#carouselHeader" data-bs-slide-to="1" aria-label="Slide 2"></button>
-          <button type="button" data-bs-target="#carouselHeader" data-bs-slide-to="2" aria-label="Slide 3"></button>
-        </div>
-        <div class="carousel-inner">
-          <div class="carousel-item active vh-100">
-            <img loading="lazy" src="./images/contact/contact_us.png" alt="contact_us" />
-            <div class="carousel-caption">
-              <h1 class="font-weight-600" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">CONTACT SALON</h1>
+      <div class="container h-100">
+        <div class="row h-100">
+          <div class="col-md-4 h-100 d-flex align-items-center">
+            <div class="header-content text-black">
+              <h2 class="font-weight-700 mb-1">CREATIVE CUTTING<br />& COLOURING</h2>
+              <p class="mb-5">Inspiratie nodig voor een nieuwe look, of benieuwd wat er allemaal mogelijk is?! Gebruik de Stylefinder vowil je een vrijblijvend advies neem dan contact op met een van onze salons!</p>
+              <div class="header-collapse">
+                <a class="header-collapse-link" data-bs-toggle="collapse" href="#collapseKLEUR" role="button" aria-expanded="false" aria-controls="collapseKLEUR">KLEUR</a>
+                <div class="collapse" id="collapseKLEUR">
+                  <ul class="header-collapse-nav nav flex-column">
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">BRUNETTE</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">BLOND</a>
+                    </li>
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">ROOD</a>
+                    </li>
+                  </ul>
+                </div>
+                <a class="header-collapse-link" data-bs-toggle="collapse" href="#collapseLENGTES" role="button" aria-expanded="false" aria-controls="collapseLENGTES">LENGTES</a>
+                <a class="header-collapse-link" data-bs-toggle="collapse" href="#collapseCOLLECTIES" role="button" aria-expanded="false" aria-controls="collapseCOLLECTIES">COLLECTIES</a>
+                <a class="header-collapse-link" data-bs-toggle="collapse" href="#collapseHAIR" role="button" aria-expanded="false" aria-controls="collapseHAIR">HAIR-UP/AVANT GARDE</a>
+                <a class="header-collapse-link" data-bs-toggle="collapse" href="#collapseMANNEN" role="button" aria-expanded="false" aria-controls="collapseMANNEN">MANNEN</a>
+              </div>
             </div>
-          </div>
-          <div class="carousel-item vh-100">
-            <img loading="lazy" src="./images/banner1.png" alt="banner1" />
-          </div>
-          <div class="carousel-item vh-100">
-            <img loading="lazy" src="./images/banner1.png" alt="banner1" />
           </div>
         </div>
       </div>
-      <!-- Slider End -->
     </header>
     <!-- /#header -->
-    <!-- #form_info -->
-    <section id="form_info">
+    <!-- #lookbook -->
+    <section id="lookbook">
       <div class="container">
         <div class="row">
-          <div class="col-md-6 py-5">
-            <form action="#">
-              <h1 data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">CONTACT</h1>
-              <div class="mb-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-                <input type="text" class="form-control rounded-0" name="name" id="name" placeholder="Name" />
+          <div class="col py-5 text-center" data-aos="fade-up" data-aos-duration="3000" data-aos-delay="3000" data-aos-once="true">
+            <h1 class="h1-margin-bottom font-weight-700">LOOKBOOK</h1>
+
+            <div class="row">
+              <div class="col-md-4 mb-3">
+                <img loading="lazy" src="./images/lookbook/Lookbook_1.png" alt="Lookbook_1" class="img-fluid" />
               </div>
-              <div class="mb-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-                <input type="text" class="form-control rounded-0" name="email" id="email" placeholder="Email Address" />
+              <div class="col-md-4 mb-3">
+                <img loading="lazy" src="./images/lookbook/Lookbook_2.png" alt="Lookbook_2" class="img-fluid" />
               </div>
-              <div class="mb-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-                <input type="text" class="form-control rounded-0" name="subject" id="subject" placeholder="Subject" />
+              <div class="col-md-4 mb-3">
+                <img loading="lazy" src="./images/lookbook/Lookbook_3.png" alt="Lookbook_3" class="img-fluid" />
               </div>
-              <div class="mb-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-                <textarea class="form-control rounded-0" name="message" id="message" rows="3" placeholder="Message"></textarea>
+              <div class="col-md-4 mb-3">
+                <img loading="lazy" src="./images/lookbook/Lookbook_4.png" alt="Lookbook_4" class="img-fluid" />
               </div>
-              <div class="d-flex justify-content-center" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-                <button class="btn btn-dark rounded-0 px-4">Submit</button>
+              <div class="col-md-4 mb-3">
+                <img loading="lazy" src="./images/lookbook/Lookbook_5.png" alt="Lookbook_5" class="img-fluid" />
               </div>
-            </form>
-          </div>
-          <div class="col-md-6 font-1-3x d-flex flex-column justify-content-center py-5">
-            <div class="d-flex" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-              <div class="me-3 mb-3 d-flex justify-content-center align-items-start">
-                <img loading="lazy" src="./images/location.png" alt="maps-and-flags" width="20px" class="mt-1" />
+              <div class="col-md-4 mb-3">
+                <img loading="lazy" src="./images/lookbook/Lookbook_6.png" alt="Lookbook_6" class="img-fluid" />
               </div>
-              <div class="mb-3">
-                <p>
-                  <strong>Sense Hair</strong><br />
-                  Central Plaza 12<br />
-                  3012CW Rotterdam,<br />
-                  One MInute from central station
-                </p>
+              <div class="col-md-4 mb-3">
+                <img loading="lazy" src="./images/lookbook/Lookbook_7.png" alt="Lookbook_7" class="img-fluid" />
+              </div>
+              <div class="col-md-4 mb-3">
+                <img loading="lazy" src="./images/lookbook/Lookbook_8.png" alt="Lookbook_8" class="img-fluid" />
+              </div>
+              <div class="col-md-4 mb-3">
+                <img loading="lazy" src="./images/lookbook/Lookbook_9.png" alt="Lookbook_9" class="img-fluid" />
+              </div>
+              <div class="col-md-4 mb-3">
+                <img loading="lazy" src="./images/lookbook/Lookbook_10.png" alt="Lookbook_10" class="img-fluid" />
+              </div>
+              <div class="col-md-4 mb-3">
+                <img loading="lazy" src="./images/lookbook/Lookbook_11.png" alt="Lookbook_11" class="img-fluid" />
+              </div>
+              <div class="col-md-4 mb-3">
+                <img loading="lazy" src="./images/lookbook/Lookbook_12.png" alt="Lookbook_12" class="img-fluid" />
+              </div>
+              <div class="col-md-4 mb-3">
+                <img loading="lazy" src="./images/lookbook/Lookbook_13.png" alt="Lookbook_13" class="img-fluid" />
+              </div>
+              <div class="col-md-4 mb-3">
+                <img loading="lazy" src="./images/lookbook/Lookbook_14.png" alt="Lookbook_14" class="img-fluid" />
+              </div>
+              <div class="col-md-4 mb-3">
+                <img loading="lazy" src="./images/lookbook/Lookbook_15.png" alt="Lookbook_15" class="img-fluid" />
               </div>
             </div>
-            <div class="d-flex" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-              <div class="me-3 mb-3 d-flex justify-content-center align-items-start">
-                <img loading="lazy" src="./images/phone-call.png" alt="phone-call" width="20px" class="mt-1" />
-              </div>
-              <div class="mb-3 d-flex align-items-center">
-                <p class="mb-0">+31 10 123 456 78</p>
-              </div>
+
+            <div class="w-100 d-flex flex-column align-items-center">
+              <button class="btn-find btn btn-lg btn-outline-dark rounded-0 font-weight-900 mb-3">SEE MORE</button>
             </div>
           </div>
         </div>
       </div>
     </section>
-    <!-- /#form_info -->
-    <!-- #opening_hours -->
-    <section id="opening_hours">
-      <div class="container">
-        <div class="row">
-          <div class="col py-5">
-            <div class="d-flex justify-content-center font-1-5x" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-              <div class="me-3 mb-3 d-flex justify-content-center align-items-start">
-                <img loading="lazy" src="./images/clock.png" alt="clock" width="25px" class="mt-1" />
-              </div>
-              <div class="mb-3 d-flex align-items-center">
-                <p class="mb-0">Opening Hours</p>
-              </div>
-            </div>
-            <div class="row text-center">
-              <div class="col-md-4" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-                <span>Friday 9:00 – 22:00</span>
-              </div>
-              <div class="col-md-4" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-                <span>Sunday 10:00 – 22:00</span>
-              </div>
-              <div class="col-md-4" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-                <span>Wednesday 9.00 – 20:00</span>
-              </div>
-            </div>
-            <div class="row text-center">
-              <div class="col-md-4" data-aos="fade-up" data-aos-duration="750" data-aos-delay="700" data-aos-once="true">
-                <span>Saturday 8:00 – 22:00</span>
-              </div>
-              <div class="col-md-4" data-aos="fade-up" data-aos-duration="750" data-aos-delay="700" data-aos-once="true">
-                <span>Tuesday 9:00 – 20:00</span>
-              </div>
-              <div class="col-md-4" data-aos="fade-up" data-aos-duration="750" data-aos-delay="700" data-aos-once="true">
-                <span>Thursday 9:00 – 22:00</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!-- /#opening_hours -->
-    <!-- #map -->
-    <section id="map">
-      <img src="./images/contact/google_map.jpg" class="img-fluid w-100" alt="google_map" />
-    </section>
-    <!-- /#map -->
+    <!-- /#lookbook -->
     <!-- #footer -->
     <footer id="footer" class="bg-black text-white text-center text-md-start py-5">
       <div class="container">
