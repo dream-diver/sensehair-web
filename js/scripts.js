@@ -61,6 +61,19 @@ $('.carousel-item>img').ready(() => {
         $(this).parent().css({ "background": `url('${imgSrc}') center no-repeat`, "background-size": "cover", "background-attachment": "fixed" });
     });
 });
+// LookBook
+$('.header-collapse-link').click(function (e) {
+    let text = $(this).text();
+    if (text === "HAIR-UP/AVANT GARDE") {
+        text = "HAIR";
+    }
+    $('.lookbook_all').removeClass("d-none");
+    $('.lookbook').addClass("d-none");
+    $('html, body').animate({
+        scrollTop: $("#" + text).offset().top - 79
+    }, 750);
+
+});
 
 
 
