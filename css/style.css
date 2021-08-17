@@ -413,6 +413,9 @@ button,
 #main-menu .navbar-brand-img {
   transition: width 1s ease-out;
 }
+#main-menu.without-slider {
+  position: sticky;
+}
 /* #award */
 #award img {
   height: 90px;
@@ -579,4 +582,27 @@ button,
   padding-top: 0;
   padding-bottom: 0;
   padding-left: 0.5rem;
+}
+
+/* Services Page */
+.prices-row .card {
+  min-height: 390px;
+  cursor: pointer;
+  user-select: none;
+}
+.prices-row .card h1 {
+  font-size: 2rem;
+}
+.prices-row-2 .card {
+  min-height: 491px;
+}
+
+.prices-row .card .bg-white {
+  min-height: 333px;
+  display: flex;
+}
+@media (min-width: 786px) {
+  .modal-dialog {
+    max-width: 700px;
+  }
 }

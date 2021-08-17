@@ -74,6 +74,10 @@ $('.header-collapse-link').click(function (e) {
     }, 750);
 
 });
+// Services
+$('.prices-row-1 .card').click(function (e) {
+    $('.prices-row-2').toggleClass("d-none");
+});
 
 
 
