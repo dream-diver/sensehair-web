@@ -22,13 +22,13 @@ h5,
 h6 {
   font-family: "Roboto", sans-serif;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 700;
 }
 
 legend,
 p {
   font-family: "Open Sans", sans-serif;
-  font-weight: 600;
+  font-weight: 400;
 }
 
 a,
@@ -185,6 +185,20 @@ button,
 .bg-cultured {
   background: #f1f1ef !important;
 }
+
+/* #scroll-to-top */
+#scroll-to-top {
+  position: fixed;
+  right: 4vh;
+  bottom: 4vh;
+  z-index: 100;
+  opacity: 0;
+}
+
+#scroll-to-top .btn {
+  box-shadow: 0px 3px 5px -1px rgba(0, 0, 0, 0.2), 0px 6px 10px 0px rgba(0, 0, 0, 0.14), 0px 1px 18px 0px rgba(0, 0, 0, 0.12);
+}
+
 /* btn-book-now */
 .btn-book-now {
   padding: 0;
@@ -402,8 +416,14 @@ button,
 
 #main-menu .nav-link {
   color: #fff;
-  font-weight: 700;
+  font-weight: 400;
   font-size: 1.2rem;
+  transition: color 750ms ease-in-out;
+}
+
+#main-menu .nav-link.active,
+#main-menu .nav-link:hover {
+  color: hsl(19, 94%, 66%);
 }
 
 #main-menu.navbar-shrink {
