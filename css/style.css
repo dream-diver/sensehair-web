@@ -253,7 +253,7 @@ button,
   display: inline-block;
 }
 
-.h1-margin-bottom::after {
+/* .h1-margin-bottom::after {
   content: "";
   height: 2px;
   width: 120%;
@@ -262,7 +262,7 @@ button,
   left: 0;
   bottom: -10px;
   transform: translate(-7.5%, 0);
-}
+} */
 
 /* .h2-margin-bottom */
 .h2-margin-bottom {
