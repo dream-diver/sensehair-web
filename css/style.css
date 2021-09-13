@@ -438,7 +438,15 @@ button,
 }
 /* #award */
 #award img {
-  height: 90px;
+  height: 68px;
+  width: unset;
+}
+#award .owl-carousel-icon {
+  height: 68px;
+}
+
+#award .owl-item.active .owl-carousel-icon {
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
 }
 
 #award .award-col .hr-v {

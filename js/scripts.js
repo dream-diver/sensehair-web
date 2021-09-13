@@ -38,6 +38,12 @@ $(document).ready(() => {
         animateOut: 'fadeOut',
         animateIn: 'fadeIn'
     });
+    // Activate Owl Carousel on Team Section
+    $('.owl-carousel.owl-carousel-icons').owlCarousel({
+        loop: true,
+        items: 1.9,
+        dots: false
+    });
     // Activate Owl Carousel on Review Section
     $('.owl-carousel.owl-carousel-review').owlCarousel({
         loop: true,
