@@ -231,9 +231,9 @@ button,
 }
 
 .btn-book-now.btn-book-now-footer {
-  background-color: #fff !important;
-  border-color: #fff !important;
-  color: #000 !important;
+  background-color: warning !important;
+  border-color: info !important;
+  color: #fff !important;
 }
 
 .btn-book-now.btn-book-now-footer span {
