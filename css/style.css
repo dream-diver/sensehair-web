@@ -242,7 +242,7 @@ button,
 
 /* btn-find */
 .btn-find {
-  padding: 0.375rem 2rem;
+  padding: 0.375rem 3rem;
 }
 
 /* .h1-margin-bottom */
@@ -570,6 +570,10 @@ button,
 #lookbook .nav-pills .show>.nav-link {
   background-color: transparent;
 } */
+
+#footer .social-nav a {
+  display: inline-block;
+}
 
 /* Career Page */
 /* application-form-bg-cultured */
