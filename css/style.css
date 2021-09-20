@@ -186,6 +186,10 @@ button,
   background: #f1f1ef !important;
 }
 
+.vh-60 {
+  height: 60vh !important;
+}
+
 /* #scroll-to-top */
 #scroll-to-top {
   position: fixed;
@@ -339,7 +343,7 @@ button,
   height: 100%;
   position: absolute;
   left: 32px;
-  background-color: #f86624;
+  background-color: #ffb86f;
   z-index: -1;
 }
 
@@ -594,6 +598,12 @@ button,
   background-size: cover;
   height: 140vh;
 }
+
+.lookbook-header .header-content {
+  width: 33%;
+  transform: translateY(-15vh);
+}
+
 .header-collapse .header-collapse-link {
   display: block;
   color: #fff;
@@ -602,11 +612,20 @@ button,
   font-weight: 500;
   text-transform: uppercase;
   margin-top: 0.75rem;
+  text-align: center;
 }
 
 .header-collapse .header-collapse-link[aria-expanded="true"] {
   background: #3d3d3d;
 }
+
+.header-collapse .header-collapse-link i {
+  vertical-align: 0.3rem;
+}
+/* 
+.lookbook-header .header-content-desc {
+  width: 33%;
+} */
 
 .header-collapse-nav .nav-link {
   color: #000;
@@ -614,6 +633,7 @@ button,
   padding-top: 0;
   padding-bottom: 0;
   padding-left: 0.5rem;
+  text-align: center;
 }
 
 /* Services Page */
@@ -623,7 +643,8 @@ button,
   user-select: none;
 }
 .prices-row .card h1 {
-  font-size: 2rem;
+  font-size: 1.8rem;
+  margin-top: 1.5rem;
 }
 .prices-row-2 .card {
   min-height: 491px;
@@ -633,6 +654,17 @@ button,
   min-height: 333px;
   display: flex;
 }
+
+.social-nav .nav-link {
+  font-size: 2rem;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.social-nav .nav-link:first-child {
+  margin-left: 0;
+}
+
 @media (min-width: 786px) {
   .modal-dialog {
     max-width: 700px;
