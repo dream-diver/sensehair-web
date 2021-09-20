@@ -82,7 +82,15 @@ $('.header-collapse-link').click(function (e) {
 });
 // Services
 $('.prices-row-1 .card-row').click(function (e) {
-    $('.prices-row-2').toggleClass("d-none");
+
+    if ($('.prices-row-2').hasClass("d-none")) {
+        $('.prices-row-2').toggleClass("d-none");
+        $([document.documentElement, document.body]).animate({
+            scrollTop: $(".prices-row-2").offset().top - 100
+        }, 2000);
+    } else {
+        $('.prices-row-2').toggleClass("d-none");
+    }
 });
 
 
@@ -124,8 +132,8 @@ const changeBgColorOnScroll = (selector, percent, color1, color2, innerElementsS
         });
     })
 }
-changeBgColorOnScroll(".timeline-circle", 50, "#000", "#f86624");
-changeBgColorOnScroll(".timeline-box", 38, "#f86624", "#e5e5e5", ".timeline-box-arrow");
+changeBgColorOnScroll(".timeline-circle", 80, "#000", "#ffb86f");
+changeBgColorOnScroll(".timeline-box", 68, "#ffb86f", "#e5e5e5", ".timeline-box-arrow");
 
 const pxScrolled = (element, percent) => {
     // Get the elements position relative to the viewport
@@ -155,7 +163,7 @@ const changeBgColorOfTimelineLine = (selector, percent) => {
         });
     })
 }
-changeBgColorOfTimelineLine(".timeline-line", 50);
+changeBgColorOfTimelineLine(".timeline-line", 80);
 
 const visibleOnScroll = (selector) => {
     percent = 0;
