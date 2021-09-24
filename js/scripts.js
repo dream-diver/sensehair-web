@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', event => {
         }
     };
 
-    // Shrink the navbar 
+    // Shrink the navbar
     navbarShrink();
 
     // Shrink the navbar when page is scrolled
@@ -81,16 +81,27 @@ $('.header-collapse-link').click(function (e) {
 
 });
 // Services
-$('.prices-row-1 .card-row').click(function (e) {
-
-    if ($('.prices-row-2').hasClass("d-none")) {
-        $('.prices-row-2').toggleClass("d-none");
-        $([document.documentElement, document.body]).animate({
-            scrollTop: $(".prices-row-2").offset().top - 100
-        }, 2000);
-    } else {
-        $('.prices-row-2').toggleClass("d-none");
-    }
+let cardRow = document.querySelectorAll('.prices-row-1 .card-row')
+for (var i = 0; i < cardRow.length; i++) {
+    cardRow[i].addEventListener('click', function (event) {
+        if (document.querySelector('.prices-row-2').classList.contains("d-none")) {
+            document.querySelector('.prices-row-2').classList.toggle("d-none");
+            document.querySelector('.prices-row-2').scrollIntoView({
+                behavior: "smooth", block: "center", inline: "nearest"
+            });
+        } else {
+            document.querySelector('.prices-row-2').classList.toggle("d-none");
+        }
+    });
+}
+// Career
+let applyBtn = document.getElementById('apply_btn')
+applyBtn.addEventListener('click', function (event) {
+    setTimeout(() => {
+        let collapseApplicationForm = document.getElementById('collapseApplicationForm').getBoundingClientRect();
+        document.body.scrollTop = document.body.scrollTop + collapseApplicationForm.y - 100; // For Safari
+        document.documentElement.scrollTop = document.documentElement.scrollTop + collapseApplicationForm.y - 100; // For Chrome, Firefox, IE and Opera
+    }, 150);
 });
 
 

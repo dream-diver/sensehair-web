@@ -5,7 +5,7 @@
   }
 
   .lookbook-header .header-content {
-    width: 33%;
+    width: 100%;
   }
 
   /* .lookbook-header .header-content-desc {
@@ -54,11 +54,11 @@
   .prices-row .card {
     min-height: 282px;
   }
-  
+
   .prices-row .card h1 {
     font-size: 1.2rem;
   }
-  
+
   .prices-row .card .bg-white {
     min-height: 210px;
   }

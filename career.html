@@ -183,242 +183,247 @@
   <!-- /#info_list_text -->
   <!-- #application_form -->
   <section id="application_form">
-    <div class="container">
-      <div class="row">
-        <div class="col pt-5">
-          <h1 class="text-center">Application Form</h1>
-        </div>
-      </div>
+    <div class="container pb-5">
+      <button class="apply-btn btn btn-primary btn-lg" id="apply_btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseApplicationForm" aria-expanded="false" aria-controls="collapseApplicationForm">Apply Now</button>
     </div>
-    <div class="application-form-bg-cultured w-100 py-5 bg-cultured">
+    <div class="application-wrapper collapse" id="collapseApplicationForm">
       <div class="container">
         <div class="row">
-          <div class="col">
-            <form>
-              <fieldset class="mb-3">
-                <legend class="text-danger fw-bold">Job Description</legend>
-                <div class="mb-3">
-                  <label for="vacancy" class="form-label">For which vacancy are you applying?</label>
-                  <select class="form-select" name="vacancy" id="vacancy">
-                    <option selected disabled>DROPDOWN</option>
-                    <option value="1">One</option>
-                    <option value="2">Two</option>
-                    <option value="3">Three</option>
-                  </select>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label fw-bold">Employment</label>
-                  <div class="row">
-                    <div class="col-md-6">
-                      <div class="d-flex">
-                        <div class="d-flex align-items-center">
-                          <div class="form-check form-check-inline mb-3">
-                            <input class="form-check-input" type="checkbox" name="employment" value="full" id="full_time" />
-                            <label class="form-check-label" for="full_time">Full time</label>
+          <div class="col pt-5">
+            <h1 class="text-center">Application Form</h1>
+          </div>
+        </div>
+      </div>
+      <div class="application-form-bg-cultured w-100 py-5 bg-cultured">
+        <div class="container">
+          <div class="row">
+            <div class="col">
+              <form>
+                <fieldset class="mb-3">
+                  <legend class="text-danger fw-bold">Job Description</legend>
+                  <div class="mb-3">
+                    <label for="vacancy" class="form-label">For which vacancy are you applying?</label>
+                    <select class="form-select" name="vacancy" id="vacancy">
+                      <option selected disabled>DROPDOWN</option>
+                      <option value="1">One</option>
+                      <option value="2">Two</option>
+                      <option value="3">Three</option>
+                    </select>
+                  </div>
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Employment</label>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <div class="d-flex">
+                          <div class="d-flex align-items-center">
+                            <div class="form-check form-check-inline mb-3">
+                              <input class="form-check-input" type="checkbox" name="employment" value="full" id="full_time" />
+                              <label class="form-check-label" for="full_time">Full time</label>
+                            </div>
+                            <div class="form-check form-check-inline mb-3">
+                              <input class="form-check-input" type="checkbox" name="employment" value="part" id="part_time" />
+                              <label class="form-check-label" for="part_time">Part time</label>
+                            </div>
                           </div>
-                          <div class="form-check form-check-inline mb-3">
-                            <input class="form-check-input" type="checkbox" name="employment" value="part" id="part_time" />
-                            <label class="form-check-label" for="part_time">Part time</label>
-                          </div>
-                        </div>
-                        <div class="flex-grow-1">
-                          <div class="mb-3">
-                            <!-- <label for="hours_per_week" class="form-label small ms-1">Hours per week</label> -->
-                            <input class="form-control" type="number" min="0" max="99" name="employment" id="hours_per_week" placeholder="Hours per week" />
+                          <div class="flex-grow-1">
+                            <div class="mb-3">
+                              <!-- <label for="hours_per_week" class="form-label small ms-1">Hours per week</label> -->
+                              <input class="form-control" type="number" min="0" max="99" name="employment" id="hours_per_week" placeholder="Hours per week" />
+                            </div>
                           </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="mb-3">
-                  <label class="form-label fw-bold">Availability</label>
-                  <div class="d-block">
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="availability" value="1" id="mon" />
-                      <label class="form-check-label" for="mon">Mon</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="availability" value="2" id="tue" />
-                      <label class="form-check-label" for="tue">Tue</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="availability" value="3" id="wed" />
-                      <label class="form-check-label" for="wed">Wed</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="availability" value="4" id="thu" />
-                      <label class="form-check-label" for="thu">Thu</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="availability" value="5" id="fri" />
-                      <label class="form-check-label" for="fri">Fri</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="availability" value="6" id="sat" />
-                      <label class="form-check-label" for="sat">Sat</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                      <input class="form-check-input" type="checkbox" name="availability" value="7" id="sun" />
-                      <label class="form-check-label" for="sun">Sun</label>
-                    </div>
-                  </div>
-                </div>
-              </fieldset>
-              <fieldset class="mb-3">
-                <legend class="text-danger fw-bold">Personal Information</legend>
-                <div class="mb-3">
-                  <label for="name" class="form-label">Name</label>
-                  <div class="row">
-                    <div class="col">
-                      <input class="form-control" type="text" name="first_name" placeholder="First Name" />
-                    </div>
-                    <div class="col">
-                      <input class="form-control" type="text" name="last_name" placeholder="Last Name" />
-                    </div>
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col">
-                    <label for="date_of_birth" class="form-label">Date of Birth</label>
-                    <input class="form-control" type="date" name="date_of_birth" id="date_of_birth" />
-                  </div>
-                  <div class="col">
-                    <label for="gender" class="form-label">Gender</label>
+                  <div class="mb-3">
+                    <label class="form-label fw-bold">Availability</label>
                     <div class="d-block">
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="gender" value="1" id="men" />
-                        <label class="form-check-label" for="men">Men</label>
+                        <input class="form-check-input" type="checkbox" name="availability" value="1" id="mon" />
+                        <label class="form-check-label" for="mon">Mon</label>
                       </div>
                       <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="checkbox" name="gender" value="2" id="women" />
-                        <label class="form-check-label" for="women">Women</label>
+                        <input class="form-check-input" type="checkbox" name="availability" value="2" id="tue" />
+                        <label class="form-check-label" for="tue">Tue</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="availability" value="3" id="wed" />
+                        <label class="form-check-label" for="wed">Wed</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="availability" value="4" id="thu" />
+                        <label class="form-check-label" for="thu">Thu</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="availability" value="5" id="fri" />
+                        <label class="form-check-label" for="fri">Fri</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="availability" value="6" id="sat" />
+                        <label class="form-check-label" for="sat">Sat</label>
+                      </div>
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" name="availability" value="7" id="sun" />
+                        <label class="form-check-label" for="sun">Sun</label>
                       </div>
                     </div>
                   </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col">
-                    <label for="email" class="form-label">Email</label>
-                    <input class="form-control" type="email" name="email" id="email" placeholder="Email" />
+                </fieldset>
+                <fieldset class="mb-3">
+                  <legend class="text-danger fw-bold">Personal Information</legend>
+                  <div class="mb-3">
+                    <label for="name" class="form-label">Name</label>
+                    <div class="row">
+                      <div class="col">
+                        <input class="form-control" type="text" name="first_name" placeholder="First Name" />
+                      </div>
+                      <div class="col">
+                        <input class="form-control" type="text" name="last_name" placeholder="Last Name" />
+                      </div>
+                    </div>
                   </div>
-                  <div class="col">
-                    <label for="phone" class="form-label">Phone</label>
-                    <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone" />
+                  <div class="row mb-3">
+                    <div class="col">
+                      <label for="date_of_birth" class="form-label">Date of Birth</label>
+                      <input class="form-control" type="date" name="date_of_birth" id="date_of_birth" />
+                    </div>
+                    <div class="col">
+                      <label for="gender" class="form-label">Gender</label>
+                      <div class="d-block">
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="gender" value="1" id="men" />
+                          <label class="form-check-label" for="men">Men</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                          <input class="form-check-input" type="checkbox" name="gender" value="2" id="women" />
+                          <label class="form-check-label" for="women">Women</label>
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                </div>
-                <div class="mb-3">
-                  <label for="address" class="form-label">Address</label>
-                  <input class="form-control mb-3" type="text" name="address" id="street_address" placeholder="Street Address" />
+                  <div class="row mb-3">
+                    <div class="col">
+                      <label for="email" class="form-label">Email</label>
+                      <input class="form-control" type="email" name="email" id="email" placeholder="Email" />
+                    </div>
+                    <div class="col">
+                      <label for="phone" class="form-label">Phone</label>
+                      <input class="form-control" type="text" name="phone" id="phone" placeholder="Phone" />
+                    </div>
+                  </div>
+                  <div class="mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <input class="form-control mb-3" type="text" name="address" id="street_address" placeholder="Street Address" />
+                    <div class="row">
+                      <div class="col">
+                        <input class="form-control" type="text" name="postal_zip_code" id="postal_zip_code" placeholder="Postal/zip code" />
+                      </div>
+                      <div class="col">
+                        <input class="form-control" type="text" name="city" id="city" placeholder="City" />
+                      </div>
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="mb-3">
+                  <legend class="text-danger fw-bold">Education</legend>
                   <div class="row">
                     <div class="col">
-                      <input class="form-control" type="text" name="postal_zip_code" id="postal_zip_code" placeholder="Postal/zip code" />
+                      <label for="school" class="form-label">School</label>
                     </div>
                     <div class="col">
-                      <input class="form-control" type="text" name="city" id="city" placeholder="City" />
+                      <label for="when" class="form-label">When</label>
+                    </div>
+                    <div class="col">
+                      <label for="finished" class="form-label">Finished?</label>
                     </div>
                   </div>
-                </div>
-              </fieldset>
-              <fieldset class="mb-3">
-                <legend class="text-danger fw-bold">Education</legend>
-                <div class="row">
-                  <div class="col">
-                    <label for="school" class="form-label">School</label>
-                  </div>
-                  <div class="col">
-                    <label for="when" class="form-label">When</label>
-                  </div>
-                  <div class="col">
-                    <label for="finished" class="form-label">Finished?</label>
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col">
-                    <input class="form-control mb-3" type="text" name="school[]" id="school_1" placeholder="School" />
-                  </div>
-                  <div class="col d-md-flex">
-                    <input class="form-control mb-3 me-md-2" type="text" name="whenfrom[]" id="when_form_1" placeholder="Form" />
-                    <input class="form-control mb-3" type="text" name="whento[]" id="when_to_1" placeholder="To" />
-                  </div>
-                  <div class="col">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="finished[]" value="1" id="finished_1" />
-                      <label class="form-check-label" for="finished_1">Yes</label>
+                  <div class="row mb-3">
+                    <div class="col">
+                      <input class="form-control mb-3" type="text" name="school[]" id="school_1" placeholder="School" />
+                    </div>
+                    <div class="col d-md-flex">
+                      <input class="form-control mb-3 me-md-2" type="text" name="whenfrom[]" id="when_form_1" placeholder="Form" />
+                      <input class="form-control mb-3" type="text" name="whento[]" id="when_to_1" placeholder="To" />
+                    </div>
+                    <div class="col">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="finished[]" value="1" id="finished_1" />
+                        <label class="form-check-label" for="finished_1">Yes</label>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col">
-                    <input class="form-control mb-3" type="text" name="school[]" id="school_2" placeholder="School" />
-                  </div>
-                  <div class="col d-md-flex">
-                    <input class="form-control mb-3 me-md-2" type="text" name="whenfrom[]" id="when_form_2" placeholder="Form" />
-                    <input class="form-control mb-3" type="text" name="whento[]" id="when_to_2" placeholder="To" />
-                  </div>
-                  <div class="col">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="finished[]" value="2" id="finished_2" />
-                      <label class="form-check-label" for="finished_2">Yes</label>
+                  <div class="row mb-3">
+                    <div class="col">
+                      <input class="form-control mb-3" type="text" name="school[]" id="school_2" placeholder="School" />
+                    </div>
+                    <div class="col d-md-flex">
+                      <input class="form-control mb-3 me-md-2" type="text" name="whenfrom[]" id="when_form_2" placeholder="Form" />
+                      <input class="form-control mb-3" type="text" name="whento[]" id="when_to_2" placeholder="To" />
+                    </div>
+                    <div class="col">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="finished[]" value="2" id="finished_2" />
+                        <label class="form-check-label" for="finished_2">Yes</label>
+                      </div>
                     </div>
                   </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col">
-                    <input class="form-control mb-3" type="text" name="school[]" id="school_3" placeholder="School" />
-                  </div>
-                  <div class="col d-md-flex">
-                    <input class="form-control mb-3 me-md-2" type="text" name="whenfrom[]" id="when_form_3" placeholder="Form" />
-                    <input class="form-control mb-3" type="text" name="whento[]" id="when_to_3" placeholder="To" />
-                  </div>
-                  <div class="col">
-                    <div class="form-check">
-                      <input class="form-check-input" type="checkbox" name="finished[]" value="3" id="finished_3" />
-                      <label class="form-check-label" for="finished_3">Yes</label>
+                  <div class="row mb-3">
+                    <div class="col">
+                      <input class="form-control mb-3" type="text" name="school[]" id="school_3" placeholder="School" />
+                    </div>
+                    <div class="col d-md-flex">
+                      <input class="form-control mb-3 me-md-2" type="text" name="whenfrom[]" id="when_form_3" placeholder="Form" />
+                      <input class="form-control mb-3" type="text" name="whento[]" id="when_to_3" placeholder="To" />
+                    </div>
+                    <div class="col">
+                      <div class="form-check">
+                        <input class="form-check-input" type="checkbox" name="finished[]" value="3" id="finished_3" />
+                        <label class="form-check-label" for="finished_3">Yes</label>
+                      </div>
                     </div>
                   </div>
+                </fieldset>
+                <fieldset class="mb-3">
+                  <legend class="text-danger fw-bold">Experience</legend>
+                  <div class="row mb-3">
+                    <div class="col">
+                      <label for="company" class="form-label">Company</label>
+                      <input class="form-control mb-3" type="text" name="company[]" id="company" placeholder="Company" />
+                    </div>
+                    <div class="col">
+                      <label for="company_when" class="form-label">When</label>
+                      <input class="form-control mb-3" type="date" name="company_when[]" id="company_when_1" placeholder="When" />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col">
+                      <input class="form-control mb-3" type="text" name="company[]" id="company" placeholder="Company" />
+                    </div>
+                    <div class="col">
+                      <input class="form-control mb-3" type="date" name="company_when[]" id="company_when_2" placeholder="When" />
+                    </div>
+                  </div>
+                  <div class="row mb-3">
+                    <div class="col">
+                      <input class="form-control mb-3" type="text" name="company[]" id="company" placeholder="Company" />
+                    </div>
+                    <div class="col">
+                      <input class="form-control mb-3" type="date" name="company_when[]" id="company_when_3" placeholder="When" />
+                    </div>
+                  </div>
+                </fieldset>
+                <fieldset class="mb-3">
+                  <legend class="text-danger fw-bold">Motivation</legend>
+                  <div class="mb-3">
+                    <textarea class="form-control mb-3" name="motivation" id="motivation" rows="3"></textarea>
+                    <p><i class="fas fa-paperclip me-2"></i> Optional: add attachments like your CV, letter of motivation, portfolio here.</p>
+                  </div>
+                </fieldset>
+                <div class="d-flex justify-content-center w-100">
+                  <button type="submit" class="btn btn-black rounded-0 text-white font-weight-700 px-5">APPLY</button>
                 </div>
-              </fieldset>
-              <fieldset class="mb-3">
-                <legend class="text-danger fw-bold">Experience</legend>
-                <div class="row mb-3">
-                  <div class="col">
-                    <label for="company" class="form-label">Company</label>
-                    <input class="form-control mb-3" type="text" name="company[]" id="company" placeholder="Company" />
-                  </div>
-                  <div class="col">
-                    <label for="company_when" class="form-label">When</label>
-                    <input class="form-control mb-3" type="date" name="company_when[]" id="company_when_1" placeholder="When" />
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col">
-                    <input class="form-control mb-3" type="text" name="company[]" id="company" placeholder="Company" />
-                  </div>
-                  <div class="col">
-                    <input class="form-control mb-3" type="date" name="company_when[]" id="company_when_2" placeholder="When" />
-                  </div>
-                </div>
-                <div class="row mb-3">
-                  <div class="col">
-                    <input class="form-control mb-3" type="text" name="company[]" id="company" placeholder="Company" />
-                  </div>
-                  <div class="col">
-                    <input class="form-control mb-3" type="date" name="company_when[]" id="company_when_3" placeholder="When" />
-                  </div>
-                </div>
-              </fieldset>
-              <fieldset class="mb-3">
-                <legend class="text-danger fw-bold">Motivation</legend>
-                <div class="mb-3">
-                  <textarea class="form-control mb-3" name="motivation" id="motivation" rows="3"></textarea>
-                  <p><i class="fas fa-paperclip me-2"></i> Optional: add attachments like your CV, letter of motivation, portfolio here.</p>
-                </div>
-              </fieldset>
-              <div class="d-flex justify-content-center w-100">
-                <button type="submit" class="btn btn-black rounded-0 text-white font-weight-700 px-5">APPLY NOW</button>
-              </div>
-            </form>
+              </form>
+            </div>
           </div>
         </div>
       </div>
