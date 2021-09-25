@@ -21,7 +21,7 @@ export default function Home() {
       <button className="btn-floating btn btn-lg btn-dark rounded-circle">
         <BiCalendarCheck />
       </button>
-      <FloatingWindow title="Choose Hair Size" data={heirSizes} nextStep="/hair-type" multiSelect={multiSelect} />
+      <FloatingWindow title="Login" data={heirSizes} nextStep="/hair-type" multiSelect={multiSelect} login={true} />
     </div>
   )
 }

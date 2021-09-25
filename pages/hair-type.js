@@ -5,11 +5,11 @@ import FloatingWindow from '../components/FloatingWindow'
 
 export default function Home() {
   const multiSelect = false
-  const heirSizes = [
-    { id: 0, text: "Men", },
-    { id: 1, text: "Women Short Hair" },
-    { id: 2, text: "Medium Hair" },
-    { id: 3, text: "Long Hair" }
+  const heirTypes = [
+    { id: 0, text: "Straight", },
+    { id: 1, text: "Wavy" },
+    { id: 2, text: "Curly " },
+    { id: 3, text: "Coily" }
   ];
   return (
     <div>
@@ -21,7 +21,7 @@ export default function Home() {
       <button className="btn-floating btn btn-lg btn-dark rounded-circle">
         <BiCalendarCheck />
       </button>
-      <FloatingWindow title="Choose Hair Size" data={heirSizes} nextStep="/hair-type" multiSelect={multiSelect} />
+      <FloatingWindow title="Choose Hair Type" data={heirTypes} nextStep="/service" multiSelect={multiSelect} />
     </div>
   )
 }
