@@ -30,6 +30,14 @@ window.addEventListener('DOMContentLoaded', event => {
 });
 
 $(document).ready(() => {
+    // Activate Owl Carousel on Services Section
+    $('.owl-carousel.owl-carousel-services').owlCarousel({
+        loop: true,
+        dots: true,
+        items: 1,
+        animateOut: 'fadeOut',
+        animateIn: 'fadeIn'
+    });
     // Activate Owl Carousel on Team Section
     $('.owl-carousel.owl-carousel-team').owlCarousel({
         loop: true,
@@ -81,9 +89,28 @@ $('.header-collapse-link').click(function (e) {
 
 });
 // Services
-let cardRow = document.querySelectorAll('.prices-row-1 .card-row')
-for (var i = 0; i < cardRow.length; i++) {
-    cardRow[i].addEventListener('click', function (event) {
+const cardMen = document.querySelector('.card-men');
+cardMen.addEventListener('click', () => {
+    cardMen.classList.toggle('active');
+    cardMen.children[0].classList.toggle('d-none');
+    cardMen.children[1].classList.toggle('d-none');
+});
+const cardRow = document.querySelectorAll('.prices-row-1 .card-row');
+cardRow.forEach((card) => {
+    card.addEventListener('click', function (event) {
+        let cardActive = document.querySelectorAll('.card.active');
+        if (cardActive.length !== 0) {
+            console.log(cardActive);
+            cardActive.forEach((activeCard) => {
+                activeCard.children[0].classList.toggle('d-none');
+                activeCard.children[1].classList.toggle('d-none');
+                activeCard.classList.toggle('active');
+            })
+        } else {
+            card.children[0].classList.toggle('d-none');
+            card.children[1].classList.toggle('d-none');
+            card.classList.toggle('active');
+        }
         if (document.querySelector('.prices-row-2').classList.contains("d-none")) {
             document.querySelector('.prices-row-2').classList.toggle("d-none");
             document.querySelector('.prices-row-2').scrollIntoView({
@@ -93,16 +120,29 @@ for (var i = 0; i < cardRow.length; i++) {
             document.querySelector('.prices-row-2').classList.toggle("d-none");
         }
     });
-}
-// Career
-let applyBtn = document.getElementById('apply_btn')
-applyBtn.addEventListener('click', function (event) {
-    setTimeout(() => {
-        let collapseApplicationForm = document.getElementById('collapseApplicationForm').getBoundingClientRect();
-        document.body.scrollTop = document.body.scrollTop + collapseApplicationForm.y - 100; // For Safari
-        document.documentElement.scrollTop = document.documentElement.scrollTop + collapseApplicationForm.y - 100; // For Chrome, Firefox, IE and Opera
-    }, 150);
 });
+const priceModal = document.getElementById("priceModal");
+const modalDialog = document.querySelector('.modal-dialog');
+priceModal.addEventListener('click', () => {
+    setTimeout(() => {
+        if (!priceModal.classList.contains("show")) {
+            cardMen.children[0].classList.toggle("d-none");
+            cardMen.children[1].classList.toggle("d-none");
+            cardMen.classList.remove('active');
+        }
+    }, 300);
+});
+// Career
+const applyBtn = document.getElementById('apply_btn');
+if (applyBtn) {
+    applyBtn.addEventListener('click', function (event) {
+        setTimeout(() => {
+            let collapseApplicationForm = document.getElementById('collapseApplicationForm').getBoundingClientRect();
+            document.body.scrollTop = document.body.scrollTop + collapseApplicationForm.y - 100; // For Safari
+            document.documentElement.scrollTop = document.documentElement.scrollTop + collapseApplicationForm.y - 100; // For Chrome, Firefox, IE and Opera
+        }, 150);
+    });
+}
 
 
 

@@ -661,10 +661,21 @@ button,
   cursor: pointer;
   user-select: none;
 }
+
+.prices-row .card.active {
+  background-color: #000;
+  color: #fff !important;
+}
+
+.prices-row .card.active .text-black {
+  color: #fff !important;
+}
+
 .prices-row .card h1 {
   font-size: 1.8rem;
   margin-top: 1.5rem;
 }
+
 .prices-row-2 .card {
   min-height: 491px;
 }
