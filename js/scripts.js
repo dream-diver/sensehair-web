@@ -90,48 +90,55 @@ $('.header-collapse-link').click(function (e) {
 });
 // Services
 const cardMen = document.querySelector('.card-men');
-cardMen.addEventListener('click', () => {
-    cardMen.classList.toggle('active');
-    cardMen.children[0].classList.toggle('d-none');
-    cardMen.children[1].classList.toggle('d-none');
-});
-const cardRow = document.querySelectorAll('.prices-row-1 .card-row');
-cardRow.forEach((card) => {
-    card.addEventListener('click', function (event) {
-        let cardActive = document.querySelectorAll('.card.active');
-        if (cardActive.length !== 0) {
-            console.log(cardActive);
-            cardActive.forEach((activeCard) => {
-                activeCard.children[0].classList.toggle('d-none');
-                activeCard.children[1].classList.toggle('d-none');
-                activeCard.classList.toggle('active');
-            })
-        } else {
-            card.children[0].classList.toggle('d-none');
-            card.children[1].classList.toggle('d-none');
-            card.classList.toggle('active');
-        }
-        if (document.querySelector('.prices-row-2').classList.contains("d-none")) {
-            document.querySelector('.prices-row-2').classList.toggle("d-none");
-            document.querySelector('.prices-row-2').scrollIntoView({
-                behavior: "smooth", block: "center", inline: "nearest"
-            });
-        } else {
-            document.querySelector('.prices-row-2').classList.toggle("d-none");
-        }
+if (cardMen) {
+    cardMen.addEventListener('click', () => {
+        cardMen.classList.toggle('active');
+        cardMen.children[0].classList.toggle('d-none');
+        cardMen.children[1].classList.toggle('d-none');
     });
-});
+}
+const cardRow = document.querySelectorAll('.prices-row-1 .card-row');
+if (cardRow) {
+    cardRow.forEach((card) => {
+        card.addEventListener('click', function (event) {
+            let cardActive = document.querySelectorAll('.card.active');
+            if (cardActive.length !== 0) {
+                console.log(cardActive);
+                cardActive.forEach((activeCard) => {
+                    activeCard.children[0].classList.toggle('d-none');
+                    activeCard.children[1].classList.toggle('d-none');
+                    activeCard.classList.toggle('active');
+                })
+            } else {
+                card.children[0].classList.toggle('d-none');
+                card.children[1].classList.toggle('d-none');
+                card.classList.toggle('active');
+            }
+            if (document.querySelector('.prices-row-2').classList.contains("d-none")) {
+                document.querySelector('.prices-row-2').classList.toggle("d-none");
+                document.querySelector('.prices-row-2').scrollIntoView({
+                    behavior: "smooth", block: "center", inline: "nearest"
+                });
+            } else {
+                document.querySelector('.prices-row-2').classList.toggle("d-none");
+            }
+        });
+    });
+}
+
 const priceModal = document.getElementById("priceModal");
-const modalDialog = document.querySelector('.modal-dialog');
-priceModal.addEventListener('click', () => {
-    setTimeout(() => {
-        if (!priceModal.classList.contains("show")) {
-            cardMen.children[0].classList.toggle("d-none");
-            cardMen.children[1].classList.toggle("d-none");
-            cardMen.classList.remove('active');
-        }
-    }, 300);
-});
+if (priceModal) {
+    priceModal.addEventListener('click', () => {
+        setTimeout(() => {
+            if (!priceModal.classList.contains("show")) {
+                cardMen.children[0].classList.toggle("d-none");
+                cardMen.children[1].classList.toggle("d-none");
+                cardMen.classList.remove('active');
+            }
+        }, 300);
+    });
+}
+
 // Career
 const applyBtn = document.getElementById('apply_btn');
 if (applyBtn) {
