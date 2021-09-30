@@ -496,6 +496,32 @@ button,
   font-size: 1.5rem;
 }
 
+#services .owl-carousel-services {
+  position: relative;
+}
+
+#services .owl-carousel-services .owl-nav button {
+  background: rgba(255, 255, 255, 0.35);
+  height: 2rem;
+  width: 2rem;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#services .owl-carousel-services .owl-nav {
+  position: absolute;
+  top: 45%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10000;
+  width: 90%;
+  color: #fff;
+  display: flex;
+  justify-content: space-between;
+  font-size: 1.5rem;
+}
 /* #team */
 #team {
   min-height: 400px;
@@ -546,10 +572,17 @@ button,
   font-size: 2.6rem;
 }
 
+#how-we-work .btn-yes {
+  background-color: #ffb86f !important;
+  border-color: #ffb86f !important;
+  color: #212529 !important;
+}
+
 /* #review */
 #review .quotation {
   font-size: 6.25rem;
   margin-bottom: 8rem;
+  font-weight: 100;
 }
 
 #review .review-count {
@@ -615,12 +648,12 @@ button,
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  height: 140vh;
+  height: 90vh;
 }
 
 .lookbook-header .header-content {
   width: 33%;
-  transform: translateY(-15vh);
+  /* transform: translateY(-15vh); */
 }
 
 .header-collapse .header-collapse-link {
@@ -632,6 +665,10 @@ button,
   text-transform: uppercase;
   margin-top: 0.75rem;
   text-align: center;
+}
+
+.header-collapse .header-collapse-link:hover {
+  color: #ffb86f;
 }
 
 .header-collapse .header-collapse-link[aria-expanded="true"] {
@@ -693,6 +730,10 @@ button,
 
 .social-nav .nav-link:first-child {
   margin-left: 0;
+}
+
+.contact-text {
+  width: 13.5rem;
 }
 
 @media (min-width: 786px) {

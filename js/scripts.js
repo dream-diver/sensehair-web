@@ -34,6 +34,7 @@ $(document).ready(() => {
     $('.owl-carousel.owl-carousel-services').owlCarousel({
         loop: true,
         dots: true,
+        nav: true,
         items: 1,
         animateOut: 'fadeOut',
         animateIn: 'fadeIn'

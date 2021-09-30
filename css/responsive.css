@@ -11,6 +11,9 @@
   /* .lookbook-header .header-content-desc {
     width: 100%;
   } */
+  #main-menu {
+    background-color: #000 !important;
+  }
 
   #main-menu .nav-link {
     font-weight: 700;
