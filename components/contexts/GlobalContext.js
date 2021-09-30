@@ -13,6 +13,7 @@ export const GlobalProvider = (props) => {
     //   "token": ""
     // },
     "users": [],
+    "options": [],
     "messages": []
   };
 
@@ -32,11 +33,24 @@ export const GlobalProvider = (props) => {
       }
     }
 
+    const fetchOptions = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/options`)
+        const data = await res.json()
+        return data
+      } catch (error) {
+        toast.error(error.message)
+        messageArray = [...messageArray, { "type": "error", "body": "Options Data Fetching Error", "desc": error.message }]
+        return null
+      }
+    }
+
     const getData = async () => {
       const usersFromServer = await fetchUsers()
-      if (usersFromServer) {
+      const optionsFromServer = await fetchOptions()
+      if (usersFromServer && optionsFromServer) {
         setState(prevState => {
-          return { ...prevState, "users": usersFromServer, "loading": false };
+          return { ...prevState, "users": usersFromServer, "options": optionsFromServer, "loading": false };
         })
       } else {
         setState(prevState => {
