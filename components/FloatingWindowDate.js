@@ -1,11 +1,12 @@
 import { useState } from "react";
 import ReactDatePicker from "react-datepicker"
+import setHours from "date-fns/setHours";
+import setMinutes from "date-fns/setMinutes";
+import setSeconds from "date-fns/setSeconds";
 import { BiRightArrowAlt } from "react-icons/bi"
 
-import "react-datepicker/dist/react-datepicker.css";
-
 const FloatingWindowDate = ({ step, show, setShow, nextStep }) => {
-  const [startDate, setStartDate] = useState(new Date());
+  const [startDate, setStartDate] = useState(setHours(setMinutes(setSeconds(new Date(), 0), 0), 10));
   console.log(startDate);
   return (
     <div className="floating-window">
@@ -15,18 +16,22 @@ const FloatingWindowDate = ({ step, show, setShow, nextStep }) => {
       </div>
       <div className="floating-window-body">
         <form>
-          <div className="align-items-center justify-content-around">
-            <ReactDatePicker
-              selected={ startDate }
-              onChange={ (date) => setStartDate(date) }
-              inline
-            />
+          <div className="d-flex">
+            <div className="me-1 me-md-5">
+              <ReactDatePicker
+                selected={ startDate }
+                onChange={ (date) => setStartDate(date) }
+                inline
+              />
+            </div>
             <ReactDatePicker
               selected={ startDate }
               onChange={ (date) => setStartDate(date) }
               showTimeSelect
               showTimeSelectOnly
-              timeIntervals={ 15 }
+              timeIntervals={ 20 }
+              minTime={ setHours(setMinutes(new Date(), 0), 10) }
+              maxTime={ setHours(setMinutes(new Date(), 40), 17) }
               timeCaption="Time"
               dateFormat="h:mm aa"
               inline
