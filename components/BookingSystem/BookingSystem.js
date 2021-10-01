@@ -3,12 +3,17 @@ import { BiCalendarCheck } from 'react-icons/bi'
 import { GlobalContext } from '../contexts/GlobalContext'
 import FloatingWindow from '../FloatingWindow'
 import FloatingWindowDate from '../FloatingWindowDate'
+import setHours from "date-fns/setHours";
+import setMinutes from "date-fns/setMinutes";
+import setSeconds from "date-fns/setSeconds";
+import FloatingWindowAuth from '../FloatingWindowAuth'
 
 const BookingSystem = () => {
   const [state, setState] = useContext(GlobalContext)
   const [show, setShow] = useState(false)
   const [checked, setChecked] = useState(-1)
   const [multiChecked, setMultiChecked] = useState([])
+  const [startDate, setStartDate] = useState(setHours(setMinutes(setSeconds(new Date(), 0), 0), 10));
   const [step, setStep] = useState({
     "step1": {
       active: true,
@@ -37,6 +42,11 @@ const BookingSystem = () => {
       active: false,
       title: "Choose Date & Time",
       value: ""
+    },
+    "step6": {
+      active: false,
+      title: "Enter your Phone Number",
+      value: 0
     },
 
   })
@@ -93,7 +103,14 @@ const BookingSystem = () => {
     })
     setChecked(-1)
   }
-  const sixthStep = () => { }
+  const sixthStep = () => {
+    setStep({
+      ...step,
+      "step5": { ...step.step5, active: false, value: startDate },
+      "step6": { ...step.step6, active: true },
+    })
+    setChecked(-1)
+  }
 
 
   return (
@@ -116,7 +133,10 @@ const BookingSystem = () => {
             <FloatingWindow step={ step.step4 } options={ optionStylists } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fifthStep } />
           }
           { step.step5.active &&
-            <FloatingWindowDate step={ step.step5 } show={ show } setShow={ setShow } nextStep={ sixthStep } />
+            <FloatingWindowDate step={ step.step5 } show={ show } setShow={ setShow } nextStep={ sixthStep } startDate={ startDate } setStartDate={ setStartDate } />
+          }
+          { step.step6.active &&
+            <FloatingWindowAuth step={ step.step6 } show={ show } setShow={ setShow } nextStep={ sixthStep } />
           }
         </>
       }
