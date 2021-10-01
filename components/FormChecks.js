@@ -11,7 +11,7 @@ const FormChecks = ({ data, multiSelect }) => {
   return (
     <div>
       {
-        data.map((item) => (<FormCheck key={item.id} id={item.id} text={item.text} checked={checked} setChecked={setChecked} multiSelect={multiSelect} />))
+        data.map((item, index) => (<FormCheck key={ index } id={ item.id } text={ item.text } checked={ checked } setChecked={ setChecked } multiSelect={ multiSelect } />))
       }
     </div>
   )

@@ -28,7 +28,7 @@ export const GlobalProvider = (props) => {
         return data
       } catch (error) {
         toast.error(error.message)
-        messageArray = [...messageArray, { "type": "error", "body": "User Data Fetching Error", "desc": error.message }]
+        messageArray = [...messageArray, { "type": "error", "body": "Users Data Fetching Error", "desc": error.message }]
         return null
       }
     }
@@ -45,12 +45,25 @@ export const GlobalProvider = (props) => {
       }
     }
 
+    const fetchServices = async () => {
+      try {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/services`)
+        const data = await res.json()
+        return data
+      } catch (error) {
+        toast.error(error.message)
+        messageArray = [...messageArray, { "type": "error", "body": "Services Data Fetching Error", "desc": error.message }]
+        return null
+      }
+    }
+
     const getData = async () => {
       const usersFromServer = await fetchUsers()
       const optionsFromServer = await fetchOptions()
-      if (usersFromServer && optionsFromServer) {
+      const servicesFromServer = await fetchServices()
+      if (usersFromServer && optionsFromServer && servicesFromServer) {
         setState(prevState => {
-          return { ...prevState, "users": usersFromServer, "options": optionsFromServer, "loading": false };
+          return { ...prevState, "users": usersFromServer, "options": optionsFromServer, "services": servicesFromServer, "loading": false };
         })
       } else {
         setState(prevState => {

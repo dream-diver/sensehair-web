@@ -1,30 +1,22 @@
-import Link from 'next/link'
 import { BiRightArrowAlt } from "react-icons/bi"
-import FormChecks from "./FormChecks"
-import Login from './Login'
+import FormCheck from "./FormCheck"
 
-const FloatingWindow = ({ title, data, nextStep, multiSelect, login }) => {
+const FloatingWindow = ({ step, options, show, setShow, checked, setChecked, nextStep, multiChecked = [], setMultiChecked = () => { } }) => {
   return (
     <div className="floating-window">
       <div className="floating-window-header">
-        <h4 className="floating-window-heading">{title}</h4>
-        <button type="button" className="btn-close" aria-label="Close"></button>
+        <h4 className="floating-window-heading">{ step.title }</h4>
+        <button type="button" className="btn-close" aria-label="Close" onClick={ () => setShow(!show) }></button>
       </div>
       <div className="floating-window-body">
         <form>
-          {login ?
-            <Login />
-            : <FormChecks data={data} multiSelect={multiSelect} />
-          }
+          { options.map((option, index) => (
+            <FormCheck text={ option } multiSelect={ step.multiSelect } key={ index } checked={ checked } setChecked={ setChecked } id={ index } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
+          )) }
         </form>
       </div>
       <div className="floating-window-footer">
-        <Link href={nextStep}>
-          <a className="btn-next btn btn-dark">
-            {login ? "Login" : "Next"}
-            <BiRightArrowAlt className="ms-1" />
-          </a>
-        </Link>
+        <a className="btn-next btn btn-dark" onClick={ nextStep }>Next<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>
   )
