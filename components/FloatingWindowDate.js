@@ -1,13 +1,9 @@
-import { useState } from "react";
 import ReactDatePicker from "react-datepicker"
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
-import setSeconds from "date-fns/setSeconds";
 import { BiRightArrowAlt } from "react-icons/bi"
 
-const FloatingWindowDate = ({ step, show, setShow, nextStep }) => {
-  const [startDate, setStartDate] = useState(setHours(setMinutes(setSeconds(new Date(), 0), 0), 10));
-  console.log(startDate);
+const FloatingWindowDate = ({ step, show, setShow, nextStep, startDate, setStartDate }) => {
   return (
     <div className="floating-window">
       <div className="floating-window-header">
