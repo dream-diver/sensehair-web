@@ -64,12 +64,16 @@ button:focus:not(:focus-visible) {
   height: 60px;
   display: flex;
   align-items: center;
+  justify-content: end;
   padding-left: 20px;
   padding-right: 20px;
 }
 
+.floating-window-footer .btn-next:not(:first-child) {
+  margin-left: 1rem;
+}
+
 .floating-window-footer .btn-next {
-  margin-left: auto;
   display: flex;
   align-items: center;
   box-shadow: 0 1px 3px rgb(23 23 23 / 24%);
@@ -106,6 +110,10 @@ button:focus:not(:focus-visible) {
 .floating-window .form-check-input:checked {
   background-color: #808c99;
   border-color: #9ca6b0;
+}
+
+.icon-reflect {
+  transform: scaleX(-1);
 }
 
 /* react-datepicker */
