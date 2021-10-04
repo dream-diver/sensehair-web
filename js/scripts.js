@@ -90,12 +90,23 @@ $('.header-collapse-link').click(function (e) {
 
 });
 // Services
+const priceRow2 = document.querySelector('.prices-row-2');
 const cardMen = document.querySelector('.card-men');
 if (cardMen) {
     cardMen.addEventListener('click', () => {
-        cardMen.classList.toggle('active');
-        cardMen.children[0].classList.toggle('d-none');
-        cardMen.children[1].classList.toggle('d-none');
+        let cardActive = document.querySelectorAll('.card.active');
+        if (cardActive.length !== 0) {
+            cardActive.forEach((activeCard) => {
+                activeCard.children[0].classList.toggle('d-none');
+                activeCard.children[1].classList.toggle('d-none');
+                activeCard.classList.toggle('active');
+                priceRow2.classList.toggle("d-none");
+            })
+        } else {
+            cardMen.classList.toggle('active');
+            cardMen.children[0].classList.toggle('d-none');
+            cardMen.children[1].classList.toggle('d-none');
+        }
     });
 }
 const cardRow = document.querySelectorAll('.prices-row-1 .card-row');
@@ -104,7 +115,7 @@ if (cardRow) {
         card.addEventListener('click', function (event) {
             let cardActive = document.querySelectorAll('.card.active');
             if (cardActive.length !== 0) {
-                console.log(cardActive);
+                ;
                 cardActive.forEach((activeCard) => {
                     activeCard.children[0].classList.toggle('d-none');
                     activeCard.children[1].classList.toggle('d-none');
@@ -115,13 +126,13 @@ if (cardRow) {
                 card.children[1].classList.toggle('d-none');
                 card.classList.toggle('active');
             }
-            if (document.querySelector('.prices-row-2').classList.contains("d-none")) {
-                document.querySelector('.prices-row-2').classList.toggle("d-none");
-                document.querySelector('.prices-row-2').scrollIntoView({
+            if (priceRow2.classList.contains("d-none")) {
+                priceRow2.classList.toggle("d-none");
+                priceRow2.scrollIntoView({
                     behavior: "smooth", block: "center", inline: "nearest"
                 });
             } else {
-                document.querySelector('.prices-row-2').classList.toggle("d-none");
+                priceRow2.classList.toggle("d-none");
             }
         });
     });
@@ -132,8 +143,8 @@ if (priceModal) {
     priceModal.addEventListener('click', () => {
         setTimeout(() => {
             if (!priceModal.classList.contains("show")) {
-                cardMen.children[0].classList.toggle("d-none");
-                cardMen.children[1].classList.toggle("d-none");
+                cardMen.children[0].classList.remove("d-none");
+                cardMen.children[1].classList.add("d-none");
                 cardMen.classList.remove('active');
             }
         }, 300);
