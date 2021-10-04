@@ -1,12 +1,12 @@
 import { useContext, useState } from 'react'
 import { BiCalendarCheck } from 'react-icons/bi'
 import { GlobalContext } from '../contexts/GlobalContext'
-import FloatingWindow from '../FloatingWindow'
-import FloatingWindowDate from '../FloatingWindowDate'
+import FloatingWindow from './FloatingWindow'
+import FloatingWindowDate from './FloatingWindowDate'
+import FloatingWindowAuth from './FloatingWindowAuth'
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import setSeconds from "date-fns/setSeconds";
-import FloatingWindowAuth from '../FloatingWindowAuth'
 
 const BookingSystem = () => {
   const [state, setState] = useContext(GlobalContext)
@@ -16,34 +16,40 @@ const BookingSystem = () => {
   const [startDate, setStartDate] = useState(setHours(setMinutes(setSeconds(new Date(), 0), 0), 10));
   const [step, setStep] = useState({
     "step1": {
+      id: 1,
       active: true,
       title: "Choose Hair Size",
       multiSelect: false,
       value: 0
     },
     "step2": {
+      id: 2,
       active: false,
       title: "Choose Hair Type",
       value: 0
     },
     "step3": {
+      id: 3,
       active: false,
       title: "Choose Services",
       multiSelect: true,
       value: []
     },
     "step4": {
+      id: 4,
       active: false,
       title: "Choose Stylist",
       multiSelect: false,
       value: 0
     },
     "step5": {
+      id: 5,
       active: false,
       title: "Choose Date & Time",
       value: ""
     },
     "step6": {
+      id: 6,
       active: false,
       title: "Enter your Phone Number",
       value: 0
@@ -52,8 +58,9 @@ const BookingSystem = () => {
   })
   // Options
   const options = state.options;
-  const optionHairSize = options.find(option => option.name === "Hair Size").value
-  const optionHairType = options.find(option => option.name === "Hair Type").value
+  const optionHairSize = options.find(option => option.name === "Hair Size").option
+  console.log(optionHairSize);
+  const optionHairType = options.find(option => option.name === "Hair Type").option
   // Services
   const services = state.services;
   const optionServices = services.map(service => service.name);
@@ -127,10 +134,10 @@ const BookingSystem = () => {
             <FloatingWindow step={ step.step2 } options={ optionHairType } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ thirdStep } />
           }
           { step.step3.active &&
-            <FloatingWindow step={ step.step3 } options={ optionServices } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fourthStep } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
+            <FloatingWindow step={ step.step3 } options={ services } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fourthStep } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
           }
           { step.step4.active &&
-            <FloatingWindow step={ step.step4 } options={ optionStylists } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fifthStep } />
+            <FloatingWindow step={ step.step4 } options={ stylists } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fifthStep } />
           }
           { step.step5.active &&
             <FloatingWindowDate step={ step.step5 } show={ show } setShow={ setShow } nextStep={ sixthStep } startDate={ startDate } setStartDate={ setStartDate } />

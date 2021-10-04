@@ -9,9 +9,9 @@ const FloatingWindow = ({ step, options, show, setShow, checked, setChecked, nex
         <button type="button" className="btn-close" aria-label="Close" onClick={ () => setShow(!show) }></button>
       </div>
       <div className="floating-window-body">
-        <form>
+        <form className={ step.id === 1 || step.id === 2 ? "floating-window-form floating-window-form-grid" : "floating-window-form floating-window-form-list" }>
           { options.map((option, index) => (
-            <FormCheck text={ option } multiSelect={ step.multiSelect } key={ index } checked={ checked } setChecked={ setChecked } id={ index } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
+            <FormCheck data={ option } multiSelect={ step.multiSelect } key={ index } checked={ checked } setChecked={ setChecked } id={ index } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
           )) }
         </form>
       </div>

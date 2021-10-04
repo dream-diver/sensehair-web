@@ -1,3 +1,4 @@
+/* global */
 button:active,
 button:focus:not(:focus-visible) {
   outline: none;
@@ -22,7 +23,6 @@ button:focus:not(:focus-visible) {
   position: fixed;
   right: 4vh;
   bottom: 4vh;
-  /* height: calc(100% - 8vh); */
   width: 30%;
   min-height: calc(72% - 4vh);
   min-width: 280px;
@@ -49,15 +49,9 @@ button:focus:not(:focus-visible) {
   flex-grow: 1;
 }
 
-.floating-window-header .btn-close {
-  /* margin-left: auto; */
-}
-
 .floating-window-body {
   flex-grow: 1;
   padding: 10px;
-  /* padding-right: 10px; */
-  /* padding-left: 10px; */
 }
 
 .floating-window-footer {
@@ -79,28 +73,61 @@ button:focus:not(:focus-visible) {
   box-shadow: 0 1px 3px rgb(23 23 23 / 24%);
 }
 
+.floating-window-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.floating-window-form.floating-window-form-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.floating-window-form.floating-window-form-list {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+.floating-window .form-check-label {
+  font-weight: 500;
+}
+
+.floating-window .floating-window-form-grid .form-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 1rem;
+}
+
+.floating-window .floating-window-form-grid .form-check-input {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  margin-left: 0;
+  margin-top: 0;
+}
+
 .floating-window .form-check {
-  background-color: hsl(222, 24%, 92%);
-  margin-bottom: 1rem;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
+  background-color: #e6e9ef;
+  padding: 1rem;
   padding-left: 2.3rem;
-  padding-right: 1rem;
   border-radius: 7px;
   box-shadow: 0 1px 3px rgb(23 23 23 / 24%);
   cursor: pointer;
+  position: relative;
+}
+
+.floating-window .form-check-img {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin-bottom: 0.75rem;
 }
 
 .floating-window .form-check.active {
-  /* background-color: hsl(222, 100%, 90%); */
   background-color: #212529;
 }
 .floating-window .form-check.active .form-check-label {
   color: #fff;
-}
-
-.floating-window .form-check-input {
-  /* margin-top: -0.1rem; */
 }
 
 .floating-window .form-check-label {
