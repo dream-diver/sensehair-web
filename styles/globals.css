@@ -126,7 +126,7 @@ button:focus:not(:focus-visible) {
 .floating-window .form-check.active {
   background-color: #212529;
 }
-.floating-window .form-check.active .form-check-label {
+.floating-window .form-check.active {
   color: #fff;
 }
 

@@ -28,9 +28,9 @@ const FormCheck = ({ id, data, checked, setChecked, multiSelect, multiChecked = 
       <div className="form-check-text">
         <div className="d-flex justify-content-between">
           <label className="form-check-label" onClick={ (e) => e.preventDefault() } htmlFor={ id }>{ data.name ? data.name : data }</label>
-          { data.price && <span className="small fw-bold">$ { data.price }</span> }
+          { data.price && <span className="small fw-bold text-black-50">${ data.price }</span> }
         </div>
-        <span className="small">{ data.time && data.time }</span>
+        <span className="small text-black-50">{ data.time && data.time }</span>
       </div>
     </div>
   )
