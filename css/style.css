@@ -208,6 +208,10 @@ button,
   height: 60vh !important;
 }
 
+.text-dreamDiver {
+  color: #d7d225;
+}
+
 /* #scroll-to-top */
 #scroll-to-top {
   position: fixed;
