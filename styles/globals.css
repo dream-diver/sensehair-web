@@ -5,6 +5,10 @@ button:focus:not(:focus-visible) {
   box-shadow: none;
 }
 
+.icon-reflect {
+  transform: scaleX(-1);
+}
+
 .btn-floating {
   position: fixed;
   right: 4vh;
@@ -39,9 +43,9 @@ button:focus:not(:focus-visible) {
 .floating-window-header {
   display: flex;
   align-items: center;
-  height: 60px;
-  padding-left: 20px;
-  padding-right: 20px;
+  padding: 20px;
+  box-shadow: 0 7px 13px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
 }
 
 .floating-window-header .floating-window-heading {
@@ -61,6 +65,8 @@ button:focus:not(:focus-visible) {
   justify-content: end;
   padding-left: 20px;
   padding-right: 20px;
+  box-shadow: 0 -7px 13px rgba(0, 0, 0, 0.08);
+  margin-top: 1rem;
 }
 
 .floating-window-footer .btn-next:not(:first-child) {
@@ -76,6 +82,9 @@ button:focus:not(:focus-visible) {
 .floating-window-form {
   display: grid;
   gap: 1rem;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
 }
 
 .floating-window-form.floating-window-form-grid {
@@ -98,12 +107,15 @@ button:focus:not(:focus-visible) {
   padding-left: 1rem;
 }
 
+.floating-window .form-check-input {
+  margin-top: 0;
+}
+
 .floating-window .floating-window-form-grid .form-check-input {
   position: absolute;
   left: 10px;
   top: 10px;
   margin-left: 0;
-  margin-top: 0;
 }
 
 .floating-window .form-check {
@@ -116,17 +128,18 @@ button:focus:not(:focus-visible) {
   position: relative;
 }
 
-.floating-window .form-check-img {
-  width: 100px;
-  height: 100px;
-  position: relative;
-  margin-bottom: 0.75rem;
-}
-
 .floating-window .form-check.active {
   background-color: #212529;
 }
+
 .floating-window .form-check.active {
+  color: #fff !important;
+}
+
+.floating-window .form-check .sub-heading {
+  color: #393939;
+}
+.floating-window .form-check.active .sub-heading {
   color: #fff;
 }
 
@@ -139,8 +152,19 @@ button:focus:not(:focus-visible) {
   border-color: #9ca6b0;
 }
 
-.icon-reflect {
-  transform: scaleX(-1);
+.floating-window .form-check-img {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+
+.floating-window .user-img img {
+  width: 100px !important;
+  height: 100px !important;
+  object-fit: cover !important;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 /* react-datepicker */
@@ -240,28 +264,6 @@ button:focus:not(:focus-visible) {
   border-radius: 0.25rem;
   overflow: hidden;
 }
-/* scrollbar */
-/* width */
-.react-datepicker__time-list::-webkit-scrollbar {
-  width: 3px;
-}
-
-/* Track */
-.react-datepicker__time-list::-webkit-scrollbar-track {
-  box-shadow: inset 0 0 5px #e0e0e0;
-  border-radius: 0.25rem;
-}
-
-/* Handle */
-.react-datepicker__time-list::-webkit-scrollbar-thumb {
-  background: #090a0b;
-  border-radius: 1rem;
-}
-
-/* Handle on hover */
-.react-datepicker__time-list::-webkit-scrollbar-thumb:hover {
-  background: #212529;
-}
 
 .react-datepicker__time-container
   .react-datepicker__time
@@ -295,4 +297,27 @@ button:focus:not(:focus-visible) {
   .react-datepicker__time-box
   ul.react-datepicker__time-list {
   height: calc(29.844px + 3px + 195px + (1.7rem / 2));
+}
+/* scrollbar */
+/* width */
+.floating-window-form::-webkit-scrollbar,
+.react-datepicker__time-list::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+.react-datepicker__time-list::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #e0e0e0;
+  border-radius: 0.25rem;
+}
+
+/* Handle */
+.react-datepicker__time-list::-webkit-scrollbar-thumb {
+  background: #090a0b;
+  border-radius: 1rem;
+}
+
+/* Handle on hover */
+.react-datepicker__time-list::-webkit-scrollbar-thumb:hover {
+  background: #212529;
 }

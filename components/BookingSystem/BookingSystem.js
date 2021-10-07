@@ -59,11 +59,13 @@ const BookingSystem = () => {
   // Options
   const options = state.options;
   const optionHairSize = options.find(option => option.name === "Hair Size").option
-  console.log(optionHairSize);
   const optionHairType = options.find(option => option.name === "Hair Type").option
   // Services
   const services = state.services;
-  const optionServices = services.map(service => service.name);
+  const optionServices = services.map(service => {
+    const employee = state.users.find(user => user.id === service.employeeId)
+    return { ...service, employee };
+  });
   // Stylists
   const stylists = state.users.filter(user => user.roleId === 2);
   const optionStylists = stylists.map(stylist => stylist.name);
@@ -134,7 +136,7 @@ const BookingSystem = () => {
             <FloatingWindow step={ step.step2 } options={ optionHairType } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ thirdStep } />
           }
           { step.step3.active &&
-            <FloatingWindow step={ step.step3 } options={ services } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fourthStep } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
+            <FloatingWindow step={ step.step3 } options={ optionServices } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fourthStep } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
           }
           { step.step4.active &&
             <FloatingWindow step={ step.step4 } options={ stylists } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fifthStep } />
