@@ -9,7 +9,6 @@ const FormCheck = ({ id, data, checked, setChecked, multiSelect, step, multiChec
         setMultiChecked([...multiChecked, id])
       } else {
         setMultiChecked(multiChecked.filter(option => option !== id))
-
       }
     }
   }
@@ -38,7 +37,7 @@ const FormCheck = ({ id, data, checked, setChecked, multiSelect, step, multiChec
         { data.time && <span className="small sub-heading">{ data.time }</span> } { data.employee && <>| <span className="small sub-heading">{ data.employee.designation && data.employee.designation }</span></> }
         { data.designation && <p className="small sub-heading text-center mb-0">{ data.designation }</p> }
       </div>
-    </div>
+    </div >
   )
 }
 

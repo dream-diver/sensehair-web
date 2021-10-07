@@ -51,7 +51,7 @@ const BookingSystem = () => {
     "step6": {
       id: 6,
       active: false,
-      title: "Enter your Phone Number",
+      title: "Login",
       value: 0
     },
 

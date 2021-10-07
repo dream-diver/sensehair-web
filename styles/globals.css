@@ -27,9 +27,9 @@ button:focus:not(:focus-visible) {
   position: fixed;
   right: 4vh;
   bottom: 4vh;
-  width: 30%;
-  min-height: calc(72% - 4vh);
+  width: calc(100% - 8vh);
   min-width: 280px;
+  max-width: 500px;
   overflow: hidden;
   border-radius: 7px;
   padding: 0;
@@ -56,6 +56,10 @@ button:focus:not(:focus-visible) {
 .floating-window-body {
   flex-grow: 1;
   padding: 10px;
+  height: calc(68vh - 618px);
+  height: 60vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .floating-window-footer {
@@ -82,9 +86,6 @@ button:focus:not(:focus-visible) {
 .floating-window-form {
   display: grid;
   gap: 1rem;
-  overflow-y: scroll;
-  overflow-x: hidden;
-  height: 100%;
 }
 
 .floating-window-form.floating-window-form-grid {
@@ -104,7 +105,9 @@ button:focus:not(:focus-visible) {
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  padding-left: 1rem;
+  padding-left: 0.5rem;
+  min-height: 160px;
+  max-height: 230px;
 }
 
 .floating-window .form-check-input {
@@ -120,7 +123,7 @@ button:focus:not(:focus-visible) {
 
 .floating-window .form-check {
   background-color: #e6e9ef;
-  padding: 1rem;
+  padding: 0.5rem;
   padding-left: 2.3rem;
   border-radius: 7px;
   box-shadow: 0 1px 3px rgb(23 23 23 / 24%);
@@ -320,4 +323,24 @@ button:focus:not(:focus-visible) {
 /* Handle on hover */
 .react-datepicker__time-list::-webkit-scrollbar-thumb:hover {
   background: #212529;
+}
+
+/* Responsive */
+/* For Medium Size Screen ≥768px */
+@media (min-width: 768px) {
+  .floating-window {
+    width: 60%;
+  }
+}
+/* For Large Size Screen ≥992px */
+@media (min-width: 992px) {
+  .floating-window {
+    width: 40%;
+  }
+}
+/* For Extra large Size Screen ≥1200px */
+@media (min-width: 1200px) {
+  .floating-window {
+    width: 30%;
+  }
 }
