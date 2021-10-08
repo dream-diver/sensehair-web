@@ -210,6 +210,11 @@ button,
 
 .text-dreamDiver {
   color: #d7d225;
+  text-decoration: none;
+}
+
+.text-dreamDiver:hover {
+  color: #c0bb21;
 }
 
 /* #scroll-to-top */
