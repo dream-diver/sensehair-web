@@ -7,11 +7,11 @@ export const GlobalContext = createContext();
 export const GlobalProvider = (props) => {
   let initialState = {
     "loading": true,
-    // "auth": {
-    //   "isLogin": localStorage.getItem("login") === "true" ? true : false,
-    //   "user": JSON.parse(localStorage.getItem("user")),
-    //   "token": ""
-    // },
+    "auth": {
+      "isLogin": false,
+      "user": null,
+      "token": ""
+    },
     "users": [],
     "options": [],
     "messages": []
@@ -63,7 +63,13 @@ export const GlobalProvider = (props) => {
       const servicesFromServer = await fetchServices()
       if (usersFromServer && optionsFromServer && servicesFromServer) {
         setState(prevState => {
-          return { ...prevState, "users": usersFromServer, "options": optionsFromServer, "services": servicesFromServer, "loading": false };
+          return {
+            ...prevState, "users": usersFromServer, "options": optionsFromServer, "services": servicesFromServer, "loading": false, "auth": {
+              "isLogin": localStorage.getItem("login") === "true" ? true : false,
+              "user": JSON.parse(localStorage.getItem("user")),
+              "token": ""
+            }
+          };
         })
       } else {
         setState(prevState => {
