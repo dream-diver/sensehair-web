@@ -1,4 +1,6 @@
+/* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
+import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
 
 const Footer = () => {
   return (
@@ -7,25 +9,27 @@ const Footer = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-6 col-lg-3 mb-5">
-              <Image loading="lazy" src="./images/logo2x.png" alt="logo2x" className="mb-3" width="60%" />
+              <img loading="lazy" src="./images/logo2x.png" alt="logo2x" className="mb-3" width="60%" />
               <p className="mb-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem perspiciatis, assumenda placeat cum vel fugit.</p>
               <ul className="social-nav navbar-nav flex-row justify-content-center justify-content-md-start mb-4">
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="#"><i className="fab fa-facebook"></i></a>
+                  <a className="nav-link text-white" href="#"><FaFacebook /></a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="#"><i className="fab fa-twitter"></i></a>
+                  <a className="nav-link text-white" href="#"><FaTwitter /></a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="#"><i className="fab fa-instagram"></i></a>
+                  <a className="nav-link text-white" href="#"><FaInstagram /></a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="#"><i className="fab fa-linkedin"></i></a>
+                  <a className="nav-link text-white" href="#"><FaLinkedin /></a>
                 </li>
               </ul>
               <div className="d-flex justify-content-center justify-content-md-start">
                 <button className="btn-book-now btn btn-sm btn-primary rounded-0 font-weight-900">
-                  <Image loading="lazy" src="./images/schedule.png" height="42" alt="schedule" />
+                  <div className="d-inline-flex mw-100 h-auto">
+                    <img loading="lazy" src="./images/schedule.png" height="42" alt="schedule" />
+                  </div>
                   <span>BOOK NOW</span>
                 </button>
               </div>
@@ -70,7 +74,9 @@ const Footer = () => {
             </div>
             <div className="col-md-6 col-lg-3 mb-3">
               <h2>MAPS</h2>
-              <Image loading="lazy" src="./images/map.png" alt="map" className="img-fluid" />
+              <div className="d-inline-flex mw-100 h-auto">
+                <img loading="lazy" src="./images/map.png" alt="map" className="img-fluid" />
+              </div>
             </div>
           </div>
         </div>
