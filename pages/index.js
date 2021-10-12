@@ -2,6 +2,14 @@ import Head from 'next/head'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import ScrollToTop from '../components/ScrollToTop'
+import Award from '../components/Award'
+import WhyUs from '../components/WhyUs'
+import Contact from '../components/Contact'
+import Services from '../components/Services'
+import Team from '../components/Team'
+import HowWeWork from '../components/HowWeWork'
+import Review from '../components/Review'
+import Lookbook from '../components/Lookbook'
 
 export default function Home() {
   return (
@@ -14,6 +22,14 @@ export default function Home() {
       </Head>
       <Header />
       <ScrollToTop />
+      <Award />
+      <WhyUs />
+      <Contact />
+      <Services />
+      <Team />
+      <HowWeWork />
+      <Review />
+      <Lookbook />
       <Footer />
     </div>
   )
