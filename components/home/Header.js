@@ -1,10 +1,10 @@
 /* eslint-disable @next/next/no-img-element */
-import Menu from '../Menu';
+import MainMenu from '../MainMenu';
 
 const Header = () => {
   return (
     <header id="header" className="vh-100">
-      <Menu />
+      <MainMenu isSlider={ true } />
       <div id="carouselHeader" className="carousel slide" data-bs-ride="carousel" data-bs-interval="false">
         <div className="carousel-indicators d-none">
           <button type="button" data-bs-target="#carouselHeader" data-bs-slide-to="0" className="active" aria-current="true" aria-label="Slide 1"></button>

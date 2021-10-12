@@ -7,7 +7,7 @@ import WhyUs from '../components/home/WhyUs'
 import Contact from '../components/home/Contact'
 import Services from '../components/home/Services'
 import Team from '../components/home/Team'
-import HowWeWork from '../components/home/HowWeWork'
+import HowWeWork from '../components/HowWeWork'
 import Review from '../components/home/Review'
 import Lookbook from '../components/home/Lookbook'
 

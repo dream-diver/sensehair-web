@@ -2,16 +2,19 @@
 import { FaPhoneAlt } from "react-icons/fa";
 import Link from 'next/link'
 
-const Menu = () => {
+const Menu = ({ isSlider }) => {
   return (
-    <nav id="main-menu" className="navbar navbar-expand-lg navbar-dark">
+    <nav id="main-menu" className={ isSlider ? "navbar navbar-expand-lg navbar-dark" : "navbar navbar-expand-lg navbar-dark without-slider" }>
       <div className="container">
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
-        <a className="navbar-brand me-0" href="./index.html">
-          <img loading="lazy" src="./images/logo2x.png" alt="logo2x" width="121px" className="navbar-brand-img d-inline-block align-text-top" />
-        </a>
+        <Link href="/">
+          <a className="navbar-brand me-0">
+            <img loading="lazy" src="./images/logo2x.png" alt="logo2x" width="121px" className="navbar-brand-img d-inline-block align-text-top" />
+          </a>
+        </Link>
+
 
         <form className="d-flex d-lg-none">
           <button className="btn btn-sm btn-light rounded-0 font-weight-900">BOOK NOW</button>
@@ -50,7 +53,7 @@ const Menu = () => {
               <div className="collapse navbar-collapse" id="navbarNav">
                 <ul className="navbar-nav ms-auto">
                   <li className="nav-item">
-                    <Link href="/index">
+                    <Link href="/">
                       <a className="nav-link active">Home</a>
                     </Link>
                   </li>
