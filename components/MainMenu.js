@@ -7,7 +7,6 @@ import { GlobalContext } from "./contexts/GlobalContext";
 
 const Menu = ({ isSlider }) => {
   const [state] = useContext(GlobalContext)
-  console.log(state);
   const router = useRouter();
   const path = router.pathname;
 
@@ -112,7 +111,7 @@ const Menu = ({ isSlider }) => {
                 <form className="d-none d-lg-flex ms-lg-2">
                   <button className="btn-book-now btn btn-sm btn-primary rounded-0 font-weight-900">
                     <img loading="lazy" src="./images/schedule.png" height="42" alt="schedule" />
-                    <span>BOOK NOW { state.text.signin }</span>
+                    <span>BOOK NOW</span>
                   </button>
                 </form>
               </div>

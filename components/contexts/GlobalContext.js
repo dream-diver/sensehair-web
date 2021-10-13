@@ -21,6 +21,7 @@ export const GlobalProvider = (props) => {
   useEffect(() => {
     const changeLanguage = (locale) => {
       const text = locale === 'en' ? en : nl;
+      localStorage.setItem('locale', locale)
       setState(prevState => {
         return { ...prevState, locale, text };
       })
@@ -34,6 +35,7 @@ export const GlobalProvider = (props) => {
       })
     }
     getData()
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <GlobalContext.Provider value={ [state, setState] }>
