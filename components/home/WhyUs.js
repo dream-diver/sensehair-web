@@ -1,5 +1,5 @@
-import { useContext } from "react"
-import { GlobalContext } from "../contexts/GlobalContext"
+import { useContext } from 'react'
+import { GlobalContext } from '../contexts/GlobalContext'
 
 /* eslint-disable @next/next/no-img-element */
 const WhyUs = () => {

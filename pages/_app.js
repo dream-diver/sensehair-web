@@ -1,6 +1,6 @@
 import Script from 'next/script'
 import { GlobalProvider } from "../components/contexts/GlobalContext";
-import 'owl.carousel/dist/assets/owl.carousel.min.css'
+// import 'owl.carousel/dist/assets/owl.carousel.min.css'
 import 'bootstrap/dist/css/bootstrap.css'
 import '../styles/globals.css'
 import '../styles/responsive.css'

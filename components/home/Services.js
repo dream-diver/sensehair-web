@@ -1,11 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
+import { useContext } from 'react'
+import { GlobalContext } from '../contexts/GlobalContext'
+
 const Services = () => {
+  const [state] = useContext(GlobalContext)
+
   return (
     <section id="services">
       <div className="container">
         <div className="row">
           <div className="col py-5 text-center">
-            <h1 className="h1-margin-bottom font-weight-700" data-aos="fade-up" data-aos-duration="750" data-aos-delay="150" data-aos-once="true">SERVICES</h1>
+            <h2 className="h1-margin-bottom font-weight-700" data-aos="fade-up" data-aos-duration="750" data-aos-delay="150" data-aos-once="true">{ state.text.homeServicesTitle }</h2>
             <p className="mb-5" data-aos="fade-up" data-aos-duration="750" data-aos-delay="600" data-aos-once="true">Our Hair Salon is the place created for Men & women who appreciate high quality, perfect service and first-class look. Welcome to SENSE HAIR!</p>
             <div className="row mb-4 d-none d-md-flex">
               <div className="col-6 col-md-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="250" data-aos-once="true">

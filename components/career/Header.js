@@ -1,7 +1,11 @@
-import MainMenu from "../MainMenu"
-
 /* eslint-disable @next/next/no-img-element */
+import { useContext } from 'react'
+import { GlobalContext } from '../contexts/GlobalContext'
+import MainMenu from '../MainMenu'
+
 const Header = () => {
+  const [state] = useContext(GlobalContext)
+
   return (
     <header id="header" className="vh-60">
       <MainMenu isSlider={ true } />
@@ -15,8 +19,8 @@ const Header = () => {
           <div className="carousel-item active vh-60">
             <img loading="lazy" src="./images/career/banner-c2.png" alt="banner-c2" />
             <div className="carousel-caption">
-              <h1 className="font-weight-600" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">Vacatures</h1>
-              <p className="" data-aos="fade-up" data-aos-duration="750" data-aos-delay="700" data-aos-once="true">Werken bij Sense Hair</p>
+              <h1 className="font-weight-600" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">{ state.text.careerHeroTitle }</h1>
+              <p className="" data-aos="fade-up" data-aos-duration="750" data-aos-delay="700" data-aos-once="true">{ state.text.careerHeroBody }</p>
             </div>
           </div>
           <div className="carousel-item vh-60">

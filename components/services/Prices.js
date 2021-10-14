@@ -1,12 +1,17 @@
 /* eslint-disable @next/next/no-img-element */
+import { useContext } from 'react'
+import { GlobalContext } from '../contexts/GlobalContext'
+
 const Prices = () => {
+  const [state] = useContext(GlobalContext)
+
   return (
     <section id="prices">
       <div className="container">
         <div className="row">
           <div className="col-md-10 offset-md-1 my-5">
             <div className="d-flex justify-content-center">
-              <h1 className="h1-margin-bottom text-center">TARIEVEN</h1>
+              <h1 className="h1-margin-bottom text-center">{ state.text.servicesPricesTitle }</h1>
             </div>
             <div className="prices-row prices-row-1 row text-center">
               <div className="col-6 col-md-3 mb-3">

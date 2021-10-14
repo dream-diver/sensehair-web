@@ -1,5 +1,11 @@
+import { useContext } from 'react'
+import { GlobalContext } from '../contexts/GlobalContext'
+
+
 /* eslint-disable @next/next/no-img-element */
 const Contact = () => {
+  const [state] = useContext(GlobalContext)
+
   return (
     <section id="contact">
       <div className="container">
@@ -50,7 +56,7 @@ const Contact = () => {
 
             </div>
           </div>
-          <p className="mb-5">Ben je op zoek naar een kapper in Rotterdam Centrum? Wij zitten op 5 min lopen van Centraal. Met de auto parkeer je gemakkelijk in parkeergarage. Schouwburgplein, plaza zijde’ en loop je binnen 1 minuut onze salon binnen. Bel, boek gemakkelijk online of loop binnen zonder afspraak</p>
+          <p className="text-center mb-5">{ state.text.homeContactBody }</p>
 
           <div className="w-100 d-flex justify-content-center">
             <button className="btn-book-now btn btn-primary rounded-0 font-weight-900">
