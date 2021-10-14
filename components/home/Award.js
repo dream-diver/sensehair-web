@@ -1,5 +1,12 @@
 /* eslint-disable @next/next/no-img-element */
+import useEmblaCarousel from 'embla-carousel-react'
+
 const Award = () => {
+  const [viewportRef] = useEmblaCarousel({
+    loop: true,
+    skipSnaps: false,
+    dragFree: true
+  });
   return (
     <section id="award" className="bg-black">
       <div className="container">
@@ -9,13 +16,23 @@ const Award = () => {
               <p className="mb-0 font-weight-700">Our Brands:</p>
             </div>
           </div>
-          <div className="award-col col-lg-6 d-flex justify-content-between flex-column flex-md-row py-3 px-4 px-lg-0">
-            <div className="owl-carousel owl-carousel-icons">
-              <div className="owl-carousel-icon d-flex align-items-center justify-content-center">
-                <img loading="lazy" src="./images/award-coffure.png" alt="award-coffure" />
-              </div>
-              <div className="owl-carousel-icon d-flex align-items-center justify-content-center">
-                <img loading="lazy" src="./images/award-keune-white.png" alt="award-keune-white" />
+          <div className="award-col col-lg-6 py-3 px-4 px-lg-0">
+            <div className="embla">
+              <div className="embla__viewport" ref={ viewportRef }>
+                <div className="embla__container">
+                  <div className="embla__slide d-flex justify-content-center">
+                    <img loading="lazy" src="./images/award-coffure.png" alt="award-coffure" />
+                  </div>
+                  <div className="embla__slide d-flex justify-content-center">
+                    <img loading="lazy" src="./images/award-keune-white.png" alt="award-keune-white" />
+                  </div>
+                  <div className="embla__slide d-flex justify-content-center">
+                    <img loading="lazy" src="./images/award-coffure.png" alt="award-coffure" />
+                  </div>
+                  <div className="embla__slide d-flex justify-content-center">
+                    <img loading="lazy" src="./images/award-keune-white.png" alt="award-keune-white" />
+                  </div>
+                </div>
               </div>
             </div>
           </div>

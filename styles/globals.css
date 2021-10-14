@@ -13,6 +13,20 @@
   overflow: hidden;
 }
 
+.embla__viewport {
+  overflow: hidden;
+  width: 100%;
+}
+
+.embla__viewport.is-draggable {
+  cursor: move;
+  cursor: grab;
+}
+
+.embla__viewport.is-dragging {
+  cursor: grabbing;
+}
+
 .embla__container {
   display: flex;
 }
@@ -333,17 +347,6 @@ button,
   display: inline-block;
 }
 
-/* .h1-margin-bottom::after {
-  content: "";
-  height: 2px;
-  width: 120%;
-  background-color: #f86624;
-  position: absolute;
-  left: 0;
-  bottom: -10px;
-  transform: translate(-7.5%, 0);
-} */
-
 /* .h2-margin-bottom */
 .h2-margin-bottom {
   text-transform: uppercase;
@@ -521,6 +524,7 @@ button,
   height: 68px;
   width: unset;
 }
+/*
 #award .owl-carousel-icon {
   height: 68px;
 }
@@ -533,10 +537,11 @@ button,
   height: 100%;
   width: 1px;
   background-color: #fff;
-}
-
-/* #award .award-col img:not(:last-child) {
 } */
+
+#award .embla__slide {
+  flex: 0 0 50%;
+}
 
 /* #why-us */
 #why-us img {

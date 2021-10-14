@@ -2,6 +2,8 @@
 import { useCallback, useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
 import useEmblaCarousel from 'embla-carousel-react'
+import DotButton from '../slider/DotButton'
+
 
 const Team = () => {
   const [state] = useContext(GlobalContext)
@@ -79,12 +81,5 @@ const Team = () => {
     </section>
   )
 }
-const DotButton = ({ selected, onClick }) => (
-  <button
-    className={ `embla__dot ${selected ? "is-selected" : ""}` }
-    type="button"
-    onClick={ onClick }
-  />
-);
 
 export default Team
