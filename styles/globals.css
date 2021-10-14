@@ -8,6 +8,54 @@
 }
 
 /* Global Styles */
+/* Slider */
+.embla {
+  overflow: hidden;
+}
+
+.embla__container {
+  display: flex;
+}
+
+.embla__slide {
+  position: relative;
+  flex: 0 0 100%;
+}
+
+.embla__dots {
+  display: flex;
+  list-style: none;
+  justify-content: center;
+  padding-top: 10px;
+}
+
+.embla__dot {
+  background-color: transparent;
+  cursor: pointer;
+  position: relative;
+  padding: 0;
+  outline: 0;
+  border: 0;
+  width: auto;
+  height: auto;
+  margin: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.embla__dot:after {
+  background-color: #efefef;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  content: "";
+}
+
+.embla__dot.is-selected:after {
+  background-color: #464646;
+  opacity: 1;
+}
+
 /* font */
 body {
   font-family: "Roboto", sans-serif;
@@ -534,6 +582,7 @@ button,
 /* #team */
 #team {
   min-height: 400px;
+  position: relative;
 }
 
 /* #team .team-text {
@@ -549,7 +598,7 @@ button,
   opacity: 0.8;
 }
 
-#team .owl-dots {
+#team .embla__dots {
   position: absolute;
   top: 50%;
   right: 0;
@@ -560,20 +609,12 @@ button,
   padding-right: 10px;
 }
 
-#team .owl-carousel button.owl-dot:not(:last-child) {
-  padding-bottom: 10px !important;
-}
-
-#team .owl-carousel button.owl-dot span {
+#team .embla__dot:after {
   background-color: #464646;
 }
 
-#team .owl-carousel button.owl-dot.active span {
-  background-color: #fff !important;
-}
-#team .owl-carousel .owl-item img {
-  height: 100%;
-  object-fit: cover;
+#team .embla__dot.is-selected:after {
+  background-color: #efefef;
 }
 
 /* #how-we-work */
