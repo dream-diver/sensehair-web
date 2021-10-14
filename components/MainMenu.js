@@ -83,27 +83,27 @@ const Menu = ({ isSlider }) => {
                   </li>
                   <li className="nav-item">
                     <Link href="/about">
-                      <a className="nav-link">About Us</a>
+                      <a className={ path == "/about" ? "nav-link active" : "nav-link" }>About Us</a>
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link href="/services">
-                      <a className="nav-link">Services</a>
+                      <a className={ path == "/services" ? "nav-link active" : "nav-link" }>Services</a>
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link href="/lookbook">
-                      <a className="nav-link">Lookbook</a>
+                      <a className={ path == "/lookbook" ? "nav-link active" : "nav-link" }>Lookbook</a>
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link href="/career">
-                      <a className="nav-link">Career</a>
+                      <a className={ path == "/career" ? "nav-link active" : "nav-link" }>Career</a>
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link href="/contact">
-                      <a className="nav-link">Contact Us</a>
+                      <a className={ path == "/contact" ? "nav-link active" : "nav-link" }>Contact Us</a>
                     </Link>
                   </li>
                 </ul>
@@ -116,10 +116,10 @@ const Menu = ({ isSlider }) => {
                 </form>
               </div>
             </div>
-          </div>
-        </div>
-      </div>
-    </nav>
+          </div >
+        </div >
+      </div >
+    </nav >
   )
 }
 
