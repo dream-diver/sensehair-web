@@ -11,6 +11,7 @@
 /* Slider */
 .embla {
   overflow: hidden;
+  position: relative;
 }
 
 .embla__viewport {
@@ -41,6 +42,43 @@
   list-style: none;
   justify-content: center;
   padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.embla__button {
+  outline: 0;
+  cursor: pointer;
+  background-color: transparent;
+  touch-action: manipulation;
+  position: absolute;
+  z-index: 1;
+  top: 50%;
+  transform: translateY(-50%);
+  border: 0;
+  width: 30px;
+  height: 30px;
+  justify-content: center;
+  align-items: center;
+  fill: #fff;
+  padding: 0;
+}
+
+.embla__button:disabled {
+  cursor: default;
+  opacity: 0.3;
+}
+
+.embla__button__svg {
+  width: 100%;
+  height: 100%;
+}
+
+.embla__button--prev {
+  left: 27px;
+}
+
+.embla__button--next {
+  right: 27px;
 }
 
 .embla__dot {
@@ -583,6 +621,19 @@ button,
   display: flex;
   justify-content: space-between;
   font-size: 1.5rem;
+}
+
+#services .embla__button {
+  fill: #fff;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.35);
+  border-radius: 50%;
+  padding: 0.5rem;
+}
+#services .embla__dots {
+  padding-top: 0;
 }
 /* #team */
 #team {
