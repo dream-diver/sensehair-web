@@ -14,7 +14,7 @@ const lookbook = () => {
 
   const executeScroll = () => {
     setTimeout(() => {
-      const collapseLookbookAll = lookbookAllRef.current.getBoundingClientRect();
+      const collapseLookbookAll = lookbookAllRef.current ? lookbookAllRef.current.getBoundingClientRect() : 0;
       document.body.scrollTop = document.body.scrollTop + collapseLookbookAll.y - 100; // For Safari
       document.documentElement.scrollTop = document.documentElement.scrollTop + collapseLookbookAll.y - 100; // For Chrome, Firefox, IE and Opera
     }, 150);
@@ -29,8 +29,7 @@ const lookbook = () => {
       </Head>
       <Header showAll={ showAll } setShowAll={ setShowAll } executeScroll={ executeScroll } />
       <ScrollToTop />
-      { !showAll ? <Lookbook /> : <LookbookAll lookbookAllRef={ lookbookAllRef } />
-      }
+      { !showAll ? <Lookbook /> : <LookbookAll lookbookAllRef={ lookbookAllRef } /> }
       <Footer />
     </div>
   )
