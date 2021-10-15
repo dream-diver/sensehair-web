@@ -1,10 +1,22 @@
+import { useRef } from "react"
+
 const ApplicationForm = () => {
+  const applicationFormRef = useRef(null)
+
+  const executeScroll = () => {
+    setTimeout(() => {
+      const collapseApplicationForm = applicationFormRef.current.getBoundingClientRect();
+      document.body.scrollTop = document.body.scrollTop + collapseApplicationForm.y - 100; // For Safari
+      document.documentElement.scrollTop = document.documentElement.scrollTop + collapseApplicationForm.y - 100; // For Chrome, Firefox, IE and Opera
+    }, 150);
+  }
+
   return (
     <section id="application_form">
       <div className="container pb-5">
-        <button className="apply-btn btn btn-primary btn-lg" id="apply_btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseApplicationForm" aria-expanded="false" aria-controls="collapseApplicationForm">Apply Now</button>
+        <button className="apply-btn btn btn-primary btn-lg" onClick={ executeScroll } id="apply_btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseApplicationForm" aria-expanded="false" aria-controls="collapseApplicationForm">Apply Now</button>
       </div>
-      <div className="application-wrapper collapse" id="collapseApplicationForm">
+      <div className="application-wrapper collapse" id="collapseApplicationForm" ref={ applicationFormRef }>
         <div className="container">
           <div className="row">
             <div className="col pt-5">
