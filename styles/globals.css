@@ -396,10 +396,6 @@ button,
 
 /* Custom Styles */
 /* #header */
-#header h1 {
-  font-size: 3.125rem;
-}
-
 #header .carousel-item > img {
   height: 100%;
   width: 100%;
@@ -576,6 +572,7 @@ button,
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  /* background-attachment: fixed; */
   height: 90vh;
 }
 
@@ -584,13 +581,14 @@ button,
 }
 
 .header-collapse .header-collapse-link {
-  display: block;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   color: #fff;
   text-decoration: none;
   font-size: 1.3rem;
   font-weight: 500;
   text-transform: uppercase;
-  margin-top: 0.75rem;
   text-align: center;
 }
 

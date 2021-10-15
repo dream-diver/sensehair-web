@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-const LookbookAll = () => {
+const LookbookAll = ({ lookbookAllRef }) => {
   return (
-    <section id="lookbook" className="lookbook_all d-none">
+    <section id="lookbook" className="lookbook_all" ref={ lookbookAllRef }>
       <div className="container">
         <div className="row">
           <div id="myDiv" className="col py-5 text-center" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
