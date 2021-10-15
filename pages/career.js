@@ -1,5 +1,5 @@
 import Head from 'next/head'
-import Header from '../components/career/header'
+import Header from '../components/career/Header'
 import ScrollToTop from '../components/ScrollToTop'
 import Info from '../components/career/Info'
 import InfoList from '../components/career/InfoList'
