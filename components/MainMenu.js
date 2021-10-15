@@ -1,11 +1,14 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext } from "react";
+import { useContext, useEffect, useRef } from "react";
 import Link from 'next/link'
 import { useRouter } from "next/router";
 import { FaPhoneAlt } from "react-icons/fa";
 import { GlobalContext } from "./contexts/GlobalContext";
 
 const Menu = ({ isSlider }) => {
+  const mainMenuRef = useRef(null)
+  const topRowRef = useRef(null)
+  const navbarBrandImgRef = useRef(null)
   const [state] = useContext(GlobalContext)
   const router = useRouter();
   const path = router.pathname;
@@ -20,15 +23,36 @@ const Menu = ({ isSlider }) => {
     state.changeLanguage("nl");
   }
 
+  useEffect(() => {
+    // Navbar shrink function
+    const navbarShrink = () => {
+      if (!mainMenuRef.current) {
+        return;
+      }
+      if (window.scrollY === 0) {
+        mainMenuRef.current.classList.remove('navbar-shrink');
+        topRowRef.current.classList.add('d-lg-block');
+        navbarBrandImgRef.current.setAttribute("width", "121px");
+      } else {
+        mainMenuRef.current.classList.add('navbar-shrink');
+        topRowRef.current.classList.remove('d-lg-block');
+        navbarBrandImgRef.current.setAttribute("width", "71px");
+
+      }
+    };
+    navbarShrink();
+    document.addEventListener('scroll', navbarShrink);
+  }, [])
+
   return (
-    <nav id="main-menu" className={ isSlider ? "navbar navbar-expand-lg navbar-dark" : "navbar navbar-expand-lg navbar-dark bg-black without-slider" }>
+    <nav id="main-menu" className={ isSlider ? "navbar navbar-expand-lg navbar-dark" : "navbar navbar-expand-lg navbar-dark bg-black without-slider" } ref={ mainMenuRef }>
       <div className="container">
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <Link href="/">
           <a className="navbar-brand me-0">
-            <img loading="lazy" src="./images/logo2x.png" alt="logo2x" width="121px" className="navbar-brand-img d-inline-block align-text-top" />
+            <img loading="lazy" src="./images/logo2x.png" alt="logo2x" width="121px" className="navbar-brand-img d-inline-block align-text-top" ref={ navbarBrandImgRef } />
           </a>
         </Link>
 
@@ -38,7 +62,7 @@ const Menu = ({ isSlider }) => {
         </form>
 
         <div className="w-100">
-          <div className="top-row row mb-1 d-none d-lg-block">
+          <div className="top-row row mb-1 d-none d-lg-block" ref={ topRowRef }>
             <div className="col d-flex">
               <ul id="top-menu" className="nav mx-auto mx-md-0 ms-md-auto">
                 <li className="nav-item">
