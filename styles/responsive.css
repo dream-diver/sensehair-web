@@ -62,11 +62,11 @@
     font-size: 1.2rem;
   }
 
-  .prices-row .card .bg-white {
+  .prices-row .card .card-img {
     min-height: 210px;
   }
 
-  .prices-row .card .bg-white img {
+  .prices-row .card .card-img img {
     height: 200px;
     width: 100%;
   }

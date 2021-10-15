@@ -1,4 +1,6 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import Head from 'next/head'
+import { useState } from 'react'
 import Footer from '../components/Footer'
 import MainMenu from '../components/MainMenu'
 import ScrollToTop from '../components/ScrollToTop'
@@ -7,6 +9,8 @@ import Prices from '../components/services/Prices'
 import ServicesText from '../components/services/ServicesText'
 
 const services = () => {
+  const [activeHairSize, setActiveHairSize] = useState([])
+  const [activeHairType, setActiveHairType] = useState([])
   return (
     <div>
       <Head>
@@ -18,9 +22,9 @@ const services = () => {
       <MainMenu />
       <ScrollToTop />
       <ServicesText />
-      <Prices />
+      <Prices activeHairSize={ activeHairSize } setActiveHairSize={ setActiveHairSize } activeHairType={ activeHairType } setActiveHairType={ setActiveHairType } />
       <Footer />
-      <PriceModal />
+      <PriceModal activeHairSize={ activeHairSize } setActiveHairSize={ setActiveHairSize } setActiveHairType={ setActiveHairType } />
 
     </div>
   )

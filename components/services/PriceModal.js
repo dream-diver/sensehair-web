@@ -1,12 +1,22 @@
 /* eslint-disable @next/next/no-img-element */
-const PriceModal = () => {
+const PriceModal = ({ activeHairSize, setActiveHairSize, setActiveHairType }) => {
+
+  const PriceModalClose = (e) => {
+    if (e.target.classList.contains("btn-close") || e.target.classList.contains("modal")) {
+      setActiveHairType([])
+      if (activeHairSize.indexOf(0) !== -1) {
+        setActiveHairSize(activeHairSize.filter(option => option !== 0))
+      }
+    }
+  }
+
   return (
-    <div className="modal fade" id="priceModal" tabindex="-1" aria-labelledby="priceModalLabel" aria-hidden="true">
+    <div className="modal fade" id="priceModal" tabIndex="-1" aria-labelledby="priceModalLabel" aria-hidden="true" onClick={ PriceModalClose }>
       <div className="modal-dialog">
         <div className="modal-content rounded-0">
           <div className="modal-header bg-black text-white">
             <h5 className="modal-title" id="priceModalLabel">Knippen & Stylen</h5>
-            <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" onClick={ PriceModalClose }></button>
           </div>
           <div className="modal-body">
             <table className="table">

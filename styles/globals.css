@@ -567,20 +567,6 @@ button,
   height: 68px;
   width: unset;
 }
-/*
-#award .owl-carousel-icon {
-  height: 68px;
-}
-
-#award .owl-item.active .owl-carousel-icon {
-  border-right: 1px solid rgba(255, 255, 255, 0.5);
-}
-
-#award .award-col .hr-v {
-  height: 100%;
-  width: 1px;
-  background-color: #fff;
-} */
 
 #award .embla__slide {
   flex: 0 0 50%;
@@ -601,33 +587,6 @@ button,
   font-size: 1.5rem;
 }
 
-#services .owl-carousel-services {
-  position: relative;
-}
-
-#services .owl-carousel-services .owl-nav button {
-  background: rgba(255, 255, 255, 0.35);
-  height: 2rem;
-  width: 2rem;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-#services .owl-carousel-services .owl-nav {
-  position: absolute;
-  top: 45%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  z-index: 10000;
-  width: 90%;
-  color: #fff;
-  display: flex;
-  justify-content: space-between;
-  font-size: 1.5rem;
-}
-
 #services .embla__button {
   fill: #fff;
   width: 30px;
@@ -645,10 +604,6 @@ button,
   min-height: 400px;
   position: relative;
 }
-
-/* #team .team-text {
-  transform: translate(0, 50px);
-}*/
 
 #team .team-text h1 {
   font-size: 2.8rem;
@@ -705,38 +660,9 @@ button,
   font-style: italic;
 }
 
-#review .owl-carousel button.owl-dot:not(:last-child) {
-  padding-right: 10px !important;
-}
-
-.owl-carousel button.owl-dot span {
-  width: 15px;
-  height: 15px;
-  display: block;
-  border-radius: 50%;
-}
-
-#review .owl-carousel button.owl-dot span {
-  background-color: #fff;
-}
-
-#review .owl-carousel button.owl-dot.active span {
-  background-color: #464646 !important;
-}
-
 #review .owl-dots {
   padding-top: 2rem;
 }
-
-/* #lookbook */
-/* #lookbook .nav-link {
-  color: #f86624;
-}
-
-#lookbook .nav-pills .nav-link.active,
-#lookbook .nav-pills .show>.nav-link {
-  background-color: transparent;
-} */
 
 #footer .social-nav a {
   display: inline-block;
@@ -764,7 +690,6 @@ button,
 
 .lookbook-header .header-content {
   width: 43%;
-  /* transform: translateY(-15vh); */
 }
 
 .header-collapse .header-collapse-link {
@@ -789,10 +714,6 @@ button,
 .header-collapse .header-collapse-link i {
   vertical-align: 0.3rem;
 }
-/*
-.lookbook-header .header-content-desc {
-  width: 33%;
-} */
 
 .header-collapse-nav .nav-link {
   color: #000;
@@ -828,7 +749,7 @@ button,
   min-height: 491px;
 }
 
-.prices-row .card .bg-white {
+.prices-row .card .card-img {
   min-height: 333px;
   display: flex;
 }
