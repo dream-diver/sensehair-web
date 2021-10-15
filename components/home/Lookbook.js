@@ -4,7 +4,7 @@ const Lookbook = () => {
     <section id="lookbook">
       <div className="container">
         <div className="row">
-          <div className="col py-5 text-center" data-aos="fade-up" data-aos-duration="1750" data-aos-delay="2500" data-aos-once="true">
+          <div className="col py-5 text-center" data-aos="fade-up" data-aos-duration="1750" data-aos-delay="3000" data-aos-once="true">
             <h1 className="h1-margin-bottom font-weight-700">LOOKBOOK</h1>
 
             <div className="row">
