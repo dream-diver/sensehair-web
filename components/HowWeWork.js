@@ -1,9 +1,67 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext } from 'react'
+import { useContext, useEffect } from 'react'
 import { GlobalContext } from './contexts/GlobalContext'
+import { pxScrolled, inViewport } from "./Helpers"
 
 const HowWeWork = () => {
   const [state] = useContext(GlobalContext)
+
+  useEffect(() => {
+
+    const changeBgColorOnScroll = (selector, percent, color1, color2, innerElementsSelector = false) => {
+      // Element Section
+      var elements = Array.from(document.querySelectorAll(selector));
+      // Inner Element Section
+      if (innerElementsSelector) {
+        var innerElements = Array.from(document.querySelectorAll(selector.concat(" ").concat(innerElementsSelector)));
+      }
+      // Listen for the scroll event
+      document.addEventListener('scroll', event => {
+        // Check the viewport status
+        elements.map((item, index) => {
+          if (item) {
+            item.style.transition = 'all 250ms ease-in-out';
+            if (inViewport(item, percent)) {
+              item.style.backgroundColor = color1;
+              if (innerElementsSelector) {
+                innerElements[index].style.backgroundColor = color1;
+              }
+            } else {
+              item.style.backgroundColor = color2;
+              if (innerElementsSelector) {
+                innerElements[index].style.backgroundColor = color2;
+              }
+            }
+          }
+        });
+      })
+    }
+    changeBgColorOnScroll(".timeline-circle", 80, "#000", "#ffb86f");
+    changeBgColorOnScroll(".timeline-box", 68, "#ffb86f", "#e5e5e5", ".timeline-box-arrow");
+
+    const changeBgColorOfTimelineLine = (selector, percent) => {
+      // Element Section
+      var elements = Array.from(document.querySelectorAll(selector));
+      // Inner Element Section
+      var innerElements = Array.from(document.querySelectorAll(".timeline-line-hover"));
+      // Listen for the scroll event
+      document.addEventListener('scroll', event => {
+        // Check the viewport status
+        elements.map((item, index) => {
+          if (item) {
+            item.style.transition = 'all 250ms ease-in-out';
+            if (pxScrolled(item, percent) > 0) {
+              innerElements[index].style.height = pxScrolled(item, percent).toString(10).concat("px");
+            } else {
+              innerElements[index].style.height = "0";
+            }
+          }
+        });
+      })
+    }
+    changeBgColorOfTimelineLine(".timeline-line", 80);
+
+  }, [])
 
   return (
     <section id="how-we-work">
