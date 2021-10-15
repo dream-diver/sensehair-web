@@ -24,13 +24,13 @@ const Review = () => {
 
   return (
     <section id="review" className="text-center py-5">
-      <h2 className="quotation" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
+      <h2 className="quotation" data-aos="fade-up" data-aos-duration="750" data-aos-delay="1500" data-aos-once="true">
         “WE ARE HAPPY,<br />
         IF YOU ARE HAPPY”
       </h2>
 
       <div className="bg-light w-100 pt-5 pb-4">
-        <h1 className="h1-margin-bottom font-weight-700" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">REVIEWS</h1>
+        <h1 className="h1-margin-bottom font-weight-700" data-aos="fade-up" data-aos-duration="750" data-aos-delay="1500" data-aos-once="true">REVIEWS</h1>
         <div className="embla">
           <div className="embla__viewport" ref={ viewportRef }>
             <div className="embla__container">
