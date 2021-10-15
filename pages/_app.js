@@ -1,6 +1,7 @@
 import Script from 'next/script'
 import { GlobalProvider } from "../components/contexts/GlobalContext";
 import 'bootstrap/dist/css/bootstrap.css'
+import '../styles/embala.css'
 import '../styles/globals.css'
 import '../styles/responsive.css'
 
