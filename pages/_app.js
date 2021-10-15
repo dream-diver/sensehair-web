@@ -1,11 +1,19 @@
 import Script from 'next/script'
 import { GlobalProvider } from "../components/contexts/GlobalContext";
+import AOS from 'aos';
 import 'bootstrap/dist/css/bootstrap.css'
 import '../styles/embala.css'
 import '../styles/globals.css'
 import '../styles/responsive.css'
+import 'aos/dist/aos.css'; // You can also use <link> for styles
+import { useEffect } from 'react';
+
 
 function MyApp({ Component, pageProps }) {
+
+  useEffect(() => {
+    AOS.init();
+  }, [])
   return (
     <GlobalProvider>
       <Component { ...pageProps } />

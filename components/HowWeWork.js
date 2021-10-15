@@ -68,15 +68,15 @@ const HowWeWork = () => {
       <div className="container">
         <div className="row">
           <div className="col py-5">
-            <h2 className="h1-margin-bottom font-weight-700" data-aos="fade-up" data-aos-duration="750" data-aos-delay="1500" data-aos-once="true">{ state.text.howWeWorkTitle }</h2>
+            <h2 className="h1-margin-bottom font-weight-700" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">{ state.text.howWeWorkTitle }</h2>
             <div className="row">
               <div className="col-md-6 mb-5 mb-md-0">
-                <p className="heading font-weight-700 mb-0" data-aos="fade-up" data-aos-duration="750" data-aos-delay="1500" data-aos-once="true">{ state.text.howWeWorkQuote }</p>
-                <p data-aos="fade-up" data-aos-duration="750" data-aos-delay="1500" data-aos-once="true">{ state.text.howWeWorkBody1 }</p>
-                <p data-aos="fade-up" data-aos-duration="750" data-aos-delay="1500" data-aos-once="true">{ state.text.howWeWorkBody2 }</p>
-                <p className="text-black-50" data-aos="fade-up" data-aos-duration="750" data-aos-delay="1500" data-aos-once="true">{ state.text.howWeWorkBody3 }</p>
-                <p className="mb-5" data-aos="fade-up" data-aos-duration="750" data-aos-delay="1500" data-aos-once="true">{ state.text.howWeWorkBody4 }</p>
-                <button className="btn-yes btn btn-lg btn-primary text-white font-weight-700 font-1-5x px-5 py-2" data-aos="fade-up" data-aos-duration="750" data-aos-delay="1700" data-aos-once="true">{ state.text.howWeWorkButton }</button>
+                <p className="heading font-weight-700 mb-0" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">{ state.text.howWeWorkQuote }</p>
+                <p data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">{ state.text.howWeWorkBody1 }</p>
+                <p data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">{ state.text.howWeWorkBody2 }</p>
+                <p className="text-black-50" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">{ state.text.howWeWorkBody3 }</p>
+                <p className="mb-5" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">{ state.text.howWeWorkBody4 }</p>
+                <button className="btn-yes btn btn-lg btn-primary text-white font-weight-700 font-1-5x px-5 py-2" data-aos="fade-up" data-aos-duration="750" data-aos-delay="700" data-aos-once="true">{ state.text.howWeWorkButton }</button>
               </div>
               <div className="col-md-6">
                 <div className="timeline">
