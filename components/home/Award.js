@@ -5,6 +5,7 @@ const Award = () => {
   const [viewportRef] = useEmblaCarousel({
     loop: true,
     skipSnaps: false,
+    align: "start",
     dragFree: true
   });
   return (
