@@ -395,26 +395,22 @@ button,
 }
 
 /* Custom Styles */
+#homeHeader {
+  background: url("../public/images/banner1.png") center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+#aboutHeader {
+  background: url("../public/images/about/banner_about_us.png") center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
+#careerHeader {
+  background: url("../public/images/career/banner-c2.png") center no-repeat;
+  background-size: cover;
+  background-attachment: fixed;
+}
 /* #header */
-#header .carousel-item > img {
-  height: 100%;
-  width: 100%;
-  object-fit: cover;
-}
-
-#header .carousel-indicators {
-  bottom: -60px;
-}
-
-#header .carousel-indicators [data-bs-target] {
-  width: 20px;
-  height: 20px;
-  border-radius: 50%;
-}
-
-#header .carousel-caption {
-  bottom: 30%;
-}
 
 /* #main-menu */
 #main-menu {
@@ -572,7 +568,7 @@ button,
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
-  /* background-attachment: fixed; */
+  background-attachment: fixed;
   height: 90vh;
 }
 
