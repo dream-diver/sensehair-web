@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import Head from 'next/head'
-import Header from '../components/lookbook/header'
+import Header from '../components/lookbook/Header'
 import ScrollToTop from '../components/ScrollToTop'
 import Lookbook from '../components/lookbook/Lookbook'
 import LookbookAll from '../components/lookbook/LookbookAll'
