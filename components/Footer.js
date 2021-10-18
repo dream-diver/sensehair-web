@@ -75,7 +75,7 @@ const Footer = () => {
             <div className="col-md-6 col-lg-3 mb-3">
               <h2>MAPS</h2>
               <div className="d-inline-flex mw-100 h-auto">
-                <img loading="lazy" src="./images/map.png" alt="map" className="img-fluid" />
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2460.599657018382!2d4.470254515598512!3d51.92301488805075!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47c434b9335c794b%3A0x3104eee3db8dcbbd!2sSense!5e0!3m2!1sen!2sbd!4v1633687510044!5m2!1sen!2sbd" width="285px" height="340px" allowFullScreen="" loading="lazy"></iframe>
               </div>
             </div>
           </div>
