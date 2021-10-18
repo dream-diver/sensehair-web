@@ -1,27 +1,16 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useEffect, useRef } from "react";
+import { useEffect, useRef } from "react";
 import Link from 'next/link'
 import { useRouter } from "next/router";
 import { FaPhoneAlt } from "react-icons/fa";
-import { GlobalContext } from "./contexts/GlobalContext";
+import LanguageDropdown from "./LanguageDropdown";
 
 const Menu = ({ isSlider }) => {
   const mainMenuRef = useRef(null)
   const topRowRef = useRef(null)
   const navbarBrandImgRef = useRef(null)
-  const [state] = useContext(GlobalContext)
   const router = useRouter();
   const path = router.pathname;
-
-  const english = (e) => {
-    e.preventDefault();
-    state.changeLanguage("en");
-  }
-
-  const dutch = (e) => {
-    e.preventDefault();
-    state.changeLanguage("nl");
-  }
 
   useEffect(() => {
     // Navbar shrink function
@@ -68,30 +57,7 @@ const Menu = ({ isSlider }) => {
                 <li className="nav-item">
                   <a className="nav-link text-primary" href="#"><FaPhoneAlt /> +31 10 123 456 78</a>
                 </li>
-                <li className="language-dropdown nav-item dropdown">
-                  <a className="nav-link dropdown-toggle" href="#" id="navbarLang" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
-                    { state.locale == "en" ?
-                      <img loading="lazy" src="./images/english.png" width="40" alt="english" />
-                      :
-                      <img loading="lazy" src="./images/doutch.png" width="40" alt="doutch" />
-                    }
-                  </a>
-                  <ul className="dropdown-menu" aria-labelledby="navbarLang">
-                    { state.locale == "en" ?
-                      <li>
-                        <a className="dropdown-item" href="#" onClick={ dutch }>
-                          <img loading="lazy" src="./images/doutch.png" width="40" alt="doutch" />
-                        </a>
-                      </li>
-                      :
-                      <li>
-                        <a className="dropdown-item" href="#" onClick={ english }>
-                          <img loading="lazy" src="./images/english.png" width="40" alt="english" />
-                        </a>
-                      </li>
-                    }
-                  </ul>
-                </li>
+                <LanguageDropdown />
               </ul>
             </div>
           </div>
@@ -130,6 +96,9 @@ const Menu = ({ isSlider }) => {
                       <a className={ path == "/contact" ? "nav-link active" : "nav-link" }>Contact Us</a>
                     </Link>
                   </li>
+                </ul>
+                <ul className="nav-sm-only nav d-md-none">
+                  <LanguageDropdown />
                 </ul>
 
                 <form className="d-none d-lg-flex ms-lg-2">

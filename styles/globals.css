@@ -445,6 +445,10 @@ button,
 #main-menu.without-slider {
   position: sticky;
 }
+
+#main-menu .nav-sm-only .nav-link {
+  padding-left: 0;
+}
 /* #award */
 #award img {
   height: 68px;
