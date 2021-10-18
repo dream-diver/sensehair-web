@@ -57,7 +57,7 @@ const Menu = ({ isSlider }) => {
                 <li className="nav-item">
                   <a className="nav-link text-primary" href="#"><FaPhoneAlt /> +31 10 123 456 78</a>
                 </li>
-                <LanguageDropdown />
+                <LanguageDropdown id="navbarLang1" navToggle={ false } />
               </ul>
             </div>
           </div>
@@ -98,7 +98,7 @@ const Menu = ({ isSlider }) => {
                   </li>
                 </ul>
                 <ul className="nav-sm-only nav d-md-none">
-                  <LanguageDropdown />
+                  <LanguageDropdown id="navbarLang2" navToggle={ true } />
                 </ul>
 
                 <form className="d-none d-lg-flex ms-lg-2">

@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { GlobalContext } from "./contexts/GlobalContext";
 
 /* eslint-disable @next/next/no-img-element */
-const LanguageDropdown = () => {
+const LanguageDropdown = ({ id, navToggle }) => {
   const [state] = useContext(GlobalContext)
 
   const english = (e) => {
@@ -16,27 +16,25 @@ const LanguageDropdown = () => {
   }
   return (
     <li className="language-dropdown nav-item dropdown">
-      <a className="nav-link dropdown-toggle" href="#" id="navbarLang" role="button" data-bs-toggle="dropdown" aria-expanded="false" >
+      <a className="nav-link dropdown-toggle" href="#" id={ id } role="button" data-bs-toggle="dropdown" aria-expanded="false" >
         { state.locale == "en" ?
           <img loading="lazy" src="./images/english.png" width="40" alt="english" />
           :
           <img loading="lazy" src="./images/doutch.png" width="40" alt="doutch" />
         }
       </a>
-      <ul className="dropdown-menu" aria-labelledby="navbarLang">
-        { state.locale == "en" ?
-          <li>
-            <a className="dropdown-item navbar-toggler" href="#" onClick={ dutch } data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <img loading="lazy" src="./images/doutch.png" width="40" alt="doutch" />
+      <ul className="dropdown-menu" aria-labelledby={ id }>
+        <li>
+          { navToggle ?
+            <a className="dropdown-item" href="#" onClick={ state.locale == "en" ? dutch : english } data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+              <img loading="lazy" src={ state.locale == "en" ? "./images/doutch.png" : "./images/english.png" } width="40" alt={ state.locale == "en" ? "doutch" : "english" } />
             </a>
-          </li>
-          :
-          <li>
-            <a className="dropdown-item navbar-toggler" href="#" onClick={ english } data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-              <img loading="lazy" src="./images/english.png" width="40" alt="english" />
+            :
+            <a className="dropdown-item" href="#" onClick={ state.locale == "en" ? dutch : english }>
+              <img loading="lazy" src={ state.locale == "en" ? "./images/doutch.png" : "./images/english.png" } width="40" alt={ state.locale == "en" ? "doutch" : "english" } />
             </a>
-          </li>
-        }
+          }
+        </li>
       </ul>
     </li>
   )
