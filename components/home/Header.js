@@ -14,7 +14,7 @@ const Header = () => {
           <p className="font-weight-600" data-aos="fade-up" data-aos-duration="750" data-aos-delay="700" data-aos-once="true">{ state.text.homeHeroSubtitle }</p>
           <button className="btn-book-now btn btn-primary rounded-0 font-weight-900 mx-auto" data-aos="fade-up" data-aos-duration="750" data-aos-delay="900" data-aos-once="true">
             <img loading="lazy" src="./images/schedule.png" height="43" alt="schedule" />
-            <span>BOOK NOW</span>
+            <span>{ state.text.bookNow }</span>
           </button>
         </div>
       </div>

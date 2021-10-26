@@ -428,6 +428,7 @@ button,
   font-weight: 400;
   font-size: 1.2rem;
   transition: color 750ms ease-in-out;
+  text-transform: uppercase;
 }
 
 #main-menu .nav-link.active,
@@ -523,12 +524,6 @@ button,
 /* #how-we-work */
 #how-we-work .heading {
   font-size: 2.6rem;
-}
-
-#how-we-work .btn-yes {
-  background-color: #ffb86f !important;
-  border-color: #ffb86f !important;
-  color: #212529 !important;
 }
 
 /* #review */

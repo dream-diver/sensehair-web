@@ -1,5 +1,9 @@
+import { useContext } from "react"
+import { GlobalContext } from "../contexts/GlobalContext"
+
 /* eslint-disable @next/next/no-img-element */
 const PriceModal = ({ activeHairSize, setActiveHairSize, setActiveHairType }) => {
+  const [state] = useContext(GlobalContext)
 
   const PriceModalClose = (e) => {
     if (e.target.classList.contains("btn-close") || e.target.classList.contains("modal")) {
@@ -93,7 +97,7 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, setActiveHairType }) =>
             <div className="w-100 d-flex justify-content-center" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
               <button className="btn-book-now btn btn-dark rounded-0 font-weight-900">
                 <img loading="lazy" src="./images/schedule.png" height="43" alt="schedule" />
-                <span>BOOK NOW</span>
+                <span>{ state.text.bookNow }</span>
               </button>
             </div>
           </div>

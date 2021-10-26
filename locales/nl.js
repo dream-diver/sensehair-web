@@ -1,7 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default {
+  bookNow: 'AFSPRAAK MAKEN',
   homeHeroTitle: 'LOOK GOOD FEEL GOOD',
   homeHeroSubtitle: 'Met een mooi kapsel voel je je sterk en zelfverzekerd. Wij luisteren naar je wensen, geven je persoonlijk advies en het allerbelangrijkst: mooi haar',
+  homeAwardTitle: 'ONZE MERKEN',
   homeWhyUsTitle: 'WAAROM SENSE HAIR?',
   homeWhyUsSubtitle1: 'PERSOONLIJK ADVIES',
   homeWhyUsSubtitle2: 'ERVARING',
@@ -61,4 +63,5 @@ export default {
   careerInfoListTextItem4: 'TRAININGEN: in knip- en kleurtechnieken & styling (intern en extern) afgestemd op jouw persoonlijke wensen en ontwikkeling',
   careerInfoListTextItem5: 'GOED START SALARIS',
   careerInfoListTextBody: 'Wil jij bij ons solliciteren, vul dan onderstaande formulier in of loop bijons binnen met je CV en motivatiebrief.',
+  footerBody: 'Knippen, kleuren of stylen? Loop gerust bij ons binnen, met of zonder afspraak.'
 };

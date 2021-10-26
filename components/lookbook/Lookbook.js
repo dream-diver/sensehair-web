@@ -1,5 +1,9 @@
+import { useContext } from "react"
+import { GlobalContext } from "../contexts/GlobalContext"
+
 /* eslint-disable @next/next/no-img-element */
 const Lookbook = () => {
+  const [state] = useContext(GlobalContext)
   return (
     <section id="lookbook" className="lookbook">
       <div className="container">
@@ -58,7 +62,7 @@ const Lookbook = () => {
             <div className="w-100 d-flex flex-column align-items-center">
               <button className="btn-book-now btn btn-primary rounded-0 font-weight-900">
                 <img loading="lazy" src="./images/schedule.png" height="42" alt="schedule" />
-                <span>BOOK NOW</span>
+                <span>{ state.text.bookNow }</span>
               </button>
             </div>
           </div>

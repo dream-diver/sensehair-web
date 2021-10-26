@@ -61,7 +61,7 @@ const Contact = () => {
           <div className="w-100 d-flex justify-content-center">
             <button className="btn-book-now btn btn-primary rounded-0 font-weight-900">
               <img loading="lazy" src="./images/schedule.png" height="43" alt="schedule" />
-              <span>BOOK NOW</span>
+              <span>{ state.text.bookNow }</span>
             </button>
           </div>
         </div>

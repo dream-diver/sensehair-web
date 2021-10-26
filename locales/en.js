@@ -1,7 +1,9 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default {
+  bookNow: 'BOOK NOW',
   homeHeroTitle: 'ONLY THE BEST TEAM FOR YOUR HAIR',
   homeHeroSubtitle: 'For fresh cuts, styling and coloring, our team is up to date with the latest trends and techniques. Your wishes are key by Sense Hair.',
+  homeAwardTitle: 'OUR BRANDS',
   homeWhyUsTitle: 'WHY CHOOSE SENSE HAIR',
   homeWhyUsSubtitle1: 'ADVICE',
   homeWhyUsSubtitle2: 'EXPERIENCE',
@@ -61,4 +63,5 @@ export default {
   careerInfoListTextItem4: 'TRAININGEN: in knip- en kleurtechnieken & styling (intern en extern) afgestemd op jouw persoonlijke wensen en ontwikkeling',
   careerInfoListTextItem5: 'GOED START SALARIS',
   careerInfoListTextBody: 'Wil jij bij ons solliciteren, vul dan onderstaande formulier in of loop bijons binnen met je CV en motivatiebrief.',
+  footerBody: 'Knippen, kleuren of stylen? Loop gerust bij ons binnen, met of zonder afspraak.'
 };

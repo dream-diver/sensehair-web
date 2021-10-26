@@ -133,7 +133,7 @@ const Services = () => {
               <button className="btn-find btn btn-lg btn-outline-dark rounded-0 font-weight-900 mb-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="700" data-aos-once="true">All Services</button>
               <button className="btn-book-now btn btn-lg btn-primary rounded-0 font-weight-900" data-aos="fade-up" data-aos-duration="750" data-aos-delay="900" data-aos-once="true">
                 <img loading="lazy" src="./images/schedule.png" height="43" alt="schedule" />
-                <span>BOOK NOW</span>
+                <span>{ state.text.bookNow }</span>
               </button>
             </div>
           </div>

@@ -76,7 +76,7 @@ const HowWeWork = () => {
                 <p data-aos="fade-up" data-aos-duration="750" data-aos-delay="750" data-aos-once="true">{ state.text.howWeWorkBody2 }</p>
                 <p className="text-black-50" data-aos="fade-up" data-aos-duration="750" data-aos-delay="750" data-aos-once="true">{ state.text.howWeWorkBody3 }</p>
                 <p className="mb-5" data-aos="fade-up" data-aos-duration="750" data-aos-delay="750" data-aos-once="true">{ state.text.howWeWorkBody4 }</p>
-                <button className="btn-yes btn btn-lg btn-primary text-white font-weight-700 font-1-5x px-5 py-2" data-aos="fade-up" data-aos-duration="750" data-aos-delay="950" data-aos-once="true">{ state.text.howWeWorkButton }</button>
+                <button className="btn-yes btn btn-lg btn-primary rounded-0 text-white font-weight-700 font-1-5x px-5 py-2" data-aos="fade-up" data-aos-duration="750" data-aos-delay="950" data-aos-once="true">{ state.text.howWeWorkButton }</button>
               </div>
               <div className="col-md-6">
                 <div className="timeline">

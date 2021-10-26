@@ -1,11 +1,13 @@
 /* eslint-disable @next/next/no-img-element */
-import { useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react";
 import Link from 'next/link'
 import { useRouter } from "next/router";
 import { FaPhoneAlt } from "react-icons/fa";
 import LanguageDropdown from "./LanguageDropdown";
+import { GlobalContext } from "./contexts/GlobalContext";
 
 const Menu = ({ isSlider }) => {
+  const [state] = useContext(GlobalContext)
   const mainMenuRef = useRef(null)
   const topRowRef = useRef(null)
   const navbarBrandImgRef = useRef(null)
@@ -104,7 +106,7 @@ const Menu = ({ isSlider }) => {
                 <form className="d-none d-lg-flex ms-lg-2">
                   <button className="btn-book-now btn btn-sm btn-primary rounded-0 font-weight-900">
                     <img loading="lazy" src="./images/schedule.png" height="42" alt="schedule" />
-                    <span>BOOK NOW</span>
+                    <span>{ state.text.bookNow }</span>
                   </button>
                 </form>
               </div>

@@ -78,12 +78,12 @@ const Prices = ({ activeHairSize, setActiveHairSize, activeHairType, setActiveHa
             { showHairType &&
               <div className="prices-row prices-row-2 row text-center">
                 <div className="col-12">
-                  <p className="text-center my-4 font-weight-700">What is your hair type?</p>
+                  <p className="text-center font-1-5x my-4 font-weight-700">What is your hair type?</p>
                 </div>
                 <div className="col-6 col-md-3 mb-3">
                   <div className={ activeHairType.indexOf(0) !== -1 ? "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white active" : "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white" } data-bs-toggle="modal" data-bs-target="#priceModal" onClick={ () => { selectHairType(0) } }>
                     <div className="card-img p-2 px-md-4">
-                      <img src={ activeHairType.indexOf(0) !== -1 ? "./images/services/15.png" : "./images/services/5.png" } alt={ activeHairType.indexOf(0) !== -1 ? "15.png" : "5.png" } className="img-fluid" />
+                      <img src={ activeHairType.indexOf(0) !== -1 ? "./images/services/55.png" : "./images/services/5.png" } alt={ activeHairType.indexOf(0) !== -1 ? "55.png" : "5.png" } className="img-fluid" />
                     </div>
                     <div className="d-flex align-items-center justify-content-center flex-grow-1">
                       <h1 className="text-black">STRAIGHT</h1>

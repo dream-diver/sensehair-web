@@ -1,8 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
+import { useContext } from 'react'
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
+import { GlobalContext } from './contexts/GlobalContext'
 
 const Footer = () => {
+  const [state] = useContext(GlobalContext)
   return (
     <>
       <footer id="footer" className="bg-black text-white text-center text-md-start py-5">
@@ -10,7 +13,7 @@ const Footer = () => {
           <div className="row">
             <div className="col-md-6 col-lg-3 mb-5">
               <img loading="lazy" src="./images/logo2x.png" alt="logo2x" className="mb-3" width="60%" />
-              <p className="mb-4">Lorem ipsum dolor sit, amet consectetur adipisicing elit. Rem perspiciatis, assumenda placeat cum vel fugit.</p>
+              <p className="mb-4">{ state.text.footerBody }</p>
               <ul className="social-nav navbar-nav flex-row justify-content-center justify-content-md-start mb-4">
                 <li className="nav-item">
                   <a className="nav-link text-white" href="#"><FaFacebook /></a>
@@ -30,7 +33,7 @@ const Footer = () => {
                   <div className="d-inline-flex mw-100 h-auto">
                     <img loading="lazy" src="./images/schedule.png" height="42" alt="schedule" />
                   </div>
-                  <span>BOOK NOW</span>
+                  <span>{ state.text.bookNow }</span>
                 </button>
               </div>
             </div>
