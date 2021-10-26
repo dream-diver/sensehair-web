@@ -66,13 +66,13 @@ const Footer = () => {
               <p>carlos@sensehair.nl</p>
               <h4>INFO</h4>
               <p>
-                Sunday: 9AM-PM<br />
-                Sunday: 9AM-PM<br />
-                Sunday: 9AM-PM<br />
-                Sunday: 9AM-PM<br />
-                Sunday: 9AM-PM<br />
-                Sunday: 9AM-PM<br />
-                Sunday: 9AM-PM
+                { state.text.openingTimes1 }<br />
+                { state.text.openingTimes2 }<br />
+                { state.text.openingTimes3 }<br />
+                { state.text.openingTimes4 }<br />
+                { state.text.openingTimes5 }<br />
+                { state.text.openingTimes6 }<br />
+                { state.text.openingTimes7 }
               </p>
             </div>
             <div className="col-md-6 col-lg-3 mb-3">

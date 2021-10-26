@@ -1,6 +1,14 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default {
   bookNow: 'AFSPRAAK MAKEN',
+  footerBody: 'Knippen, kleuren of stylen? Loop gerust bij ons binnen, met of zonder afspraak.',
+  openingTimes1: 'Maandag 10:00 – 19:00',
+  openingTimes2: 'Dinsdag 10:00 – 19:00',
+  openingTimes3: 'Woensdag 10:00 – 19:00',
+  openingTimes4: 'Donderdag 10:00 – 20:00',
+  openingTimes5: 'Vrijdag 10:00 – 20:00',
+  openingTimes6: 'Zaterdag 10:00 – 18:00',
+  openingTimes7: 'Zondag 12:00 – 18:00',
   homeHeroTitle: 'LOOK GOOD FEEL GOOD',
   homeHeroSubtitle: 'Met een mooi kapsel voel je je sterk en zelfverzekerd. Wij luisteren naar je wensen, geven je persoonlijk advies en het allerbelangrijkst: mooi haar',
   homeAwardTitle: 'ONZE MERKEN',
@@ -63,5 +71,8 @@ export default {
   careerInfoListTextItem4: 'TRAININGEN: in knip- en kleurtechnieken & styling (intern en extern) afgestemd op jouw persoonlijke wensen en ontwikkeling',
   careerInfoListTextItem5: 'GOED START SALARIS',
   careerInfoListTextBody: 'Wil jij bij ons solliciteren, vul dan onderstaande formulier in of loop bijons binnen met je CV en motivatiebrief.',
-  footerBody: 'Knippen, kleuren of stylen? Loop gerust bij ons binnen, met of zonder afspraak.'
+  contactUsFormName: 'Naam',
+  contactUsFormEmail: 'E-mail',
+  contactUsFormSubject: 'Onderwerp',
+  contactUsFormMessage: 'Bericht',
 };

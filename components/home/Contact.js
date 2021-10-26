@@ -20,12 +20,13 @@ const Contact = () => {
                     </div>
                     <div className="mb-3 flex-grow-1">
                       <p className="text-center text-md-start">
-                        Tuesday 9:00 – 20:00<br />
-                        Wednesday 9.00 – 20:00<br />
-                        Thursday 9:00 – 22:00<br />
-                        Friday 9:00 – 22:00<br />
-                        Saterday 8:00 – 22:00<br />
-                        Sunday 10:00 – 22:00<br />
+                        { state.text.openingTimes1 }<br />
+                        { state.text.openingTimes2 }<br />
+                        { state.text.openingTimes3 }<br />
+                        { state.text.openingTimes4 }<br />
+                        { state.text.openingTimes5 }<br />
+                        { state.text.openingTimes6 }<br />
+                        { state.text.openingTimes7 }
                       </p>
                     </div>
                   </div>

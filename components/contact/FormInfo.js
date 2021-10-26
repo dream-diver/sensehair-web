@@ -1,5 +1,9 @@
+import { useContext } from "react"
+import { GlobalContext } from '../contexts/GlobalContext';
+
 /* eslint-disable @next/next/no-img-element */
 const FormInfo = () => {
+  const [state] = useContext(GlobalContext)
   return (
     <section id="form_info">
       <div className="container">
@@ -8,16 +12,16 @@ const FormInfo = () => {
             <form action="#">
               <h1 className="text-center">CONTACT</h1>
               <div className="mb-3">
-                <input type="text" className="form-control rounded-0" name="name" id="name" placeholder="Name" />
+                <input type="text" className="form-control rounded-0" name="name" id="name" placeholder={ state.text.contactUsFormName } />
               </div>
               <div className="mb-3">
-                <input type="text" className="form-control rounded-0" name="email" id="email" placeholder="Email Address" />
+                <input type="text" className="form-control rounded-0" name="email" id="email" placeholder={ state.text.contactUsFormEmail } />
               </div>
               <div className="mb-3">
-                <input type="text" className="form-control rounded-0" name="subject" id="subject" placeholder="Subject" />
+                <input type="text" className="form-control rounded-0" name="subject" id="subject" placeholder={ state.text.contactUsFormSubject } />
               </div>
               <div className="mb-3">
-                <textarea className="form-control rounded-0" name="message" id="message" rows="3" placeholder="Message"></textarea>
+                <textarea className="form-control rounded-0" name="message" id="message" rows="3" placeholder={ state.text.contactUsFormMessage }></textarea>
               </div>
               <div className="d-flex justify-content-center">
                 <button className="btn btn-dark rounded-0 px-4">Submit</button>
@@ -51,12 +55,13 @@ const FormInfo = () => {
                 <img loading="lazy" src="./images/clock.png" alt="phone-call" width="20px" className="mt-1" />
               </div>
               <div className="contact-text mb-3">
-                <p className="small mb-1">Tuesday 9:00 – 20:00</p>
-                <p className="small mb-1">Wednesday 9.00 – 20:00</p>
-                <p className="small mb-1">Thursday 9:00 – 22:00</p>
-                <p className="small mb-1">Friday 9:00 – 22:00</p>
-                <p className="small mb-1">Saturday 8:00 – 22:00</p>
-                <p className="small mb-1">Sunday 10:00 – 22:00</p>
+                <p className="small mb-1">{ state.text.openingTimes1 }</p>
+                <p className="small mb-1">{ state.text.openingTimes2 }</p>
+                <p className="small mb-1">{ state.text.openingTimes3 }</p>
+                <p className="small mb-1">{ state.text.openingTimes4 }</p>
+                <p className="small mb-1">{ state.text.openingTimes5 }</p>
+                <p className="small mb-1">{ state.text.openingTimes6 }</p>
+                <p className="small mb-1">{ state.text.openingTimes7 }</p>
               </div>
             </div>
           </div>

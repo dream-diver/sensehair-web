@@ -1,6 +1,14 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default {
   bookNow: 'BOOK NOW',
+  footerBody: 'Cut, color or style? Feel free to visit us, with or without an appointment.',
+  openingTimes1: 'Monday 10:00 – 19:00',
+  openingTimes2: 'Tuesday 10:00 – 19:00',
+  openingTimes3: 'Wednesday 10:00 – 19:00',
+  openingTimes4: 'Thursday 10:00 – 20:00',
+  openingTimes5: 'Friday 10:00 – 20:00',
+  openingTimes6: 'Saturday 10:00 – 18:00',
+  openingTimes7: 'Sunday 12:00 – 18:00',
   homeHeroTitle: 'ONLY THE BEST TEAM FOR YOUR HAIR',
   homeHeroSubtitle: 'For fresh cuts, styling and coloring, our team is up to date with the latest trends and techniques. Your wishes are key by Sense Hair.',
   homeAwardTitle: 'OUR BRANDS',
@@ -63,5 +71,8 @@ export default {
   careerInfoListTextItem4: 'TRAININGEN: in knip- en kleurtechnieken & styling (intern en extern) afgestemd op jouw persoonlijke wensen en ontwikkeling',
   careerInfoListTextItem5: 'GOED START SALARIS',
   careerInfoListTextBody: 'Wil jij bij ons solliciteren, vul dan onderstaande formulier in of loop bijons binnen met je CV en motivatiebrief.',
-  footerBody: 'Knippen, kleuren of stylen? Loop gerust bij ons binnen, met of zonder afspraak.'
+  contactUsFormName: 'Name',
+  contactUsFormEmail: 'Email Address',
+  contactUsFormSubject: 'Subject',
+  contactUsFormMessage: 'Message',
 };
