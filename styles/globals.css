@@ -503,6 +503,13 @@ button,
   position: relative;
 }
 
+#team .img-fluid {
+  width: 100%;
+  height: 90vh;
+  object-fit: cover;
+  object-position: center top;
+}
+
 #team .team-text h1 {
   font-size: 2.8rem;
 }
