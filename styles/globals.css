@@ -208,6 +208,18 @@ button,
   height: 60vh !important;
 }
 
+.vh-70 {
+  height: 70vh !important;
+}
+
+.vh-80 {
+  height: 80vh !important;
+}
+
+.vh-90 {
+  height: 90vh !important;
+}
+
 .text-dreamDiver {
   color: #d7d225;
   text-decoration: none;
@@ -411,12 +423,14 @@ button,
   background-attachment: fixed;
 }
 #aboutHeader {
-  background: url("../public/images/about/banner_about_us.png") center no-repeat;
+  background: url("../public/images/about/about-us-header-image.jpg") center
+    no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
 #careerHeader {
-  background: url("../public/images/career/banner-c2.png") center no-repeat;
+  background: url("../public/images/career/career-header-image.jpg") center
+    no-repeat;
   background-size: cover;
   background-attachment: fixed;
 }
@@ -567,6 +581,11 @@ button,
   display: inline-block;
 }
 
+/* About Page */
+#meat_the_team .img-fluid {
+  object-fit: cover;
+  object-position: center top;
+}
 /* Career Page */
 /* application-form-bg-cultured */
 .application-form-bg-cultured {

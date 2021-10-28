@@ -6,10 +6,10 @@ import DotButton from '../slider/DotButton'
 import PrevButton from '../slider/PrevButton'
 import NextButton from '../slider/NextButton'
 
-import menImage from '../../public/images/services/services-men.jpg'
-import ladiesShort from '../../public/images/services/services-ladies-short-straight.jpg'
-import ladiesMidlong from '../../public/images/services/service-ladies-midlong-straight.jpg'
-import ladiesLong from '../../public/images/services/services-ladies-long-wavy.jpg'
+import imageMen from '../../public/images/services/services-men.jpg'
+import imageLadiesShort from '../../public/images/services/services-ladies-short-straight.jpg'
+import imageLadiesMidlong from '../../public/images/services/service-ladies-midlong-straight.jpg'
+import imageLadiesLong from '../../public/images/services/services-ladies-long-wavy.jpg'
 
 
 const Services = () => {
@@ -44,19 +44,19 @@ const Services = () => {
   const allServices = [
     {
       name: 'MEN',
-      image: menImage
+      image: imageMen
     },
     {
       name: 'LADIES SHORT',
-      image: ladiesShort
+      image: imageLadiesShort
     },
     {
       name: 'LADIES MIDLONG',
-      image: ladiesMidlong
+      image: imageLadiesMidlong
     },
     {
       name: 'LADIES LONG',
-      image: ladiesLong
+      image: imageLadiesLong
     }
   ];
 

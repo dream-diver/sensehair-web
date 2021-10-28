@@ -1,6 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
 import { useContext } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
+import imageInfoImage from '../../public/images/about/about-us-image-1.jpg'
+
 const InfoImg = () => {
   const [state] = useContext(GlobalContext)
 
@@ -13,7 +15,7 @@ const InfoImg = () => {
             <p className="font-1-3x">{ state.text.aboutInfoImgBody }</p>
           </div>
           <div className="col-md-4 py-5" data-aos="fade-left" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-            <img loading="lazy" src="./images/about/home-3-about.png" alt="home-3-about" className="img-fluid" />
+            <img loading="lazy" src={ imageInfoImage.src } alt="home-3-about" className="img-fluid" />
           </div>
         </div>
       </div>

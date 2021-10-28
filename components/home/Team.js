@@ -4,7 +4,7 @@ import { GlobalContext } from '../contexts/GlobalContext'
 import useEmblaCarousel from 'embla-carousel-react'
 import DotButton from '../slider/DotButton'
 
-import teamCarlos from '../../public/images/team/carlos.png'
+import imageCarlos from '../../public/images/team/carlos.png'
 
 const Team = () => {
   const [state] = useContext(GlobalContext)
@@ -37,7 +37,7 @@ const Team = () => {
               <div className="embla__slide">
                 <div className=" row gx-0 text-white">
                   <div className="col-md-6">
-                    <img loading="lazy" src={ teamCarlos.src } alt="team 1" className="img-fluid" />
+                    <img loading="lazy" src={ imageCarlos.src } alt="team 1" className="img-fluid" />
                   </div>
                   <div className="col-md-6 bg-black d-flex flex-column justify-content-center align-items-center pt-5 pt-md-3 py-3 px-2 px-md-5">
                     <div className="team-text flex-grow-1 d-flex align-items-center justify-content-center flex-column">

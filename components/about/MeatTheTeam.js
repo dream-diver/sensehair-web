@@ -1,5 +1,7 @@
 import { useContext } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
+import imageCarlos from '../../public/images/team/carlos.png'
+
 
 /* eslint-disable @next/next/no-img-element */
 const MeatTheTeam = () => {
@@ -13,9 +15,9 @@ const MeatTheTeam = () => {
             <div className="team-row row py-5">
               <div className="col-md-5" data-aos="fade-right" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
                 <div className="img-overlay">
-                  <img loading="lazy" src="./images/about/Rectangle_team.png" alt="Rectangle_team" className="img-fluid" />
+                  <img loading="lazy" src={ imageCarlos.src } alt="Rectangle_team" className="img-fluid" />
                   <div className="overlay">
-                    <h1 className="text-black mb-0">Art Director</h1>
+                    <h1 className="text-white mb-0">Art Director</h1>
                   </div>
                 </div>
               </div>
@@ -35,9 +37,9 @@ const MeatTheTeam = () => {
               </div>
               <div className="col-md-5" data-aos="fade-left" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
                 <div className="img-overlay">
-                  <img loading="lazy" src="./images/about/Rectangle_team.png" alt="Rectangle_team" className="img-fluid" />
+                  <img loading="lazy" src={ imageCarlos.src } alt="Rectangle_team" className="img-fluid" />
                   <div className="overlay">
-                    <h1 className="text-black mb-0">Art Director</h1>
+                    <h1 className="text-white mb-0">Art Director</h1>
                   </div>
                 </div>
               </div>
