@@ -6,6 +6,11 @@ import DotButton from '../slider/DotButton'
 import PrevButton from '../slider/PrevButton'
 import NextButton from '../slider/NextButton'
 
+import menImage from '../../public/images/services/services-men.jpg'
+import ladiesShort from '../../public/images/services/services-ladies-short-straight.jpg'
+import ladiesMidlong from '../../public/images/services/service-ladies-midlong-straight.jpg'
+import ladiesLong from '../../public/images/services/services-ladies-long-wavy.jpg'
+
 
 const Services = () => {
   const [state] = useContext(GlobalContext)
@@ -35,6 +40,26 @@ const Services = () => {
     embla.on("select", onSelect);
   }, [embla, setScrollSnaps, onSelect]);
 
+  // All Services Array
+  const allServices = [
+    {
+      name: 'MEN',
+      image: menImage
+    },
+    {
+      name: 'LADIES SHORT',
+      image: ladiesShort
+    },
+    {
+      name: 'LADIES MIDLONG',
+      image: ladiesMidlong
+    },
+    {
+      name: 'LADIES LONG',
+      image: ladiesLong
+    }
+  ];
+
   return (
     <section id="services">
       <div className="container">
@@ -43,75 +68,31 @@ const Services = () => {
             <h2 className="h1-margin-bottom font-weight-700" data-aos="fade-up" data-aos-duration="750" data-aos-delay="150" data-aos-once="true">{ state.text.homeServicesTitle }</h2>
             <p className="mb-5" data-aos="fade-up" data-aos-duration="750" data-aos-delay="600" data-aos-once="true">{ state.text.homeServicesBody }</p>
             <div className="row mb-4 d-none d-md-flex">
-              <div className="col-6 col-md-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="250" data-aos-once="true">
-                <div className="img-overlay">
-                  <img loading="lazy" src="./images/Haircut.png" alt="Haircut" className="img-fluid" />
-                  <div className="overlay">
-                    <h1 className="mb-0">Haircut</h1>
+              { allServices.map((service, index) => (
+                <div key={ index } className="col-6 col-md-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="250" data-aos-once="true">
+                  <div className="img-overlay">
+                    <img loading="lazy" src={ service.image.src } alt={ service.name } className="img-fluid" />
+                    <div className="overlay">
+                      <h1 className="mb-0">{ service.name }</h1>
+                    </div>
                   </div>
                 </div>
-              </div>
-              <div className="col-6 col-md-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="350" data-aos-once="true">
-                <div className="img-overlay">
-                  <img loading="lazy" src="./images/Styling.png" alt="Styling" className="img-fluid" />
-                  <div className="overlay">
-                    <h1 className="mb-0">Styling</h1>
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="450" data-aos-once="true">
-                <div className="img-overlay">
-                  <img loading="lazy" src="./images/Color.png" alt="Color" className="img-fluid" />
-                  <div className="overlay">
-                    <h1 className="mb-0">Color</h1>
-                  </div>
-                </div>
-              </div>
-              <div className="col-6 col-md-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="550" data-aos-once="true">
-                <div className="img-overlay">
-                  <img loading="lazy" src="./images/Color.png" alt="Color" className="img-fluid" />
-                  <div className="overlay">
-                    <h1 className="mb-0">Color</h1>
-                  </div>
-                </div>
-              </div>
+              )) }
             </div>
             <div className="d-md-none">
               <div className="embla">
                 <div className="embla__viewport" ref={ viewportRef }>
                   <div className="embla__container">
-                    <div className="embla__slide">
-                      <div className="img-overlay">
-                        <img loading="lazy" src="./images/Haircut.png" alt="Haircut" className="img-fluid" />
-                        <div className="overlay">
-                          <h1 className="mb-0">Haircut</h1>
+                    { allServices.map((service, index) => (
+                      <div key={ index } className="embla__slide">
+                        <div className="img-overlay">
+                          <img loading="lazy" src={ service.image.src } alt={ service.name } className="img-fluid" />
+                          <div className="overlay">
+                            <h1 className="mb-0">{ service.name }</h1>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="embla__slide">
-                      <div className="img-overlay">
-                        <img loading="lazy" src="./images/Styling.png" alt="Styling" className="img-fluid" />
-                        <div className="overlay">
-                          <h1 className="mb-0">Styling</h1>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="embla__slide">
-                      <div className="img-overlay">
-                        <img loading="lazy" src="./images/Color.png" alt="Color" className="img-fluid" />
-                        <div className="overlay">
-                          <h1 className="mb-0">Color</h1>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="embla__slide">
-                      <div className="img-overlay">
-                        <img loading="lazy" src="./images/Color.png" alt="Color" className="img-fluid" />
-                        <div className="overlay">
-                          <h1 className="mb-0">Color</h1>
-                        </div>
-                      </div>
-                    </div>
+                    )) }
                   </div>
                 </div>
                 <PrevButton onClick={ scrollPrev } enabled={ prevBtnEnabled } />
