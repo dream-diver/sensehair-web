@@ -4,7 +4,7 @@ import { GlobalContext } from '../contexts/GlobalContext'
 import useEmblaCarousel from 'embla-carousel-react'
 import DotButton from '../slider/DotButton'
 
-import teamCarlos from '../../public/images/team/Carlos.png'
+import teamCarlos from '../../public/images/team/carlos.png'
 
 const Team = () => {
   const [state] = useContext(GlobalContext)
