@@ -3,6 +3,12 @@ import useEmblaCarousel from 'embla-carousel-react'
 import { useContext } from 'react';
 import { GlobalContext } from '../contexts/GlobalContext';
 
+import imageBrand1 from '../../public/images/brands/award-coffure.png'
+import imageBrand2 from '../../public/images/brands/award-keune-white.png'
+import imageBrand3 from '../../public/images/brands/keratherapy.png'
+import imageBrand4 from '../../public/images/brands/kevinmurphy.png'
+import imageBrand5 from '../../public/images/brands/redken.png'
+
 const Award = () => {
   const [state] = useContext(GlobalContext)
   const [viewportRef] = useEmblaCarousel({
@@ -11,6 +17,14 @@ const Award = () => {
     align: "start",
     dragFree: true
   });
+
+  const brandImages = [
+    imageBrand1,
+    imageBrand2,
+    imageBrand3,
+    imageBrand4,
+    imageBrand5
+  ]
   return (
     <section id="award" className="bg-black">
       <div className="container">
@@ -24,18 +38,13 @@ const Award = () => {
             <div className="embla">
               <div className="embla__viewport" ref={ viewportRef }>
                 <div className="embla__container">
-                  <div className="embla__slide d-flex justify-content-center">
-                    <img loading="lazy" src="./images/award-coffure.png" alt="award-coffure" />
-                  </div>
-                  <div className="embla__slide d-flex justify-content-center">
-                    <img loading="lazy" src="./images/award-keune-white.png" alt="award-keune-white" />
-                  </div>
-                  <div className="embla__slide d-flex justify-content-center">
-                    <img loading="lazy" src="./images/award-coffure.png" alt="award-coffure" />
-                  </div>
-                  <div className="embla__slide d-flex justify-content-center">
-                    <img loading="lazy" src="./images/award-keune-white.png" alt="award-keune-white" />
-                  </div>
+
+                  { brandImages.map((image, index) => (
+                    <div className="embla__slide d-flex justify-content-center" key={ index }>
+                      <img loading="lazy" src={ image.src } alt="award-coffure" />
+                    </div>
+                  )) }
+
                 </div>
               </div>
             </div>
