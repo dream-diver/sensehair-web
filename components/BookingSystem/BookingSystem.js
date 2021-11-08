@@ -4,6 +4,7 @@ import { GlobalContext } from '../contexts/GlobalContext'
 import FloatingWindow from './FloatingWindow'
 import FloatingWindowDate from './FloatingWindowDate'
 import FloatingWindowAuth from './FloatingWindowAuth'
+import FloatingWindowServices from './FloatingWindowServices'
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import setSeconds from "date-fns/setSeconds";
@@ -14,7 +15,7 @@ const BookingSystem = () => {
   const [checked, setChecked] = useState(-1)
   const [multiChecked, setMultiChecked] = useState([])
   const [startDate, setStartDate] = useState(setHours(setMinutes(setSeconds(new Date(), 0), 0), 10));
-  const [step, setStep] = useState({
+  const [steps, setSteps] = useState({
     "step1": {
       id: 1,
       active: true,
@@ -33,6 +34,7 @@ const BookingSystem = () => {
       active: false,
       title: "Choose Services",
       multiSelect: true,
+      serviceType: true,
       value: []
     },
     "step4": {
@@ -60,63 +62,80 @@ const BookingSystem = () => {
   const options = state.options;
   const optionHairSize = options.find(option => option.name === "Hair Size").option
   const optionHairType = options.find(option => option.name === "Hair Type").option
-  // Services
-  const services = state.services;
-  const optionServices = services.map(service => {
-    const employee = state.users.find(user => user.id === service.employeeId)
-    return { ...service, employee };
-  });
   // Stylists
   const stylists = state.users.filter(user => user.roleId === 2);
   const optionStylists = stylists.map(stylist => stylist.name);
 
+
+  // fetch Services
+  const fetchServices = async (hairSize, hairType) => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/services?hair_size=${hairSize}&hair_type=${hairType}&limit=all`)
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.log(error.message)
+      return null
+    }
+  }
+
   // Next Functions
-  const secondStep = () => {
+  const secondStep = async () => {
     if (checked) {
-      setStep({
-        ...step,
-        "step1": { ...step.step1, active: false, value: checked },
-        "step2": { ...step.step2, active: true },
+      setSteps({
+        ...steps,
+        "step1": { ...steps.step1, active: false, value: checked },
+        "step2": { ...steps.step2, active: true },
       })
     } else {
-      setStep({
-        ...step,
-        "step1": { ...step.step1, active: false, value: checked },
-        "step2": { ...step.step2, value: -1 },
-        "step3": { ...step.step3, active: true },
+      setSteps({
+        ...steps,
+        "step1": { ...steps.step1, active: false, value: checked },
+        "step2": { ...steps.step2, value: -1 },
+        "step3": { ...steps.step3, active: true },
       })
     }
     setChecked(-1)
   }
   const thirdStep = () => {
-    setStep({
-      ...step,
-      "step2": { ...step.step2, active: false, value: checked },
-      "step3": { ...step.step3, active: true },
+    setSteps({
+      ...steps,
+      "step2": { ...steps.step2, active: false, value: checked },
+      "step3": { ...steps.step3, active: true },
     })
     setChecked(-1)
   }
   const fourthStep = () => {
-    setStep({
-      ...step,
-      "step3": { ...step.step3, active: false, value: multiChecked },
-      "step4": { ...step.step4, active: true },
+    const fetchStylist = async (userType) => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?role=${userType}&limit=all`)
+        const data = await response.json()
+        return data
+      } catch (error) {
+        console.log(error.message)
+        return null
+      }
+    }
+    setSteps({
+      ...steps,
+      "step3": { ...steps.step3, active: false, value: multiChecked },
+      "step4": { ...steps.step4, active: true },
     })
     setMultiChecked([])
   }
   const fifthStep = () => {
-    setStep({
-      ...step,
-      "step4": { ...step.step4, active: false, value: checked },
-      "step5": { ...step.step5, active: true },
+    setSteps({
+      ...steps,
+      "step4": { ...steps.step4, active: false, value: checked },
+      "step5": { ...steps.step5, active: true },
     })
     setChecked(-1)
   }
   const sixthStep = () => {
-    setStep({
-      ...step,
-      "step5": { ...step.step5, active: false, value: startDate },
-      "step6": { ...step.step6, active: true },
+    setSteps({
+      ...steps,
+      "step5": { ...steps.step5, active: false, value: startDate },
+      "step6": { ...steps.step6, active: true },
     })
     setChecked(-1)
   }
@@ -129,23 +148,23 @@ const BookingSystem = () => {
           <BiCalendarCheck />
         </button>
         : <>
-          { step.step1.active &&
-            <FloatingWindow step={ step.step1 } options={ optionHairSize } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ secondStep } />
+          { steps.step1.active &&
+            <FloatingWindow step={ steps.step1 } options={ optionHairSize } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ secondStep } />
           }
-          { step.step2.active &&
-            <FloatingWindow step={ step.step2 } options={ optionHairType } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ thirdStep } />
+          { steps.step2.active &&
+            <FloatingWindow step={ steps.step2 } options={ optionHairType } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ thirdStep } />
           }
-          { step.step3.active &&
-            <FloatingWindow step={ step.step3 } options={ optionServices } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fourthStep } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
+          { steps.step3.active &&
+            <FloatingWindowServices steps={ steps } setSteps={ setSteps } step={ steps.step3 } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fourthStep } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
           }
-          { step.step4.active &&
-            <FloatingWindow step={ step.step4 } options={ stylists } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fifthStep } />
+          { steps.step4.active &&
+            <FloatingWindow step={ steps.step4 } options={ stylists } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fifthStep } />
           }
-          { step.step5.active &&
-            <FloatingWindowDate step={ step.step5 } show={ show } setShow={ setShow } nextStep={ sixthStep } startDate={ startDate } setStartDate={ setStartDate } />
+          { steps.step5.active &&
+            <FloatingWindowDate step={ steps.step5 } show={ show } setShow={ setShow } nextStep={ sixthStep } startDate={ startDate } setStartDate={ setStartDate } />
           }
-          { step.step6.active &&
-            <FloatingWindowAuth step={ step.step6 } show={ show } setShow={ setShow } nextStep={ sixthStep } />
+          { steps.step6.active &&
+            <FloatingWindowAuth step={ steps.step6 } show={ show } setShow={ setShow } nextStep={ sixthStep } />
           }
         </>
       }

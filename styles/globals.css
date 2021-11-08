@@ -1,4 +1,19 @@
 /* global */
+
+.btn-light {
+  background: #e6e9ef !important;
+  border-color: #e6e9ef !important;
+}
+
+.btn-light:hover {
+  background: hsl(220, 10%, 85%) !important;
+  border-color: hsl(220, 10%, 85%) !important;
+}
+
+body {
+  background: #303;
+}
+
 button:active,
 button:focus:not(:focus-visible) {
   outline: none;
@@ -66,7 +81,7 @@ button:focus:not(:focus-visible) {
   height: 60px;
   display: flex;
   align-items: center;
-  justify-content: end;
+  justify-content: flex-end;
   padding-left: 20px;
   padding-right: 20px;
   box-shadow: 0 -7px 13px rgba(0, 0, 0, 0.08);
@@ -148,6 +163,7 @@ button:focus:not(:focus-visible) {
 
 .floating-window .form-check-label {
   line-height: 1;
+  font-size: 0.9rem;
 }
 
 .floating-window .form-check-input:checked {

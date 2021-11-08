@@ -32,10 +32,9 @@ const FormCheck = ({ id, data, checked, setChecked, multiSelect, step, multiChec
       <div className="form-check-text">
         <div className="d-flex justify-content-between">
           <label className="form-check-label" onClick={ (e) => e.preventDefault() } htmlFor={ id }>{ data.name ? data.name : data }</label>
-          { data.price && <span className="small sub-heading">${ data.price }</span> }
+          { step.id === 3 && <span className="small sub-heading">${ step.serviceType ? data.art_director_price : data.stylist_price }</span> }
         </div>
-        { data.time && <span className="small sub-heading">{ data.time }</span> } { data.employee && <>| <span className="small sub-heading">{ data.employee.designation && data.employee.designation }</span></> }
-        { data.designation && <p className="small sub-heading text-center mb-0">{ data.designation }</p> }
+        { data.duration && <span className="small sub-heading">{ data.duration } minutes</span> } { step.id === 3 && <>| <span className="small sub-heading">{ step.serviceType ? "Art Director" : "Hairstylist " }</span></> }
       </div>
     </div >
   )
