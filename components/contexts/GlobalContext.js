@@ -9,11 +9,11 @@ export const GlobalContext = createContext();
 export const GlobalProvider = (props) => {
   let initialState = {
     "loading": true,
-    // "auth": {
-    //   "isLogin": localStorage.getItem("login") === "true" ? true : false,
-    //   "user": JSON.parse(localStorage.getItem("user")),
-    //   "token": ""
-    // },
+    "auth": {
+      "isLogin": false,
+      "user": null,
+      "token": ""
+    },
     "users": [],
     "options": [],
     "messages": []

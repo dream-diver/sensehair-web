@@ -319,24 +319,27 @@ button:focus:not(:focus-visible) {
 }
 /* scrollbar */
 /* width */
-.floating-window-form::-webkit-scrollbar,
+.floating-window-body::-webkit-scrollbar,
 .react-datepicker__time-list::-webkit-scrollbar {
   width: 3px;
 }
 
 /* Track */
+.floating-window-body::-webkit-scrollbar-track,
 .react-datepicker__time-list::-webkit-scrollbar-track {
   box-shadow: inset 0 0 5px #e0e0e0;
   border-radius: 0.25rem;
 }
 
 /* Handle */
+.floating-window-body::-webkit-scrollbar-thumb,
 .react-datepicker__time-list::-webkit-scrollbar-thumb {
   background: #090a0b;
   border-radius: 1rem;
 }
 
 /* Handle on hover */
+.floating-window-body::-webkit-scrollbar-thumb:hover,
 .react-datepicker__time-list::-webkit-scrollbar-thumb:hover {
   background: #212529;
 }
