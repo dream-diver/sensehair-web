@@ -36,7 +36,6 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, checked, setChec
       const hairSize = optionHairSize[steps.step1.value].name
       const hairType = optionHairType[steps.step2.value] ? optionHairType[steps.step2.value].name : ""
       const data = await fetchServices(hairSize, hairType)
-      console.log(data.data.map(service => service.data))
       setServices(data.data.map(service => service.data))
     }
     getData()
@@ -54,7 +53,7 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, checked, setChec
             <button className={ !step.serviceType ? "btn btn-dark flex-grow-1" : "btn btn-light flex-grow-1" } onClick={ changeServiceType } type="button">Hairstylist</button>
           </div>
           { services && services.map((service, index) => (
-            <FormCheck data={ service } multiSelect={ step.multiSelect } key={ index } checked={ checked } setChecked={ setChecked } id={ index } step={ step } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
+            <FormCheck id={ service.id } data={ service } multiSelect={ step.multiSelect } key={ index } checked={ checked } setChecked={ setChecked } step={ step } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
           )) }
         </form>
       </div>

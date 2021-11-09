@@ -40,26 +40,30 @@ export const GlobalProvider = (props) => {
       return optionsDb
     }
 
-
-    // const fetchOptions = async () => {
-    //   try {
-    //     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/options`)
-    //     const data = await res.json()
-    //     return data
-    //   } catch (error) {
-    //     toast.error(error.message)
-    //     messageArray = [...messageArray, { "type": "error", "body": "Options Data Fetching Error", "desc": error.message }]
-    //     return null
-    //   }
-    // }
+    // Fetch Stylists
+    const fetchStylists = async (userType) => {
+      try {
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?role=${userType}&limit=all`)
+        const data = await response.json()
+        return data
+      } catch (error) {
+        console.log(error.message)
+        return null
+      }
+    }
 
 
     const getData = async () => {
-      // const usersFromServer = await fetchUsers()
+      const artDirector = await fetchStylists("art_director ")
+      const stylist = await fetchStylists("stylist")
+      const stylistsFromServer = {
+        artDirector: artDirector.data.map(user => user.data),
+        stylist: stylist.data.map(user => user.data)
+      }
       const optionsFromServer = await fetchOptions()
-      if (optionsFromServer) {
+      if (optionsFromServer && stylistsFromServer) {
         setState(prevState => {
-          return { ...prevState, "options": optionsFromServer, "loading": false };
+          return { ...prevState, "options": optionsFromServer, "stylists": stylistsFromServer, "loading": false };
         })
       } else {
         setState(prevState => {

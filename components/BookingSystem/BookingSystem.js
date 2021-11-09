@@ -15,6 +15,7 @@ const BookingSystem = () => {
   const [checked, setChecked] = useState(-1)
   const [multiChecked, setMultiChecked] = useState([])
   const [startDate, setStartDate] = useState(setHours(setMinutes(setSeconds(new Date(), 0), 0), 10));
+  console.log(startDate);
   const [steps, setSteps] = useState({
     "step1": {
       id: 1,
@@ -106,16 +107,6 @@ const BookingSystem = () => {
     setChecked(-1)
   }
   const fourthStep = () => {
-    const fetchStylist = async (userType) => {
-      try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users?role=${userType}&limit=all`)
-        const data = await response.json()
-        return data
-      } catch (error) {
-        console.log(error.message)
-        return null
-      }
-    }
     setSteps({
       ...steps,
       "step3": { ...steps.step3, active: false, value: multiChecked },
@@ -139,7 +130,7 @@ const BookingSystem = () => {
     })
     setChecked(-1)
   }
-
+  console.log(steps);
 
   return (
     <div id="bookingSystem">
@@ -158,10 +149,10 @@ const BookingSystem = () => {
             <FloatingWindowServices steps={ steps } setSteps={ setSteps } step={ steps.step3 } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fourthStep } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
           }
           { steps.step4.active &&
-            <FloatingWindow step={ steps.step4 } options={ stylists } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fifthStep } />
+            <FloatingWindow step={ steps.step4 } options={ steps.step3.serviceType ? state.stylists.artDirector : state.stylists.stylist } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fifthStep } />
           }
           { steps.step5.active &&
-            <FloatingWindowDate step={ steps.step5 } show={ show } setShow={ setShow } nextStep={ sixthStep } startDate={ startDate } setStartDate={ setStartDate } />
+            <FloatingWindowDate steps={ steps } step={ steps.step5 } show={ show } setShow={ setShow } nextStep={ sixthStep } startDate={ startDate } setStartDate={ setStartDate } />
           }
           { steps.step6.active &&
             <FloatingWindowAuth step={ steps.step6 } show={ show } setShow={ setShow } nextStep={ sixthStep } />
