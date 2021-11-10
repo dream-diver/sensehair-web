@@ -3,14 +3,14 @@ import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import { BiRightArrowAlt } from "react-icons/bi"
 import { useEffect, useState } from "react";
-import moment from 'moment';
+import moment, { parseISO } from 'date-fns';
 
 const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, setStartDate }) => {
   const [includeTimes, setIncludeTimes] = useState([])
   // fetch including times
   const fetchIncludeTimes = async (stylist, duration, date) => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/servers/${stylist}/availableTimes?duration=${duration}&date=${moment(date).format("DD-MM-YYYY")}`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/servers/${stylist}/availableTimes?duration=${duration}&date=${moment(parseISO(date)).format("DD-MM-YYYY")}`)
       const data = await response.json()
       console.log(moment(date).format("DD-MM-YYYY"));
       console.log(moment(date));
