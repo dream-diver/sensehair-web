@@ -35,9 +35,8 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
     }
     getIncludeTimes()
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [startDate])
 
-  console.log(includeTimes)
   return (
     <div className="floating-window">
       <div className="floating-window-header">

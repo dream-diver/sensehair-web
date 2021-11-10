@@ -7,17 +7,53 @@ const FloatingWindowAuth = ({ step, show, setShow, nextStep, skipStep = () => { 
   const [state, setState] = useContext(GlobalContext)
   const [isLogin, setIsLogin] = useState(true)
   const [formData, setSetFromData] = useState({
+    name: "",
     email: "",
     password: "",
     phone: ""
   })
   const formToast = useRef({
+    name: null,
     email: null,
     validMail: null,
     password: null,
-    login: null,
-    current: null
+    login: null
   })
+
+  const login = async (bodyData) => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/login`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(bodyData)
+      })
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
+  const register = async (bodyData) => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/register`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          "Accept": "application/json"
+        },
+        body: JSON.stringify(bodyData)
+      })
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
+
   const onSignup = async (e) => {
     e.preventDefault()
     //Validation
@@ -42,56 +78,42 @@ const FloatingWindowAuth = ({ step, show, setShow, nextStep, skipStep = () => { 
       return
     }
 
-    // Login
-    const users = state.users
-    const user = users.find(user => user.email === formData.email)
-    if (user) {
-      if (!toast.isActive(formToast.current.account)) {
-        formToast.current.account = toast.warn("You have already an account with this email")
-      }
+    const bodyData = {
+      name: formData.name,
+      email: formData.email,
+      password: formData.password,
+      phone: formData.phone,
+    }
+    const loginData = await register(bodyData)
+
+    if (loginData.token) {
+      setSetFromData({
+        ...formData,
+        name: "",
+        email: "",
+        password: "",
+        phone: ""
+      })
+      localStorage.setItem('login', "true")
+      localStorage.setItem('token', loginData.token)
+      localStorage.setItem('user', JSON.stringify(loginData.user.data))
+      setState({
+        ...state, "auth": {
+          "isLogin": true,
+          "user": { ...loginData.user.data },
+          "token": loginData.token
+        }
+      })
+      nextStep()
     } else {
-      try {
-        const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`, {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-            "Accept": "application/json"
-          },
-          body: JSON.stringify({ id: users.length + 1, ...formData })
-        })
-        const data = await res.json()
-        if (data) {
-          // Login
-          setSetFromData({
-            username: "",
-            password: ""
-          })
-          localStorage.setItem('login', "true")
-          localStorage.setItem('token', "demo_token")
-          localStorage.setItem('user', JSON.stringify({ ...data }))
-          setState({
-            ...state, "auth": {
-              "isLogin": true,
-              "user": { ...data },
-              "token": "demo_token"
-            }
-          })
-        } else {
-          if (!toast.isActive(formToast.current.fetch)) {
-            formToast.current.fetch = toast.error("Something went wrong. Please try again")
-          }
-        }
-      } catch (error) {
-        if (!toast.isActive(formToast.current.fetch)) {
-          formToast.current.fetch = toast.error(error.message)
-        }
-        setState({ ...state, "messages": [...state.messages, { "type": "error", "body": "Game Data Fetching Error", "desc": error.message }] })
-        return null
+      if (!toast.isActive(formToast.current.login)) {
+        formToast.current.login = toast.error("Email already taken")
       }
     }
+
   }
 
-  const onLogin = (e) => {
+  const onLogin = async (e) => {
     e.preventDefault()
     //Validation
     if (!formData.email) {
@@ -117,34 +139,32 @@ const FloatingWindowAuth = ({ step, show, setShow, nextStep, skipStep = () => { 
       return
     }
 
-    const users = state.users
-    const user = users.find(user => user.email === formData.email)
-    if (!user) {
+    const bodyData = {
+      email: formData.email,
+      password: formData.password,
+    }
+    const loginData = await login(bodyData)
+
+    if (loginData.token) {
+      setSetFromData({
+        ...formData,
+        email: "",
+        password: ""
+      })
+      localStorage.setItem('login', "true")
+      localStorage.setItem('token', loginData.token)
+      localStorage.setItem('user', JSON.stringify(loginData.user.data))
+      setState({
+        ...state, "auth": {
+          "isLogin": true,
+          "user": { ...loginData.user.data },
+          "token": loginData.token
+        }
+      })
+      nextStep()
+    } else {
       if (!toast.isActive(formToast.current.login)) {
         formToast.current.login = toast.error("The username or password you have entered is wrong")
-      }
-    } else {
-      if (user.password !== formData.password) {
-        if (!toast.isActive(formToast.current.login)) {
-          formToast.current.login = toast.error("The username or password you have entered is wrong")
-        }
-      } else {
-        setSetFromData({
-          ...formData,
-          email: "",
-          password: ""
-        })
-        localStorage.setItem('login', "true")
-        localStorage.setItem('token', "demo_token")
-        localStorage.setItem('user', JSON.stringify({ ...user }))
-        setState({
-          ...state, "auth": {
-            "isLogin": true,
-            "user": { ...user },
-            "token": "demo_token"
-          }
-        })
-        nextStep()
       }
     }
   }
@@ -157,18 +177,24 @@ const FloatingWindowAuth = ({ step, show, setShow, nextStep, skipStep = () => { 
       </div>
       <div className="floating-window-body">
         <form>
+          { !isLogin &&
+            <div className="mb-3">
+              <label htmlFor="inputName" className="form-label">Name</label>
+              <input type="text" name="name" className="form-control" id="inputName" placeholder="Enter your phone number" value={ formData.name } onChange={ (e) => setSetFromData({ ...formData, name: e.target.value }) } />
+            </div>
+          }
           <div className="mb-3">
             <label htmlFor="inputEmail" className="form-label">Email</label>
-            <input type="email" name="email" className="form-control" id="inputEmail" placeholder="Enter your email" onChange={ (e) => setSetFromData({ ...formData, email: e.target.value }) } />
+            <input type="email" name="email" className="form-control" id="inputEmail" placeholder="Enter your email" value={ formData.email } onChange={ (e) => setSetFromData({ ...formData, email: e.target.value }) } />
           </div>
           <div className="mb-3">
             <label htmlFor="inputPassword" className="form-label">Password</label>
-            <input type="password" name="password" className="form-control" id="inputPassword" placeholder="Enter your password" onChange={ (e) => setSetFromData({ ...formData, password: e.target.value }) } />
+            <input type="password" name="password" className="form-control" id="inputPassword" placeholder="Enter your password" value={ formData.password } onChange={ (e) => setSetFromData({ ...formData, password: e.target.value }) } />
           </div>
           { !isLogin &&
             <div className="mb-3">
               <label htmlFor="inputPhone" className="form-label">Phone (Optional)</label>
-              <input type="text" name="phone" className="form-control" id="inputPhone" placeholder="Enter your phone number" onChange={ (e) => setSetFromData({ ...formData, phone: e.target.value }) } />
+              <input type="text" name="phone" className="form-control" id="inputPhone" placeholder="Enter your phone number" value={ formData.phone } onChange={ (e) => setSetFromData({ ...formData, phone: e.target.value }) } />
             </div>
           }
           { isLogin ?

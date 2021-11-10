@@ -130,6 +130,7 @@ const BookingSystem = () => {
     setChecked(-1)
   }
   console.log(steps);
+  console.log(state);
 
   return (
     <div id="bookingSystem">

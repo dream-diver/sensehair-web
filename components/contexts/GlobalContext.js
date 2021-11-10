@@ -63,7 +63,13 @@ export const GlobalProvider = (props) => {
       const optionsFromServer = await fetchOptions()
       if (optionsFromServer && stylistsFromServer) {
         setState(prevState => {
-          return { ...prevState, "options": optionsFromServer, "stylists": stylistsFromServer, "loading": false };
+          return {
+            ...prevState, "options": optionsFromServer, "stylists": stylistsFromServer, "loading": false, "auth": {
+              "isLogin": localStorage.getItem("login") === "true" ? true : false,
+              "user": JSON.parse(localStorage.getItem("user")),
+              "token": localStorage.getItem("token")
+            }
+          };
         })
       } else {
         setState(prevState => {
