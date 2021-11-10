@@ -1,19 +1,20 @@
 import ReactDatePicker from "react-datepicker"
+import { BiRightArrowAlt } from "react-icons/bi"
+import { useEffect, useState, useContext } from "react";
+import format from "date-fns/format";
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
-import { BiRightArrowAlt } from "react-icons/bi"
-import { useEffect, useState } from "react";
-import moment, { parseISO } from 'date-fns';
+import setSeconds from "date-fns/setSeconds";
+import { GlobalContext } from '../contexts/GlobalContext'
 
 const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, setStartDate }) => {
+  const [state] = useContext(GlobalContext)
   const [includeTimes, setIncludeTimes] = useState([])
   // fetch including times
   const fetchIncludeTimes = async (stylist, duration, date) => {
     try {
-      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/servers/${stylist}/availableTimes?duration=${duration}&date=${moment(parseISO(date)).format("DD-MM-YYYY")}`)
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/servers/${stylist}/availableTimes?duration=${duration}&date=${format(startDate, "dd-MM-yyyy")}`)
       const data = await response.json()
-      console.log(moment(date).format("DD-MM-YYYY"));
-      console.log(moment(date));
       return data
     } catch (error) {
       console.log(error.message)
@@ -22,9 +23,15 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
 
   useEffect(() => {
     const getIncludeTimes = async () => {
-      const includeTimesFromServer = await fetchIncludeTimes(steps.step4.value, 120, startDate)
-      console.log("includeTimesFromServer", includeTimesFromServer);
-      setIncludeTimes(includeTimesFromServer)
+      const selected = steps.step3.value
+      const servicesTotalDuration = state.services.filter(({ id }) => selected.includes(id)).map(services => services.duration).reduce((a, b) => a + b, 0)
+      const includeTimesFromServer = await fetchIncludeTimes(steps.step4.value, servicesTotalDuration, startDate)
+      const convertedIncludeTimesFromServer = includeTimesFromServer.map(time => {
+        const regExTime = /([0-9]{1,2}):([0-9]{2})/
+        const regExTimeArr = regExTime.exec(time)
+        return setHours(setMinutes(setSeconds(new Date(), 0), regExTimeArr[2]), regExTimeArr[1])
+      })
+      setIncludeTimes(convertedIncludeTimesFromServer)
     }
     getIncludeTimes()
     // eslint-disable-next-line react-hooks/exhaustive-deps

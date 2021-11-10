@@ -4,7 +4,7 @@ import { GlobalContext } from "../contexts/GlobalContext";
 import FormCheck from "./FormCheck"
 
 const FloatingWindow = ({ steps, setSteps, step, show, setShow, checked, setChecked, nextStep, multiChecked = [], setMultiChecked = () => { } }) => {
-  const [state] = useContext(GlobalContext)
+  const [state, setState] = useContext(GlobalContext)
   const [services, setServices] = useState([])
 
   const options = state.options;
@@ -37,6 +37,7 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, checked, setChec
       const hairType = optionHairType[steps.step2.value] ? optionHairType[steps.step2.value].name : ""
       const data = await fetchServices(hairSize, hairType)
       setServices(data.data.map(service => service.data))
+      setState({ ...state, services: data.data.map(service => service.data) })
     }
     getData()
   }, [])

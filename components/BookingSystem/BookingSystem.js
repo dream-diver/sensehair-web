@@ -15,7 +15,6 @@ const BookingSystem = () => {
   const [checked, setChecked] = useState(-1)
   const [multiChecked, setMultiChecked] = useState([])
   const [startDate, setStartDate] = useState(setHours(setMinutes(setSeconds(new Date(), 0), 0), 10));
-  console.log(startDate);
   const [steps, setSteps] = useState({
     "step1": {
       id: 1,

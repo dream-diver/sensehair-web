@@ -802,10 +802,10 @@
   "resolved" "https://registry.npmjs.org/data-uri-to-buffer/-/data-uri-to-buffer-3.0.1.tgz"
   "version" "3.0.1"
 
-"date-fns@^2.0.1":
-  "integrity" "sha512-6ujwvwgPID6zbI0o7UbURi2vlLDR9uP26+tW6Lg+Ji3w7dd0i3DOcjcClLjLPranT60SSEFBwdSyYwn/ZkPIuw=="
-  "resolved" "https://registry.npmjs.org/date-fns/-/date-fns-2.24.0.tgz"
-  "version" "2.24.0"
+"date-fns@^2.0.1", "date-fns@^2.25.0":
+  "integrity" "sha512-ovYRFnTrbGPD4nqaEqescPEv1mNwvt+UTqI3Ay9SzNtey9NZnYu6E2qCcBBgJ6/2VF1zGGygpyTDITqpQQ5e+w=="
+  "resolved" "https://registry.npmjs.org/date-fns/-/date-fns-2.25.0.tgz"
+  "version" "2.25.0"
 
 "debug@^2.6.9":
   "integrity" "sha512-bC7ElrdJaJnPbAP+1EotYvqZsb3ecl5wi6Bfi6BJTUcNowp6cvspg0jXznRTKDjm/E7AdgFBVeAPVMNcKGsHMA=="
@@ -1951,11 +1951,6 @@
   "integrity" "sha512-FM9nNUYrRBAELZQT3xeZQ7fmMOBg6nWNmJKTcgsJeaLstP/UODVpGsr5OhXhhXg6f+qtJ8uiZ+PUxkDWcgIXLw=="
   "resolved" "https://registry.npmjs.org/minimist/-/minimist-1.2.5.tgz"
   "version" "1.2.5"
-
-"moment@^2.29.1":
-  "integrity" "sha512-kHmoybcPV8Sqy59DwNDY3Jefr64lK/by/da0ViFcuA4DH0vQg5Q6Ze5VimxkfQNSC+Mls/Kx53s7TjP1RhFEDQ=="
-  "resolved" "https://registry.npmjs.org/moment/-/moment-2.29.1.tgz"
-  "version" "2.29.1"
 
 "ms@^2.1.1":
   "integrity" "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="
