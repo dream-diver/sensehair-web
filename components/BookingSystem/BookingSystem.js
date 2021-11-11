@@ -2,9 +2,10 @@ import { useContext, useState } from 'react'
 import { BiCalendarCheck } from 'react-icons/bi'
 import { GlobalContext } from '../contexts/GlobalContext'
 import FloatingWindow from './FloatingWindow'
+import FloatingWindowServices from './FloatingWindowServices'
 import FloatingWindowDate from './FloatingWindowDate'
 import FloatingWindowAuth from './FloatingWindowAuth'
-import FloatingWindowServices from './FloatingWindowServices'
+import FloatingWindowOverview from './FloatingWindowOverview'
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import setSeconds from "date-fns/setSeconds";
@@ -54,7 +55,12 @@ const BookingSystem = () => {
       id: 6,
       active: false,
       title: "Login",
-      value: 0
+      value: false
+    },
+    "step7": {
+      id: 7,
+      active: false,
+      title: "Booking Overview",
     },
 
   })
@@ -129,6 +135,13 @@ const BookingSystem = () => {
     })
     setChecked(-1)
   }
+  const seventhStep = () => {
+    setSteps({
+      ...steps,
+      "step6": { ...steps.step6, active: false, value: true },
+      "step7": { ...steps.step7, active: true },
+    })
+  }
   console.log(steps);
   console.log(state);
 
@@ -155,7 +168,10 @@ const BookingSystem = () => {
             <FloatingWindowDate steps={ steps } step={ steps.step5 } show={ show } setShow={ setShow } nextStep={ sixthStep } startDate={ startDate } setStartDate={ setStartDate } />
           }
           { steps.step6.active &&
-            <FloatingWindowAuth step={ steps.step6 } show={ show } setShow={ setShow } nextStep={ sixthStep } />
+            <FloatingWindowAuth step={ steps.step6 } show={ show } setShow={ setShow } nextStep={ seventhStep } />
+          }
+          { steps.step7.active &&
+            <FloatingWindowOverview steps={ steps } step={ steps.step7 } show={ show } setShow={ setShow } nextStep={ seventhStep } />
           }
         </>
       }

@@ -17,9 +17,6 @@ const FloatingWindow = ({ step, options, show, setShow, checked, setChecked, nex
       </div>
       <div className="floating-window-body">
         <form className={ step.id === 1 || step.id === 2 || step.id === 4 ? "floating-window-form floating-window-form-grid" : "floating-window-form floating-window-form-list" }>
-          { step.id === 4 &&
-            <FormCheck data={ stylist } multiSelect={ step.multiSelect } checked={ checked } setChecked={ setChecked } id={ -1 } step={ step } />
-          }
           { options.map((option, index) => (
             <FormCheck id={ step.id === 4 ? option.id : index } data={ option } multiSelect={ step.multiSelect } key={ index } checked={ checked } setChecked={ setChecked } step={ step } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
           )) }

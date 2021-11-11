@@ -270,14 +270,6 @@ button:focus:not(:focus-visible) {
   outline: none;
 }
 
-/* .react-datepicker__time-container
-  .react-datepicker__time
-  .react-datepicker__time-box
-  ul.react-datepicker__time-list
-  li.react-datepicker__time-list-item--disabled {
-  display: none;
-} */
-
 .react-datepicker__time-container .react-datepicker__time {
   background: #f4f4f4;
   border-radius: 0.25rem;
@@ -315,7 +307,7 @@ button:focus:not(:focus-visible) {
   .react-datepicker__time
   .react-datepicker__time-box
   ul.react-datepicker__time-list {
-  height: calc(29.844px + 3px + 195px + (1.7rem / 2));
+  height: calc(195px + (1.7rem / 2));
 }
 /* scrollbar */
 /* width */
