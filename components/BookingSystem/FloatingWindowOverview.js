@@ -1,7 +1,17 @@
+import { useContext } from 'react'
+import { GlobalContext } from '../contexts/GlobalContext'
 import { BiRightArrowAlt } from "react-icons/bi"
-import FormCheck from "./FormCheck"
 
 const FloatingWindow = ({ steps, step, show, setShow, nextStep }) => {
+  const [state] = useContext(GlobalContext)
+
+  // Options
+  const options = state.options;
+  const optionHairSize = options.find(option => option.name === "Hair Size").option
+  const optionHairType = options.find(option => option.name === "Hair Type").option
+
+  const selectedServicesId = steps.step3.value
+  const selectedServices = state.services.filter(({ id }) => selectedServicesId.includes(id))
 
   return (
     <div className="floating-window">
@@ -11,16 +21,20 @@ const FloatingWindow = ({ steps, step, show, setShow, nextStep }) => {
       </div>
       <div className="floating-window-body">
         <p>
-          <strong>Hair Size: </strong>{ steps.step1.value }
+          <strong>Hair Size: </strong>{ optionHairSize[steps.step1.value].name }
         </p>
         { steps.step2.value !== -1 &&
           <p>
-            <strong>Hair Type: </strong>{ steps.step2.value }
+            <strong>Hair Type: </strong>{ optionHairType[steps.step2.value].name }
           </p>
         }
         <p>
-          <strong>Services: </strong>{ steps.step3.value.map(service => (<>
-            { service }
+          <strong>Services: </strong>
+          <span>
+
+          </span>
+          { selectedServices.map((service, index) => (<>
+            { service.name }
           </>)
           ) }
         </p>

@@ -23,8 +23,8 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
 
   useEffect(() => {
     const getIncludeTimes = async () => {
-      const selected = steps.step3.value
-      const servicesTotalDuration = state.services.filter(({ id }) => selected.includes(id)).map(services => services.duration).reduce((a, b) => a + b, 0)
+      const selectedServices = steps.step3.value
+      const servicesTotalDuration = state.services.filter(({ id }) => selectedServices.includes(id)).map(services => services.duration).reduce((a, b) => a + b, 0)
       const includeTimesFromServer = await fetchIncludeTimes(steps.step4.value, servicesTotalDuration, startDate)
       const convertedIncludeTimesFromServer = includeTimesFromServer.map(time => {
         const regExTime = /([0-9]{1,2}):([0-9]{2})/
