@@ -10,6 +10,11 @@
   border-color: hsl(220, 10%, 85%) !important;
 }
 
+.table-light th,
+.table-light td {
+  border-color: #dfe0e1 !important;
+}
+
 body {
   background: #f8f8f8;
 }

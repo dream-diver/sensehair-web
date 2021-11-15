@@ -9,6 +9,7 @@ import FloatingWindowOverview from './FloatingWindowOverview'
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import setSeconds from "date-fns/setSeconds";
+import format from "date-fns/format";
 
 const BookingSystem = () => {
   const [state, setState] = useContext(GlobalContext)
@@ -61,6 +62,8 @@ const BookingSystem = () => {
       id: 7,
       active: false,
       title: "Booking Overview",
+      value: 0.0,
+      couponCode: ""
     },
 
   })
@@ -82,6 +85,31 @@ const BookingSystem = () => {
     } catch (error) {
       console.log(error.message)
       return null
+    }
+  }
+
+  const createBooking = async (date, charge, duration, customerId, stylistId, services, promocode = '') => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/bookings`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${state.auth.token}`
+        },
+        body: JSON.stringify({
+          "booking_time": date,
+          "customer_id": customerId,
+          "server_id": stylistId,
+          charge,
+          duration,
+          services,
+          promocode
+        })
+      })
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.log(error.message)
     }
   }
 
@@ -128,19 +156,45 @@ const BookingSystem = () => {
     setChecked(-1)
   }
   const sixthStep = () => {
-    setSteps({
-      ...steps,
-      "step5": { ...steps.step5, active: false, value: startDate },
-      "step6": { ...steps.step6, active: true },
-    })
+    if (state.auth.isLogin) {
+      setSteps({
+        ...steps,
+        "step5": { ...steps.step5, active: false, value: startDate },
+        "step7": { ...steps.step7, active: true },
+      })
+    } else {
+      setSteps({
+        ...steps,
+        "step5": { ...steps.step5, active: false, value: startDate },
+        "step6": { ...steps.step6, active: true },
+      })
+    }
     setChecked(-1)
   }
   const seventhStep = () => {
+
     setSteps({
       ...steps,
       "step6": { ...steps.step6, active: false, value: true },
       "step7": { ...steps.step7, active: true },
     })
+  }
+
+  const eighthStep = async () => {
+    const date = format(steps.step5.value, "yyyy-MM-dd HH:mm")
+    const charge = steps.step7.value
+    console.log("charge", charge);
+    console.log(typeof charge);
+    const services = steps.step3.value
+    const duration = state.services.filter(({ id }) => services.includes(id)).map(services => services.duration).reduce((a, b) => a + b, 0)
+    const customerId = state.auth.user.id
+    const stylistId = steps.step4.value
+    const promocode = steps.step7.couponCode
+
+    const bookingFromServer = await createBooking(date, charge, duration, customerId, stylistId, services, promocode)
+    if (bookingFromServer) {
+      console.log("ok");
+    }
   }
   console.log(steps);
   console.log(state);
@@ -171,7 +225,7 @@ const BookingSystem = () => {
             <FloatingWindowAuth step={ steps.step6 } show={ show } setShow={ setShow } nextStep={ seventhStep } />
           }
           { steps.step7.active &&
-            <FloatingWindowOverview steps={ steps } step={ steps.step7 } show={ show } setShow={ setShow } nextStep={ seventhStep } />
+            <FloatingWindowOverview steps={ steps } setSteps={ setSteps } step={ steps.step7 } show={ show } setShow={ setShow } nextStep={ eighthStep } />
           }
         </>
       }

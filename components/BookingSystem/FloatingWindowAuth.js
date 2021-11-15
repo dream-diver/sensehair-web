@@ -1,5 +1,5 @@
-import { useContext, useEffect, useRef, useState } from "react"
-import { BiRightArrowAlt, BiShare } from "react-icons/bi"
+import { useContext, useRef, useState } from "react"
+import { BiRightArrowAlt } from "react-icons/bi"
 import { GlobalContext } from "../contexts/GlobalContext"
 import { toast } from "react-toastify"
 
@@ -168,13 +168,6 @@ const FloatingWindowAuth = ({ step, show, setShow, nextStep, skipStep = () => { 
       }
     }
   }
-
-  useEffect(() => {
-    if (state.auth.isLogin) {
-      nextStep()
-    }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
 
   return (
     <div className="floating-window">
