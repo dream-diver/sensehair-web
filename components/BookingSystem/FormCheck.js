@@ -23,9 +23,9 @@ const FormCheck = ({ id, data, checked, setChecked, multiSelect, step, multiChec
           }
         </div>
       }
-      { step.id === 4 && data.image &&
+      { step.id === 4 && data.avatar_path &&
         <div className="form-check-img user-img">
-          <Image src={ data.image } alt={ data.name } layout="fill" objectFit="contain" />
+          <Image src={ data.avatar_path } alt={ data.name } layout="fill" objectFit="contain" />
         </div>
       }
       <input className="form-check-input" type={ multiSelect ? "checkbox" : "radio" } name="exampleRadios" value="option1" checked={ !multiSelect ? checked === id : multiChecked.indexOf(id) !== -1 } onChange={ isChecked } id={ id } />

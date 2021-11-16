@@ -59,7 +59,7 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, checked, setChec
         </form>
       </div>
       <div className="floating-window-footer">
-        <a className="btn-next btn btn-dark" onClick={ nextStep }>Next<BiRightArrowAlt className="ms-1" /></a>
+        <a className={ `btn-next btn btn-dark ${multiChecked.length === 0 && "disabled"}` } onClick={ nextStep }>Next<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>
   )

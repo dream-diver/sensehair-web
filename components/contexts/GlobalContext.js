@@ -22,18 +22,6 @@ export const GlobalProvider = (props) => {
   const [state, setState] = useState(initialState);
   useEffect(() => {
     let messageArray = []
-    // Fetch Users
-    // const fetchUsers = async () => {
-    //   try {
-    //     const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/users`)
-    //     const data = await res.json()
-    //     return data
-    //   } catch (error) {
-    //     toast.error(error.message)
-    //     messageArray = [...messageArray, { "type": "error", "body": "Users Data Fetching Error", "desc": error.message }]
-    //     return null
-    //   }
-    // }
 
     // read a json file from local
     const fetchOptions = () => {
@@ -56,12 +44,12 @@ export const GlobalProvider = (props) => {
     const getData = async () => {
       const artDirector = await fetchStylists("art_director ")
       const stylist = await fetchStylists("stylist")
-      const stylistsFromServer = {
-        artDirector: artDirector.data.map(user => user.data),
-        stylist: stylist.data.map(user => user.data)
-      }
       const optionsFromServer = await fetchOptions()
-      if (optionsFromServer && stylistsFromServer) {
+      if (optionsFromServer && stylist) {
+        const stylistsFromServer = {
+          artDirector: artDirector.data.map(user => user.data),
+          stylist: stylist.data.map(user => user.data)
+        }
         setState(prevState => {
           return {
             ...prevState, "options": optionsFromServer, "stylists": stylistsFromServer, "loading": false, "auth": {
