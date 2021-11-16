@@ -6,6 +6,7 @@ import FloatingWindowServices from './FloatingWindowServices'
 import FloatingWindowDate from './FloatingWindowDate'
 import FloatingWindowAuth from './FloatingWindowAuth'
 import FloatingWindowOverview from './FloatingWindowOverview'
+import FloatingWindowPayment from './FloatingWindowPayment'
 import setHours from "date-fns/setHours";
 import setMinutes from "date-fns/setMinutes";
 import setSeconds from "date-fns/setSeconds";
@@ -17,6 +18,7 @@ const BookingSystem = () => {
   const [checked, setChecked] = useState(-1)
   const [multiChecked, setMultiChecked] = useState([])
   const [startDate, setStartDate] = useState(setHours(setMinutes(setSeconds(new Date(), 0), 0), 10));
+
   const [steps, setSteps] = useState({
     "step1": {
       id: 1,
@@ -63,7 +65,13 @@ const BookingSystem = () => {
       active: false,
       title: "Booking Overview",
       value: 0.0,
-      couponCode: ""
+      couponCode: "",
+      booking: {}
+    },
+    "step8": {
+      id: 8,
+      active: false,
+      title: "Payment",
     },
 
   })
@@ -71,10 +79,6 @@ const BookingSystem = () => {
   const options = state.options;
   const optionHairSize = options.find(option => option.name === "Hair Size").option
   const optionHairType = options.find(option => option.name === "Hair Type").option
-  // Stylists
-  const stylists = state.users.filter(user => user.roleId === 2);
-  const optionStylists = stylists.map(stylist => stylist.name);
-
 
   // fetch Services
   const fetchServices = async (hairSize, hairType) => {
@@ -110,6 +114,7 @@ const BookingSystem = () => {
       return data
     } catch (error) {
       console.log(error.message)
+      return null
     }
   }
 
@@ -179,12 +184,9 @@ const BookingSystem = () => {
       "step7": { ...steps.step7, active: true },
     })
   }
-
   const eighthStep = async () => {
     const date = format(steps.step5.value, "yyyy-MM-dd HH:mm")
     const charge = steps.step7.value
-    console.log("charge", charge);
-    console.log(typeof charge);
     const services = steps.step3.value
     const duration = state.services.filter(({ id }) => services.includes(id)).map(services => services.duration).reduce((a, b) => a + b, 0)
     const customerId = state.auth.user.id
@@ -192,8 +194,12 @@ const BookingSystem = () => {
     const promocode = steps.step7.couponCode
 
     const bookingFromServer = await createBooking(date, charge, duration, customerId, stylistId, services, promocode)
-    if (bookingFromServer) {
-      console.log("ok");
+    if (bookingFromServer.booking) {
+      setSteps({
+        ...steps,
+        "step7": { ...steps.step7, active: false, booking: bookingFromServer.booking.data },
+        "step8": { ...steps.step8, active: true }
+      })
     }
   }
   console.log(steps);
@@ -226,6 +232,9 @@ const BookingSystem = () => {
           }
           { steps.step7.active &&
             <FloatingWindowOverview steps={ steps } setSteps={ setSteps } step={ steps.step7 } show={ show } setShow={ setShow } nextStep={ eighthStep } />
+          }
+          { steps.step8.active &&
+            <FloatingWindowPayment steps={ steps } setSteps={ setSteps } step={ steps.step8 } show={ show } setShow={ setShow } nextStep={ eighthStep } />
           }
         </>
       }

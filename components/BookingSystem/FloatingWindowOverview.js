@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
 import { BiRightArrowAlt } from "react-icons/bi"
 
@@ -36,21 +36,28 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
     if (codeFromServer.data !== undefined) {
       const discount = codeFromServer.data.discount
       setDiscountPrice(((selectedServicesPrice * discount) / 100).toFixed(2))
+      setSteps({
+        ...steps,
+        "step7": {
+          ...steps.step7,
+          couponCode
+        },
+      })
       setCouponCode('')
     }
   }
 
-  const onSubmit = () => {
+  useEffect(() => {
     setSteps({
       ...steps,
       "step7": {
         ...steps.step7,
-        value: selectedServicesPrice,
-        couponCode
+        value: parseFloat(selectedServicesPrice),
       },
     })
-    nextStep()
-  }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
+
 
   return (
     <div className="floating-window">
@@ -132,7 +139,7 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
 
       </div>
       <div className="floating-window-footer">
-        <a className="btn-next btn btn-dark" onClick={ onSubmit }>Next<BiRightArrowAlt className="ms-1" /></a>
+        <a className="btn-next btn btn-dark" onClick={ nextStep }>Next<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>
   )
