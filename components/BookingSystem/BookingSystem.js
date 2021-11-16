@@ -72,6 +72,7 @@ const BookingSystem = () => {
       id: 8,
       active: false,
       title: "Payment",
+      paymentIntent: "",
     },
 
   })
@@ -80,7 +81,7 @@ const BookingSystem = () => {
   const optionHairSize = options.find(option => option.name === "Hair Size").option
   const optionHairType = options.find(option => option.name === "Hair Type").option
 
-  // fetch Services
+  // Fetch Services
   const fetchServices = async (hairSize, hairType) => {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/services?hair_size=${hairSize}&hair_type=${hairType}&limit=all`)
@@ -92,6 +93,7 @@ const BookingSystem = () => {
     }
   }
 
+  // Create Booking
   const createBooking = async (date, charge, duration, customerId, stylistId, services, promocode = '') => {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/bookings`, {
@@ -111,6 +113,41 @@ const BookingSystem = () => {
         })
       })
       const data = await response.json()
+      return data
+    } catch (error) {
+      console.log(error.message)
+      return null
+    }
+  }
+
+  // Get Text From Stream
+  const getTextFromStream = async (readableStream) => {
+    let reader = readableStream.getReader();
+    let utf8Decoder = new TextDecoder();
+    let nextChunk;
+
+    let resultStr = '';
+
+    while (!(nextChunk = await reader.read()).done) {
+      let partialData = nextChunk.value;
+      resultStr += utf8Decoder.decode(partialData);
+    }
+
+    return resultStr;
+  }
+
+  // Fetch Payment Intent
+  const fetchPaymentIntent = async (bookingId, amount) => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/bookings/${bookingId}/getPaymentIntent?amount=${amount}`, {
+        method: 'GET',
+        headers: {
+          'Content-Type': 'application/json',
+          'Accept': 'application/json'
+        }
+      })
+      const data = await getTextFromStream(response.body)
+      console.log(data);
       return data
     } catch (error) {
       console.log(error.message)
@@ -195,11 +232,23 @@ const BookingSystem = () => {
 
     const bookingFromServer = await createBooking(date, charge, duration, customerId, stylistId, services, promocode)
     if (bookingFromServer.booking) {
-      setSteps({
-        ...steps,
-        "step7": { ...steps.step7, active: false, booking: bookingFromServer.booking.data },
-        "step8": { ...steps.step8, active: true }
-      })
+
+      const bookingId = bookingFromServer.booking.data.id
+      const amount = bookingFromServer.booking.data.charge
+      // Get Payment Intent From Server
+      const paymentIntentFromServer = await fetchPaymentIntent(bookingId, amount)
+      // Set Payment Intent
+      if (typeof paymentIntentFromServer === 'string' && paymentIntentFromServer.startsWith('pi_')) {
+        setSteps({
+          ...steps,
+          "step7": { ...steps.step7, active: false, booking: bookingFromServer.booking.data },
+          "step8": { ...steps.step8, paymentIntent: paymentIntentFromServer, active: true }
+        })
+      } else {
+        console.log('Payment Intent Error')
+      }
+    } else {
+      console.log('Booking Error')
     }
   }
   console.log(steps);
