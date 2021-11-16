@@ -8,7 +8,7 @@ export default function Home() {
         <meta name="description" content="Sense Hair" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1>Payment Successful</h1>
+      <h1 className="text-center mt-5">Payment Successful</h1>
     </div>
   )
 }
