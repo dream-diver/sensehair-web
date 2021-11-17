@@ -232,7 +232,7 @@ button,
 /* #scroll-to-top */
 #scroll-to-top {
   position: fixed;
-  right: 4vh;
+  left: 4vh;
   bottom: 4vh;
   z-index: 100;
   opacity: 0;
