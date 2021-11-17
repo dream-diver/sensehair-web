@@ -4,6 +4,9 @@ import { useContext } from 'react'
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import { GlobalContext } from './contexts/GlobalContext'
 
+import imageLogoBig from '../public/images/logo2x.png'
+import imageSchedule from '../public/images/schedule.png'
+
 const Footer = () => {
   const [state] = useContext(GlobalContext)
   return (
@@ -12,7 +15,7 @@ const Footer = () => {
         <div className="container">
           <div className="row">
             <div className="col-md-6 col-lg-3 mb-5">
-              <img loading="lazy" src="./images/logo2x.png" alt="logo2x" className="mb-3" width="60%" />
+              <img loading="lazy" src={ imageLogoBig.src } alt="logo2x" className="mb-3" width="60%" />
               <p className="mb-4">{ state.text.footerBody }</p>
               <ul className="social-nav navbar-nav flex-row justify-content-center justify-content-md-start mb-4">
                 <li className="nav-item">
@@ -31,7 +34,7 @@ const Footer = () => {
               <div className="d-flex justify-content-center justify-content-md-start">
                 <button className="btn-book-now btn btn-sm btn-primary rounded-0 font-weight-900">
                   <div className="d-inline-flex mw-100 h-auto">
-                    <img loading="lazy" src="./images/schedule.png" height="42" alt="schedule" />
+                    <img loading="lazy" src={ imageSchedule.src } height="42" alt="schedule" />
                   </div>
                   <span>{ state.text.bookNow }</span>
                 </button>
@@ -40,22 +43,22 @@ const Footer = () => {
             <div className="col-md-6 col-lg-3 mb-3">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className="nav-link text-white active" href="./index.html">Home</a>
+                  <a className="nav-link text-white active" href="./">Home</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./about.html">About Us</a>
+                  <a className="nav-link text-white" href="./about">About Us</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./services.html">Services</a>
+                  <a className="nav-link text-white" href="./services">Services</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./lookbook.html">Lookbook</a>
+                  <a className="nav-link text-white" href="./lookbook">Lookbook</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./career.html">Career</a>
+                  <a className="nav-link text-white" href="./career">Career</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./contact.html">Contact Us</a>
+                  <a className="nav-link text-white" href="./contact">Contact Us</a>
                 </li>
               </ul>
             </div>

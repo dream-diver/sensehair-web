@@ -25,7 +25,8 @@ export const GlobalProvider = (props) => {
       setState(prevState => {
         return { ...prevState, locale, text };
       })
-      router.push(router.pathname, router.asPath, { locale });
+      const { pathname, asPath, query } = router
+      router.push({ pathname, query }, asPath, { locale })
     };
 
 

@@ -6,6 +6,8 @@ import { FaPhoneAlt } from "react-icons/fa";
 import LanguageDropdown from "./LanguageDropdown";
 import { GlobalContext } from "./contexts/GlobalContext";
 
+import imageLogoBig from '../public/images/logo2x.png';
+
 const Menu = ({ isSlider }) => {
   const [state] = useContext(GlobalContext)
   const mainMenuRef = useRef(null)
@@ -43,7 +45,7 @@ const Menu = ({ isSlider }) => {
         </button>
         <Link href="/">
           <a className="navbar-brand me-0">
-            <img loading="lazy" src="./images/logo2x.png" alt="logo2x" width="121px" className="navbar-brand-img d-inline-block align-text-top" ref={ navbarBrandImgRef } />
+            <img loading="lazy" src={ imageLogoBig.src } alt="logo2x" width="121px" className="navbar-brand-img d-inline-block align-text-top" ref={ navbarBrandImgRef } />
           </a>
         </Link>
 
