@@ -272,7 +272,7 @@ const ApplicationForm = () => {
                     </div>
                   </fieldset>
                   <div className="d-flex justify-content-center w-100">
-                    <button type="submit" className="btn btn-black rounded-0 text-white font-weight-700 px-5">APPLY</button>
+                    <button type="submit" className="btn btn-black rounded-0 text-white font-weight-700 px-5">{ state.text.careerFormButton }</button>
                   </div>
                 </form>
               </div>

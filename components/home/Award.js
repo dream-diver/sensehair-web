@@ -19,11 +19,11 @@ const Award = () => {
   });
 
   const brandImages = [
-    imageBrand1,
     imageBrand2,
-    imageBrand3,
     imageBrand4,
-    imageBrand5
+    imageBrand3,
+    imageBrand5,
+    imageBrand1,
   ]
   return (
     <section id="award" className="bg-black">
