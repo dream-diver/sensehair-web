@@ -10,8 +10,14 @@ import Team from '../components/home/Team'
 import HowWeWork from '../components/HowWeWork'
 import Review from '../components/home/Review'
 import Lookbook from '../components/home/Lookbook'
+import BookingSystem from '../components/BookingSystem/BookingSystem'
+import { Slide, ToastContainer } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+import { useContext } from 'react'
+import { GlobalContext } from '../components/contexts/GlobalContext'
 
 export default function Home() {
+  const [state] = useContext(GlobalContext)
   return (
     <div>
       <Head>
@@ -31,6 +37,28 @@ export default function Home() {
       <Review />
       <Lookbook />
       <Footer />
+      { state.loading ?
+        <button className="btn-floating btn btn-lg btn-dark rounded-circle" disabled>
+          <div className="spinner-border spinner-border-sm text-light" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
+        </button>
+        : <BookingSystem />
+      }
+      <ToastContainer
+        toastClassName="toastifyToastContainer"
+        position="top-right"
+        autoClose={ 5 * 1000 }
+        hideProgressBar
+        newestOnTop
+        closeOnClick
+        rtl={ false }
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        limit={ 5 }
+        transition={ Slide }
+      />
     </div>
   )
 }

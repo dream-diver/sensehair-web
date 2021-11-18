@@ -1,0 +1,54 @@
+[
+  {
+    "id": 1,
+    "name": "Hair Size",
+    "option": [
+      {
+        "name": "Men",
+        "image": "https://i.imgur.com/bKp1dq2.png",
+        "imageLight": "https://i.imgur.com/0lWQ4Yy.png"
+      },
+      {
+        "name": "Women Short Hair",
+        "image": "https://i.imgur.com/nkXm51q.png",
+        "imageLight": "https://i.imgur.com/kyWUX8k.png"
+      },
+      {
+        "name": "Women Medium Hair",
+        "image": "https://i.imgur.com/RZx1XRU.png",
+        "imageLight": "https://i.imgur.com/iWSio1g.png"
+      },
+      {
+        "name": "Women Long Hair",
+        "image": "https://i.imgur.com/TudBEeg.png",
+        "imageLight": "https://i.imgur.com/kKumdXJ.png"
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Hair Type",
+    "option": [
+      {
+        "name": "Straight",
+        "image": "https://i.imgur.com/7vCn1yJ.png",
+        "imageLight": "https://i.imgur.com/kIWAVxr.png"
+      },
+      {
+        "name": "Wavy",
+        "image": "https://i.imgur.com/LtIFgcE.png",
+        "imageLight": "https://i.imgur.com/Y0QKgBx.png"
+      },
+      {
+        "name": "Curly",
+        "image": "https://i.imgur.com/Vyqq1C9.png",
+        "imageLight": "https://i.imgur.com/RLNnzyP.png"
+      },
+      {
+        "name": "Coily",
+        "image": "https://i.imgur.com/cI6bg3v.png",
+        "imageLight": "https://i.imgur.com/pxxWlxp.png"
+      }
+    ]
+  }
+]

@@ -1,11 +1,16 @@
 import Script from 'next/script'
 import { GlobalProvider } from "../components/contexts/GlobalContext";
 import AOS from 'aos';
+
 import 'bootstrap/dist/css/bootstrap.css'
+import "react-datepicker/dist/react-datepicker.css";
 import '../styles/embala.css'
 import '../styles/globals.css'
 import '../styles/responsive.css'
-import 'aos/dist/aos.css'; // You can also use <link> for styles
+import 'aos/dist/aos.css';
+import '../styles/booking.css'
+import '../styles/IdealBankSectionStyles.css'
+
 import { useEffect } from 'react';
 
 
