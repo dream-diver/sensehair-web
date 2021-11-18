@@ -1,0 +1,365 @@
+/* global */
+
+#bookingSystem {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue",
+    Arial, "Noto Sans", "Liberation Sans", sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji" !important;
+}
+#bookingSystem .btn-light {
+  background: #e6e9ef !important;
+  border-color: #e6e9ef !important;
+}
+
+#bookingSystem .btn-light:hover {
+  background: hsl(220, 10%, 85%) !important;
+  border-color: hsl(220, 10%, 85%) !important;
+}
+
+#bookingSystem .table-light th,
+#bookingSystem .table-light td {
+  border-color: #dfe0e1 !important;
+}
+
+#bookingSystem button:active,
+#bookingSystem button:focus:not(:focus-visible) {
+  outline: none;
+  box-shadow: none;
+}
+
+#bookingSystem .icon-reflect {
+  transform: scaleX(-1);
+}
+
+.btn-floating {
+  z-index: 10000;
+  position: fixed;
+  right: 4vh;
+  bottom: 4vh;
+  height: 6vh;
+  width: 6vh;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+#bookingSystem .floating-window {
+  background-color: #fff;
+  border: 1px solid #cdcdcd;
+  z-index: 10000;
+  position: fixed;
+  right: 4vh;
+  bottom: 4vh;
+  width: calc(100% - 8vh);
+  min-width: 280px;
+  max-width: 500px;
+  overflow: hidden;
+  border-radius: 7px;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  user-select: none;
+  transition: box-shadow 135ms 0ms cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 1px 1px 0 rgb(66 66 66 / 8%), 0 1px 3px 1px rgb(66 66 66 / 16%);
+}
+
+#bookingSystem .floating-window-header {
+  display: flex;
+  align-items: center;
+  padding: 20px;
+  box-shadow: 0 7px 13px rgba(0, 0, 0, 0.08);
+  margin-bottom: 1rem;
+}
+
+#bookingSystem .floating-window-header .floating-window-heading {
+  margin-bottom: 0;
+  flex-grow: 1;
+}
+
+#bookingSystem .floating-window-body {
+  flex-grow: 1;
+  padding: 10px;
+  height: calc(68vh - 618px);
+  height: 60vh;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+#bookingSystem .floating-window-footer {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-left: 20px;
+  padding-right: 20px;
+  box-shadow: 0 -7px 13px rgba(0, 0, 0, 0.08);
+  margin-top: 1rem;
+}
+
+#bookingSystem .floating-window-footer .btn-next:not(:first-child) {
+  margin-left: 1rem;
+}
+
+#bookingSystem .floating-window-footer .btn-next {
+  display: flex;
+  align-items: center;
+  box-shadow: 0 1px 3px rgb(23 23 23 / 24%);
+}
+
+#bookingSystem .floating-window-form {
+  display: grid;
+  gap: 1rem;
+}
+
+#bookingSystem .floating-window-form.floating-window-form-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+#bookingSystem .floating-window-form.floating-window-form-list {
+  grid-template-columns: repeat(1, minmax(0, 1fr));
+}
+
+#bookingSystem .floating-window .form-check-label {
+  font-weight: 500;
+}
+
+#bookingSystem .floating-window .floating-window-form-grid .form-check {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding-left: 0.5rem;
+  min-height: 160px;
+  max-height: 230px;
+}
+
+#bookingSystem .floating-window .form-check-input {
+  margin-top: 0;
+}
+
+#bookingSystem .floating-window .floating-window-form-grid .form-check-input {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  margin-left: 0;
+}
+
+#bookingSystem .floating-window .form-check {
+  background-color: #e6e9ef;
+  padding: 0.5rem;
+  padding-left: 2.3rem;
+  border-radius: 7px;
+  box-shadow: 0 1px 3px rgb(23 23 23 / 24%);
+  cursor: pointer;
+  position: relative;
+}
+
+#bookingSystem .floating-window .form-check.active {
+  background-color: #212529;
+}
+
+#bookingSystem .floating-window .form-check.active {
+  color: #fff !important;
+}
+
+#bookingSystem .floating-window .form-check .sub-heading {
+  color: #393939;
+}
+#bookingSystem .floating-window .form-check.active .sub-heading {
+  color: #fff;
+}
+
+#bookingSystem .floating-window .form-check-label {
+  line-height: 1;
+  font-size: 0.9rem;
+}
+
+#bookingSystem .floating-window .form-check-input:checked {
+  background-color: #808c99;
+  border-color: #9ca6b0;
+}
+
+#bookingSystem .floating-window .form-check-img {
+  width: 100px;
+  height: 100px;
+  position: relative;
+  margin-bottom: 0.75rem;
+}
+
+#bookingSystem .floating-window .user-img img {
+  width: 100px !important;
+  height: 100px !important;
+  object-fit: cover !important;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+/* react-datepicker */
+.react-datepicker {
+  border: unset;
+}
+
+.react-datepicker__header {
+  background-color: unset;
+  border-bottom: unset;
+}
+
+.react-datepicker__year-read-view--down-arrow,
+.react-datepicker__month-read-view--down-arrow,
+.react-datepicker__month-year-read-view--down-arrow,
+.react-datepicker__navigation-icon::before {
+  top: 13px;
+}
+
+.react-datepicker__current-month,
+.react-datepicker-year-header {
+  padding-bottom: 0.5rem;
+}
+
+.react-datepicker__month {
+  margin: unset;
+  padding: 0.4rem;
+  background-color: #f4f4f4;
+  border-radius: 0.25rem;
+}
+
+.react-datepicker__day:hover,
+.react-datepicker__month-text:hover,
+.react-datepicker__quarter-text:hover,
+.react-datepicker__year-text:hover {
+  border-radius: 0.3rem;
+  background-color: #e0e0e0;
+}
+
+.react-datepicker__day--selected,
+.react-datepicker__day--in-selecting-range,
+.react-datepicker__day--in-range,
+.react-datepicker__month-text--selected,
+.react-datepicker__month-text--in-selecting-range,
+.react-datepicker__month-text--in-range,
+.react-datepicker__quarter-text--selected,
+.react-datepicker__quarter-text--in-selecting-range,
+.react-datepicker__quarter-text--in-range,
+.react-datepicker__year-text--selected,
+.react-datepicker__year-text--in-selecting-range,
+.react-datepicker__year-text--in-range {
+  border-radius: 0.3rem;
+  background-color: #212529;
+}
+
+.react-datepicker__day--selected:hover,
+.react-datepicker__day--in-selecting-range:hover,
+.react-datepicker__day--in-range:hover,
+.react-datepicker__month-text--selected:hover,
+.react-datepicker__month-text--in-selecting-range:hover,
+.react-datepicker__month-text--in-range:hover,
+.react-datepicker__quarter-text--selected:hover,
+.react-datepicker__quarter-text--in-selecting-range:hover,
+.react-datepicker__quarter-text--in-range:hover,
+.react-datepicker__year-text--selected:hover,
+.react-datepicker__year-text--in-selecting-range:hover,
+.react-datepicker__year-text--in-range:hover {
+  background-color: #090a0b;
+}
+
+.react-datepicker__day--keyboard-selected,
+.react-datepicker__month-text--keyboard-selected,
+.react-datepicker__quarter-text--keyboard-selected,
+.react-datepicker__year-text--keyboard-selected {
+  border-radius: 0.3rem;
+  background-color: #e0e0e0;
+  color: #000000;
+}
+
+.react-datepicker__day--keyboard-selected:focus-visible,
+.react-datepicker__month-text--keyboard-selected:focus-visible,
+.react-datepicker__quarter-text--keyboard-selected:focus-visible,
+.react-datepicker__year-text--keyboard-selected:focus-visible {
+  outline: none;
+}
+
+.react-datepicker__time-container .react-datepicker__time {
+  background: #f4f4f4;
+  border-radius: 0.25rem;
+  overflow: hidden;
+}
+
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item:hover {
+  background-color: #e0e0e0;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item--selected {
+  background-color: #212529;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list
+  li.react-datepicker__time-list-item--selected:hover {
+  background-color: #090a0b;
+  border-radius: 0.25rem 0 0 0.25rem;
+}
+
+.react-datepicker__time-container
+  .react-datepicker__time
+  .react-datepicker__time-box
+  ul.react-datepicker__time-list {
+  height: calc(195px + (1.7rem / 2));
+}
+/* scrollbar */
+/* width */
+#bookingSystem .floating-window-body::-webkit-scrollbar,
+#bookingSystem .react-datepicker__time-list::-webkit-scrollbar {
+  width: 3px;
+}
+
+/* Track */
+#bookingSystem .floating-window-body::-webkit-scrollbar-track,
+#bookingSystem .react-datepicker__time-list::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 5px #e0e0e0;
+  border-radius: 0.25rem;
+}
+
+/* Handle */
+#bookingSystem .floating-window-body::-webkit-scrollbar-thumb,
+#bookingSystem .react-datepicker__time-list::-webkit-scrollbar-thumb {
+  background: #090a0b;
+  border-radius: 1rem;
+}
+
+/* Handle on hover */
+#bookingSystem .floating-window-body::-webkit-scrollbar-thumb:hover,
+#bookingSystem .react-datepicker__time-list::-webkit-scrollbar-thumb:hover {
+  background: #212529;
+}
+
+/* Responsive */
+/* For Medium Size Screen ≥768px */
+@media (min-width: 768px) {
+  #bookingSystem .floating-window {
+    width: 60%;
+  }
+}
+/* For Large Size Screen ≥992px */
+@media (min-width: 992px) {
+  #bookingSystem .floating-window {
+    width: 40%;
+  }
+}
+/* For Extra large Size Screen ≥1200px */
+@media (min-width: 1200px) {
+  #bookingSystem .floating-window {
+    width: 30%;
+  }
+}
