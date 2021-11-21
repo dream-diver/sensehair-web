@@ -1,16 +1,16 @@
 import { createContext, useEffect, useState } from "react"
-import { useRouter } from 'next/router';
-import en from '../../locales/en';
-import nl from '../../locales/nl';
-import { toast } from "react-toastify";
-import optionsDb from "../../db/options.json";
+import { useRouter } from 'next/router'
+import en from '../../locales/en'
+import nl from '../../locales/nl'
+import { toast } from "react-toastify"
+import optionsDb from "../../db/options.json"
 
 export const GlobalContext = createContext();
 
 export const GlobalProvider = (props) => {
-  const router = useRouter();
-  const { locale } = router;
-  const text = locale === 'en' ? en : nl;
+  const router = useRouter()
+  const { locale } = router
+  const text = locale === 'en' ? en : nl
 
   let initialState = {
     loading: true,
@@ -56,7 +56,7 @@ export const GlobalProvider = (props) => {
       })
       const { pathname, asPath, query } = router
       router.push({ pathname, query }, asPath, { locale })
-    };
+    }
 
     const getData = async () => {
       const artDirector = await fetchStylists("art_director ")
@@ -78,7 +78,7 @@ export const GlobalProvider = (props) => {
         })
       } else {
         setState(prevState => {
-          return { ...prevState, messages: [...messageArray] };
+          return { ...prevState, changeLanguage, messages: [...messageArray] };
         })
       }
     }
