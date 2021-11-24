@@ -64,9 +64,8 @@ const Footer = () => {
             </div>
             <div className="col-md-6 col-lg-3 mb-3">
               <h2>CONTACT</h2>
-              <p className="font-weight-700">Address: House :134<br />Road 12, Netharland</p>
+              <p className="font-weight-700">Address: Central Plaza 12<br />3012CW Rotterdam</p>
               <p>Info@sensehair.nl</p>
-              <p>carlos@sensehair.nl</p>
               <h4>INFO</h4>
               <p>
                 { state.text.openingTimes1 }<br />

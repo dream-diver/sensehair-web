@@ -14,8 +14,8 @@ const InfoImgReverse = () => {
             <img loading="lazy" src={ imageInfoImageReverse.src } alt="first_salon" className="img-fluid" />
           </div>
           <div className="col-md-8 py-5" data-aos="fade-left" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-            <h1 className="font-weight-700 mb-3">{ state.text.aboutInfoImgReverseTitle }</h1>
-            <p className="font-1-3x">{ state.text.aboutInfoImgReverseBody }</p>
+            {/* <h1 className="font-weight-700 mb-3">{ state.text.aboutInfoImgReverseTitle }</h1> */ }
+            {/* <p className="font-1-3x">{ state.text.aboutInfoImgReverseBody }</p> */ }
           </div>
         </div>
       </div>

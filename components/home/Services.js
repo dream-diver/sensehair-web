@@ -43,19 +43,19 @@ const Services = () => {
   // All Services Array
   const allServices = [
     {
-      name: 'MEN',
+      name: state.text.servicesMen,
       image: imageMen
     },
     {
-      name: 'LADIES SHORT',
+      name: state.text.servicesLadiesShort,
       image: imageLadiesShort
     },
     {
-      name: 'LADIES MIDLONG',
+      name: state.text.servicesLadiesMidlong,
       image: imageLadiesMidlong
     },
     {
-      name: 'LADIES LONG',
+      name: state.text.servicesLadiesLong,
       image: imageLadiesLong
     }
   ];
@@ -111,10 +111,10 @@ const Services = () => {
 
 
             <div className="w-100 d-flex flex-column align-items-center">
-              <button className="btn-find btn btn-lg btn-outline-dark rounded-0 font-weight-900 mb-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="700" data-aos-once="true">All Services</button>
-              <button className="btn-book-now btn btn-lg btn-primary rounded-0 font-weight-900" data-aos="fade-up" data-aos-duration="750" data-aos-delay="900" data-aos-once="true">
+              <button className="btn-w btn-find btn btn-lg btn-outline-dark rounded-0 font-weight-900 mb-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="700" data-aos-once="true">{ state.text.allServices }</button>
+              <button className="btn-w btn-book-now btn btn-lg btn-primary rounded-0 font-weight-900" data-aos="fade-up" data-aos-duration="750" data-aos-delay="900" data-aos-once="true">
                 <img loading="lazy" src="./images/schedule.png" height="43" alt="schedule" />
-                <span>{ state.text.bookNow }</span>
+                <span className="flex-grow-1">{ state.text.bookNow }</span>
               </button>
             </div>
           </div>

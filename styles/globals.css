@@ -220,6 +220,10 @@ button,
   height: 90vh !important;
 }
 
+.btn-w {
+  width: 310px;
+}
+
 .text-dreamDiver {
   color: #d7d225;
   text-decoration: none;

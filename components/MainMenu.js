@@ -51,7 +51,7 @@ const Menu = ({ isSlider }) => {
 
 
         <form className="d-flex d-lg-none">
-          <button className="btn btn-sm btn-light rounded-0 font-weight-900">BOOK NOW</button>
+          <button className="btn btn-sm btn-light rounded-0 font-weight-900">{ state.text.bookNow }</button>
         </form>
 
         <div className="w-100">
@@ -72,32 +72,32 @@ const Menu = ({ isSlider }) => {
                 <ul className="navbar-nav ms-auto">
                   <li className="nav-item">
                     <Link href="/">
-                      <a className={ path == "/" ? "nav-link active" : "nav-link" }>Home</a>
+                      <a className={ path == "/" ? "nav-link active" : "nav-link" }>{ state.text.menuHome }</a>
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link href="/about">
-                      <a className={ path == "/about" ? "nav-link active" : "nav-link" }>About Us</a>
+                      <a className={ path == "/about" ? "nav-link active" : "nav-link" }>{ state.text.menuAboutUs }</a>
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link href="/services">
-                      <a className={ path == "/services" ? "nav-link active" : "nav-link" }>Services</a>
+                      <a className={ path == "/services" ? "nav-link active" : "nav-link" }>{ state.text.menuServices }</a>
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link href="/lookbook">
-                      <a className={ path == "/lookbook" ? "nav-link active" : "nav-link" }>Lookbook</a>
+                      <a className={ path == "/lookbook" ? "nav-link active" : "nav-link" }>{ state.text.menuLookbook }</a>
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link href="/career">
-                      <a className={ path == "/career" ? "nav-link active" : "nav-link" }>Career</a>
+                      <a className={ path == "/career" ? "nav-link active" : "nav-link" }>{ state.text.menuCareer }</a>
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link href="/contact">
-                      <a className={ path == "/contact" ? "nav-link active" : "nav-link" }>Contact Us</a>
+                      <a className={ path == "/contact" ? "nav-link active" : "nav-link" }>{ state.text.menuContactUs }</a>
                     </Link>
                   </li>
                 </ul>
