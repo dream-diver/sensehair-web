@@ -575,6 +575,7 @@ button,
 #review .review-text {
   font-size: 1.8rem;
   font-style: italic;
+  text-align: center;
 }
 
 #review .owl-dots {

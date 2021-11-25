@@ -113,10 +113,10 @@ const Menu = ({ isSlider }) => {
                 </form>
               </div>
             </div>
-          </div >
-        </div >
-      </div >
-    </nav >
+          </div>
+        </div>
+      </div>
+    </nav>
   )
 }
 

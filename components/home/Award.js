@@ -8,6 +8,7 @@ import imageBrand2 from '../../public/images/brands/award-keune-white.png'
 import imageBrand3 from '../../public/images/brands/keratherapy.png'
 import imageBrand4 from '../../public/images/brands/kevinmurphy.png'
 import imageBrand5 from '../../public/images/brands/redken.png'
+import imageBrand6 from '../../public/images/brands/olaplex.png'
 
 const Award = () => {
   const [state] = useContext(GlobalContext)
@@ -24,6 +25,7 @@ const Award = () => {
     imageBrand3,
     imageBrand5,
     imageBrand1,
+    imageBrand6,
   ]
   return (
     <section id="award" className="bg-black">
