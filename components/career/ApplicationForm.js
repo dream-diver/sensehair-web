@@ -16,7 +16,7 @@ const ApplicationForm = () => {
   return (
     <section id="application_form">
       <div className="container pb-5">
-        <button className="apply-btn btn btn-primary btn-lg" onClick={ executeScroll } id="apply_btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseApplicationForm" aria-expanded="false" aria-controls="collapseApplicationForm">Apply Now</button>
+        <button className="apply-btn btn btn-primary btn-lg" onClick={ executeScroll } id="apply_btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseApplicationForm" aria-expanded="false" aria-controls="collapseApplicationForm">{ state.text.applyNow }</button>
       </div>
       <div className="application-wrapper collapse" id="collapseApplicationForm" ref={ applicationFormRef }>
         <div className="container">
@@ -36,10 +36,10 @@ const ApplicationForm = () => {
                     <div className="mb-3">
                       <label htmlFor="vacancy" className="form-label">{ state.text.careerFormJobDescriptionDesc }</label>
                       <select className="form-select" name="vacancy" id="vacancy">
-                        <option selected disabled>DROPDOWN</option>
-                        <option value="1">One</option>
-                        <option value="2">Two</option>
-                        <option value="3">Three</option>
+                        <option selected disabled>Dropdown</option>
+                        <option value="1">Haarstylist</option>
+                        <option value="2">Zelfstandige</option>
+                        <option value="3">Open Sollicitatie</option>
                       </select>
                     </div>
                     <div className="mb-3">
@@ -268,9 +268,12 @@ const ApplicationForm = () => {
                     <legend className="text-danger fw-bold">{ state.text.careerFormMotivation }</legend>
                     <div className="mb-3">
                       <textarea className="form-control mb-3" name="motivation" id="motivation" rows="3" placeholder={ state.text.careerFormMotivationPlaceholder }></textarea>
-                      <p><i className="fas fa-paperclip me-2"></i> { state.text.careerFormAttachment }</p>
                     </div>
                   </fieldset>
+                  <div className="mb-3">
+                    <input className="form-control mb-3" type="file" name="attachments[]" multiple />
+                    <p><i className="fas fa-paperclip me-2"></i> { state.text.careerFormAttachment }</p>
+                  </div>
                   <div className="d-flex justify-content-center w-100">
                     <button type="submit" className="btn btn-black rounded-0 text-white font-weight-700 px-5">{ state.text.careerFormButton }</button>
                   </div>

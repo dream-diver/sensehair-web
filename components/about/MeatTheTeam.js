@@ -14,7 +14,7 @@ const MeatTheTeam = () => {
       <div className="container">
         <div className="row">
           <div className="col py-5">
-            <h1 className="font-weight-700 text-end mb-5" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">MEAT THE TEAM</h1>
+            <h1 className="font-weight-700 text-end mb-5" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">{ state.text.aboutMeatTheTeam }</h1>
 
             <div className="team-row row py-5">
               <div className="col-md-5" data-aos="fade-right" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">

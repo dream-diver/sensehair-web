@@ -24,7 +24,7 @@ const FormInfo = () => {
                 <textarea className="form-control rounded-0" name="message" id="message" rows="3" placeholder={ state.text.contactUsFormMessage }></textarea>
               </div>
               <div className="d-flex justify-content-center">
-                <button className="btn btn-dark rounded-0 px-4">Submit</button>
+                <button className="btn btn-dark rounded-0 px-4">{ state.text.submit }</button>
               </div>
             </form>
           </div>
@@ -38,7 +38,6 @@ const FormInfo = () => {
                   <strong>Sense Hair</strong><br />
                   Central Plaza 12<br />
                   3012CW Rotterdam,<br />
-                  <span className="small">One Minute from<br />central station</span>
                 </p>
               </div>
             </div>
