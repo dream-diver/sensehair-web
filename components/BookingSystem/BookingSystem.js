@@ -12,6 +12,8 @@ import setMinutes from "date-fns/setMinutes";
 import setSeconds from "date-fns/setSeconds";
 import format from "date-fns/format";
 
+import imageSchedule from '../../public/images/schedule.png';
+
 const BookingSystem = () => {
   const [state, setState] = useContext(GlobalContext)
   const [show, setShow] = useState(false)
@@ -258,7 +260,7 @@ const BookingSystem = () => {
     <div id="bookingSystem">
       { !show ?
         <button className="btn-floating btn btn-lg btn-dark rounded-circle" onClick={ () => setShow(!show) }>
-          <BiCalendarCheck />
+          <img src={ imageSchedule.src } alt="Booking System" className="booking-img" width="18px" height="18px" />
         </button>
         : <>
           { steps.step1.active &&

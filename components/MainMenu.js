@@ -7,6 +7,7 @@ import LanguageDropdown from "./LanguageDropdown";
 import { GlobalContext } from "./contexts/GlobalContext";
 
 import imageLogoBig from '../public/images/logo2x.png';
+import imageSchedule from '../public/images/schedule.png';
 
 const Menu = ({ isSlider }) => {
   const [state] = useContext(GlobalContext)
@@ -107,7 +108,7 @@ const Menu = ({ isSlider }) => {
 
                 <form className="d-none d-lg-flex ms-lg-2">
                   <button className="btn-book-now btn btn-sm btn-primary rounded-0 font-weight-900">
-                    <img loading="lazy" src="./images/schedule.png" height="42" alt="schedule" />
+                    <img loading="lazy" src={ imageSchedule.src } height="42" alt="schedule" />
                     <span>{ state.text.bookNow }</span>
                   </button>
                 </form>
