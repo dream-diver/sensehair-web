@@ -1,3 +1,4 @@
+/* eslint-disable @next/next/no-img-element */
 import { useContext, useState } from 'react'
 import { BiCalendarCheck } from 'react-icons/bi'
 import { GlobalContext } from '../contexts/GlobalContext'
