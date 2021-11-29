@@ -14,6 +14,7 @@ import setSeconds from "date-fns/setSeconds";
 import format from "date-fns/format";
 
 import imageSchedule from '../../public/images/schedule.png';
+import { set } from 'date-fns'
 
 const BookingSystem = () => {
   const [state, setState] = useContext(GlobalContext)
@@ -61,7 +62,13 @@ const BookingSystem = () => {
       id: 6,
       active: false,
       title: "Login",
-      value: false
+      value: false,
+      guest: {
+        isGuest: false,
+        name: "",
+        email: "",
+        phone: ""
+      }
     },
     "step7": {
       id: 7,
@@ -123,6 +130,35 @@ const BookingSystem = () => {
     }
   }
 
+  // Create Booking
+  const createGuestBooking = async (date, charge, duration, name, email, phone, stylistId, services, promocode = '') => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/guest/bookings`, {
+        method: 'POST',
+        headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          "booking_time": date,
+          "server_id": stylistId,
+          charge,
+          duration,
+          services,
+          promocode,
+          name,
+          email,
+          phone
+        })
+      })
+      const data = await response.json()
+      return data
+    } catch (error) {
+      console.log(error.message)
+      return null
+    }
+  }
+
   // Get Text From Stream
   const getTextFromStream = async (readableStream) => {
     let reader = readableStream.getReader();
@@ -155,6 +191,21 @@ const BookingSystem = () => {
     } catch (error) {
       console.log(error.message)
       return null
+    }
+  }
+
+  // Get Payment Intent From Server
+  const getPaymentIntent = async (bookingId, amount, bookingResponse) => {
+    const paymentIntentFromServer = await fetchPaymentIntent(bookingId, amount)
+    // Set Payment Intent
+    if (typeof paymentIntentFromServer === 'string' && paymentIntentFromServer.startsWith('pi_')) {
+      setSteps({
+        ...steps,
+        "step7": { ...steps.step7, active: false, booking: bookingResponse },
+        "step8": { ...steps.step8, paymentIntent: paymentIntentFromServer, active: true }
+      })
+    } else {
+      console.log('Payment Intent Error')
     }
   }
 
@@ -205,6 +256,7 @@ const BookingSystem = () => {
       setSteps({
         ...steps,
         "step5": { ...steps.step5, active: false, value: startDate },
+        "step6": { ...steps.step6, value: true },
         "step7": { ...steps.step7, active: true },
       })
     } else {
@@ -229,30 +281,32 @@ const BookingSystem = () => {
     const charge = steps.step7.value
     const services = steps.step3.value
     const duration = state.services.filter(({ id }) => services.includes(id)).map(services => services.duration).reduce((a, b) => a + b, 0)
-    const customerId = state.auth.user.id
     const stylistId = steps.step4.value
     const promocode = steps.step7.couponCode
-
-    const bookingFromServer = await createBooking(date, charge, duration, customerId, stylistId, services, promocode)
-    if (bookingFromServer.booking) {
-
-      const bookingId = bookingFromServer.booking.data.id
-      const amount = bookingFromServer.booking.data.charge
-      // Get Payment Intent From Server
-      const paymentIntentFromServer = await fetchPaymentIntent(bookingId, amount)
-      // Set Payment Intent
-      if (typeof paymentIntentFromServer === 'string' && paymentIntentFromServer.startsWith('pi_')) {
-        setSteps({
-          ...steps,
-          "step7": { ...steps.step7, active: false, booking: bookingFromServer.booking.data },
-          "step8": { ...steps.step8, paymentIntent: paymentIntentFromServer, active: true }
-        })
+    if (steps.step6.guest.isGuest) {
+      const name = steps.step6.guest.name
+      const email = steps.step6.guest.email
+      const phone = steps.step6.guest.phone
+      const guestBookingFromServer = await createGuestBooking(date, charge, duration, name, email, phone, stylistId, services, promocode)
+      if (guestBookingFromServer.id) {
+        const bookingId = guestBookingFromServer.id
+        const amount = guestBookingFromServer.charge
+        getPaymentIntent(bookingId, amount, guestBookingFromServer)
       } else {
-        console.log('Payment Intent Error')
+        console.log('Guest Booking Error')
       }
     } else {
-      console.log('Booking Error')
+      const customerId = state.auth.user.id
+      const bookingFromServer = await createBooking(date, charge, duration, customerId, stylistId, services, promocode)
+      if (bookingFromServer.booking) {
+        const bookingId = bookingFromServer.booking.data.id
+        const amount = bookingFromServer.booking.data.charge
+        getPaymentIntent(bookingId, amount, bookingFromServer.booking.data)
+      } else {
+        console.log('Booking Error')
+      }
     }
+
   }
   console.log(steps);
   console.log(state);
@@ -280,7 +334,7 @@ const BookingSystem = () => {
             <FloatingWindowDate steps={ steps } step={ steps.step5 } show={ show } setShow={ setShow } nextStep={ sixthStep } startDate={ startDate } setStartDate={ setStartDate } />
           }
           { steps.step6.active &&
-            <FloatingWindowAuth step={ steps.step6 } show={ show } setShow={ setShow } nextStep={ seventhStep } />
+            <FloatingWindowAuth steps={ steps } setSteps={ setSteps } step={ steps.step6 } show={ show } setShow={ setShow } nextStep={ seventhStep } />
           }
           { steps.step7.active &&
             <FloatingWindowOverview steps={ steps } setSteps={ setSteps } step={ steps.step7 } show={ show } setShow={ setShow } nextStep={ eighthStep } />
