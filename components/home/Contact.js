@@ -4,7 +4,7 @@ import { GlobalContext } from '../contexts/GlobalContext'
 
 /* eslint-disable @next/next/no-img-element */
 const Contact = () => {
-  const [state] = useContext(GlobalContext)
+  const [state, setState] = useContext(GlobalContext)
 
   return (
     <section id="contact">
@@ -60,7 +60,7 @@ const Contact = () => {
           <p className="text-center mb-5">{ state.text.homeContactBody }</p>
 
           <div className="w-100 d-flex justify-content-center">
-            <button className="btn-book-now btn btn-primary rounded-0 font-weight-900">
+            <button type="button" className="btn-book-now btn btn-primary rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>
               <img loading="lazy" src="./images/schedule.png" height="43" alt="schedule" />
               <span>{ state.text.bookNow }</span>
             </button>

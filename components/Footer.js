@@ -8,7 +8,7 @@ import imageLogoBig from '../public/images/logo2x.png'
 import imageSchedule from '../public/images/schedule.png'
 
 const Footer = () => {
-  const [state] = useContext(GlobalContext)
+  const [state, setState] = useContext(GlobalContext)
   return (
     <>
       <footer id="footer" className="bg-black text-white text-center text-md-start py-5">
@@ -32,7 +32,7 @@ const Footer = () => {
                 </li>
               </ul>
               <div className="d-flex justify-content-center justify-content-md-start">
-                <button className="btn-book-now btn btn-sm btn-primary rounded-0 font-weight-900">
+                <button type="button" className="btn-book-now btn btn-sm btn-primary rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>
                   <div className="d-inline-flex mw-100 h-auto">
                     <img loading="lazy" src={ imageSchedule.src } height="42" alt="schedule" />
                   </div>

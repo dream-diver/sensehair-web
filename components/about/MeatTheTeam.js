@@ -8,7 +8,7 @@ import imageDjimila from '../../public/images/team/Djimila.png'
 
 /* eslint-disable @next/next/no-img-element */
 const MeatTheTeam = () => {
-  const [state] = useContext(GlobalContext)
+  const [state, setState] = useContext(GlobalContext)
   return (
     <section id="meat_the_team">
       <div className="container">
@@ -85,7 +85,7 @@ const MeatTheTeam = () => {
             </div>
 
             <div className="w-100 d-flex justify-content-center" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-              <button className="btn-book-now btn btn-primary rounded-0 font-weight-900">
+              <button type="button" className="btn-book-now btn btn-primary rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>
                 <img loading="lazy" src="./images/schedule.png" height="43" alt="schedule" />
                 <span>{ state.text.bookNow }</span>
               </button>

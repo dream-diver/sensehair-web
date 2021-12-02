@@ -120,7 +120,7 @@ const Lookbook = () => {
             </div>
 
             <div className="w-100 d-flex flex-column align-items-center">
-              <button className="btn-book-now btn btn-primary rounded-0 font-weight-900">
+              <button type="button" className="btn-book-now btn btn-primary rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>
                 <img loading="lazy" src="./images/schedule.png" height="42" alt="schedule" />
                 <span>{ state.text.bookNow }</span>
               </button>

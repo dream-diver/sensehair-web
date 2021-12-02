@@ -10,7 +10,7 @@ import imageLogoBig from '../public/images/logo2x.png';
 import imageSchedule from '../public/images/schedule.png';
 
 const Menu = ({ isSlider }) => {
-  const [state] = useContext(GlobalContext)
+  const [state, setState] = useContext(GlobalContext)
   const mainMenuRef = useRef(null)
   const topRowRef = useRef(null)
   const navbarBrandImgRef = useRef(null)
@@ -52,7 +52,7 @@ const Menu = ({ isSlider }) => {
 
 
         <form className="d-flex d-lg-none">
-          <button className="btn btn-sm btn-light rounded-0 font-weight-900">{ state.text.bookNow }</button>
+          <button type="button" className="btn btn-sm btn-light rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>{ state.text.bookNow }</button>
         </form>
 
         <div className="w-100">
@@ -107,7 +107,7 @@ const Menu = ({ isSlider }) => {
                 </ul>
 
                 <form className="d-none d-lg-flex ms-lg-2">
-                  <button className="btn-book-now btn btn-sm btn-primary rounded-0 font-weight-900">
+                  <button type="button" className="btn-book-now btn btn-sm btn-primary rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>
                     <img loading="lazy" src={ imageSchedule.src } height="42" alt="schedule" />
                     <span>{ state.text.bookNow }</span>
                   </button>
