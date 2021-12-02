@@ -16,6 +16,7 @@ export const GlobalProvider = (props) => {
     loading: true,
     text,
     locale,
+    showBooking: false,
     auth: {
       isLogin: false,
       user: null,

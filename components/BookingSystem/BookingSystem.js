@@ -18,10 +18,19 @@ import { set } from 'date-fns'
 
 const BookingSystem = () => {
   const [state, setState] = useContext(GlobalContext)
-  const [show, setShow] = useState(false)
+  // const [show, setShow] = useState(false)
   const [checked, setChecked] = useState(-1)
   const [multiChecked, setMultiChecked] = useState([])
   const [startDate, setStartDate] = useState(setHours(setMinutes(setSeconds(new Date(), 0), 0), 10));
+
+  const show = state.showBooking
+
+  const setShow = (value) => {
+    setState({
+      ...state,
+      showBooking: value
+    })
+  }
 
   const [steps, setSteps] = useState({
     "step1": {
@@ -313,38 +322,47 @@ const BookingSystem = () => {
 
   return (
     <div id="bookingSystem">
-      { !show ?
-        <button className="btn-floating btn btn-lg btn-dark rounded-circle" onClick={ () => setShow(!show) }>
-          <img src={ imageSchedule.src } alt="Booking System" className="booking-img" width="18px" height="18px" />
+      { state.loading ?
+        <button className="btn-floating btn btn-lg btn-dark rounded-circle" disabled>
+          <div className="spinner-border spinner-border-sm text-light" role="status">
+            <span className="visually-hidden">Loading...</span>
+          </div>
         </button>
         : <>
-          { steps.step1.active &&
-            <FloatingWindow step={ steps.step1 } options={ optionHairSize } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ secondStep } />
-          }
-          { steps.step2.active &&
-            <FloatingWindow step={ steps.step2 } options={ optionHairType } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ thirdStep } />
-          }
-          { steps.step3.active &&
-            <FloatingWindowServices steps={ steps } setSteps={ setSteps } step={ steps.step3 } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fourthStep } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
-          }
-          { steps.step4.active &&
-            <FloatingWindow step={ steps.step4 } options={ steps.step3.serviceType ? state.stylists.artDirector : state.stylists.stylist } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fifthStep } />
-          }
-          { steps.step5.active &&
-            <FloatingWindowDate steps={ steps } step={ steps.step5 } show={ show } setShow={ setShow } nextStep={ sixthStep } startDate={ startDate } setStartDate={ setStartDate } />
-          }
-          { steps.step6.active &&
-            <FloatingWindowAuth steps={ steps } setSteps={ setSteps } step={ steps.step6 } show={ show } setShow={ setShow } nextStep={ seventhStep } />
-          }
-          { steps.step7.active &&
-            <FloatingWindowOverview steps={ steps } setSteps={ setSteps } step={ steps.step7 } show={ show } setShow={ setShow } nextStep={ eighthStep } />
-          }
-          { steps.step8.active &&
-            <FloatingWindowPayment steps={ steps } setSteps={ setSteps } step={ steps.step8 } show={ show } setShow={ setShow } nextStep={ eighthStep } />
+          { !show ?
+            <button className="btn-floating btn btn-lg btn-dark rounded-circle" onClick={ () => setShow(!show) }>
+              <img src={ imageSchedule.src } alt="Booking System" className="booking-img" width="18px" height="18px" />
+            </button>
+            : <>
+              { steps.step1.active &&
+                <FloatingWindow step={ steps.step1 } options={ optionHairSize } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ secondStep } />
+              }
+              { steps.step2.active &&
+                <FloatingWindow step={ steps.step2 } options={ optionHairType } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ thirdStep } />
+              }
+              { steps.step3.active &&
+                <FloatingWindowServices steps={ steps } setSteps={ setSteps } step={ steps.step3 } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fourthStep } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
+              }
+              { steps.step4.active &&
+                <FloatingWindow step={ steps.step4 } options={ steps.step3.serviceType ? state.stylists.artDirector : state.stylists.stylist } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fifthStep } />
+              }
+              { steps.step5.active &&
+                <FloatingWindowDate steps={ steps } step={ steps.step5 } show={ show } setShow={ setShow } nextStep={ sixthStep } startDate={ startDate } setStartDate={ setStartDate } />
+              }
+              { steps.step6.active &&
+                <FloatingWindowAuth steps={ steps } setSteps={ setSteps } step={ steps.step6 } show={ show } setShow={ setShow } nextStep={ seventhStep } />
+              }
+              { steps.step7.active &&
+                <FloatingWindowOverview steps={ steps } setSteps={ setSteps } step={ steps.step7 } show={ show } setShow={ setShow } nextStep={ eighthStep } />
+              }
+              { steps.step8.active &&
+                <FloatingWindowPayment steps={ steps } setSteps={ setSteps } step={ steps.step8 } show={ show } setShow={ setShow } nextStep={ eighthStep } />
+              }
+            </>
           }
         </>
       }
-    </div >
+    </div>
   )
 }
 
