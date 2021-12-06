@@ -1,5 +1,5 @@
 import { useContext, useRef, useState } from "react"
-import { BiRightArrowAlt } from "react-icons/bi"
+import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 import { GlobalContext } from "../contexts/GlobalContext"
 import { toast } from "react-toastify"
 
@@ -264,7 +264,7 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, sk
         </form>
       </div>
       <div className="floating-window-footer">
-        {/* <a className="btn-next btn btn-dark" onClick={ skipStep }>Continue as a gust<BiShare className="ms-1 icon-reflect" /></a> */ }
+        <a className={ `btn-next btn btn-dark disabled` }><BiLeftArrowAlt className="me-1" />Back</a>
         <a className="btn-next btn btn-dark" onClick={ step.guest.isGuest ? onGuest : isLogin ? onLogin : onSignup }>{ step.guest.isGuest ? "Guest Booking" : isLogin ? "Login" : "Sign Up" }<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>

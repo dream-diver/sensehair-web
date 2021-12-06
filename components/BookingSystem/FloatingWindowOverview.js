@@ -1,6 +1,7 @@
+import Link from 'next/link'
 import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
-import { BiRightArrowAlt } from "react-icons/bi"
+import { BiDollarCircle, BiRightArrowAlt } from "react-icons/bi"
 
 const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
   const [state] = useContext(GlobalContext)
@@ -139,6 +140,9 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
 
       </div>
       <div className="floating-window-footer">
+        <Link href="/checkout">
+          <a className={ `btn-next btn btn-dark` } href="#"><BiDollarCircle className="me-1" />Pay Later</a>
+        </Link>
         <a className="btn-next btn btn-dark" onClick={ nextStep }>Next<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>

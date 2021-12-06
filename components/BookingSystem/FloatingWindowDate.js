@@ -1,5 +1,5 @@
 import ReactDatePicker from "react-datepicker"
-import { BiRightArrowAlt } from "react-icons/bi"
+import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 import { useEffect, useState, useContext } from "react";
 import format from "date-fns/format";
 import setHours from "date-fns/setHours";
@@ -70,6 +70,7 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
         </form>
       </div>
       <div className="floating-window-footer">
+        <a className={ `btn-next btn btn-dark disabled` }><BiLeftArrowAlt className="me-1" />Back</a>
         <a className="btn-next btn btn-dark" onClick={ nextStep }>Next<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>

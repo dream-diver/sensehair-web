@@ -317,6 +317,14 @@ const BookingSystem = () => {
     }
 
   }
+
+  const backToFirstStep = () => {
+    setSteps({
+      ...steps,
+      "step1": { ...steps.step1, active: true, value: 0 },
+      "step2": { ...steps.step2, active: false },
+    })
+  }
   console.log(steps);
   console.log(state);
 
@@ -332,7 +340,7 @@ const BookingSystem = () => {
             <FloatingWindow step={ steps.step1 } options={ optionHairSize } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ secondStep } />
           }
           { steps.step2.active &&
-            <FloatingWindow step={ steps.step2 } options={ optionHairType } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ thirdStep } />
+            <FloatingWindow step={ steps.step2 } options={ optionHairType } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ thirdStep } previousStep={ backToFirstStep } />
           }
           { steps.step3.active &&
             <FloatingWindowServices steps={ steps } setSteps={ setSteps } step={ steps.step3 } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fourthStep } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
