@@ -3,7 +3,7 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 import { GlobalContext } from "../contexts/GlobalContext";
 import FormCheck from "./FormCheck"
 
-const FloatingWindow = ({ steps, setSteps, step, show, setShow, checked, setChecked, nextStep, multiChecked = [], setMultiChecked = () => { } }) => {
+const FloatingWindowServices = ({ steps, setSteps, step, show, setShow, checked, setChecked, nextStep, multiChecked, setMultiChecked }) => {
   const [state, setState] = useContext(GlobalContext)
   const [services, setServices] = useState([])
 
@@ -66,4 +66,9 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, checked, setChec
   )
 }
 
-export default FloatingWindow
+FloatingWindowServices.defaultProps = {
+  multiChecked: [],
+  setMultiChecked: () => { }
+}
+
+export default FloatingWindowServices

@@ -6,7 +6,7 @@ import { loadStripe } from '@stripe/stripe-js';
 
 import CheckoutForm from './CheckoutForm';
 
-const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
+const FloatingWindowPayment = ({ steps, setSteps, step, show, setShow, nextStep }) => {
 
   const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
 
@@ -28,4 +28,4 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
   )
 }
 
-export default FloatingWindow
+export default FloatingWindowPayment

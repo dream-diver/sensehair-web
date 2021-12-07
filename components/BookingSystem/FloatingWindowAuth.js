@@ -3,7 +3,7 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 import { GlobalContext } from "../contexts/GlobalContext"
 import { toast } from "react-toastify"
 
-const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, skipStep = () => { } }) => {
+const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, skipStep }) => {
   const [state, setState] = useContext(GlobalContext)
   const [isLogin, setIsLogin] = useState(true)
   const [formData, setSetFromData] = useState({
@@ -224,7 +224,6 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, sk
     setIsLogin(!isLogin)
   }
 
-
   return (
     <div className="floating-window">
       <div className="floating-window-header">
@@ -269,6 +268,10 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, sk
       </div>
     </div>
   )
+}
+
+FloatingWindowAuth.defaultProps = {
+  skipStep: () => { }
 }
 
 export default FloatingWindowAuth
