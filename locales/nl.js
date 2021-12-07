@@ -174,4 +174,6 @@ export default {
   careerFormMotivationPlaceholder: 'Vertel ons waarom je solliciteert',
   careerFormAttachment: 'Optioneel: voeg hier je bijlagen toe, zoals CV, motivatiebrief of portfolio.',
   careerFormButton: 'Verzenden',
+  bookingStep1Title: 'KIES JOUW STYLE',
+  bookingStep2Title: 'WAT VOOR TYPE HAAR HEB JE?',
 };

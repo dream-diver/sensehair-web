@@ -30,7 +30,6 @@ function MyApp({ Component, pageProps }) {
         toastClassName="toastifyToastContainer"
         position="top-right"
         autoClose={ 5 * 1000 }
-        hideProgressBar
         newestOnTop
         closeOnClick
         rtl={ false }

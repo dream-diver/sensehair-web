@@ -22,7 +22,7 @@ const FloatingWindowPayment = ({ steps, setSteps, step, show, setShow, nextStep 
         </Elements>
       </div>
       <div className="floating-window-footer">
-        <a className="btn-next btn btn-dark" onClick={ nextStep }>Next<BiRightArrowAlt className="ms-1" /></a>
+        <a className="btn-next btn btn-dark d-none" onClick={ nextStep }>Next<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>
   )

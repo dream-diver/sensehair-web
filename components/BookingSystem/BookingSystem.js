@@ -31,19 +31,18 @@ const BookingSystem = () => {
       showBooking: value
     })
   }
-
-  const [steps, setSteps] = useState({
+  const initialState = {
     "step1": {
       id: 1,
       active: true,
-      title: "Choose Hair Size",
+      title: state.text.bookingStep1Title,
       multiSelect: false,
       value: 0
     },
     "step2": {
       id: 2,
       active: false,
-      title: "Choose Hair Type",
+      title: state.text.bookingStep2Title,
       value: 0
     },
     "step3": {
@@ -93,8 +92,8 @@ const BookingSystem = () => {
       title: "Payment",
       paymentIntent: "",
     },
-
-  })
+  }
+  const [steps, setSteps] = useState(initialState)
   // Options
   const options = state.options;
   const optionHairSize = options.find(option => option.name === "Hair Size").option
@@ -328,11 +327,19 @@ const BookingSystem = () => {
   }
   const backToSecondStep = () => {
     setMultiChecked([])
-    setSteps({
-      ...steps,
-      "step2": { ...steps.step2, active: true, value: 0 },
-      "step3": { ...steps.step3, active: false },
-    })
+    if (steps.step1.value === 0) {
+      setSteps({
+        ...steps,
+        "step1": { ...steps.step1, active: true, value: 0 },
+        "step3": { ...steps.step3, active: false },
+      })
+    } else {
+      setSteps({
+        ...steps,
+        "step2": { ...steps.step2, active: true, value: 0 },
+        "step3": { ...steps.step3, active: false },
+      })
+    }
   }
   const backToThirdStep = () => {
     setChecked(-1)
@@ -358,6 +365,9 @@ const BookingSystem = () => {
     })
   }
 
+  const setInitialState = () => {
+    setSteps(initialState)
+  }
   console.log(steps);
   console.log(state);
 

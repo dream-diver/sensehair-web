@@ -3,7 +3,7 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 import { GlobalContext } from "../contexts/GlobalContext";
 import FormCheck from "./FormCheck"
 
-const FloatingWindowServices = ({ steps, setSteps, step, show, setShow, checked, setChecked, nextStep, multiChecked, setMultiChecked }) => {
+const FloatingWindowServices = ({ steps, setSteps, step, show, setShow, checked, setChecked, nextStep, multiChecked, setMultiChecked, previousStep }) => {
   const [state, setState] = useContext(GlobalContext)
   const [services, setServices] = useState([])
 
@@ -59,7 +59,7 @@ const FloatingWindowServices = ({ steps, setSteps, step, show, setShow, checked,
         </form>
       </div>
       <div className="floating-window-footer">
-        <a className={ `btn-next btn btn-dark disabled` }><BiLeftArrowAlt className="me-1" />Back</a>
+        <a className={ `btn-next btn btn-dark` } onClick={ previousStep }><BiLeftArrowAlt className="me-1" />Back</a>
         <a className={ `btn-next btn btn-dark ${multiChecked.length === 0 && "disabled"}` } onClick={ nextStep }>Next<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>

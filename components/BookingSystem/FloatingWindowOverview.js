@@ -140,7 +140,7 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
 
       </div>
       <div className="floating-window-footer">
-        <Link href="/checkout">
+        <Link href={ { pathname: "/checkout", query: { payment: 'paylater' } } }>
           <a className={ `btn-next btn btn-dark` } href="#"><BiDollarCircle className="me-1" />Pay Later</a>
         </Link>
         <a className="btn-next btn btn-dark" onClick={ nextStep }>Next<BiRightArrowAlt className="ms-1" /></a>

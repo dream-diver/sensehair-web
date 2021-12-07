@@ -12,7 +12,7 @@ export const GlobalProvider = (props) => {
   const { locale } = router
   const text = locale === 'en' ? en : nl
 
-  let initialState = {
+  const initialState = {
     loading: true,
     text,
     locale,

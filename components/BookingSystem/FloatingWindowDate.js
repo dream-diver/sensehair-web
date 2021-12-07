@@ -7,7 +7,7 @@ import setMinutes from "date-fns/setMinutes";
 import setSeconds from "date-fns/setSeconds";
 import { GlobalContext } from '../contexts/GlobalContext'
 
-const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, setStartDate }) => {
+const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, setStartDate, previousStep }) => {
   const [state] = useContext(GlobalContext)
   const [includeTimes, setIncludeTimes] = useState([])
   // fetch including times
@@ -45,7 +45,7 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
       </div>
       <div className="floating-window-body">
         <form>
-          <div className="d-flex">
+          <div className="d-flex flex-column flex-md-row">
             <div className="me-1 me-md-5">
               <ReactDatePicker
                 selected={ startDate }
@@ -70,7 +70,7 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
         </form>
       </div>
       <div className="floating-window-footer">
-        <a className={ `btn-next btn btn-dark disabled` }><BiLeftArrowAlt className="me-1" />Back</a>
+        <a className={ `btn-next btn btn-dark` } onClick={ previousStep }><BiLeftArrowAlt className="me-1" />Back</a>
         <a className="btn-next btn btn-dark" onClick={ nextStep }>Next<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>

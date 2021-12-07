@@ -171,4 +171,6 @@ export default {
   careerFormMotivationPlaceholder: 'Tell us why you are applying',
   careerFormAttachment: 'Optional: add attachments like your CV, letter of motivation, portfolio here.',
   careerFormButton: 'APPLY',
+  bookingStep1Title: 'CHOOSE YOUR STYLE',
+  bookingStep2Title: 'WHAT IS YOUR HAIRSTYLE?',
 };
