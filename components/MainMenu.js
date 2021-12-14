@@ -1,41 +1,47 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useEffect, useRef } from "react";
+import { useContext, useEffect, useRef } from "react"
 import Link from 'next/link'
-import { useRouter } from "next/router";
-import { FaPhoneAlt } from "react-icons/fa";
-import LanguageDropdown from "./LanguageDropdown";
-import { GlobalContext } from "./contexts/GlobalContext";
+import { useRouter } from "next/router"
+import { FaPhoneAlt } from "react-icons/fa"
+import LanguageDropdown from "./LanguageDropdown"
+import { GlobalContext } from "./contexts/GlobalContext"
 
-import imageLogoBig from '../public/images/logo2x.png';
-import imageSchedule from '../public/images/schedule.png';
+import imageLogoBig from '../public/images/logo2x.png'
+import imageSchedule from '../public/images/schedule.png'
 
-const Menu = ({ isSlider }) => {
+import useMobileDetect from './useMobileDetect'
+
+const Menu = ({ device, isSlider }) => {
   const [state, setState] = useContext(GlobalContext)
   const mainMenuRef = useRef(null)
   const topRowRef = useRef(null)
   const navbarBrandImgRef = useRef(null)
-  const router = useRouter();
-  const path = router.pathname;
+  const router = useRouter()
+  const path = router.pathname
+
+  const currentDevice = useMobileDetect()
+
+  const flag = device === 'mobile' ? currentDevice.isMobile() : device === 'desktop' ? currentDevice.isDesktop() : true
 
   useEffect(() => {
     // Navbar shrink function
     const navbarShrink = () => {
       if (!mainMenuRef.current) {
-        return;
+        return
       }
       if (window.scrollY === 0) {
-        mainMenuRef.current.classList.remove('navbar-shrink');
-        topRowRef.current.classList.add('d-lg-block');
-        navbarBrandImgRef.current.setAttribute("width", "121px");
+        mainMenuRef.current.classList.remove('navbar-shrink')
+        topRowRef.current.classList.add('d-lg-block')
+        navbarBrandImgRef.current.setAttribute("width", "121px")
       } else {
-        mainMenuRef.current.classList.add('navbar-shrink');
-        topRowRef.current.classList.remove('d-lg-block');
-        navbarBrandImgRef.current.setAttribute("width", "71px");
+        mainMenuRef.current.classList.add('navbar-shrink')
+        topRowRef.current.classList.remove('d-lg-block')
+        navbarBrandImgRef.current.setAttribute("width", "71px")
 
       }
-    };
-    navbarShrink();
-    document.addEventListener('scroll', navbarShrink);
+    }
+    navbarShrink()
+    document.addEventListener('scroll', navbarShrink)
   }, [])
 
   return (
@@ -52,7 +58,7 @@ const Menu = ({ isSlider }) => {
 
 
         <form className="d-flex d-lg-none">
-          <button type="button" className="btn btn-sm btn-light rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>{ state.text.bookNow }</button>
+          <button type="button" className="btn btn-sm btn-light rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>{ state.locale === "en" ? state.text.bookNow : flag ? state.text.bookNow : "AFSPRAAK" }</button>
         </form>
 
         <div className="w-100">
@@ -119,6 +125,10 @@ const Menu = ({ isSlider }) => {
       </div>
     </nav>
   )
+}
+
+Menu.defaultProps = {
+  device: 'mobile' || 'desktop'
 }
 
 export default Menu
