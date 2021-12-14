@@ -1,6 +1,10 @@
 import { useContext } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 
+import imageStars from '../../public/images/about/stars.png'
+import imageUser from '../../public/images/about/user.png'
+
+
 /* eslint-disable @next/next/no-img-element */
 const Reviews = () => {
   const [state] = useContext(GlobalContext)
@@ -31,11 +35,11 @@ const Reviews = () => {
               <div className="comment my-5" key={ index }>
                 <h4 className="text-dark-50" data-aos="fade-up" data-aos-duration="750" data-aos-delay="600" data-aos-once="true">{ review.title }</h4>
                 <div className="d-flex" data-aos="fade-up" data-aos-duration="750" data-aos-delay="800" data-aos-once="true">
-                  <img loading="lazy" src="./images/about/stars.png" alt="stars" height="28px" className="me-3" />
+                  <img loading="lazy" src={ imageStars.src } alt="stars" height="28px" className="me-3" />
                 </div>
                 <p className="mt-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="1000" data-aos-once="true">{ review.text }</p>
                 <div className="d-flex align-items-center" data-aos="fade-up" data-aos-duration="750" data-aos-delay="1200" data-aos-once="true">
-                  <img loading="lazy" src="./images/about/user.png" alt="stars" height="46" className="me-3" />
+                  <img loading="lazy" src={ imageUser.src } alt="stars" height="46" className="me-3" />
                   <p className="font-1-3x text-dark-50 mb-0">{ review.name }</p>
                 </div>
               </div>

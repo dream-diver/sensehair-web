@@ -37,9 +37,9 @@ const ApplicationForm = () => {
                       <label htmlFor="vacancy" className="form-label">{ state.text.careerFormJobDescriptionDesc }</label>
                       <select className="form-select" name="vacancy" id="vacancy">
                         <option selected disabled>Dropdown</option>
-                        <option value="1">Haarstylist</option>
-                        <option value="2">Zelfstandige</option>
-                        <option value="3">Open Sollicitatie</option>
+                        <option value="1">{ state.text.careerFormJobDescriptionOption1 }</option>
+                        <option value="2">{ state.text.careerFormJobDescriptionOption2 }</option>
+                        <option value="3">{ state.text.careerFormJobDescriptionOption3 }</option>
                       </select>
                     </div>
                     <div className="mb-3">

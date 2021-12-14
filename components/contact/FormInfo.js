@@ -1,5 +1,9 @@
 import { useContext } from "react"
-import { GlobalContext } from '../contexts/GlobalContext';
+import { GlobalContext } from '../contexts/GlobalContext'
+
+import imageClock from '../../public/images/clock.png'
+import imageLocation from '../../public/images/location.png'
+import imagePhoneCall from '../../public/images/phone-call.png'
 
 /* eslint-disable @next/next/no-img-element */
 const FormInfo = () => {
@@ -31,7 +35,7 @@ const FormInfo = () => {
           <div className="col-md-6 font-1-3x d-flex flex-column justify-content-center py-5 align-items-center">
             <div className="d-flex">
               <div className="me-3 mb-3 d-flex justify-content-center align-items-start">
-                <img loading="lazy" src="./images/location.png" alt="maps-and-flags" width="20px" className="mt-1" />
+                <img loading="lazy" src={ imageLocation.src } alt="maps-and-flags" width="20px" className="mt-1" />
               </div>
               <div className="contact-text mb-3">
                 <p className="d-inline-block">
@@ -43,7 +47,7 @@ const FormInfo = () => {
             </div>
             <div className="d-flex">
               <div className="me-3 mb-3 d-flex justify-content-center align-items-start">
-                <img loading="lazy" src="./images/phone-call.png" alt="phone-call" width="20px" className="mt-1" />
+                <img loading="lazy" src={ imagePhoneCall.src } alt="phone-call" width="20px" className="mt-1" />
               </div>
               <div className="contact-text mb-3 d-flex align-items-center">
                 <p className="mb-0">+31 10 123 456 78</p>
@@ -51,7 +55,7 @@ const FormInfo = () => {
             </div>
             <div className="d-flex">
               <div className="me-3 mb-3 d-flex justify-content-center align-items-start">
-                <img loading="lazy" src="./images/clock.png" alt="phone-call" width="20px" className="mt-1" />
+                <img loading="lazy" src={ imageClock.src } alt="phone-call" width="20px" className="mt-1" />
               </div>
               <div className="contact-text mb-3">
                 <p className="small mb-1">{ state.text.openingTimes1 }</p>

@@ -4,6 +4,10 @@
     width: 100px;
   }
 
+  #team .embla__dots {
+    right: 50%;
+  }
+
   .lookbook-header .header-content {
     width: 100%;
   }

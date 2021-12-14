@@ -10,35 +10,35 @@ import imageMen from '../../public/images/services/services-men.jpg'
 import imageLadiesShort from '../../public/images/services/services-ladies-short-straight.jpg'
 import imageLadiesMidlong from '../../public/images/services/service-ladies-midlong-straight.jpg'
 import imageLadiesLong from '../../public/images/services/services-ladies-long-wavy.jpg'
-
+import imageSchedule from '../../public/images/schedule.png'
 
 const Services = () => {
   const [state] = useContext(GlobalContext)
-  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false });
-  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false);
-  const [nextBtnEnabled, setNextBtnEnabled] = useState(false);
-  const [selectedIndex, setSelectedIndex] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState([]);
+  const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false })
+  const [prevBtnEnabled, setPrevBtnEnabled] = useState(false)
+  const [nextBtnEnabled, setNextBtnEnabled] = useState(false)
+  const [selectedIndex, setSelectedIndex] = useState(0)
+  const [scrollSnaps, setScrollSnaps] = useState([])
 
-  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla]);
-  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla]);
+  const scrollPrev = useCallback(() => embla && embla.scrollPrev(), [embla])
+  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
   const scrollTo = useCallback((index) => embla && embla.scrollTo(index), [
     embla
-  ]);
+  ])
 
   const onSelect = useCallback(() => {
-    if (!embla) return;
-    setSelectedIndex(embla.selectedScrollSnap());
-    setPrevBtnEnabled(embla.canScrollPrev());
-    setNextBtnEnabled(embla.canScrollNext());
-  }, [embla, setSelectedIndex]);
+    if (!embla) return
+    setSelectedIndex(embla.selectedScrollSnap())
+    setPrevBtnEnabled(embla.canScrollPrev())
+    setNextBtnEnabled(embla.canScrollNext())
+  }, [embla, setSelectedIndex])
 
   useEffect(() => {
-    if (!embla) return;
-    onSelect();
-    setScrollSnaps(embla.scrollSnapList());
-    embla.on("select", onSelect);
-  }, [embla, setScrollSnaps, onSelect]);
+    if (!embla) return
+    onSelect()
+    setScrollSnaps(embla.scrollSnapList())
+    embla.on("select", onSelect)
+  }, [embla, setScrollSnaps, onSelect])
 
   // All Services Array
   const allServices = [
@@ -58,7 +58,7 @@ const Services = () => {
       name: state.text.servicesLadiesLong,
       image: imageLadiesLong
     }
-  ];
+  ]
 
   return (
     <section id="services">
@@ -113,7 +113,7 @@ const Services = () => {
             <div className="w-100 d-flex flex-column align-items-center">
               <button type="button" className="btn-w btn-find btn btn-lg btn-outline-dark rounded-0 font-weight-900 mb-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="700" data-aos-once="true">{ state.text.allServices }</button>
               <button type="button" className="btn-w btn-book-now btn btn-lg btn-primary rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) } data-aos="fade-up" data-aos-duration="750" data-aos-delay="900" data-aos-once="true">
-                <img loading="lazy" src="./images/schedule.png" height="43" alt="schedule" />
+                <img loading="lazy" src={ imageSchedule.src } height="43" alt="schedule" />
                 <span className="flex-grow-1">{ state.text.bookNow }</span>
               </button>
             </div>

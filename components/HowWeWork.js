@@ -10,56 +10,56 @@ const HowWeWork = () => {
 
     const changeBgColorOnScroll = (selector, percent, color1, color2, innerElementsSelector = false) => {
       // Element Section
-      var elements = Array.from(document.querySelectorAll(selector));
+      var elements = Array.from(document.querySelectorAll(selector))
       // Inner Element Section
       if (innerElementsSelector) {
-        var innerElements = Array.from(document.querySelectorAll(selector.concat(" ").concat(innerElementsSelector)));
+        var innerElements = Array.from(document.querySelectorAll(selector.concat(" ").concat(innerElementsSelector)))
       }
       // Listen for the scroll event
       document.addEventListener('scroll', event => {
         // Check the viewport status
         elements.map((item, index) => {
           if (item) {
-            item.style.transition = 'all 250ms ease-in-out';
+            item.style.transition = 'all 250ms ease-in-out'
             if (inViewport(item, percent)) {
-              item.style.backgroundColor = color1;
+              item.style.backgroundColor = color1
               if (innerElementsSelector) {
-                innerElements[index].style.backgroundColor = color1;
+                innerElements[index].style.backgroundColor = color1
               }
             } else {
-              item.style.backgroundColor = color2;
+              item.style.backgroundColor = color2
               if (innerElementsSelector) {
-                innerElements[index].style.backgroundColor = color2;
+                innerElements[index].style.backgroundColor = color2
               }
             }
           }
-        });
+        })
       })
     }
-    changeBgColorOnScroll(".timeline-circle", 80, "#000", "#ffb86f");
-    changeBgColorOnScroll(".timeline-box", 68, "#ffb86f", "#e5e5e5", ".timeline-box-arrow");
+    changeBgColorOnScroll(".timeline-circle", 80, "#000", "#ffb86f")
+    changeBgColorOnScroll(".timeline-box", 68, "#ffb86f", "#e5e5e5", ".timeline-box-arrow")
 
     const changeBgColorOfTimelineLine = (selector, percent) => {
       // Element Section
-      var elements = Array.from(document.querySelectorAll(selector));
+      var elements = Array.from(document.querySelectorAll(selector))
       // Inner Element Section
-      var innerElements = Array.from(document.querySelectorAll(".timeline-line-hover"));
+      var innerElements = Array.from(document.querySelectorAll(".timeline-line-hover"))
       // Listen for the scroll event
       document.addEventListener('scroll', event => {
         // Check the viewport status
         elements.map((item, index) => {
           if (item) {
-            item.style.transition = 'all 250ms ease-in-out';
+            item.style.transition = 'all 250ms ease-in-out'
             if (pxScrolled(item, percent) > 0) {
-              innerElements[index].style.height = pxScrolled(item, percent).toString(10).concat("px");
+              innerElements[index].style.height = pxScrolled(item, percent).toString(10).concat("px")
             } else {
-              innerElements[index].style.height = "0";
+              innerElements[index].style.height = "0"
             }
           }
-        });
+        })
       })
     }
-    changeBgColorOfTimelineLine(".timeline-line", 80);
+    changeBgColorOfTimelineLine(".timeline-line", 80)
 
   }, [])
 
@@ -76,7 +76,7 @@ const HowWeWork = () => {
                 <p data-aos="fade-up" data-aos-duration="750" data-aos-delay="750" data-aos-once="true">{ state.text.howWeWorkBody2 }</p>
                 <p className="text-black-50" data-aos="fade-up" data-aos-duration="750" data-aos-delay="750" data-aos-once="true">{ state.text.howWeWorkBody3 }</p>
                 <p className="mb-5" data-aos="fade-up" data-aos-duration="750" data-aos-delay="750" data-aos-once="true">{ state.text.howWeWorkBody4 }</p>
-                <button className="btn-yes btn btn-lg btn-primary rounded-0 text-white font-weight-700 font-1-5x px-5 py-2" data-aos="fade-up" data-aos-duration="750" data-aos-delay="950" data-aos-once="true">{ state.text.howWeWorkButton }</button>
+                <button className="btn-yes btn btn-lg btn-primary rounded-0 text-white font-weight-700 font-1-5x px-5 py-2" data-aos="fade-up" data-aos-duration="750" data-aos-delay="950" data-aos-once="true">{ state.text.bookNow }</button>
               </div>
               <div className="col-md-6">
                 <div className="timeline">

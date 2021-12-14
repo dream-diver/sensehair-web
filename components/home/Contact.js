@@ -1,5 +1,9 @@
 import { useContext } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
+import imageSchedule from '../../public/images/schedule.png'
+import imageClock from '../../public/images/clock.png'
+import imageLocation from '../../public/images/location.png'
+import imagePhoneCall from '../../public/images/phone-call.png'
 
 
 /* eslint-disable @next/next/no-img-element */
@@ -16,9 +20,18 @@ const Contact = () => {
                 <div className="me-md-5">
                   <div className="d-flex justify-content-center justify-content-md-start">
                     <div className="me-3 mb-3 d-flex justify-content-center align-items-start">
-                      <img loading="lazy" src="./images/clock.png" alt="clock" width="20px" className="mt-1" />
+                      <img loading="lazy" src={ imageClock.src } alt="clock" width="20px" className="mt-1" />
                     </div>
-                    <div className="mb-3 flex-grow-1">
+                    <div className="mb-3 flex-grow-1 d-flex">
+                      <p className="text-center text-md-start me-5">
+                        { state.text.openingTimes1Day }<br />
+                        { state.text.openingTimes2Day }<br />
+                        { state.text.openingTimes3Day }<br />
+                        { state.text.openingTimes4Day }<br />
+                        { state.text.openingTimes5Day }<br />
+                        { state.text.openingTimes6Day }<br />
+                        { state.text.openingTimes7Day }
+                      </p>
                       <p className="text-center text-md-start">
                         { state.text.openingTimes1 }<br />
                         { state.text.openingTimes2 }<br />
@@ -34,7 +47,7 @@ const Contact = () => {
                 <div>
                   <div className="d-flex justify-content-center justify-content-md-start">
                     <div className="me-3 mb-3 d-flex justify-content-center align-items-start">
-                      <img loading="lazy" src="./images/location.png" alt="maps-and-flags" width="20px" className="mt-1" />
+                      <img loading="lazy" src={ imageLocation.src } alt="maps-and-flags" width="20px" className="mt-1" />
                     </div>
                     <div className="mb-3 flex-grow-1">
                       <p className="text-center text-md-start">
@@ -46,7 +59,7 @@ const Contact = () => {
                   </div>
                   <div className="d-flex justify-content-center justify-content-md-start">
                     <div className="me-3 mb-3 d-flex justify-content-center align-items-start">
-                      <img loading="lazy" src="./images/phone-call.png" alt="phone-call" width="20px" className="mt-1" />
+                      <img loading="lazy" src={ imagePhoneCall.src } alt="phone-call" width="20px" className="mt-1" />
                     </div>
                     <div className="mb-3 flex-grow-1">
                       <p className="text-center text-md-start mb-0">+31 10 123 456 78</p>
@@ -61,7 +74,7 @@ const Contact = () => {
 
           <div className="w-100 d-flex justify-content-center">
             <button type="button" className="btn-book-now btn btn-primary rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>
-              <img loading="lazy" src="./images/schedule.png" height="43" alt="schedule" />
+              <img loading="lazy" src={ imageSchedule.src } height="43" alt="schedule" />
               <span>{ state.text.bookNow }</span>
             </button>
           </div>

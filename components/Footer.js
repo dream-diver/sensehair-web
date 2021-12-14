@@ -43,39 +43,51 @@ const Footer = () => {
             <div className="col-md-6 col-lg-3 mb-3">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className="nav-link text-white active" href="./">Home</a>
+                  <a className="nav-link text-white active" href="./">{ state.text.menuHome }</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./about">About Us</a>
+                  <a className="nav-link text-white" href="./about">{ state.text.menuAboutUs }</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./services">Services</a>
+                  <a className="nav-link text-white" href="./services">{ state.text.menuServices }</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./lookbook">Lookbook</a>
+                  <a className="nav-link text-white" href="./lookbook">{ state.text.menuLookbooks }</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./career">Career</a>
+                  <a className="nav-link text-white" href="./career">{ state.text.menuCareer }</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./contact">Contact Us</a>
+                  <a className="nav-link text-white" href="./contact">{ state.text.menuContactUs }</a>
                 </li>
               </ul>
             </div>
             <div className="col-md-6 col-lg-3 mb-3">
               <h2>CONTACT</h2>
-              <p className="font-weight-700">Address: Central Plaza 12<br />3012CW Rotterdam</p>
+              <p className="font-weight-700">Central Plaza 12<br />3012CW Rotterdam</p>
               <p>Info@sensehair.nl</p>
               <h4>INFO</h4>
-              <p>
-                { state.text.openingTimes1 }<br />
-                { state.text.openingTimes2 }<br />
-                { state.text.openingTimes3 }<br />
-                { state.text.openingTimes4 }<br />
-                { state.text.openingTimes5 }<br />
-                { state.text.openingTimes6 }<br />
-                { state.text.openingTimes7 }
-              </p>
+              <div className="d-flex">
+
+                <p className="text-center text-md-start me-5">
+                  { state.text.openingTimes1Day }<br />
+                  { state.text.openingTimes2Day }<br />
+                  { state.text.openingTimes3Day }<br />
+                  { state.text.openingTimes4Day }<br />
+                  { state.text.openingTimes5Day }<br />
+                  { state.text.openingTimes6Day }<br />
+                  { state.text.openingTimes7Day }
+                </p>
+                <p>
+                  { state.text.openingTimes1 }<br />
+                  { state.text.openingTimes2 }<br />
+                  { state.text.openingTimes3 }<br />
+                  { state.text.openingTimes4 }<br />
+                  { state.text.openingTimes5 }<br />
+                  { state.text.openingTimes6 }<br />
+                  { state.text.openingTimes7 }
+                </p>
+              </div>
             </div>
             <div className="col-md-6 col-lg-3 mb-3">
               <h2>MAPS</h2>

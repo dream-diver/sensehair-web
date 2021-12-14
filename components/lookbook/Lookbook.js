@@ -1,6 +1,8 @@
 import { useContext } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 
+import imageSchedule from '../../public/images/schedule.png'
+
 import imageLookbook1 from '../../public/images/lookbook/Lookbook1.png'
 import imageLookbook2 from '../../public/images/lookbook/Lookbook2.png'
 import imageLookbook3 from '../../public/images/lookbook/Lookbook3.png'
@@ -121,7 +123,7 @@ const Lookbook = () => {
 
             <div className="w-100 d-flex flex-column align-items-center">
               <button type="button" className="btn-book-now btn btn-primary rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>
-                <img loading="lazy" src="./images/schedule.png" height="42" alt="schedule" />
+                <img loading="lazy" src={ imageSchedule.src } height="42" alt="schedule" />
                 <span>{ state.text.bookNow }</span>
               </button>
             </div>

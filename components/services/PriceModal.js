@@ -1,6 +1,9 @@
 import { useContext } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 
+import imageSchedule from '../../public/images/schedule.png'
+import imageAbout from '../../public/images/about/home-3-about.png'
+
 /* eslint-disable @next/next/no-img-element */
 const PriceModal = ({ activeHairSize, setActiveHairSize, setActiveHairType }) => {
   const [state] = useContext(GlobalContext)
@@ -87,7 +90,7 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, setActiveHairType }) =>
                     <p className="">Ben je student: dan krijg je 10% korting op al onze behandelingen (ook beauty behandelingen). Sorry, helaas niet op onze producten. Studentenkorting geven wij op de maandag, dinsdag, woensdag en donderdag. Niet op koopavonden en de vrijdag en de zaterdag en uiteraard op vertoon van je studentenpas.</p>
                   </div>
                   <div className="col-md-4 py-5" data-aos="fade-left" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-                    <img loading="lazy" src="./images/about/home-3-about.png" alt="home-3-about" className="img-fluid" />
+                    <img loading="lazy" src={ imageAbout.src } alt="home-3-about" className="img-fluid" />
                   </div>
                 </div>
               </div>
@@ -96,7 +99,7 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, setActiveHairType }) =>
           <div className="modal-footer border-0">
             <div className="w-100 d-flex justify-content-center" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
               <button type="button" className="btn-book-now btn btn-dark rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>
-                <img loading="lazy" src="./images/schedule.png" height="43" alt="schedule" />
+                <img loading="lazy" src={ imageSchedule.src } height="43" alt="schedule" />
                 <span>{ state.text.bookNow }</span>
               </button>
             </div>

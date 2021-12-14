@@ -4,6 +4,8 @@ import useEmblaCarousel from 'embla-carousel-react'
 import DotButton from '../slider/DotButton'
 import { GlobalContext } from '../contexts/GlobalContext'
 
+import imageRating from '../../public/images/rating.png'
+
 const Review = () => {
   const [state] = useContext(GlobalContext)
   const reviews = [
@@ -12,23 +14,23 @@ const Review = () => {
     state.text.homeReview3,
   ]
   const [viewportRef, embla] = useEmblaCarousel({ loop: true, skipSnaps: false })
-  const [scrollSnaps, setScrollSnaps] = useState([]);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState([])
+  const [selectedIndex, setSelectedIndex] = useState(0)
   const scrollTo = useCallback((index) => embla && embla.scrollTo(index), [
     embla
-  ]);
+  ])
 
   const onSelect = useCallback(() => {
-    if (!embla) return;
-    setSelectedIndex(embla.selectedScrollSnap());
-  }, [embla, setSelectedIndex]);
+    if (!embla) return
+    setSelectedIndex(embla.selectedScrollSnap())
+  }, [embla, setSelectedIndex])
 
   useEffect(() => {
-    if (!embla) return;
-    onSelect();
-    setScrollSnaps(embla.scrollSnapList());
-    embla.on("select", onSelect);
-  }, [embla, setScrollSnaps, onSelect]);
+    if (!embla) return
+    onSelect()
+    setScrollSnaps(embla.scrollSnapList())
+    embla.on("select", onSelect)
+  }, [embla, setScrollSnaps, onSelect])
 
   return (
     <section id="review" className="text-center py-5">
@@ -48,11 +50,8 @@ const Review = () => {
                 <div className="embla__slide" key={ index }>
                   <div className="container">
                     <div className="row mb-5">
-                      <div className="col-6 col-md-4 offset-md-3">
-                        <img loading="lazy" src="./images/rating.png" alt="rating" className="img-fluid" />
-                      </div>
-                      <div className="col text-start">
-                        <h2 className="review-count d-inline-block font-weight-700 mb-0">{ reviews.length } reviews</h2>
+                      <div className="col-6 offset-3 col-md-4 offset-md-4">
+                        <img loading="lazy" src={ imageRating.src } alt="rating" className="img-fluid" />
                       </div>
                     </div>
 

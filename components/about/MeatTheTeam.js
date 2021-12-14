@@ -4,7 +4,7 @@ import imageCarlos from '../../public/images/team/carlos.png'
 import imageCheyenne from '../../public/images/team/Cheyenne.png'
 import imageXavier from '../../public/images/team/Xavier.png'
 import imageDjimila from '../../public/images/team/Djimila.png'
-
+import imageSchedule from '../../public/images/schedule.png'
 
 /* eslint-disable @next/next/no-img-element */
 const MeatTheTeam = () => {
@@ -14,7 +14,7 @@ const MeatTheTeam = () => {
       <div className="container">
         <div className="row">
           <div className="col py-5">
-            <h1 className="font-weight-700 text-end mb-5" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">{ state.text.aboutMeatTheTeam }</h1>
+            <h1 className="font-weight-700 text-end mb-5" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">{ state.text.aboutMeetTheTeam }</h1>
 
             <div className="team-row row py-5">
               <div className="col-md-5" data-aos="fade-right" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
@@ -86,7 +86,7 @@ const MeatTheTeam = () => {
 
             <div className="w-100 d-flex justify-content-center" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
               <button type="button" className="btn-book-now btn btn-primary rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>
-                <img loading="lazy" src="./images/schedule.png" height="43" alt="schedule" />
+                <img loading="lazy" src={ imageSchedule.src } height="43" alt="schedule" />
                 <span>{ state.text.bookNow }</span>
               </button>
             </div>
