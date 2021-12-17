@@ -220,6 +220,10 @@ button,
   height: 90vh !important;
 }
 
+.cursor-pointer {
+  cursor: pointer;
+}
+
 .btn-w {
   width: 310px;
 }

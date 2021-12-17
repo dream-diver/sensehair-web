@@ -1,4 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
+import Link from 'next/link'
 import { useCallback, useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
 import useEmblaCarousel from 'embla-carousel-react'
@@ -69,14 +70,16 @@ const Services = () => {
             <p className="mb-5" data-aos="fade-up" data-aos-duration="750" data-aos-delay="600" data-aos-once="true">{ state.text.homeServicesBody }</p>
             <div className="row mb-4 d-none d-md-flex">
               { allServices.map((service, index) => (
-                <div key={ index } className="col-6 col-md-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="250" data-aos-once="true">
-                  <div className="img-overlay">
-                    <img loading="lazy" src={ service.image.src } alt={ service.name } className="img-fluid" />
-                    <div className="overlay">
-                      <h1 className="mb-0">{ service.name }</h1>
+                <Link href="/services" key={ index }>
+                  <div className="col-6 col-md-3 cursor-pointer" data-aos="fade-up" data-aos-duration="750" data-aos-delay="250" data-aos-once="true">
+                    <div className="img-overlay">
+                      <img loading="lazy" src={ service.image.src } alt={ service.name } className="img-fluid" />
+                      <div className="overlay">
+                        <h1 className="mb-0">{ service.name }</h1>
+                      </div>
                     </div>
                   </div>
-                </div>
+                </Link>
               )) }
             </div>
             <div className="d-md-none">
@@ -84,14 +87,16 @@ const Services = () => {
                 <div className="embla__viewport" ref={ viewportRef }>
                   <div className="embla__container">
                     { allServices.map((service, index) => (
-                      <div key={ index } className="embla__slide">
-                        <div className="img-overlay">
-                          <img loading="lazy" src={ service.image.src } alt={ service.name } className="img-fluid" />
-                          <div className="overlay">
-                            <h1 className="mb-0">{ service.name }</h1>
+                      <Link href="/services" key={ index }>
+                        <div className="embla__slide cursor-pointer">
+                          <div className="img-overlay">
+                            <img loading="lazy" src={ service.image.src } alt={ service.name } className="img-fluid" />
+                            <div className="overlay">
+                              <h1 className="mb-0">{ service.name }</h1>
+                            </div>
                           </div>
                         </div>
-                      </div>
+                      </Link>
                     )) }
                   </div>
                 </div>
@@ -111,7 +116,9 @@ const Services = () => {
 
 
             <div className="w-100 d-flex flex-column align-items-center">
-              <button type="button" className="btn-w btn-find btn btn-lg btn-outline-dark rounded-0 font-weight-900 mb-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="700" data-aos-once="true">{ state.text.allServices }</button>
+              <Link href="/services">
+                <button type="button" className="btn-w btn-find btn btn-lg btn-outline-dark rounded-0 font-weight-900 mb-3" data-aos="fade-up" data-aos-duration="750" data-aos-delay="700" data-aos-once="true">{ state.text.allServices }</button>
+              </Link>
               <button type="button" className="btn-w btn-book-now btn btn-lg btn-primary rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) } data-aos="fade-up" data-aos-duration="750" data-aos-delay="900" data-aos-once="true">
                 <img loading="lazy" src={ imageSchedule.src } height="43" alt="schedule" />
                 <span className="flex-grow-1">{ state.text.bookNow }</span>

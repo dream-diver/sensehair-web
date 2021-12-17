@@ -26,7 +26,9 @@ export default function Home() {
       </Head>
       <Header />
       <ScrollToTop />
-      <Award />
+      { !state.loading && (
+        <Award />
+      ) }
       <WhyUs />
       <Contact />
       <Services />

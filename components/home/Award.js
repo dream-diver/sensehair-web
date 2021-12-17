@@ -1,7 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import useEmblaCarousel from 'embla-carousel-react'
-import { useContext } from 'react';
-import { GlobalContext } from '../contexts/GlobalContext';
+import { useCallback, useContext, useDebugValue, useEffect } from 'react'
+import { GlobalContext } from '../contexts/GlobalContext'
 
 import imageBrand1 from '../../public/images/brands/award-coffure.png'
 import imageBrand2 from '../../public/images/brands/award-keune-white.png'
@@ -12,13 +12,21 @@ import imageBrand6 from '../../public/images/brands/olaplex.png'
 
 const Award = () => {
   const [state] = useContext(GlobalContext)
-  const [viewportRef] = useEmblaCarousel({
+  const [viewportRef, embla] = useEmblaCarousel({
     loop: true,
     skipSnaps: false,
     align: "start",
     dragFree: true
-  });
+  })
 
+  const scrollNext = useCallback(() => embla && embla.scrollNext(), [embla])
+
+  useEffect(() => {
+    if (!embla) return
+    setInterval(() => {
+      scrollNext()
+    }, 3000)
+  }, [embla, scrollNext])
   const brandImages = [
     imageBrand2,
     imageBrand4,
