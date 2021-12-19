@@ -5,7 +5,7 @@ import nl from '../../locales/nl'
 import { toast } from "react-toastify"
 import optionsDb from "../../db/options.json"
 
-export const GlobalContext = createContext();
+export const GlobalContext = createContext()
 
 export const GlobalProvider = (props) => {
   const router = useRouter()
@@ -24,10 +24,11 @@ export const GlobalProvider = (props) => {
     },
     options: [],
     stylists: [],
+    services: [],
     messages: []
-  };
+  }
 
-  const [state, setState] = useState(initialState);
+  const [state, setState] = useState(initialState)
 
   useEffect(() => {
     let messageArray = []
@@ -50,10 +51,10 @@ export const GlobalProvider = (props) => {
     }
 
     const changeLanguage = (locale) => {
-      const text = locale === 'en' ? en : nl;
+      const text = locale === 'en' ? en : nl
       localStorage.setItem('locale', locale)
       setState(prevState => {
-        return { ...prevState, locale, text };
+        return { ...prevState, locale, text }
       })
       const { pathname, asPath, query } = router
       router.push({ pathname, query }, asPath, { locale })
@@ -75,11 +76,11 @@ export const GlobalProvider = (props) => {
               user: JSON.parse(localStorage.getItem("user")),
               token: localStorage.getItem("token")
             }
-          };
+          }
         })
       } else {
         setState(prevState => {
-          return { ...prevState, changeLanguage, messages: [...messageArray] };
+          return { ...prevState, changeLanguage, messages: [...messageArray] }
         })
       }
     }

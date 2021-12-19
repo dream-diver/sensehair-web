@@ -24,7 +24,7 @@ const services = () => {
       <ServicesText />
       <Prices activeHairSize={ activeHairSize } setActiveHairSize={ setActiveHairSize } activeHairType={ activeHairType } setActiveHairType={ setActiveHairType } />
       <Footer />
-      <PriceModal activeHairSize={ activeHairSize } setActiveHairSize={ setActiveHairSize } setActiveHairType={ setActiveHairType } />
+      <PriceModal activeHairSize={ activeHairSize } setActiveHairSize={ setActiveHairSize } activeHairType={ activeHairType } setActiveHairType={ setActiveHairType } />
 
     </div>
   )

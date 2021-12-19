@@ -9,8 +9,8 @@ const Header = ({ showAll, setShowAll, executeScroll }) => {
 
   const onClickFunction = (e) => {
     e.preventDefault()
-    setShowAll(!showAll)
-    executeScroll()
+    setShowAll(true)
+    executeScroll(e.target.text.trim())
   }
 
   return (

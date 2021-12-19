@@ -11,13 +11,44 @@ import { useRef, useState } from 'react'
 const lookbook = () => {
   const [showAll, setShowAll] = useState(false)
   const lookbookAllRef = useRef(null)
+  const damesRef = useRef(null)
+  const kleurRef = useRef(null)
+  const herenRef = useRef(null)
+  const collectiesRef = useRef(null)
 
-  const executeScroll = () => {
+  // const executeScroll = () => {
+  //   setTimeout(() => {
+  //     const collapseLookbookAll = lookbookAllRef.current ? lookbookAllRef.current.getBoundingClientRect() : 0
+  //     document.body.scrollTop = document.body.scrollTop + collapseLookbookAll.y - 100 // For Safari
+  //     document.documentElement.scrollTop = document.documentElement.scrollTop + collapseLookbookAll.y - 100 // For Chrome, Firefox, IE and Opera
+  //   }, 150)
+  // }
+
+  const executeScroll = (reference) => {
     setTimeout(() => {
-      const collapseLookbookAll = lookbookAllRef.current ? lookbookAllRef.current.getBoundingClientRect() : 0;
-      document.body.scrollTop = document.body.scrollTop + collapseLookbookAll.y - 100; // For Safari
-      document.documentElement.scrollTop = document.documentElement.scrollTop + collapseLookbookAll.y - 100; // For Chrome, Firefox, IE and Opera
-    }, 150);
+      const scrollIntoViewOptions = {
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'nearest',
+      }
+
+      switch (reference) {
+        case 'DAMES':
+          damesRef.current.scrollIntoView(scrollIntoViewOptions)
+          break
+        case 'KLEUR':
+          kleurRef.current.scrollIntoView(scrollIntoViewOptions)
+          break
+        case 'HEREN':
+          herenRef.current.scrollIntoView(scrollIntoViewOptions)
+          break
+        case 'COLLECTIES':
+          collectiesRef.current.scrollIntoView(scrollIntoViewOptions)
+          break
+        default:
+          break
+      }
+    }, 150)
   }
   return (
     <div>
@@ -29,7 +60,7 @@ const lookbook = () => {
       </Head>
       <Header showAll={ showAll } setShowAll={ setShowAll } executeScroll={ executeScroll } />
       <ScrollToTop />
-      { !showAll ? <Lookbook /> : <LookbookAll lookbookAllRef={ lookbookAllRef } /> }
+      { !showAll ? <Lookbook /> : <LookbookAll lookbookAllRef={ lookbookAllRef } damesRef={ damesRef } kleurRef={ kleurRef } herenRef={ herenRef } collectiesRef={ collectiesRef } /> }
       <Footer />
     </div>
   )

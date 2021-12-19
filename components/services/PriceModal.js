@@ -1,12 +1,12 @@
-import { useContext } from "react"
+import { useContext, useEffect } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
-
-import imageSchedule from '../../public/images/schedule.png'
-import imageAbout from '../../public/images/about/home-3-about.png'
+import { fetchServices } from "../Helpers"
+import imageSchedule from "../../public/images/schedule.png"
+import imageAbout from "../../public/images/about/home-3-about.png"
 
 /* eslint-disable @next/next/no-img-element */
-const PriceModal = ({ activeHairSize, setActiveHairSize, setActiveHairType }) => {
-  const [state] = useContext(GlobalContext)
+const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActiveHairType }) => {
+  const [state, setState] = useContext(GlobalContext)
 
   const PriceModalClose = (e) => {
     if (e.target.classList.contains("btn-close") || e.target.classList.contains("modal")) {
@@ -16,6 +16,43 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, setActiveHairType }) =>
       }
     }
   }
+
+  useEffect(() => {
+    console.log(activeHairSize, activeHairType)
+    if (activeHairSize.length === 0 && activeHairType.length === 0) {
+      let hairSize = ""
+      let hairType = ""
+      if (activeHairSize.indexOf(0) === 0) {
+        hairSize = "Men"
+      } else if (activeHairSize.indexOf(0) === 1) {
+        hairSize = "Women Short Hair"
+      } else if (activeHairSize.indexOf(0) === 2) {
+        hairSize = "Women Medium Hair"
+      } else if (activeHairSize.indexOf(0) === 3) {
+        hairSize = "Women Long Hair"
+      }
+      if (activeHairType.indexOf(0) === 0) {
+        hairType = "Straight"
+      } else if (activeHairType.indexOf(0) === 1) {
+        hairType = "Wavy"
+      } else if (activeHairType.indexOf(0) === 2) {
+        hairType = "Curly"
+      } else if (activeHairType.indexOf(0) === 3) {
+        hairType = "Coily"
+      }
+      const getData = async () => {
+        const data = await fetchServices(hairSize, hairType)
+        console.log("data", data.data)
+        if (data) {
+          const services = data.data.map(service => service.data)
+          setState(prevState => {
+            return { ...prevState, services }
+          })
+        }
+      }
+      getData()
+    }
+  }, [activeHairSize, activeHairType])
 
   return (
     <div className="modal fade" id="priceModal" tabIndex="-1" aria-labelledby="priceModalLabel" aria-hidden="true" onClick={ PriceModalClose }>
@@ -30,56 +67,20 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, setActiveHairType }) =>
               <thead>
                 <tr>
                   <th scope="col"></th>
-                  <th scope="col">Service 1</th>
-                  <th scope="col">Service 2</th>
+                  <th scope="col"></th>
+                  <th scope="col">Hairstylist</th>
+                  <th scope="col">Art Director</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <th scope="row">Dames</th>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td scope="row">Knippen/Föhnen</td>
-                  <td>€ 58,00</td>
-                  <td>€ 58,00</td>
-                </tr>
-                <tr>
-                  <td scope="row">Wassen/Föhnen v.a.</td>
-                  <td>€ 38,00</td>
-                  <td>€ 58,00</td>
-                </tr>
-                <tr>
-                  <th scope="row">HEREN</th>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td scope="row">Wassen/Knippen</td>
-                  <td>€ 45,00</td>
-                  <td>€ 45,00</td>
-                </tr>
-                <tr>
-                  <td scope="row">Haircolor for men v.a.</td>
-                  <td>€ 25,00</td>
-                  <td>€ 25,00</td>
-                </tr>
-                <tr>
-                  <td scope="row">BARBER behandelingen v.a.</td>
-                  <td>€ 27,00</td>
-                  <td>€ 25,00</td>
-                </tr>
-                <tr>
-                  <th scope="row">KINDEREN</th>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td scope="row">0 t/m 12 jaar</td>
-                  <td>€ 40,00</td>
-                  <td>€ 25,00</td>
-                </tr>
+                { state.services.map((service, index) => (
+                  <tr key={ index }>
+                    <th scope="row">{ service.name }</th>
+                    <td>{ service.duration } min</td>
+                    <td>${ service.stylist_price }</td>
+                    <td>${ service.art_director_price }</td>
+                  </tr>
+                )) }
               </tbody>
             </table>
             <section id="info_img">
