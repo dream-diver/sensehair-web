@@ -52,7 +52,7 @@ const Footer = () => {
                   <a className="nav-link text-white" href="./services">{ state.text.menuServices }</a>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./lookbook">{ state.text.menuLookbooks }</a>
+                  <a className="nav-link text-white" href="./lookbook">{ state.text.menuLookbook }</a>
                 </li>
                 <li className="nav-item">
                   <a className="nav-link text-white" href="./career">{ state.text.menuCareer }</a>
