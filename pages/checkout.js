@@ -17,7 +17,7 @@ const checkout = () => {
     if (!toast.isActive(toastId.current)) {
       let Message = ""
       if (payment === "paylater" || redirect_status === "succeeded") {
-        Message = state.locale === 'en' ? `${payment === "paylater" ? "Booking" : "Payment"} Successful` ; `${payment === "paylater" ? "Boeking" : "Betaling"} Succesvol`
+        Message = state.locale === 'en' ? `${payment === "paylater" ? "Booking" : "Payment"} Successful` : `${payment === "paylater" ? "Boeking" : "Betaling"} Succesvol`
         toastId.current = toast.success(Message)
       } else {
         Message = state.locale === 'en' ? `Booking Failed` : `Reserveren Mislukt`
