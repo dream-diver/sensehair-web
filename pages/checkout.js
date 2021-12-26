@@ -10,7 +10,6 @@ const checkout = () => {
   const [paymentSumbit, setPaymentSumbit] = useState(false)
   const toastId = useRef(null)
   const router = useRouter()
-  console.log("router", router)
   const { payment, redirect_status, payment_intent } = router.query
 
   // Send Notification

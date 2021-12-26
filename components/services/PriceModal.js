@@ -1,4 +1,5 @@
-import { useContext, useEffect } from "react"
+import { useRouter } from 'next/router'
+import { useContext, useEffect, useRef } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 import { fetchServices } from "../Helpers"
 import imageSchedule from "../../public/images/schedule.png"
@@ -7,6 +8,9 @@ import imageAbout from "../../public/images/about/home-3-about.png"
 /* eslint-disable @next/next/no-img-element */
 const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActiveHairType }) => {
   const [state, setState] = useContext(GlobalContext)
+  const modalRef = useRef(null)
+  const router = useRouter()
+  const { hairSize } = router.query
 
   const PriceModalClose = (e) => {
     if (e.target.classList.contains("btn-close") || e.target.classList.contains("modal")) {
@@ -18,7 +22,15 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
   }
 
   useEffect(() => {
-    console.log(activeHairSize, activeHairType)
+    setTimeout(() => {
+      var priceModal = new bootstrap.Modal(document.getElementById('priceModal'), {})
+      if (parseInt(hairSize) === 0) {
+        priceModal.show()
+      }
+    }, 3000)
+  }, [hairSize])
+
+  useEffect(() => {
     if (activeHairSize.length === 0 && activeHairType.length === 0) {
       let hairSize = ""
       let hairType = ""
@@ -42,7 +54,6 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
       }
       const getData = async () => {
         const data = await fetchServices(hairSize, hairType)
-        console.log("data", data.data)
         if (data) {
           const services = data.data.map(service => service.data)
           setState(prevState => {
@@ -55,7 +66,7 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
   }, [activeHairSize, activeHairType])
 
   return (
-    <div className="modal fade" id="priceModal" tabIndex="-1" aria-labelledby="priceModalLabel" aria-hidden="true" onClick={ PriceModalClose }>
+    <div className="modal fade show" ref={ modalRef } id="priceModal" tabIndex="-1" aria-labelledby="priceModalLabel" aria-hidden="true" onClick={ PriceModalClose }>
       <div className="modal-dialog">
         <div className="modal-content rounded-0">
           <div className="modal-header bg-black text-white">

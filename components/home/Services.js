@@ -70,7 +70,10 @@ const Services = () => {
             <p className="mb-5" data-aos="fade-up" data-aos-duration="750" data-aos-delay="600" data-aos-once="true">{ state.text.homeServicesBody }</p>
             <div className="row mb-4 d-none d-md-flex">
               { allServices.map((service, index) => (
-                <Link href="/services" key={ index }>
+                <Link href={ {
+                  pathname: "/services",
+                  query: { hairSize: index },
+                } } key={ index }>
                   <div className="col-6 col-md-3 cursor-pointer" data-aos="fade-up" data-aos-duration="750" data-aos-delay="250" data-aos-once="true">
                     <div className="img-overlay">
                       <img loading="lazy" src={ service.image.src } alt={ service.name } className="img-fluid" />
@@ -87,7 +90,10 @@ const Services = () => {
                 <div className="embla__viewport" ref={ viewportRef }>
                   <div className="embla__container">
                     { allServices.map((service, index) => (
-                      <Link href="/services" key={ index }>
+                      <Link href={ {
+                        pathname: "/services",
+                        query: { hairSize: index },
+                      } } key={ index }>
                         <div className="embla__slide cursor-pointer">
                           <div className="img-overlay">
                             <img loading="lazy" src={ service.image.src } alt={ service.name } className="img-fluid" />

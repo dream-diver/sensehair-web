@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
+import { useRouter } from 'next/router'
 
 import image1 from "../../public/images/services/1.png"
 import image2 from "../../public/images/services/2.png"
@@ -24,6 +25,11 @@ const Prices = ({ activeHairSize, setActiveHairSize, activeHairType, setActiveHa
   const [state] = useContext(GlobalContext)
   const [showHairType, setShowHairType] = useState(false)
   const hairTypeRef = useRef(null)
+  const router = useRouter()
+  const { hairSize } = router.query
+
+  const scrollIntoViewOptions = { behavior: "smooth", block: "center", inline: "nearest" }
+
 
   const selectHairSize = (id) => {
     if (activeHairSize.length === 0) {
@@ -31,7 +37,7 @@ const Prices = ({ activeHairSize, setActiveHairSize, activeHairType, setActiveHa
       if (activeHairSize.indexOf(id) === -1) {
         setActiveHairSize([...activeHairSize, id])
         if (hairTypeRef.current !== null && id !== 0) {
-          hairTypeRef.current.scrollIntoView()
+          hairTypeRef.current.scrollIntoView(scrollIntoViewOptions)
         }
       } else {
         setActiveHairSize(activeHairSize.filter(option => option !== id))
@@ -50,6 +56,17 @@ const Prices = ({ activeHairSize, setActiveHairSize, activeHairType, setActiveHa
     }
   }
 
+  useEffect(() => {
+    if (hairSize) {
+      setActiveHairSize([...activeHairSize, parseInt(hairSize)])
+      selectHairSize(parseInt(hairSize))
+      setTimeout(() => {
+        if (hairTypeRef.current !== null && parseInt(hairSize) !== 0) {
+          hairTypeRef.current.scrollIntoView(scrollIntoViewOptions)
+        }
+      }, 3000)
+    }
+  }, [hairSize])
 
   return (
     <section id="prices">
