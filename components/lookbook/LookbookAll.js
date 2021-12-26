@@ -1,4 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
+import { useContext } from 'react'
+import { GlobalContext } from '../contexts/GlobalContext'
 
 import imageLookbook1 from '../../public/images/lookbook/Lookbook1.png'
 import imageLookbook2 from '../../public/images/lookbook/Lookbook2.png'
@@ -50,6 +52,7 @@ import imageLookbook48 from '../../public/images/lookbook/Lookbook48.png'
 import imageLookbook49 from '../../public/images/lookbook/Lookbook49.png'
 
 const LookbookAll = ({ lookbookAllRef, damesRef, kleurRef, herenRef, collectiesRef }) => {
+  const [state] = useContext(GlobalContext)
   const lookbookDames = [
     imageLookbook1,
     imageLookbook2,
@@ -151,7 +154,7 @@ const LookbookAll = ({ lookbookAllRef, damesRef, kleurRef, herenRef, collectiesR
       <div className="container">
         <div className="row">
           <div id="myDiv" className="col py-5 text-center" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-            <h1 id="KLEUR" className="h1-margin-bottom" ref={ damesRef }>LOOKBOOK - <b>DAMES</b></h1>
+            <h1 id="KLEUR" className="h1-margin-bottom" ref={ damesRef }>LOOKBOOK - <b>{ state.text.lookbookMenu1 }</b></h1>
 
             <div className="row">
               { lookbookDames.map((image, index) => (
@@ -161,7 +164,7 @@ const LookbookAll = ({ lookbookAllRef, damesRef, kleurRef, herenRef, collectiesR
               )) }
             </div>
 
-            <h1 id="KLEUR" className="h1-margin-bottom mt-5" ref={ kleurRef }>LOOKBOOK - <b>KLEUR</b></h1>
+            <h1 id="KLEUR" className="h1-margin-bottom mt-5" ref={ kleurRef }>LOOKBOOK - <b>{ state.text.lookbookMenu2 }</b></h1>
 
             <div className="row">
               { lookbookKleur.map((image, index) => (
@@ -171,7 +174,7 @@ const LookbookAll = ({ lookbookAllRef, damesRef, kleurRef, herenRef, collectiesR
               )) }
             </div>
 
-            <h1 id="LENGTES" className="h1-margin-bottom mt-5" ref={ herenRef }>LOOKBOOK - <b>HEREN</b></h1>
+            <h1 id="LENGTES" className="h1-margin-bottom mt-5" ref={ herenRef }>LOOKBOOK - <b>{ state.text.lookbookMenu3 }</b></h1>
 
             <div className="row">
               { lookbookHeren.map((image, index) => (
@@ -181,7 +184,7 @@ const LookbookAll = ({ lookbookAllRef, damesRef, kleurRef, herenRef, collectiesR
               )) }
             </div>
 
-            <h1 id="COLLECTIES" className="h1-margin-bottom mt-5" ref={ collectiesRef }>LOOKBOOK - <b>COLLECTIES</b></h1>
+            <h1 id="COLLECTIES" className="h1-margin-bottom mt-5" ref={ collectiesRef }>LOOKBOOK - <b>{ state.text.lookbookMenu4 }</b></h1>
 
             <div className="row">
               { lookbookCollecties.map((image, index) => (
