@@ -1,8 +1,11 @@
+import { useContext } from "react"
 import { BiRightArrowAlt, BiLeftArrowAlt } from "react-icons/bi"
+import { GlobalContext } from "../contexts/GlobalContext"
 import FormCheck from "./FormCheck"
 
 const FloatingWindow = ({ step, options, show, setShow, checked, setChecked, nextStep, previousStep, multiChecked, setMultiChecked }) => {
-  let stylist = {};
+  const [state] = useContext(GlobalContext)
+  let stylist = {}
   if (step.id === 4) {
     stylist = {
       "name": "Any Stylist",
@@ -23,8 +26,8 @@ const FloatingWindow = ({ step, options, show, setShow, checked, setChecked, nex
         </form>
       </div>
       <div className="floating-window-footer">
-        <a className={ `btn-next btn btn-dark ${step.id === 1 ? "d-none" : ""}` } onClick={ previousStep } ><BiLeftArrowAlt className="me-1" />Back</a>
-        <a className={ `btn-next btn btn-dark ${checked === -1 ? "disabled" : ""}` } onClick={ nextStep }>Next<BiRightArrowAlt className="ms-1" /></a>
+        <a className={ `btn-next btn btn-dark ${step.id === 1 ? "d-none" : ""}` } onClick={ previousStep } ><BiLeftArrowAlt className="me-1" />{ state.text.bookingBack }</a>
+        <a className={ `btn-next btn btn-dark ${checked === -1 ? "disabled" : ""}` } onClick={ nextStep }>{ state.text.bookingNext }<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div >
   )

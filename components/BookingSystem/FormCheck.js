@@ -1,6 +1,9 @@
 import Image from 'next/image'
+import { useContext } from 'react'
+import { GlobalContext } from '../contexts/GlobalContext'
 
 const FormCheck = ({ id, data, checked, setChecked, multiSelect, step, multiChecked = [], setMultiChecked = () => { } }) => {
+  const [state] = useContext(GlobalContext)
   const selectOption = (id) => {
     if (!multiSelect) {
       setChecked(id)
@@ -18,20 +21,20 @@ const FormCheck = ({ id, data, checked, setChecked, multiSelect, step, multiChec
       { (step.id === 1 || step.id === 2) && data.image &&
         <div className="form-check-img">
           { checked === id ?
-            <Image src={ data.imageLight } alt={ data.name } layout="fill" objectFit="contain" />
-            : <Image src={ data.image } alt={ data.name } layout="fill" objectFit="contain" />
+            <Image src={ data.imageLight } alt={ state.locale === 'en' ? data.name_en :  data.name } layout="fill" objectFit="contain" />
+            : <Image src={ data.image } alt={ state.locale === 'en' ? data.name_en :  data.name } layout="fill" objectFit="contain" />
           }
         </div>
       }
       { step.id === 4 && data.avatar_path &&
         <div className="form-check-img user-img">
-          <Image src={ data.avatar_path } alt={ data.name } layout="fill" objectFit="contain" />
+          <Image src={ data.avatar_path } alt={ state.locale === 'en' ? data.name_en :  data.name } layout="fill" objectFit="contain" />
         </div>
       }
       <input className="form-check-input" type={ multiSelect ? "checkbox" : "radio" } name="exampleRadios" value="option1" checked={ !multiSelect ? checked === id : multiChecked.indexOf(id) !== -1 } onChange={ isChecked } id={ id } />
       <div className="form-check-text">
         <div className="d-flex justify-content-between">
-          <label className="form-check-label" onClick={ (e) => e.preventDefault() } htmlFor={ id }>{ data.name ? data.name : data }</label>
+          <label className="form-check-label" onClick={ (e) => e.preventDefault() } htmlFor={ id }>{ state.locale === 'en' ? data.name_en :  data.name ? state.locale === 'en' ? data.name_en :  data.name : data }</label>
           { step.id === 3 && <span className="small sub-heading">${ step.serviceType ? data.art_director_price : data.stylist_price }</span> }
         </div>
         { data.duration && <span className="small sub-heading">{ data.duration } minutes</span> } { step.id === 3 && <>| <span className="small sub-heading">{ step.serviceType ? "Art Director" : "Hairstylist " }</span></> }

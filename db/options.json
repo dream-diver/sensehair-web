@@ -4,22 +4,26 @@
     "name": "Hair Size",
     "option": [
       {
-        "name": "Men",
+        "name": "Heren",
+        "name_en": "Men",
         "image": "https://i.imgur.com/bKp1dq2.png",
         "imageLight": "https://i.imgur.com/0lWQ4Yy.png"
       },
       {
-        "name": "Women Short Hair",
+        "name": "Dames Kort",
+        "name_en": "Ladies Short",
         "image": "https://i.imgur.com/nkXm51q.png",
         "imageLight": "https://i.imgur.com/kyWUX8k.png"
       },
       {
-        "name": "Women Medium Hair",
+        "name": "Dames Halflang",
+        "name_en": "Ladies Midlong",
         "image": "https://i.imgur.com/RZx1XRU.png",
         "imageLight": "https://i.imgur.com/iWSio1g.png"
       },
       {
-        "name": "Women Long Hair",
+        "name": "Dames Lang",
+        "name_en": "Ladies Long",
         "image": "https://i.imgur.com/TudBEeg.png",
         "imageLight": "https://i.imgur.com/kKumdXJ.png"
       }
@@ -30,22 +34,26 @@
     "name": "Hair Type",
     "option": [
       {
-        "name": "Straight",
+        "name": "Steil",
+        "name_en": "Straight",
         "image": "https://i.imgur.com/7vCn1yJ.png",
         "imageLight": "https://i.imgur.com/kIWAVxr.png"
       },
       {
-        "name": "Wavy",
+        "name": "Golvend",
+        "name_en": "Wavy",
         "image": "https://i.imgur.com/LtIFgcE.png",
         "imageLight": "https://i.imgur.com/Y0QKgBx.png"
       },
       {
-        "name": "Curly",
+        "name": "Krullend",
+        "name_en": "Curly",
         "image": "https://i.imgur.com/Vyqq1C9.png",
         "imageLight": "https://i.imgur.com/RLNnzyP.png"
       },
       {
-        "name": "Coily",
+        "name": "Kroes",
+        "name_en": "Frizzy",
         "image": "https://i.imgur.com/cI6bg3v.png",
         "imageLight": "https://i.imgur.com/pxxWlxp.png"
       }

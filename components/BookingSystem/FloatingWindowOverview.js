@@ -9,7 +9,7 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
   const [discountPrice, setDiscountPrice] = useState(0)
 
   // Options
-  const options = state.options;
+  const options = state.options
   const optionHairSize = options.find(option => option.name === "Hair Size").option
   const optionHairType = options.find(option => option.name === "Hair Type").option
 
@@ -141,9 +141,9 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
       </div>
       <div className="floating-window-footer">
         <Link href={ { pathname: "/checkout", query: { payment: 'paylater' } } }>
-          <a className={ `btn-next btn btn-dark` } href="#"><BiDollarCircle className="me-1" />Pay Later</a>
+          <a className={ `btn-next btn btn-dark` } href="#"><BiDollarCircle className="me-1" />{ state.text.bookingPayLater }</a>
         </Link>
-        <a className="btn-next btn btn-dark" onClick={ nextStep }>Next<BiRightArrowAlt className="ms-1" /></a>
+        <a className="btn-next btn btn-dark" onClick={ nextStep }>{ state.text.bookingNext }<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>
   )

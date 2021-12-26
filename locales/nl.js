@@ -189,4 +189,13 @@ export default {
   careerFormButton: 'Verzenden',
   bookingStep1Title: 'KIES JOUW STYLE',
   bookingStep2Title: 'WAT VOOR TYPE HAAR HEB JE?',
+  bookingStep3Title: 'Kies Diensten',
+  bookingStep4Title: 'Kies Stylist',
+  bookingStep5Title: 'Kies de datum en tijd',
+  bookingStep6Title: 'Log in',
+  bookingStep7Title: 'Overzicht boeken',
+  bookingStep8Title: 'Betaling',
+  bookingNext: 'Volgende',
+  bookingBack: 'Rug',
+  bookingPayLater: 'Betaal Later',
 }

@@ -2,9 +2,9 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react'
 import { BiLeftArrowAlt } from "react-icons/bi"
-import { toast } from 'react-toastify';
+import { toast } from 'react-toastify'
 
 const checkout = () => {
   const [paymentSumbit, setPaymentSumbit] = useState(false)
@@ -17,10 +17,10 @@ const checkout = () => {
     if (!toast.isActive(toastId.current)) {
       let Message = ""
       if (payment === "paylater" || redirect_status === "succeeded") {
-        Message = `${payment === "paylater" ? "Booking" : "Payment"} Successful`
+        Message = state.locale === 'en' ? `${payment === "paylater" ? "Booking" : "Payment"} Successful` ; `${payment === "paylater" ? "Boeking" : "Betaling"} Succesvol`
         toastId.current = toast.success(Message)
       } else {
-        Message = `Booking Failed`
+        Message = state.locale === 'en' ? `Booking Failed` : `Reserveren Mislukt`
         toastId.current = toast.error(Message)
       }
     }
@@ -59,7 +59,7 @@ const checkout = () => {
       <h1 className="text-center mt-5 mb-4">{ `${payment === "paylater" ? "Booking" : "Payment"} ${redirect_status === undefined ? "Successful" : redirect_status === "succeeded" ? "Successful" : "Failed"}` }</h1>
       <div className="d-flex justify-content-center">
         <Link href="/">
-          <a className="btn btn-dark" href="#"><BiLeftArrowAlt className="me-1" />Back To Home</a>
+          <a className="btn btn-dark" href="#"><BiLeftArrowAlt className="me-1" />{ state.locale === 'en' ? "Back To Home" : "Terug Naar Huis" }</a>
         </Link>
       </div>
     </div>

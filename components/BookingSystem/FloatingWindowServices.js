@@ -1,13 +1,13 @@
-import { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react"
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
-import { GlobalContext } from "../contexts/GlobalContext";
+import { GlobalContext } from "../contexts/GlobalContext"
 import FormCheck from "./FormCheck"
 
 const FloatingWindowServices = ({ steps, setSteps, step, show, setShow, checked, setChecked, nextStep, multiChecked, setMultiChecked, previousStep }) => {
   const [state, setState] = useContext(GlobalContext)
   const [services, setServices] = useState([])
 
-  const options = state.options;
+  const options = state.options
   const optionHairSize = options.find(option => option.name === "Hair Size").option
   const optionHairType = options.find(option => option.name === "Hair Type").option
 
@@ -59,8 +59,8 @@ const FloatingWindowServices = ({ steps, setSteps, step, show, setShow, checked,
         </form>
       </div>
       <div className="floating-window-footer">
-        <a className={ `btn-next btn btn-dark` } onClick={ previousStep }><BiLeftArrowAlt className="me-1" />Back</a>
-        <a className={ `btn-next btn btn-dark ${multiChecked.length === 0 && "disabled"}` } onClick={ nextStep }>Next<BiRightArrowAlt className="ms-1" /></a>
+        <a className={ `btn-next btn btn-dark` } onClick={ previousStep }><BiLeftArrowAlt className="me-1" />{ state.text.bookingBack }</a>
+        <a className={ `btn-next btn btn-dark ${multiChecked.length === 0 && "disabled"}` } onClick={ nextStep }>{ state.text.bookingNext }<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>
   )

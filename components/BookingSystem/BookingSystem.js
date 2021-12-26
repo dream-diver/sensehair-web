@@ -8,12 +8,12 @@ import FloatingWindowDate from './FloatingWindowDate'
 import FloatingWindowAuth from './FloatingWindowAuth'
 import FloatingWindowOverview from './FloatingWindowOverview'
 import FloatingWindowPayment from './FloatingWindowPayment'
-import setHours from "date-fns/setHours";
-import setMinutes from "date-fns/setMinutes";
-import setSeconds from "date-fns/setSeconds";
-import format from "date-fns/format";
+import setHours from "date-fns/setHours"
+import setMinutes from "date-fns/setMinutes"
+import setSeconds from "date-fns/setSeconds"
+import format from "date-fns/format"
 
-import imageSchedule from '../../public/images/schedule.png';
+import imageSchedule from '../../public/images/schedule.png'
 import { set } from 'date-fns'
 
 const BookingSystem = () => {
@@ -21,7 +21,7 @@ const BookingSystem = () => {
   // const [show, setShow] = useState(false)
   const [checked, setChecked] = useState(-1)
   const [multiChecked, setMultiChecked] = useState([])
-  const [startDate, setStartDate] = useState(setHours(setMinutes(setSeconds(new Date(), 0), 0), 10));
+  const [startDate, setStartDate] = useState(setHours(setMinutes(setSeconds(new Date(), 0), 0), 10))
 
   const show = state.showBooking
 
@@ -48,7 +48,7 @@ const BookingSystem = () => {
     "step3": {
       id: 3,
       active: false,
-      title: "Choose Services",
+      title: state.text.bookingStep3Title,
       multiSelect: true,
       serviceType: true,
       value: []
@@ -56,20 +56,20 @@ const BookingSystem = () => {
     "step4": {
       id: 4,
       active: false,
-      title: "Choose Stylist",
+      title: state.text.bookingStep4Title,
       multiSelect: false,
       value: 0
     },
     "step5": {
       id: 5,
       active: false,
-      title: "Choose Date & Time",
+      title: state.text.bookingStep5Title,
       value: ""
     },
     "step6": {
       id: 6,
       active: false,
-      title: "Login",
+      title: state.text.bookingStep5Title,
       value: false,
       guest: {
         isGuest: false,
@@ -81,7 +81,7 @@ const BookingSystem = () => {
     "step7": {
       id: 7,
       active: false,
-      title: "Booking Overview",
+      title: state.text.bookingStep7Title,
       value: 0.0,
       couponCode: "",
       booking: {}
@@ -89,13 +89,13 @@ const BookingSystem = () => {
     "step8": {
       id: 8,
       active: false,
-      title: "Payment",
+      title: state.text.bookingStep8Title,
       paymentIntent: "",
     },
   }
   const [steps, setSteps] = useState(initialState)
   // Options
-  const options = state.options;
+  const options = state.options
   const optionHairSize = options.find(option => option.name === "Hair Size").option
   const optionHairType = options.find(option => option.name === "Hair Type").option
 
@@ -169,18 +169,18 @@ const BookingSystem = () => {
 
   // Get Text From Stream
   const getTextFromStream = async (readableStream) => {
-    let reader = readableStream.getReader();
-    let utf8Decoder = new TextDecoder();
-    let nextChunk;
+    let reader = readableStream.getReader()
+    let utf8Decoder = new TextDecoder()
+    let nextChunk
 
-    let resultStr = '';
+    let resultStr = ''
 
     while (!(nextChunk = await reader.read()).done) {
-      let partialData = nextChunk.value;
-      resultStr += utf8Decoder.decode(partialData);
+      let partialData = nextChunk.value
+      resultStr += utf8Decoder.decode(partialData)
     }
 
-    return resultStr;
+    return resultStr
   }
 
   // Fetch Payment Intent
@@ -194,7 +194,7 @@ const BookingSystem = () => {
         }
       })
       const data = await getTextFromStream(response.body)
-      console.log(data);
+      console.log(data)
       return data
     } catch (error) {
       console.log(error.message)
@@ -368,8 +368,6 @@ const BookingSystem = () => {
   const setInitialState = () => {
     setSteps(initialState)
   }
-  console.log(steps);
-  console.log(state);
 
   return (
     <div id="bookingSystem">

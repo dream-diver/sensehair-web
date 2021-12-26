@@ -1,14 +1,15 @@
 import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
 import { BiRightArrowAlt } from "react-icons/bi"
-import { Elements } from '@stripe/react-stripe-js';
-import { loadStripe } from '@stripe/stripe-js';
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
 
-import CheckoutForm from './CheckoutForm';
+import CheckoutForm from './CheckoutForm'
 
 const FloatingWindowPayment = ({ steps, setSteps, step, show, setShow, nextStep }) => {
+  const [state] = useContext(GlobalContext)
 
-  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY);
+  const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY)
 
   return (
     <div className="floating-window">
@@ -22,7 +23,7 @@ const FloatingWindowPayment = ({ steps, setSteps, step, show, setShow, nextStep 
         </Elements>
       </div>
       <div className="floating-window-footer">
-        <a className="btn-next btn btn-dark d-none" onClick={ nextStep }>Next<BiRightArrowAlt className="ms-1" /></a>
+        <a className="btn-next btn btn-dark d-none" onClick={ nextStep }>{ state.text.bookingNext }<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>
   )

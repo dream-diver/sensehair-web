@@ -186,4 +186,13 @@ export default {
   careerFormButton: 'APPLY',
   bookingStep1Title: 'CHOOSE YOUR STYLE',
   bookingStep2Title: 'WHAT IS YOUR HAIRSTYLE?',
+  bookingStep3Title: 'Choose Services',
+  bookingStep4Title: 'Choose Stylist',
+  bookingStep5Title: 'Choose Date & Time',
+  bookingStep6Title: 'Login',
+  bookingStep7Title: 'Booking Overview',
+  bookingStep8Title: 'Payment',
+  bookingNext: 'Next',
+  bookingBack: 'Back',
+  bookingPayLater: 'Pay Later',
 }

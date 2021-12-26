@@ -69,7 +69,7 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
       }
       return
     }
-    let validMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let validMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     //Check if it's a email or not
     if (!validMail.test(formData.email)) {
       if (!toast.isActive(formToast.current.validMail)) {
@@ -129,7 +129,7 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
       return
     }
 
-    let validMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let validMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     //Check if it's a email or not
     if (!validMail.test(formData.email)) {
       if (!toast.isActive(formToast.current.validMail)) {
@@ -191,7 +191,7 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
       }
       return
     }
-    let validMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    let validMail = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     //Check if it's a email or not
     if (!validMail.test(formData.email)) {
       if (!toast.isActive(formToast.current.validMail)) {
@@ -263,7 +263,7 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
         </form>
       </div>
       <div className="floating-window-footer">
-        <a className={ `btn-next btn btn-dark` } onClick={ previousStep }><BiLeftArrowAlt className="me-1" />Back</a>
+        <a className={ `btn-next btn btn-dark` } onClick={ previousStep }><BiLeftArrowAlt className="me-1" />{ state.text.bookingBack }</a>
         <a className="btn-next btn btn-dark" onClick={ step.guest.isGuest ? onGuest : isLogin ? onLogin : onSignup }>{ step.guest.isGuest ? "Guest Booking" : isLogin ? "Login" : "Sign Up" }<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>
