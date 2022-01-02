@@ -70,6 +70,7 @@ const Services = () => {
             <p className="mb-5" data-aos="fade-up" data-aos-duration="750" data-aos-delay="600" data-aos-once="true">{ state.text.homeServicesBody }</p>
             <div className="row mb-4 d-none d-md-flex">
               { allServices.map((service, index) => (
+                // eslint-disable-next-line @next/next/link-passhref
                 <Link href={ {
                   pathname: "/services",
                   query: { hairSize: index },
