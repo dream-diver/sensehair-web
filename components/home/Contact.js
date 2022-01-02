@@ -23,7 +23,7 @@ const Contact = () => {
                       <img loading="lazy" src={ imageClock.src } alt="clock" width="20px" className="mt-1" />
                     </div>
                     <div className="mb-3 flex-grow-1 d-flex">
-                      <p className="text-center text-md-start me-3 me-lg-5">
+                      <p className="text-center text-md-start me-2 me-sm-3 me-lg-5">
                         { state.text.openingTimes1Day }<br />
                         { state.text.openingTimes2Day }<br />
                         { state.text.openingTimes3Day }<br />

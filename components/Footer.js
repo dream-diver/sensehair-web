@@ -67,9 +67,9 @@ const Footer = () => {
               <p className="font-weight-700">Central Plaza 12<br />3012CW Rotterdam</p>
               <p>Info@sensehair.nl</p>
               <h4>INFO</h4>
-              <div className="d-flex">
+              <div className="d-flex justify-content-center justify-content-md-start">
 
-                <p className="text-center text-md-start me-5">
+                <p className="text-center text-md-start me-3 me-xl-5">
                   { state.text.openingTimes1Day }<br />
                   { state.text.openingTimes2Day }<br />
                   { state.text.openingTimes3Day }<br />
