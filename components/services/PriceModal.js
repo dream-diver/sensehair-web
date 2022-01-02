@@ -63,6 +63,7 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
       }
       getData()
     }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeHairSize, activeHairType])
 
   return (

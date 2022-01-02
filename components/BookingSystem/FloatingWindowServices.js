@@ -40,6 +40,7 @@ const FloatingWindowServices = ({ steps, setSteps, step, show, setShow, checked,
       setState({ ...state, services: data.data.map(service => service.data) })
     }
     getData()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <div className="floating-window">

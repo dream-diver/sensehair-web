@@ -2,11 +2,13 @@
 import Head from 'next/head'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import { useEffect, useRef, useState } from 'react'
+import { useContext, useEffect, useRef, useState } from 'react'
 import { BiLeftArrowAlt } from "react-icons/bi"
 import { toast } from 'react-toastify'
+import { GlobalContext } from '../components/contexts/GlobalContext'
 
 const checkout = () => {
+  const [state, setState] = useContext(GlobalContext)
   const [paymentSumbit, setPaymentSumbit] = useState(false)
   const toastId = useRef(null)
   const router = useRouter()
