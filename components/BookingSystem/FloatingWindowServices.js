@@ -33,14 +33,14 @@ const FloatingWindowServices = ({ steps, setSteps, step, show, setShow, checked,
 
   useEffect(() => {
     const getData = async () => {
-      const hairSize = optionHairSize[steps.step1.value].name
-      const hairType = optionHairType[steps.step2.value] ? optionHairType[steps.step2.value].name : ""
+      const hairSize = optionHairSize[steps.step1.value].name_en
+      const hairType = optionHairType[steps.step2.value] ? optionHairType[steps.step2.value].name_en : ""
       const data = await fetchServices(hairSize, hairType)
       setServices(data.data.map(service => service.data))
       setState({ ...state, services: data.data.map(service => service.data) })
     }
     getData()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
     <div className="floating-window">
