@@ -45,7 +45,7 @@ const Reviews = () => {
               </div>
             )) }
 
-            <a href={ `https://www.treatwell.nl/${state.locale === "en" && "en/"}salon/sense-hair-by-carlos/#reviews` } target="_blank" rel="noreferrer" className="btn btn-light text-dark-50" data-aos="fade-up" data-aos-duration="750" data-aos-delay="750" data-aos-once="true">{ state.text.aboutReviewReadMore }</a>
+            <a href={ `https://www.treatwell.nl/${state.locale === "en" ? "en/" : ""}salon/sense-hair-by-carlos/#reviews` } target="_blank" rel="noreferrer" className="btn btn-light text-dark-50" data-aos="fade-up" data-aos-duration="750" data-aos-delay="750" data-aos-once="true">{ state.text.aboutReviewReadMore }</a>
           </div>
         </div>
       </div>
