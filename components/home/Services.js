@@ -73,7 +73,7 @@ const Services = () => {
                 <Link href={ {
                   pathname: "/services",
                   query: { hairSize: index },
-                } } key={ index }>
+                } } key={ index } passHref={ true } >
                   <div className="col-6 col-md-3 cursor-pointer" data-aos="fade-up" data-aos-duration="750" data-aos-delay="250" data-aos-once="true">
                     <div className="img-overlay">
                       <img loading="lazy" src={ service.image.src } alt={ service.name } className="img-fluid" />
