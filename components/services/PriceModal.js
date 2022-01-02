@@ -31,27 +31,13 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
   }, [hairSize])
 
   useEffect(() => {
-    if (activeHairSize.length === 0 && activeHairType.length === 0) {
-      let hairSize = ""
-      let hairType = ""
-      if (activeHairSize.indexOf(0) === 0) {
-        hairSize = "Men"
-      } else if (activeHairSize.indexOf(0) === 1) {
-        hairSize = "Women Short Hair"
-      } else if (activeHairSize.indexOf(0) === 2) {
-        hairSize = "Women Medium Hair"
-      } else if (activeHairSize.indexOf(0) === 3) {
-        hairSize = "Women Long Hair"
-      }
-      if (activeHairType.indexOf(0) === 0) {
-        hairType = "Straight"
-      } else if (activeHairType.indexOf(0) === 1) {
-        hairType = "Wavy"
-      } else if (activeHairType.indexOf(0) === 2) {
-        hairType = "Curly"
-      } else if (activeHairType.indexOf(0) === 3) {
-        hairType = "Coily"
-      }
+    if (activeHairSize.length !== 0) {
+      const options = state.options
+      const optionHairSize = options.find(option => option.name === "Hair Size").option
+      const optionHairType = options.find(option => option.name === "Hair Type").option
+      const hairSize = optionHairSize[activeHairSize.indexOf(0)].name_en
+      const hairType = optionHairType[activeHairType.indexOf(0)] ? optionHairType[activeHairType.indexOf(0)].name_en : ""
+
       const getData = async () => {
         const data = await fetchServices(hairSize, hairType)
         if (data) {
@@ -63,7 +49,7 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
       }
       getData()
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeHairSize, activeHairType])
 
   return (
