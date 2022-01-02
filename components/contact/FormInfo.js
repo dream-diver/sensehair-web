@@ -58,13 +58,26 @@ const FormInfo = () => {
                 <img loading="lazy" src={ imageClock.src } alt="phone-call" width="20px" className="mt-1" />
               </div>
               <div className="contact-text mb-3">
-                <p className="small mb-1">{ state.text.openingTimes1 }</p>
-                <p className="small mb-1">{ state.text.openingTimes2 }</p>
-                <p className="small mb-1">{ state.text.openingTimes3 }</p>
-                <p className="small mb-1">{ state.text.openingTimes4 }</p>
-                <p className="small mb-1">{ state.text.openingTimes5 }</p>
-                <p className="small mb-1">{ state.text.openingTimes6 }</p>
-                <p className="small mb-1">{ state.text.openingTimes7 }</p>
+                <div className="d-flex">
+                  <p className="text-center text-md-start me-2 me-sm-3 me-lg-5">
+                    { state.text.openingTimes1Day }<br />
+                    { state.text.openingTimes2Day }<br />
+                    { state.text.openingTimes3Day }<br />
+                    { state.text.openingTimes4Day }<br />
+                    { state.text.openingTimes5Day }<br />
+                    { state.text.openingTimes6Day }<br />
+                    { state.text.openingTimes7Day }
+                  </p>
+                  <p className="text-center text-md-start text-nowrap">
+                    { state.text.openingTimes1 }<br />
+                    { state.text.openingTimes2 }<br />
+                    { state.text.openingTimes3 }<br />
+                    { state.text.openingTimes4 }<br />
+                    { state.text.openingTimes5 }<br />
+                    { state.text.openingTimes6 }<br />
+                    { state.text.openingTimes7 }
+                  </p>
+                </div>
               </div>
             </div>
           </div>
