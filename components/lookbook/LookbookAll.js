@@ -154,7 +154,7 @@ const LookbookAll = ({ lookbookAllRef, damesRef, kleurRef, herenRef, collectiesR
       <div className="container">
         <div className="row">
           <div id="myDiv" className="col py-5 text-center" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-            <h1 id="KLEUR" className="h1-margin-bottom" ref={ damesRef }>LOOKBOOK - <b>{ state.text.lookbookMenu1 }</b></h1>
+            <h1 id="DAMES" className="h1-margin-bottom" ref={ damesRef }>LOOKBOOK - <b>{ state.text.lookbookMenu1 }</b></h1>
 
             <div className="row">
               { lookbookDames.map((image, index) => (
@@ -174,7 +174,7 @@ const LookbookAll = ({ lookbookAllRef, damesRef, kleurRef, herenRef, collectiesR
               )) }
             </div>
 
-            <h1 id="LENGTES" className="h1-margin-bottom mt-5" ref={ herenRef }>LOOKBOOK - <b>{ state.text.lookbookMenu3 }</b></h1>
+            <h1 id="HEREN" className="h1-margin-bottom mt-5" ref={ herenRef }>LOOKBOOK - <b>{ state.text.lookbookMenu3 }</b></h1>
 
             <div className="row">
               { lookbookHeren.map((image, index) => (

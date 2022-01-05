@@ -3,6 +3,7 @@ import { useCallback, useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
 import useEmblaCarousel from 'embla-carousel-react'
 import DotButton from '../slider/DotButton'
+import Link from 'next/link'
 
 import imageCarlos from '../../public/images/team/carlos.png'
 import imageCheyenne from '../../public/images/team/Cheyenne.png'
@@ -12,23 +13,23 @@ import imageDjimila from '../../public/images/team/Djimila.png'
 const Team = () => {
   const [state] = useContext(GlobalContext)
   const [viewportRef, embla] = useEmblaCarousel({ skipSnaps: false })
-  const [scrollSnaps, setScrollSnaps] = useState([]);
-  const [selectedIndex, setSelectedIndex] = useState(0);
+  const [scrollSnaps, setScrollSnaps] = useState([])
+  const [selectedIndex, setSelectedIndex] = useState(0)
   const scrollTo = useCallback((index) => embla && embla.scrollTo(index), [
     embla
-  ]);
+  ])
 
   const onSelect = useCallback(() => {
-    if (!embla) return;
-    setSelectedIndex(embla.selectedScrollSnap());
-  }, [embla, setSelectedIndex]);
+    if (!embla) return
+    setSelectedIndex(embla.selectedScrollSnap())
+  }, [embla, setSelectedIndex])
 
   useEffect(() => {
-    if (!embla) return;
-    onSelect();
-    setScrollSnaps(embla.scrollSnapList());
-    embla.on("select", onSelect);
-  }, [embla, setScrollSnaps, onSelect]);
+    if (!embla) return
+    onSelect()
+    setScrollSnaps(embla.scrollSnapList())
+    embla.on("select", onSelect)
+  }, [embla, setScrollSnaps, onSelect])
 
   return (
     <section id="team" className="py-5 text-center">
@@ -48,7 +49,7 @@ const Team = () => {
                       <p className="mb-4">{ state.text.homeTeamTeam1Body1 }</p>
                       { state.text.homeTeamTeam1Body2 && <p className="mb-4">{ state.text.homeTeamTeam1Body2 }</p> }
                       { state.text.homeTeamTeam1Body3 && <p className="mb-4">{ state.text.homeTeamTeam1Body3 }</p> }
-                      <button className="btn btn-light btn-lg font-weight-900 text-uppercase">{ state.text.homeTeamTeam1Button }</button>
+                      <Link href="/about#meat_the_team"><button className="btn btn-light btn-lg font-weight-900 text-uppercase">{ state.text.homeTeamTeam1Button }</button></Link>
                     </div>
                     <p className="font-handwriting my-3">{ state.text.homeTeamTeam1Name }</p>
                   </div>
@@ -66,7 +67,7 @@ const Team = () => {
                       <p className="mb-4">{ state.text.homeTeamTeam2Body1 }</p>
                       { state.text.homeTeamTeam2Body2 && <p className="mb-4">{ state.text.homeTeamTeam2Body2 }</p> }
                       { state.text.homeTeamTeam2Body3 && <p className="mb-4">{ state.text.homeTeamTeam2Body3 }</p> }
-                      <button className="btn btn-light btn-lg font-weight-900 text-uppercase">{ state.text.homeTeamTeam2Button }</button>
+                      <Link href="/about#meat_the_team"><button className="btn btn-light btn-lg font-weight-900 text-uppercase">{ state.text.homeTeamTeam2Button }</button></Link>
                     </div>
                     <p className="font-handwriting my-3">{ state.text.homeTeamTeam2Name }</p>
                   </div>
@@ -83,7 +84,7 @@ const Team = () => {
                       <h1 className="font-weight-700">{ state.text.homeTeamTeam3Title }</h1>
                       <p className="mb-4">{ state.text.homeTeamTeam3Body1 }</p>
                       { state.text.homeTeamTeam3Body2 && <p className="mb-4">{ state.text.homeTeamTeam3Body2 }</p> }
-                      <button className="btn btn-light btn-lg font-weight-900 text-uppercase">{ state.text.homeTeamTeam3Button }</button>
+                      <Link href="/about#meat_the_team"><button className="btn btn-light btn-lg font-weight-900 text-uppercase">{ state.text.homeTeamTeam3Button }</button></Link>
                     </div>
                     <p className="font-handwriting my-3">{ state.text.homeTeamTeam3Name }</p>
                   </div>
@@ -101,7 +102,7 @@ const Team = () => {
                       <p className="mb-4">{ state.text.homeTeamTeam4Body1 }</p>
                       { state.text.homeTeamTeam4Body2 && <p className="mb-4">{ state.text.homeTeamTeam4Body2 }</p> }
                       { state.text.homeTeamTeam4Body3 && <p className="mb-4">{ state.text.homeTeamTeam4Body3 }</p> }
-                      <button className="btn btn-light btn-lg font-weight-900 text-uppercase">{ state.text.homeTeamTeam4Button }</button>
+                      <Link href="/about#meat_the_team"><button className="btn btn-light btn-lg font-weight-900 text-uppercase">{ state.text.homeTeamTeam4Button }</button></Link>
                     </div>
                     <p className="font-handwriting my-3">{ state.text.homeTeamTeam4Name }</p>
                   </div>

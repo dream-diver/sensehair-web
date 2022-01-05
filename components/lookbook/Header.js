@@ -10,7 +10,7 @@ const Header = ({ showAll, setShowAll, executeScroll }) => {
   const onClickFunction = (e) => {
     e.preventDefault()
     setShowAll(true)
-    executeScroll(e.target.text.trim())
+    executeScroll(e.target.getAttribute("href").substring(1).trim())
   }
 
   return (
@@ -23,10 +23,10 @@ const Header = ({ showAll, setShowAll, executeScroll }) => {
               <h1 className="font-weight-700 mb-1">{ state.text.lookbookHeroTitle }</h1>
               <p className="header-content-desc">{ state.text.lookbookHeroBody }</p>
               <div className="header-collapse ">
-                <a className="header-collapse-link" onClick={ onClickFunction } data-bs-toggle="collapse" href="#collapseKLEUR" role="button" aria-expanded="false" aria-controls="collapseKLEUR">{ state.text.lookbookMenu1 } <FaAngleDown className="ms-1" /></a>
-                <a className="header-collapse-link" onClick={ onClickFunction } data-bs-toggle="collapse" href="#collapseLENGTES" role="button" aria-expanded="false" aria-controls="collapseLENGTES">{ state.text.lookbookMenu2 } <FaAngleDown className="ms-1" /></a>
-                <a className="header-collapse-link" onClick={ onClickFunction } data-bs-toggle="collapse" href="#collapseCOLLECTIES" role="button" aria-expanded="false" aria-controls="collapseCOLLECTIES">{ state.text.lookbookMenu3 } <FaAngleDown className="ms-1" /></a>
-                <a className="header-collapse-link" onClick={ onClickFunction } data-bs-toggle="collapse" href="#collapseMANNEN" role="button" aria-expanded="false" aria-controls="collapseMANNEN">{ state.text.lookbookMenu4 } <FaAngleDown className="ms-1" /></a>
+                <a className="header-collapse-link" onClick={ onClickFunction } data-bs-toggle="collapse" href="#DAMES" role="button" aria-expanded="false" aria-controls="collapseKLEUR">{ state.text.lookbookMenu1 } <FaAngleDown className="ms-1" /></a>
+                <a className="header-collapse-link" onClick={ onClickFunction } data-bs-toggle="collapse" href="#KLEUR" role="button" aria-expanded="false" aria-controls="collapseLENGTES">{ state.text.lookbookMenu2 } <FaAngleDown className="ms-1" /></a>
+                <a className="header-collapse-link" onClick={ onClickFunction } data-bs-toggle="collapse" href="#HEREN" role="button" aria-expanded="false" aria-controls="collapseCOLLECTIES">{ state.text.lookbookMenu3 } <FaAngleDown className="ms-1" /></a>
+                <a className="header-collapse-link" onClick={ onClickFunction } data-bs-toggle="collapse" href="#COLLECTIES" role="button" aria-expanded="false" aria-controls="collapseMANNEN">{ state.text.lookbookMenu4 } <FaAngleDown className="ms-1" /></a>
               </div>
             </div>
           </div>
