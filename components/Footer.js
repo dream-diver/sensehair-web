@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import Image from 'next/image'
+import Link from 'next/link'
 import { useContext } from 'react'
 import { FaFacebook, FaInstagram, FaLinkedin, FaTwitter } from 'react-icons/fa'
 import { GlobalContext } from './contexts/GlobalContext'
@@ -43,22 +44,34 @@ const Footer = () => {
             <div className="col-md-6 col-lg-3 mb-3">
               <ul className="navbar-nav">
                 <li className="nav-item">
-                  <a className="nav-link text-white active" href="./">{ state.text.menuHome }</a>
+                  <Link href="/">
+                    <a className="nav-link text-white active" href="#">{ state.text.menuHome }</a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./about">{ state.text.menuAboutUs }</a>
+                  <Link href="/about">
+                    <a className="nav-link text-white" href="#">{ state.text.menuAboutUs }</a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./services">{ state.text.menuServices }</a>
+                  <Link href="/services">
+                    <a className="nav-link text-white" href="#">{ state.text.menuServices }</a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./lookbook">{ state.text.menuLookbook }</a>
+                  <Link href="/lookbook">
+                    <a className="nav-link text-white" href="#">{ state.text.menuLookbook }</a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./career">{ state.text.menuCareer }</a>
+                  <Link href="/career">
+                    <a className="nav-link text-white" href="#">{ state.text.menuCareer }</a>
+                  </Link>
                 </li>
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="./contact">{ state.text.menuContactUs }</a>
+                  <Link href="/contact">
+                    <a className="nav-link text-white" href="#">{ state.text.menuContactUs }</a>
+                  </Link>
                 </li>
               </ul>
             </div>
