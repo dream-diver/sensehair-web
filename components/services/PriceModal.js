@@ -35,8 +35,8 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
       const options = state.options
       const optionHairSize = options.find(option => option.name === "Hair Size").option
       const optionHairType = options.find(option => option.name === "Hair Type").option
-      const hairSize = optionHairSize[activeHairSize.indexOf(0)].name_en
-      const hairType = optionHairType[activeHairType.indexOf(0)] ? optionHairType[activeHairType.indexOf(0)].name_en : ""
+      const hairSize = optionHairSize[activeHairSize.indexOf(0)].name_fetch
+      const hairType = optionHairType[activeHairType.indexOf(0)] ? optionHairType[activeHairType.indexOf(0)].name_fetch : ""
 
       const getData = async () => {
         const data = await fetchServices(hairSize, hairType)

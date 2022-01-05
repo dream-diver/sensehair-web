@@ -6,24 +6,28 @@
       {
         "name": "Heren",
         "name_en": "Men",
+        "name_fetch": "Men",
         "image": "https://i.imgur.com/bKp1dq2.png",
         "imageLight": "https://i.imgur.com/0lWQ4Yy.png"
       },
       {
         "name": "Dames Kort",
         "name_en": "Ladies Short",
+        "name_fetch": "Women Short Hair",
         "image": "https://i.imgur.com/nkXm51q.png",
         "imageLight": "https://i.imgur.com/kyWUX8k.png"
       },
       {
         "name": "Dames Halflang",
         "name_en": "Ladies Midlong",
+        "name_fetch": "Women Medium Hair",
         "image": "https://i.imgur.com/RZx1XRU.png",
         "imageLight": "https://i.imgur.com/iWSio1g.png"
       },
       {
         "name": "Dames Lang",
         "name_en": "Ladies Long",
+        "name_fetch": "Women Long Hair",
         "image": "https://i.imgur.com/TudBEeg.png",
         "imageLight": "https://i.imgur.com/kKumdXJ.png"
       }
@@ -36,24 +40,28 @@
       {
         "name": "Steil",
         "name_en": "Straight",
+        "name_fetch": "Straight",
         "image": "https://i.imgur.com/7vCn1yJ.png",
         "imageLight": "https://i.imgur.com/kIWAVxr.png"
       },
       {
         "name": "Golvend",
         "name_en": "Wavy",
+        "name_fetch": "Wavy",
         "image": "https://i.imgur.com/LtIFgcE.png",
         "imageLight": "https://i.imgur.com/Y0QKgBx.png"
       },
       {
         "name": "Krullend",
         "name_en": "Curly",
+        "name_fetch": "Curly",
         "image": "https://i.imgur.com/Vyqq1C9.png",
         "imageLight": "https://i.imgur.com/RLNnzyP.png"
       },
       {
         "name": "Kroes",
         "name_en": "Frizzy",
+        "name_fetch": "Coily",
         "image": "https://i.imgur.com/cI6bg3v.png",
         "imageLight": "https://i.imgur.com/pxxWlxp.png"
       }
