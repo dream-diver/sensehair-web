@@ -20,17 +20,17 @@ const Footer = () => {
               <p className="mb-4">{ state.text.footerBody }</p>
               <ul className="social-nav navbar-nav flex-row justify-content-center justify-content-md-start mb-4">
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="#"><FaFacebook /></a>
+                  <a className="nav-link text-white" href="https://www.facebook.com/SENSEHAIRSTYLE/" rel="noreferrer" target="_blank" ><FaFacebook /></a>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <a className="nav-link text-white" href="#"><FaTwitter /></a>
-                </li>
+                </li> */}
                 <li className="nav-item">
-                  <a className="nav-link text-white" href="#"><FaInstagram /></a>
+                  <a className="nav-link text-white" href="https://instagram.com/sensehairbycarlos" rel="noreferrer" target="_blank" ><FaInstagram /></a>
                 </li>
-                <li className="nav-item">
+                {/* <li className="nav-item">
                   <a className="nav-link text-white" href="#"><FaLinkedin /></a>
-                </li>
+                </li> */}
               </ul>
               <div className="d-flex justify-content-center justify-content-md-start">
                 <button type="button" className="btn-book-now btn btn-sm btn-primary rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>

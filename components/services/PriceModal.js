@@ -23,20 +23,20 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
 
   useEffect(() => {
     setTimeout(() => {
-      var priceModal = new bootstrap.Modal(document.getElementById('priceModal'), {})
       if (parseInt(hairSize) === 0) {
+        var priceModal = new bootstrap.Modal(document.getElementById('priceModal'), {})
         priceModal.show()
       }
-    }, 3000)
+    }, 3500)
   }, [hairSize])
 
   useEffect(() => {
-    if (activeHairSize.length !== 0) {
+    if (state.options.length !== 0 && activeHairSize.length !== 0) {
       const options = state.options
       const optionHairSize = options.find(option => option.name === "Hair Size").option
       const optionHairType = options.find(option => option.name === "Hair Type").option
-      const hairSize = optionHairSize[activeHairSize.indexOf(0)].name_fetch
-      const hairType = optionHairType[activeHairType.indexOf(0)] ? optionHairType[activeHairType.indexOf(0)].name_fetch : ""
+      const hairSize = optionHairSize[activeHairSize[0]].name_fetch
+      const hairType = optionHairType[activeHairType[0]] ? optionHairType[activeHairType[0]].name_fetch : ""
 
       const getData = async () => {
         const data = await fetchServices(hairSize, hairType)

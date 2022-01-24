@@ -2,9 +2,10 @@
 import { useContext, useEffect } from 'react'
 import { GlobalContext } from './contexts/GlobalContext'
 import { pxScrolled, inViewport } from "./Helpers"
+import imageSchedule from '../public/images/schedule.png'
 
 const HowWeWork = () => {
-  const [state] = useContext(GlobalContext)
+  const [state, setState] = useContext(GlobalContext)
 
   useEffect(() => {
 
@@ -75,8 +76,10 @@ const HowWeWork = () => {
                 <p data-aos="fade-up" data-aos-duration="750" data-aos-delay="750" data-aos-once="true">{ state.text.howWeWorkBody1 }</p>
                 <p data-aos="fade-up" data-aos-duration="750" data-aos-delay="750" data-aos-once="true">{ state.text.howWeWorkBody2 }</p>
                 <p className="text-black-50" data-aos="fade-up" data-aos-duration="750" data-aos-delay="750" data-aos-once="true">{ state.text.howWeWorkBody3 }</p>
-                <p className="mb-5" data-aos="fade-up" data-aos-duration="750" data-aos-delay="750" data-aos-once="true">{ state.text.howWeWorkBody4 }</p>
-                <button className="btn-yes btn btn-lg btn-primary rounded-0 text-white font-weight-700 font-1-5x px-5 py-2" data-aos="fade-up" data-aos-duration="750" data-aos-delay="950" data-aos-once="true">{ state.text.bookNow }</button>
+                <button type="button" className="btn-book-now btn btn-primary rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>
+                  <img loading="lazy" src={ imageSchedule.src } height="43" alt="schedule" />
+                  <span>{ state.text.bookNow }</span>
+                </button>
               </div>
               <div className="col-md-6">
                 <div className="timeline">

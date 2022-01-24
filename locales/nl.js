@@ -96,7 +96,6 @@ export default {
   servicesServicesTextTitle: 'DUIDELIJK EN TRANSPARANT IN ONZE PRIJZEN',
   servicesServicesTextBody1: 'We begrijpen dat het fijn is om vooraf te weten hoe lang een behandeling duurt en wat de kosten zullen zijn. De precieze prijs en duur van de behandeling hangt af van of je een kort, midden-lang of lang kapsel wilt en wat je haartype is. Bij Sense Hair hebben we hier een duidelijk overzicht van gemaakt.',
   servicesServicesTextBody2: 'Selecteer hieronder wat voor jou van toepassing is en bekijk de prijzenlijst die past bij jouw wens',
-  servicesServicesTextBody3: '',
   servicesPricesTitle: 'PRIJZEN',
   servicesMen: 'HEREN',
   servicesLadiesShort: 'DAMES KORT',
@@ -196,6 +195,6 @@ export default {
   bookingStep7Title: 'Overzicht boeken',
   bookingStep8Title: 'Betaling',
   bookingNext: 'Volgende',
-  bookingBack: 'Rug',
+  bookingBack: 'Vorige',
   bookingPayLater: 'Betaal Later',
 }

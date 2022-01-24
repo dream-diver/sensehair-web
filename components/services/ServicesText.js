@@ -12,7 +12,6 @@ const ServicesText = () => {
             <h2 className="font-weight-500 px-5">{ state.text.servicesServicesTextTitle }</h2>
             <p>{ state.text.servicesServicesTextBody1 }</p>
             <p>{ state.text.servicesServicesTextBody2 }</p>
-            <p>{ state.text.servicesServicesTextBody3 }</p>
           </div>
         </div>
       </div>
