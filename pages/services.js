@@ -11,6 +11,7 @@ import ServicesText from '../components/services/ServicesText'
 const services = () => {
   const [activeHairSize, setActiveHairSize] = useState([])
   const [activeHairType, setActiveHairType] = useState([])
+
   return (
     <div>
       <Head>

@@ -45,6 +45,14 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
           setState(prevState => {
             return { ...prevState, services }
           })
+          setTimeout(() => {
+            var priceModal = new bootstrap.Modal(document.getElementById('priceModal'), {})
+            if ((activeHairSize.length > 0 && activeHairType.length > 0) || activeHairSize[0] === 0) {
+              priceModal.show()
+            } else {
+              priceModal.hide()
+            }
+          }, 100)
         }
       }
       getData()

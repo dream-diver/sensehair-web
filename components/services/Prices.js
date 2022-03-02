@@ -35,7 +35,7 @@ const Prices = ({ activeHairSize, setActiveHairSize, activeHairType, setActiveHa
     if (activeHairSize.length === 0) {
       id !== 0 && setShowHairType(!showHairType)
       if (activeHairSize.indexOf(id) === -1) {
-        setActiveHairSize([...activeHairSize, id])
+        setActiveHairSize([id])
         if (hairTypeRef.current !== null && id !== 0) {
           hairTypeRef.current.scrollIntoView(scrollIntoViewOptions)
         }
@@ -44,13 +44,14 @@ const Prices = ({ activeHairSize, setActiveHairSize, activeHairType, setActiveHa
       }
     } else {
       setShowHairType(!showHairType)
-      id === 0 ? setActiveHairSize([...activeHairType, 0]) : setActiveHairSize([])
+      setActiveHairType([])
+      id === 0 ? setActiveHairSize([0]) : setActiveHairSize([])
     }
   }
 
   const selectHairType = (id) => {
     if (activeHairType.indexOf(id) === -1) {
-      setActiveHairType([...activeHairType, id])
+      setActiveHairType([id])
     } else {
       setActiveHairType(activeHairType.filter(option => option !== id))
     }
@@ -66,7 +67,7 @@ const Prices = ({ activeHairSize, setActiveHairSize, activeHairType, setActiveHa
         }
       }, 3000)
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [hairSize])
 
   return (
@@ -79,7 +80,7 @@ const Prices = ({ activeHairSize, setActiveHairSize, activeHairType, setActiveHa
             </div>
             <div className="prices-row prices-row-1 row text-center">
               <div className="col-6 col-md-3 mb-3">
-                <div className={ activeHairSize.indexOf(0) !== -1 ? "card card-men px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white active" : "card card-men px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white" } data-bs-toggle="modal" data-bs-target="#priceModal" onClick={ () => { selectHairSize(0) } }>
+                <div className={ activeHairSize.indexOf(0) !== -1 ? "card card-men px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white active" : "card card-men px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white" } onClick={ () => { selectHairSize(0) } }>
                   <img src={ activeHairSize.indexOf(0) !== -1 ? image1.src : image1Hover.src } alt={ activeHairSize.indexOf(0) !== -1 ? "1.png" : "11.png" } />
                   <div className="d-flex align-items-center justify-content-center flex-grow-1">
                     <h1 className="text-black">{ state.text.servicesMen }</h1>
@@ -122,7 +123,7 @@ const Prices = ({ activeHairSize, setActiveHairSize, activeHairType, setActiveHa
                     <p className="text-center font-1-5x my-4 font-weight-700">{ state.text.servicesWhatIsYourHairType }</p>
                   </div>
                   <div className="col-6 col-md-3 mb-3">
-                    <div className={ activeHairType.indexOf(0) !== -1 ? "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white active" : "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white" } data-bs-toggle="modal" data-bs-target="#priceModal" onClick={ () => { selectHairType(0) } }>
+                    <div className={ activeHairType.indexOf(0) !== -1 ? "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white active" : "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white" } onClick={ () => { selectHairType(0) } }>
                       <div className="card-img p-2 px-md-4">
                         <img src={ activeHairType.indexOf(0) !== -1 ? image5Hover.src : image5.src } alt={ activeHairType.indexOf(0) !== -1 ? "55.png" : "5.png" } className="img-fluid" />
                       </div>
@@ -132,7 +133,7 @@ const Prices = ({ activeHairSize, setActiveHairSize, activeHairType, setActiveHa
                     </div>
                   </div>
                   <div className="col-6 col-md-3 mb-3">
-                    <div className={ activeHairType.indexOf(1) !== -1 ? "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white active" : "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white" } data-bs-toggle="modal" data-bs-target="#priceModal" onClick={ () => { selectHairType(1) } }>
+                    <div className={ activeHairType.indexOf(1) !== -1 ? "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white active" : "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white" } onClick={ () => { selectHairType(1) } }>
                       <div className="card-img p-2 px-md-4">
                         <img src={ activeHairType.indexOf(1) !== -1 ? image6Hover.src : image6.src } alt={ activeHairType.indexOf(0) !== -1 ? "66.png" : "6.png" } className="img-fluid" />
                       </div>
@@ -142,7 +143,7 @@ const Prices = ({ activeHairSize, setActiveHairSize, activeHairType, setActiveHa
                     </div>
                   </div>
                   <div className="col-6 col-md-3 mb-3">
-                    <div className={ activeHairType.indexOf(2) !== -1 ? "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white active" : "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white" } data-bs-toggle="modal" data-bs-target="#priceModal" onClick={ () => { selectHairType(2) } }>
+                    <div className={ activeHairType.indexOf(2) !== -1 ? "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white active" : "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white" } onClick={ () => { selectHairType(2) } }>
                       <div className="card-img p-2 px-md-4">
                         <img src={ activeHairType.indexOf(2) !== -1 ? image7Hover.src : image7.src } alt={ activeHairType.indexOf(0) !== -1 ? "77.png" : "7.png" } className="img-fluid" />
                       </div>
@@ -152,7 +153,7 @@ const Prices = ({ activeHairSize, setActiveHairSize, activeHairType, setActiveHa
                     </div>
                   </div>
                   <div className="col-6 col-md-3 mb-3">
-                    <div className={ activeHairType.indexOf(3) !== -1 ? "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white active" : "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white" } data-bs-toggle="modal" data-bs-target="#priceModal" onClick={ () => { selectHairType(3) } }>
+                    <div className={ activeHairType.indexOf(3) !== -1 ? "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white active" : "card px-3 pt-3 px-md-5 pt-md-5 pb-3 rounded-5 text-white" } onClick={ () => { selectHairType(3) } }>
                       <div className="card-img p-2 px-md-4">
                         <img src={ activeHairType.indexOf(3) !== -1 ? image8Hover.src : image8.src } alt={ activeHairType.indexOf(0) !== -1 ? "88.png" : "8.png" } className="img-fluid" />
                       </div>
