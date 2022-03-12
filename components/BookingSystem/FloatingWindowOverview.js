@@ -2,6 +2,7 @@ import Link from 'next/link'
 import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
 import { BiDollarCircle, BiRightArrowAlt } from "react-icons/bi"
+import { makePrice } from '../Helpers'
 
 const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
   const [state] = useContext(GlobalContext)
@@ -108,7 +109,7 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
                   { service.duration } minutes
                 </td>
                 <td>
-                  ${ stylistType ? service.art_director_price : service.stylist_price }
+                  { makePrice(stylistType ? service.art_director_price : service.stylist_price) }
                 </td>
               </tr>
             )) }
@@ -116,12 +117,12 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
           <tfoot>
             <tr>
               <th scope="row" colSpan="3">Total Price</th>
-              <th scope="row">${ selectedServicesPrice }</th>
+              <th scope="row">{ makePrice(selectedServicesPrice) }</th>
             </tr>
             { discountPrice !== 0 &&
               <tr>
                 <th scope="row" colSpan="3">Discount Price</th>
-                <th scope="row">${ discountPrice }</th>
+                <th scope="row">s{ makePrice(discountPrice) }</th>
               </tr>
             }
           </tfoot>

@@ -47,7 +47,7 @@ import imageLookbook42 from '../../public/images/lookbook/Lookbook42.png'
 import imageLookbook43 from '../../public/images/lookbook/Lookbook43.png'
 import imageLookbook44 from '../../public/images/lookbook/Lookbook44.png'
 import imageLookbook45 from '../../public/images/lookbook/Lookbook45.png'
-import imageLookbook47 from '../../public/images/lookbook/Lookbook47.png'
+// import imageLookbook47 from '../../public/images/lookbook/Lookbook47.png'
 import imageLookbook48 from '../../public/images/lookbook/Lookbook48.png'
 import imageLookbook49 from '../../public/images/lookbook/Lookbook49.png'
 
@@ -90,7 +90,7 @@ const LookbookAll = ({ lookbookAllRef, damesRef, kleurRef, herenRef, collectiesR
     imageLookbook40,
     imageLookbook41,
     // imageLookbook46,
-    imageLookbook47,
+    // imageLookbook47,
     imageLookbook48,
   ]
   const lookbookKleur = [
@@ -146,7 +146,7 @@ const LookbookAll = ({ lookbookAllRef, damesRef, kleurRef, herenRef, collectiesR
     imageLookbook41,
     imageLookbook45,
     // imageLookbook46,
-    imageLookbook47,
+    // imageLookbook47,
     imageLookbook48,
   ]
   return (

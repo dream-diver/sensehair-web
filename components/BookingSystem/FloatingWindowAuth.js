@@ -17,7 +17,8 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
     email: null,
     validMail: null,
     password: null,
-    login: null
+    login: null,
+    phone: null
   })
 
   const login = async (bodyData) => {
@@ -80,6 +81,12 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
     if (!formData.password) {
       if (!toast.isActive(formToast.current.password)) {
         formToast.current.password = toast.warn("Please enter your password")
+      }
+      return
+    }
+    if (!formData.phone) {
+      if (!toast.isActive(formToast.current.phone)) {
+        formToast.current.phone = toast.warn("Please enter your phone")
       }
       return
     }
@@ -232,7 +239,7 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
       </div>
       <div className="floating-window-body">
         <form>
-          { !isLogin &&
+          { (!isLogin || step.guest.isGuest) &&
             <div className="mb-3">
               <label htmlFor="inputName" className="form-label">Name</label>
               <input type="text" name="name" className="form-control" id="inputName" placeholder="Enter your name" value={ formData.name } onChange={ (e) => setSetFromData({ ...formData, name: e.target.value }) } />
@@ -249,15 +256,20 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
               <input type="password" name="password" className="form-control" id="inputPassword" placeholder="Enter your password" value={ formData.password } onChange={ (e) => setSetFromData({ ...formData, password: e.target.value }) } />
             </div>
           }
-          { !isLogin &&
+          { (!isLogin || step.guest.isGuest) &&
             <div className="mb-3">
-              <label htmlFor="inputPhone" className="form-label">Phone (Optional)</label>
+              <label htmlFor="inputPhone" className="form-label">Phone</label>
               <input type="text" name="phone" className="form-control" id="inputPhone" placeholder="Enter your phone number" value={ formData.phone } onChange={ (e) => setSetFromData({ ...formData, phone: e.target.value }) } />
             </div>
           }
           <div className="d-flex flex-column justify-content-center w-100 py-3">
-            { !step.guest.isGuest && <button onClick={ () => setIsLogin(!isLogin) } type="button" className="btn btn-outline-dark shadow-sm mb-3">{ `I ${isLogin ? "don't" : ""}  have an account` }</button> }
-            <button button onClick={ toggleGuestMode } type="button" className="btn btn-outline-dark shadow-sm">{ `Continue as a ${step.guest.isGuest ? "user" : "guest"}` }</button>
+            { !step.guest.isGuest && <div className="m-0 p-0">
+              { isLogin ? "Don’t" : "Do you" } have an account?
+              <button onClick={ () => setIsLogin(!isLogin) } type="button" className="btn btn-link px-1">{ isLogin ? "Register here" : "Login here" }</button>
+            </div> }
+            <dir className="m-0 p-0">
+              Or <button button onClick={ toggleGuestMode } type="button" className="btn btn-link px-0">{ `Continue as a ${step.guest.isGuest ? "user" : "guest"}` }</button>
+            </dir>
           </div>
 
         </form>

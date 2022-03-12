@@ -66,7 +66,7 @@ const Menu = ({ device, isSlider }) => {
             <div className="col d-flex">
               <ul id="top-menu" className="nav mx-auto mx-md-0 ms-md-auto">
                 <li className="nav-item">
-                  <a className="nav-link text-primary" href="#"><FaPhoneAlt /> +31 10 123 456 78</a>
+                  <a className="nav-link text-primary" href="#"><FaPhoneAlt /> +31 01 042 591 95</a>
                 </li>
                 <LanguageDropdown id="navbarLang1" navToggle={ false } />
               </ul>

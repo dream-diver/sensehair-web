@@ -48,7 +48,7 @@ import imageLookbook42 from '../../public/images/lookbook/Lookbook42.png'
 import imageLookbook43 from '../../public/images/lookbook/Lookbook43.png'
 import imageLookbook44 from '../../public/images/lookbook/Lookbook44.png'
 import imageLookbook45 from '../../public/images/lookbook/Lookbook45.png'
-import imageLookbook47 from '../../public/images/lookbook/Lookbook47.png'
+// import imageLookbook47 from '../../public/images/lookbook/Lookbook47.png'
 import imageLookbook48 from '../../public/images/lookbook/Lookbook48.png'
 import imageLookbook49 from '../../public/images/lookbook/Lookbook49.png'
 
@@ -101,7 +101,7 @@ const Lookbook = () => {
     imageLookbook43,
     imageLookbook44,
     imageLookbook45,
-    imageLookbook47,
+    // imageLookbook47,
     imageLookbook48,
     imageLookbook49,
   ]

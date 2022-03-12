@@ -4,7 +4,7 @@ import { useCallback, useContext, useDebugValue, useEffect } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
 
 import imageBrand1 from '../../public/images/brands/award-coffure.png'
-import imageBrand2 from '../../public/images/brands/award-keune-white.png'
+// import imageBrand2 from '../../public/images/brands/award-keune-white.png'
 import imageBrand3 from '../../public/images/brands/keratherapy.png'
 import imageBrand4 from '../../public/images/brands/kevinmurphy.png'
 import imageBrand5 from '../../public/images/brands/redken.png'
@@ -28,7 +28,7 @@ const Award = () => {
     }, 3000)
   }, [embla, scrollNext])
   const brandImages = [
-    imageBrand2,
+    // imageBrand2,
     imageBrand4,
     imageBrand3,
     imageBrand5,

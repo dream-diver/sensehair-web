@@ -50,7 +50,7 @@ const FormInfo = () => {
                 <img loading="lazy" src={ imagePhoneCall.src } alt="phone-call" width="20px" className="mt-1" />
               </div>
               <div className="contact-text mb-3 d-flex align-items-center">
-                <p className="mb-0">+31 10 123 456 78</p>
+                <p className="mb-0">+31 01 042 591 95</p>
               </div>
             </div>
             <div className="d-flex">

@@ -53,7 +53,7 @@ const Contact = () => {
                       <p className="text-center text-md-start">
                         <strong>Sense Hair</strong><br />
                         Central Plaza 12<br />
-                        3012TW Rotterdam<br />
+                        3012CW Rotterdam<br />
                       </p>
                     </div>
                   </div>
@@ -62,7 +62,7 @@ const Contact = () => {
                       <img loading="lazy" src={ imagePhoneCall.src } alt="phone-call" width="20px" className="mt-1" />
                     </div>
                     <div className="mb-3 flex-grow-1">
-                      <p className="text-center text-md-start mb-0">+31 10 123 456 78</p>
+                      <p className="text-center text-md-start mb-0">+31 01 042 591 95</p>
                     </div>
                   </div>
                 </div>

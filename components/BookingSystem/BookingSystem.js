@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useState } from 'react'
+import { useContext, useState, useEffect } from 'react'
 import { BiCalendarCheck } from 'react-icons/bi'
 import { GlobalContext } from '../contexts/GlobalContext'
 import FloatingWindow from './FloatingWindow'
@@ -14,7 +14,6 @@ import setSeconds from "date-fns/setSeconds"
 import format from "date-fns/format"
 
 import imageSchedule from '../../public/images/schedule.png'
-import { set } from 'date-fns'
 
 const BookingSystem = () => {
   const [state, setState] = useContext(GlobalContext)
@@ -367,6 +366,71 @@ const BookingSystem = () => {
   const setInitialState = () => {
     setSteps(initialState)
   }
+
+  useEffect(() => {
+    setSteps({
+      "step1": {
+        id: 1,
+        active: true,
+        title: state.text.bookingStep1Title,
+        multiSelect: false,
+        value: 0
+      },
+      "step2": {
+        id: 2,
+        active: false,
+        title: state.text.bookingStep2Title,
+        value: 0
+      },
+      "step3": {
+        id: 3,
+        active: false,
+        title: state.text.bookingStep3Title,
+        multiSelect: true,
+        serviceType: true,
+        value: []
+      },
+      "step4": {
+        id: 4,
+        active: false,
+        title: state.text.bookingStep4Title,
+        multiSelect: false,
+        value: 0
+      },
+      "step5": {
+        id: 5,
+        active: false,
+        title: state.text.bookingStep5Title,
+        value: ""
+      },
+      "step6": {
+        id: 6,
+        active: false,
+        title: state.text.bookingStep5Title,
+        value: false,
+        guest: {
+          isGuest: false,
+          name: "",
+          email: "",
+          phone: ""
+        }
+      },
+      "step7": {
+        id: 7,
+        active: false,
+        title: state.text.bookingStep7Title,
+        value: 0.0,
+        couponCode: "",
+        booking: {}
+      },
+      "step8": {
+        id: 8,
+        active: false,
+        title: state.text.bookingStep8Title,
+        paymentIntent: "",
+      },
+    })
+  }, [state.text])
 
   return (
     <div id="bookingSystem">
