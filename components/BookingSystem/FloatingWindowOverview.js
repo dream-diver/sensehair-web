@@ -69,11 +69,11 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
       </div>
       <div className="floating-window-body">
         <p className="mb-2">
-          <strong>Hair Size: </strong>{ optionHairSize[steps.step1.value].name }
+          <strong>{ state.text.bookingHairSizes }: </strong>{ optionHairSize[steps.step1.value].name }
         </p>
         { steps.step2.value !== -1 &&
           <p className="mb-2">
-            <strong>Hair Type: </strong>{ optionHairType[steps.step2.value].name }
+            <strong>{ state.text.bookingHairType }: </strong>{ optionHairType[steps.step2.value].name }
           </p>
         }
         <p className="mb-2">
@@ -81,19 +81,19 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
           { stylist.name }
         </p>
         <p className="mb-2">
-          <strong>Date & Time: </strong>
+          <strong>{ state.text.bookingDateTime }: </strong>
           { steps.step5.value.toDateString() } { steps.step5.value.toLocaleTimeString() }
         </p>
         <p className="mb-1">
-          <strong>Services: </strong>
+          <strong>{ state.text.bookingServices }: </strong>
         </p>
         <table className="table table-striped table-light text-center mb-4">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">Name</th>
-              <th scope="col">Duration</th>
-              <th scope="col">Price</th>
+              <th scope="col">{ state.text.bookingName }</th>
+              <th scope="col">{ state.text.bookingDuration }</th>
+              <th scope="col">{ state.text.bookingPrice }</th>
             </tr>
           </thead>
           <tbody>

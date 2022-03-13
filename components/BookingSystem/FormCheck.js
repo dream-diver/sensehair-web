@@ -38,7 +38,7 @@ const FormCheck = ({ id, data, checked, setChecked, multiSelect, step, multiChec
           <label className="form-check-label" onClick={ (e) => e.preventDefault() } htmlFor={ id }>{ (state.locale === 'en' && step.id !== 4) ? data.name_en : data.name ? (state.locale === 'en' && step.id !== 4) ? data.name_en : data.name : data }</label>
           { step.id === 3 && <span className="small sub-heading">{ makePrice(step.serviceType ? data.art_director_price : data.stylist_price) }</span> }
         </div>
-        { data.duration && <span className="small sub-heading">{ data.duration } minutes</span> } { step.id === 3 && <>| <span className="small sub-heading">{ step.serviceType ? "Art Director" : "Hairstylist " }</span></> }
+        { data.duration && <span className="small sub-heading">{ data.duration } { state.text.bookingMinutes }</span> } { step.id === 3 && <>| <span className="small sub-heading">{ step.serviceType ? "Art Director" : "Hairstylist " }</span></> }
       </div>
     </div >
   )
