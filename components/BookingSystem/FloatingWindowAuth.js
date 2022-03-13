@@ -264,7 +264,7 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
           }
           <div className="d-flex flex-column justify-content-center w-100 py-3">
             { !step.guest.isGuest && <div className="m-0 p-0">
-              { isLogin ? "Don’t" : "Do you" } have an account?
+              { isLogin ? "Don’t have an account?" : "Do you have an account?" }
               <button onClick={ () => setIsLogin(!isLogin) } type="button" className="btn btn-link px-1">{ isLogin ? "Register here" : "Login here" }</button>
             </div> }
             <dir className="m-0 p-0">
