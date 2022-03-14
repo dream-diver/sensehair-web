@@ -218,4 +218,9 @@ export default {
   bookingServices: 'Services',
   bookingDuration: 'Duration',
   bookingPrice: 'Price',
+  bookingTotalPrice: 'Total Price',
+  bookingDiscountPrice: 'Discount Price',
+  bookingCouponText: 'Use a Coupon Code:',
+  bookingCouponCode: 'Coupon Code',
+  bookingApply: 'Apply',
 }

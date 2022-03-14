@@ -282,7 +282,8 @@ const BookingSystem = () => {
       "step7": { ...steps.step7, active: true },
     })
   }
-  const eighthStep = async () => {
+  const eighthStep = async (e) => {
+    e.preventDefault()
     const date = format(steps.step5.value, "yyyy-MM-dd HH:mm")
     const charge = steps.step7.value
     const services = steps.step3.value

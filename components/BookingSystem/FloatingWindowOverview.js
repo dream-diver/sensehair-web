@@ -69,7 +69,7 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
       </div>
       <div className="floating-window-body">
         <p className="mb-2">
-          <strong>{ state.text.bookingHairSizes }: </strong>{ optionHairSize[steps.step1.value].name }
+          <strong>{ state.text.bookingHairSize }: </strong>{ optionHairSize[steps.step1.value].name }
         </p>
         { steps.step2.value !== -1 &&
           <p className="mb-2">
@@ -106,7 +106,7 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
                   { service.name }
                 </td>
                 <td>
-                  { service.duration } minutes
+                  { service.duration } { state.text.bookingMinutes }
                 </td>
                 <td>
                   { makePrice(stylistType ? service.art_director_price : service.stylist_price) }
@@ -116,12 +116,12 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
           </tbody>
           <tfoot>
             <tr>
-              <th scope="row" colSpan="3">Total Price</th>
+              <th scope="row" colSpan="3">{ state.text.bookingTotalPrice }</th>
               <th scope="row">{ makePrice(selectedServicesPrice) }</th>
             </tr>
             { discountPrice !== 0 &&
               <tr>
-                <th scope="row" colSpan="3">Discount Price</th>
+                <th scope="row" colSpan="3">{ state.text.bookingDiscountPrice }</th>
                 <th scope="row">s{ makePrice(discountPrice) }</th>
               </tr>
             }
@@ -130,10 +130,10 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
         { discountPrice === 0 &&
           <form onSubmit={ applyCouponCode }>
             <div className="mb-3">
-              <label htmlFor="coupon" className="form-label fw-bold">Use a Coupon Code:</label>
+              <label htmlFor="coupon" className="form-label fw-bold">{ state.text.bookingCouponText }</label>
               <div className="input-group">
-                <input type="text" className="form-control" id="coupon" placeholder="Coupon Code" value={ couponCode } onChange={ (e) => setCouponCode(e.target.value) } />
-                <button className="btn btn-dark" type="submit">Apply</button>
+                <input type="text" className="form-control" id="coupon" placeholder={ state.text.bookingCouponCode } value={ couponCode } onChange={ (e) => setCouponCode(e.target.value) } />
+                <button className="btn btn-dark" type="submit">{ state.text.bookingApply }</button>
               </div>
             </div>
           </form>

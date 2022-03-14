@@ -222,4 +222,9 @@ export default {
   bookingServices: 'Diensten',
   bookingDuration: 'Looptijd',
   bookingPrice: 'Prijs',
+  bookingTotalPrice: 'Totale prijs',
+  bookingDiscountPrice: 'Kortingsprijs',
+  bookingCouponText: 'Gebruik een couponcode:',
+  bookingCouponCode: 'coupon code',
+  bookingApply: 'Van toepassing zijn',
 }
