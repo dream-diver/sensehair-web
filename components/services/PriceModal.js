@@ -1,7 +1,7 @@
 import { useRouter } from 'next/router'
 import { useContext, useEffect, useRef } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
-import { fetchServices } from "../Helpers"
+import { fetchServices, makePrice } from "../Helpers"
 import imageSchedule from "../../public/images/schedule.png"
 import imageAbout from "../../public/images/about/home-3-about.png"
 
@@ -83,8 +83,8 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
                   <tr key={ index }>
                     <th scope="row">{ service.name }</th>
                     <td>{ service.duration } min</td>
-                    <td>${ service.stylist_price }</td>
-                    <td>${ service.art_director_price }</td>
+                    <td>{ makePrice(service.stylist_price) }</td>
+                    <td>{ makePrice(service.art_director_price) }</td>
                   </tr>
                 )).reverse() }
               </tbody>
