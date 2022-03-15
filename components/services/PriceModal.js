@@ -86,7 +86,7 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
                     <td>${ service.stylist_price }</td>
                     <td>${ service.art_director_price }</td>
                   </tr>
-                )) }
+                )).reverse() }
               </tbody>
             </table>
             <section id="info_img">
