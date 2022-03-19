@@ -56,7 +56,7 @@ const FloatingWindowServices = ({ steps, setSteps, step, show, setShow, checked,
           </div>
           { services && services.map((service, index) => (
             <FormCheck id={ service.id } data={ service } multiSelect={ step.multiSelect } key={ index } checked={ checked } setChecked={ setChecked } step={ step } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } />
-          )) }
+          )).reverse() }
         </form>
       </div>
       <div className="floating-window-footer">
