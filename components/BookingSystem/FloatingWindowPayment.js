@@ -19,7 +19,7 @@ const FloatingWindowPayment = ({ steps, setSteps, step, show, setShow, nextStep 
       </div>
       <div className="floating-window-body payment">
         <Elements stripe={ stripePromise }>
-          <CheckoutForm step={ step } />
+          <CheckoutForm step={ step } steps={ steps } />
         </Elements>
       </div>
       <div className="floating-window-footer">
