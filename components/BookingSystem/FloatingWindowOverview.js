@@ -3,6 +3,8 @@ import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
 import { BiDollarCircle, BiRightArrowAlt } from "react-icons/bi"
 import { makePrice } from '../Helpers'
+import { en, nl } from 'date-fns/locale'
+import format from 'date-fns/format'
 
 const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
   const [state] = useContext(GlobalContext)
@@ -69,20 +71,20 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
       </div>
       <div className="floating-window-body">
         <p className="mb-2">
-          <strong>{ state.text.bookingHairSize }: </strong>{ optionHairSize[steps.step1.value].name }
+          <strong>{ state.text.bookingHairSize }: </strong>{ state.locale == "en" ? optionHairSize[steps.step1.value].name_en : optionHairSize[steps.step1.value].name }
         </p>
         { steps.step2.value !== -1 &&
           <p className="mb-2">
-            <strong>{ state.text.bookingHairType }: </strong>{ optionHairType[steps.step2.value].name }
+            <strong>{ state.text.bookingHairType }: </strong>{ state.locale == "en" ? optionHairType[steps.step2.value].name_en : optionHairType[steps.step2.value].name }
           </p>
         }
         <p className="mb-2">
-          <strong>Stylist: </strong>
+          <strong>{ state.text.bookingStylist }: </strong>
           { stylist.name }
         </p>
         <p className="mb-2">
           <strong>{ state.text.bookingDateTime }: </strong>
-          { steps.step5.value.toDateString() } { steps.step5.value.toLocaleTimeString() }
+          { format(steps.step5.value, 'eee PPpp', { locale: state.locale == "en" ? en : nl }) }
         </p>
         <p className="mb-1">
           <strong>{ state.text.bookingServices }: </strong>
@@ -103,7 +105,7 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
                   { index + 1 }
                 </th>
                 <td>
-                  { service.name }
+                  { state.locale == "en" ? service.name_en : service.name }
                 </td>
                 <td>
                   { service.duration } { state.text.bookingMinutes }
@@ -144,7 +146,7 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
         <Link href={ { pathname: "/checkout", query: { payment: 'paylater' } } }>
           <a className={ `btn-next btn btn-dark` } href="#"><BiDollarCircle className="me-1" />{ state.text.bookingPayLater }</a>
         </Link>
-        <a className="btn-next btn btn-dark" onClick={ nextStep }>{ state.text.bookingNext }<BiRightArrowAlt className="ms-1" /></a>
+        <a className="btn-next btn btn-dark" onClick={ nextStep }>{ state.text.bookingPayNow }<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>
   )

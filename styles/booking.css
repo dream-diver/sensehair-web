@@ -344,6 +344,14 @@
   background: #212529;
 }
 
+/* payment */
+#bookingSystem .floating-window-body.payment button[type="submit"] {
+  background: #000;
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  text-transform: unset;
+}
 /* Responsive */
 /* For Medium Size Screen ≥768px */
 @media (min-width: 768px) {

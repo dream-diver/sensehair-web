@@ -1,6 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
 import { useContext, useState, useEffect } from 'react'
-import { BiCalendarCheck } from 'react-icons/bi'
 import { GlobalContext } from '../contexts/GlobalContext'
 import FloatingWindow from './FloatingWindow'
 import FloatingWindowServices from './FloatingWindowServices'

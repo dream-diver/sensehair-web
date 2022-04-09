@@ -11,6 +11,13 @@ const FloatingWindowPayment = ({ steps, setSteps, step, show, setShow, nextStep 
 
   const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_KEY)
 
+  useEffect(() => {
+    const paymentBtn = document.querySelector('#bookingSystem .floating-window-body.payment button[type="submit"]')
+    if (paymentBtn && state.locale != "en") {
+      paymentBtn.innerHTML = 'Betaal met iDEAL'
+    }
+  }, [])
+
   return (
     <div className="floating-window">
       <div className="floating-window-header">

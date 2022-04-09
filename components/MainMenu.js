@@ -108,7 +108,7 @@ const Menu = ({ device, isSlider }) => {
                     </Link>
                   </li>
                 </ul>
-                <ul className="nav-sm-only nav d-md-none">
+                <ul className="nav-sm-only nav d-lg-none">
                   <LanguageDropdown id="navbarLang2" navToggle={ true } />
                 </ul>
 

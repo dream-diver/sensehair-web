@@ -4,7 +4,8 @@ module.exports = {
     domains: [
       "images.unsplash.com",
       "i.imgur.com",
-      "api.sensehair.nl"
+      "api.sensehair.nl",
+      "sensehair-prod-bucket.s3.us-east-2.amazonaws.com"
     ]
   },
   i18n: {
