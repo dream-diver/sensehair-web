@@ -69,26 +69,28 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
             <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" onClick={ PriceModalClose }></button>
           </div>
           <div className="modal-body">
-            <table className="table">
-              <thead>
-                <tr>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col">Hairstylist</th>
-                  <th scope="col">Art Director</th>
-                </tr>
-              </thead>
-              <tbody>
-                { state.services.map((service, index) => (
-                  <tr key={ index }>
-                    <th scope="row">{ service.name }</th>
-                    <td>{ service.duration } min</td>
-                    <td>{ makePrice(service.stylist_price) }</td>
-                    <td>{ makePrice(service.art_director_price) }</td>
+            <div className="table-responsive">
+              <table className="table text-nowrap">
+                <thead>
+                  <tr>
+                    <th scope="col"></th>
+                    <th scope="col"></th>
+                    <th scope="col">Hairstylist</th>
+                    <th scope="col">Art Director</th>
                   </tr>
-                )).reverse() }
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  { state.services.map((service, index) => (
+                    <tr key={ index }>
+                      <th scope="row">{ service.name }</th>
+                      <td>{ service.duration } min</td>
+                      <td>{ makePrice(service.stylist_price) }</td>
+                      <td>{ makePrice(service.art_director_price) }</td>
+                    </tr>
+                  )).reverse() }
+                </tbody>
+              </table>
+            </div>
             <section id="info_img">
               <div className="container">
                 <div className="row">

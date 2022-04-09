@@ -6,6 +6,7 @@ import setHours from "date-fns/setHours"
 import setMinutes from "date-fns/setMinutes"
 import setSeconds from "date-fns/setSeconds"
 import { GlobalContext } from '../contexts/GlobalContext'
+import addDays from 'date-fns/addDays'
 
 const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, setStartDate, previousStep }) => {
   const [state] = useContext(GlobalContext)
@@ -26,13 +27,16 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
       const selectedServices = steps.step3.value
       const servicesTotalDuration = state.services.filter(({ id }) => selectedServices.includes(id)).map(services => services.duration).reduce((a, b) => a + b, 0)
       const includeTimesFromServer = await fetchIncludeTimes(steps.step4.value, servicesTotalDuration, startDate)
-      // FIXME: get a error if initial date and time is not available
-      const convertedIncludeTimesFromServer = includeTimesFromServer.map(time => {
-        const regExTime = /([0-9]{1,2}):([0-9]{2})/
-        const regExTimeArr = regExTime.exec(time)
-        return setHours(setMinutes(setSeconds(new Date(), 0), regExTimeArr[2]), regExTimeArr[1])
-      })
-      setIncludeTimes(convertedIncludeTimesFromServer)
+      if (includeTimesFromServer.length > 0) {
+        const convertedIncludeTimesFromServer = includeTimesFromServer.map(time => {
+          const regExTime = /([0-9]{1,2}):([0-9]{2})/
+          const regExTimeArr = regExTime.exec(time)
+          return setHours(setMinutes(setSeconds(new Date(), 0), regExTimeArr[2]), regExTimeArr[1])
+        })
+        setIncludeTimes(convertedIncludeTimesFromServer)
+      } else {
+        setStartDate(addDays(startDate, 1))
+      }
     }
     getIncludeTimes()
     // eslint-disable-next-line react-hooks/exhaustive-deps
