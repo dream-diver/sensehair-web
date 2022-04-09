@@ -67,7 +67,7 @@ const BookingSystem = () => {
     "step6": {
       id: 6,
       active: false,
-      title: state.text.bookingStep5Title,
+      title: state.text.bookingStep6Title,
       value: false,
       guest: {
         isGuest: false,
