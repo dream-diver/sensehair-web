@@ -190,7 +190,7 @@ export default {
   bookingStep2Title: 'WAT VOOR TYPE HAAR HEB JE?',
   bookingStep3Title: 'Kies Diensten',
   bookingStep4Title: 'Kies Stylist',
-  bookingStep5Title: 'Log in',
+  bookingStep5Title: 'Kies de datum en tijd',
   bookingStep6Title: 'Log in',
   bookingStep7Title: 'Overzicht afspraak',
   bookingStep8Title: 'Betaling',
