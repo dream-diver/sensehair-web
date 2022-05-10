@@ -1,5 +1,6 @@
 /* eslint-disable @next/next/no-img-element */
 import { useContext, useState, useEffect } from 'react'
+import { useRouter } from 'next/router'
 import { GlobalContext } from '../contexts/GlobalContext'
 import FloatingWindow from './FloatingWindow'
 import FloatingWindowServices from './FloatingWindowServices'
@@ -20,6 +21,7 @@ const BookingSystem = () => {
   const [checked, setChecked] = useState(-1)
   const [multiChecked, setMultiChecked] = useState([])
   const [startDate, setStartDate] = useState(setHours(setMinutes(setSeconds(new Date(), 0), 0), 10))
+  const router = useRouter()
 
   const show = state.showBooking
 
@@ -406,7 +408,7 @@ const BookingSystem = () => {
       "step6": {
         id: 6,
         active: false,
-        title: state.text.bookingStep5Title,
+        title: state.text.bookingStep6Title,
         value: false,
         guest: {
           isGuest: false,
@@ -430,7 +432,7 @@ const BookingSystem = () => {
         paymentIntent: "",
       },
     })
-  }, [state.text])
+  }, [state.text, router.pathname])
 
   return (
     <div id="bookingSystem">

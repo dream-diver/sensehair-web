@@ -27,7 +27,7 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
       const selectedServices = steps.step3.value
       const servicesTotalDuration = state.services.filter(({ id }) => selectedServices.includes(id)).map(services => services.duration).reduce((a, b) => a + b, 0)
       const includeTimesFromServer = await fetchIncludeTimes(steps.step4.value, servicesTotalDuration, startDate)
-      if (includeTimesFromServer.length > 0) {
+      if (includeTimesFromServer && includeTimesFromServer.length > 0) {
         const convertedIncludeTimesFromServer = includeTimesFromServer.map(time => {
           const regExTime = /([0-9]{1,2}):([0-9]{2})/
           const regExTimeArr = regExTime.exec(time)

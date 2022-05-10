@@ -9,7 +9,7 @@ import { GlobalContext } from '../components/contexts/GlobalContext'
 
 const checkout = () => {
   const [state, setState] = useContext(GlobalContext)
-  const [paymentSumbit, setPaymentSumbit] = useState(false)
+  const [paymentSubmit, setPaymentSubmit] = useState(false)
   const toastId = useRef(null)
   const router = useRouter()
   const { payment, redirect_status, payment_intent } = router.query
@@ -29,6 +29,7 @@ const checkout = () => {
   }
 
   useEffect(() => {
+    setState({ ...state, showBooking: false })
     // Submit Payment Success Info
     const submitPaymentSuccessInfo = async () => {
       try {
@@ -42,9 +43,9 @@ const checkout = () => {
     }
 
     if (payment_intent) {
-      if (paymentSumbit) {
+      if (paymentSubmit) {
         submitPaymentSuccessInfo()
-        setPaymentSumbit(true)
+        setPaymentSubmit(true)
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -61,7 +62,7 @@ const checkout = () => {
       <h1 className="text-center mt-5 mb-4">{ `${payment === "paylater" ? "Booking" : "Payment"} ${redirect_status === undefined ? "Successful" : redirect_status === "succeeded" ? "Successful" : "Failed"}` }</h1>
       <div className="d-flex justify-content-center">
         <Link href="/">
-          <a className="btn btn-dark" href="#"><BiLeftArrowAlt className="me-1" />{ state.locale === 'en' ? "Back To Home" : "Terug Naar Huis" }</a>
+          <a className="btn btn-dark" href="#"><BiLeftArrowAlt className="me-1" />{ state.locale === 'en' ? "Back To Home" : "Terug naar homepage" }</a>
         </Link>
       </div>
     </div>
