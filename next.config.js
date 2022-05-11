@@ -5,7 +5,8 @@ module.exports = {
       "images.unsplash.com",
       "i.imgur.com",
       "api.sensehair.nl",
-      "sensehair-prod-bucket.s3.us-east-2.amazonaws.com"
+      "sensehair-prod-bucket.s3.us-east-2.amazonaws.com",
+      "localhost",
     ]
   },
   i18n: {

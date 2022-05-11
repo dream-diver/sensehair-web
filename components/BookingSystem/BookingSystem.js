@@ -365,6 +365,14 @@ const BookingSystem = () => {
     })
   }
 
+  const backToDatePicker = () =>{
+    setSteps({
+      ...steps,
+      "step5": { ...steps.step5, active: true, value: "" },
+      "step7": { ...steps.step7, active: false },
+    })
+  }
+
   const setInitialState = () => {
     setSteps(initialState)
   }
@@ -461,7 +469,7 @@ const BookingSystem = () => {
             <FloatingWindowAuth steps={ steps } setSteps={ setSteps } step={ steps.step6 } show={ show } setShow={ setShow } nextStep={ seventhStep } previousStep={ backToFifthStep } />
           }
           { steps.step7.active &&
-            <FloatingWindowOverview steps={ steps } setSteps={ setSteps } step={ steps.step7 } show={ show } setShow={ setShow } nextStep={ eighthStep } />
+            <FloatingWindowOverview steps={ steps } setSteps={ setSteps } step={ steps.step7 } show={ show } setShow={ setShow } previousStep={ backToDatePicker } nextStep={ eighthStep } />
           }
           { steps.step8.active &&
             <FloatingWindowPayment steps={ steps } setSteps={ setSteps } step={ steps.step8 } show={ show } setShow={ setShow } nextStep={ () => { } } />

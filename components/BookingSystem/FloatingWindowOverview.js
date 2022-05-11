@@ -1,12 +1,12 @@
 import Link from 'next/link'
 import { useContext, useEffect, useState } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
-import { BiDollarCircle, BiRightArrowAlt } from "react-icons/bi"
+import { BiDollarCircle, BiRightArrowAlt, BiLeftArrowAlt } from "react-icons/bi"
 import { makePrice } from '../Helpers'
 import { en, nl } from 'date-fns/locale'
 import format from 'date-fns/format'
 
-const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
+const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep, previousStep }) => {
   const [state] = useContext(GlobalContext)
   const [couponCode, setCouponCode] = useState('')
   const [discountPrice, setDiscountPrice] = useState(0)
@@ -66,76 +66,76 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
   return (
     <div className="floating-window">
       <div className="floating-window-header">
-        <h4 className="floating-window-heading">{ step.title }</h4>
-        <button type="button" className="btn-close" aria-label="Close" onClick={ () => setShow(!show) }></button>
+        <h4 className="floating-window-heading">{step.title}</h4>
+        <button type="button" className="btn-close" aria-label="Close" onClick={() => setShow(!show)}></button>
       </div>
       <div className="floating-window-body">
         <p className="mb-2">
-          <strong>{ state.text.bookingHairSize }: </strong>{ state.locale == "en" ? optionHairSize[steps.step1.value].name_en : optionHairSize[steps.step1.value].name }
+          <strong>{state.text.bookingHairSize}: </strong>{state.locale == "en" ? optionHairSize[steps.step1.value].name_en : optionHairSize[steps.step1.value].name}
         </p>
-        { steps.step2.value !== -1 &&
+        {steps.step2.value !== -1 &&
           <p className="mb-2">
-            <strong>{ state.text.bookingHairType }: </strong>{ state.locale == "en" ? optionHairType[steps.step2.value].name_en : optionHairType[steps.step2.value].name }
+            <strong>{state.text.bookingHairType}: </strong>{state.locale == "en" ? optionHairType[steps.step2.value].name_en : optionHairType[steps.step2.value].name}
           </p>
         }
         <p className="mb-2">
-          <strong>{ state.text.bookingStylist }: </strong>
-          { stylist.name }
+          <strong>{state.text.bookingStylist}: </strong>
+          {stylist.name}
         </p>
         <p className="mb-2">
-          <strong>{ state.text.bookingDateTime }: </strong>
-          { format(steps.step5.value, 'eee PPpp', { locale: state.locale == "en" ? en : nl }) }
+          <strong>{state.text.bookingDateTime}: </strong>
+          {format(steps.step5.value, 'eee PPpp', { locale: state.locale == "en" ? en : nl })}
         </p>
         <p className="mb-1">
-          <strong>{ state.text.bookingServices }: </strong>
+          <strong>{state.text.bookingServices}: </strong>
         </p>
         <table className="table table-striped table-light text-center mb-4">
           <thead>
             <tr>
               <th scope="col">#</th>
-              <th scope="col">{ state.text.bookingName }</th>
-              <th scope="col">{ state.text.bookingDuration }</th>
-              <th scope="col">{ state.text.bookingPrice }</th>
+              <th scope="col">{state.text.bookingName}</th>
+              <th scope="col">{state.text.bookingDuration}</th>
+              <th scope="col">{state.text.bookingPrice}</th>
             </tr>
           </thead>
           <tbody>
-            { selectedServices.map((service, index) => (
-              <tr key={ index }>
+            {selectedServices.map((service, index) => (
+              <tr key={index}>
                 <th scope="row">
-                  { index + 1 }
+                  {index + 1}
                 </th>
                 <td>
-                  { state.locale == "en" ? service.name_en : service.name }
+                  {state.locale == "en" ? service.name_en : service.name}
                 </td>
                 <td>
-                  { service.duration } { state.text.bookingMinutes }
+                  {service.duration} {state.text.bookingMinutes}
                 </td>
                 <td>
-                  { makePrice(stylistType ? service.art_director_price : service.stylist_price) }
+                  {makePrice(stylistType ? service.art_director_price : service.stylist_price)}
                 </td>
               </tr>
-            )) }
+            ))}
           </tbody>
           <tfoot>
             <tr>
-              <th scope="row" colSpan="3">{ state.text.bookingTotalPrice }</th>
-              <th scope="row">{ makePrice(selectedServicesPrice) }</th>
+              <th scope="row" colSpan="3">{state.text.bookingTotalPrice}</th>
+              <th scope="row">{makePrice(selectedServicesPrice)}</th>
             </tr>
-            { discountPrice !== 0 &&
+            {discountPrice !== 0 &&
               <tr>
-                <th scope="row" colSpan="3">{ state.text.bookingDiscountPrice }</th>
-                <th scope="row">s{ makePrice(discountPrice) }</th>
+                <th scope="row" colSpan="3">{state.text.bookingDiscountPrice}</th>
+                <th scope="row">s{makePrice(discountPrice)}</th>
               </tr>
             }
           </tfoot>
         </table>
-        { discountPrice === 0 &&
-          <form onSubmit={ applyCouponCode }>
+        {discountPrice === 0 &&
+          <form onSubmit={applyCouponCode}>
             <div className="mb-3">
-              <label htmlFor="coupon" className="form-label fw-bold">{ state.text.bookingCouponText }</label>
+              <label htmlFor="coupon" className="form-label fw-bold">{state.text.bookingCouponText}</label>
               <div className="input-group">
-                <input type="text" className="form-control" id="coupon" placeholder={ state.text.bookingCouponCode } value={ couponCode } onChange={ (e) => setCouponCode(e.target.value) } />
-                <button className="btn btn-dark" type="submit">{ state.text.bookingApply }</button>
+                <input type="text" className="form-control" id="coupon" placeholder={state.text.bookingCouponCode} value={couponCode} onChange={(e) => setCouponCode(e.target.value)} />
+                <button className="btn btn-dark" type="submit">{state.text.bookingApply}</button>
               </div>
             </div>
           </form>
@@ -143,10 +143,12 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep }) => {
 
       </div>
       <div className="floating-window-footer">
-        <Link href={ { pathname: "/checkout", query: { payment: 'paylater' } } }>
-          <a className={ `btn-next btn btn-dark` } href="#"><BiDollarCircle className="me-1" />{ state.text.bookingPayLater }</a>
+        <a className={`btn-next btn btn-dark`} onClick={previousStep}><BiLeftArrowAlt className="me-1" />{state.text.bookingBack}</a>
+
+        <Link href={{ pathname: "/checkout", query: { payment: 'paylater' } }}>
+          <a className={`btn-next btn btn-dark`} href="#"><BiDollarCircle className="me-1" />{state.text.bookingPayLater}</a>
         </Link>
-        <a className="btn-next btn btn-dark" onClick={ nextStep }>{ state.text.bookingPayNow }<BiRightArrowAlt className="ms-1" /></a>
+        <a className="btn-next btn btn-dark" onClick={nextStep}>{state.text.bookingPayNow}<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>
   )
