@@ -207,6 +207,8 @@ export default {
   bookingPhone: 'Telefoon',
   bookingPhonePlaceholder: 'Vul je telefoonnummer in',
   bookingAccountTextLogin: 'Heb je geen account?',
+  Register: 'Registreer',
+  Login: 'Login',
   bookingAccountButtonLogin: 'Registreer hier',
   bookingAccountTextRegister: 'Heb je een account?',
   bookingAccountButtonRegister: 'Hier inloggen',

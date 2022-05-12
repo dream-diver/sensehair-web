@@ -203,6 +203,8 @@ export default {
   bookingPhone: 'Phone',
   bookingPhonePlaceholder: 'Enter your phone number',
   bookingAccountTextLogin: 'Don’t have an account?',
+  Register: 'Register',
+  Login: 'Login',
   bookingAccountButtonLogin: 'Register here',
   bookingAccountTextRegister: 'Do you have an account?',
   bookingAccountButtonRegister: 'Login here',

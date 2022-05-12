@@ -59,11 +59,18 @@ const checkout = () => {
         <meta name="description" content="Sense Hair" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="text-center mt-5 mb-4">{ `${payment === "paylater" ? "Booking" : "Payment"} ${redirect_status === undefined ? "Successful" : redirect_status === "succeeded" ? "Successful" : "Failed"}` }</h1>
+      <h1 className="text-center mt-5 mb-4">{`${payment === "paylater" ? "Booking" : "Payment"} ${redirect_status === undefined ? "Successful" : redirect_status === "succeeded" ? "Successful" : "Failed"}`}</h1>
       <div className="d-flex justify-content-center">
-        <Link href="/">
-          <a className="btn btn-dark" href="#"><BiLeftArrowAlt className="me-1" />{ state.locale === 'en' ? "Back To Home" : "Terug naar homepage" }</a>
-        </Link>
+        {state.locale === 'en' ? (
+          <Link href="/en">
+            <a className="btn btn-dark" href="/en"><BiLeftArrowAlt className="me-1" />Back To Home</a>
+          </Link>
+        ) : (
+          <Link href="/">
+            <a className="btn btn-dark" href="/"><BiLeftArrowAlt className="me-1" />Terug naar homepage</a>
+          </Link>
+        )}
+
       </div>
     </div>
   )

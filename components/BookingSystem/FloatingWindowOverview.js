@@ -6,7 +6,7 @@ import { makePrice } from '../Helpers'
 import { en, nl } from 'date-fns/locale'
 import format from 'date-fns/format'
 
-const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep, previousStep }) => {
+const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep, previousStep, payLater }) => {
   const [state] = useContext(GlobalContext)
   const [couponCode, setCouponCode] = useState('')
   const [discountPrice, setDiscountPrice] = useState(0)
@@ -144,10 +144,7 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep, previo
       </div>
       <div className="floating-window-footer">
         <a className={`btn-next btn btn-dark`} onClick={previousStep}><BiLeftArrowAlt className="me-1" />{state.text.bookingBack}</a>
-
-        <Link href={{ pathname: "/checkout", query: { payment: 'paylater' } }}>
-          <a className={`btn-next btn btn-dark`} href="#"><BiDollarCircle className="me-1" />{state.text.bookingPayLater}</a>
-        </Link>
+        <a className={`btn-next btn btn-dark`} onClick={payLater} href="#"><BiDollarCircle className="me-1" />{state.text.bookingPayLater}</a>
         <a className="btn-next btn btn-dark" onClick={nextStep}>{state.text.bookingPayNow}<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>

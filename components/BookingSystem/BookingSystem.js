@@ -317,6 +317,46 @@ const BookingSystem = () => {
 
   }
 
+  const payLater = async (e) => {
+    e.preventDefault();
+
+    const date = format(steps.step5.value, "yyyy-MM-dd HH:mm")
+    const charge = steps.step7.value
+    const services = steps.step3.value
+    const duration = state.services.filter(({ id }) => services.includes(id)).map(services => services.duration).reduce((a, b) => a + b, 0)
+    const stylistId = steps.step4.value
+    const promocode = steps.step7.couponCode
+    if (steps.step6.guest.isGuest) {
+      const name = steps.step6.guest.name
+      const email = steps.step6.guest.email
+      const phone = steps.step6.guest.phone
+      const guestBookingFromServer = await createGuestBooking(date, charge, duration, name, email, phone, stylistId, services, promocode)
+      if (guestBookingFromServer.id) {
+        if (state.locale == 'en') {
+          window.location.href = "/en/checkout?payment=paylater";
+        }
+        else {
+          window.location.href = "/checkout?payment=paylater";
+        }
+      } else {
+        console.log('Guest Booking Error')
+      }
+    } else {
+      const customerId = state.auth.user.id
+      const bookingFromServer = await createBooking(date, charge, duration, customerId, stylistId, services, promocode)
+      if (bookingFromServer.booking) {
+        if (state.locale == 'en') {
+          window.location.href = "/en/checkout?payment=paylater";
+        }
+        else {
+          window.location.href = "/checkout?payment=paylater";
+        }
+      } else {
+        console.log('Booking Error')
+      }
+    }
+  }
+
   const backToFirstStep = () => {
     setChecked(-1)
     setSteps({
@@ -365,7 +405,7 @@ const BookingSystem = () => {
     })
   }
 
-  const backToDatePicker = () =>{
+  const backToDatePicker = () => {
     setSteps({
       ...steps,
       "step5": { ...steps.step5, active: true, value: "" },
@@ -445,34 +485,34 @@ const BookingSystem = () => {
   return (
     <div id="bookingSystem">
 
-      { !show ?
-        <button className="btn-floating btn btn-lg btn-dark rounded-circle" onClick={ () => setShow(!show) }>
-          <img src={ imageSchedule.src } alt="Booking System" className="booking-img" width="18px" height="18px" />
+      {!show ?
+        <button className="btn-floating btn btn-lg btn-dark rounded-circle" onClick={() => setShow(!show)}>
+          <img src={imageSchedule.src} alt="Booking System" className="booking-img" width="18px" height="18px" />
         </button>
         : <>
-          { steps.step1.active &&
-            <FloatingWindow step={ steps.step1 } options={ optionHairSize } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ secondStep } />
+          {steps.step1.active &&
+            <FloatingWindow step={steps.step1} options={optionHairSize} show={show} setShow={setShow} checked={checked} setChecked={setChecked} nextStep={secondStep} />
           }
-          { steps.step2.active &&
-            <FloatingWindow step={ steps.step2 } options={ optionHairType } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ thirdStep } previousStep={ backToFirstStep } />
+          {steps.step2.active &&
+            <FloatingWindow step={steps.step2} options={optionHairType} show={show} setShow={setShow} checked={checked} setChecked={setChecked} nextStep={thirdStep} previousStep={backToFirstStep} />
           }
-          { steps.step3.active &&
-            <FloatingWindowServices steps={ steps } setSteps={ setSteps } step={ steps.step3 } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fourthStep } multiChecked={ multiChecked } setMultiChecked={ setMultiChecked } previousStep={ backToSecondStep } />
+          {steps.step3.active &&
+            <FloatingWindowServices steps={steps} setSteps={setSteps} step={steps.step3} show={show} setShow={setShow} checked={checked} setChecked={setChecked} nextStep={fourthStep} multiChecked={multiChecked} setMultiChecked={setMultiChecked} previousStep={backToSecondStep} />
           }
-          { steps.step4.active &&
-            <FloatingWindow step={ steps.step4 } options={ steps.step3.serviceType ? state.stylists.artDirector : state.stylists.stylist } show={ show } setShow={ setShow } checked={ checked } setChecked={ setChecked } nextStep={ fifthStep } previousStep={ backToThirdStep } />
+          {steps.step4.active &&
+            <FloatingWindow step={steps.step4} options={steps.step3.serviceType ? state.stylists.artDirector : state.stylists.stylist} show={show} setShow={setShow} checked={checked} setChecked={setChecked} nextStep={fifthStep} previousStep={backToThirdStep} />
           }
-          { steps.step5.active &&
-            <FloatingWindowDate steps={ steps } step={ steps.step5 } show={ show } setShow={ setShow } nextStep={ sixthStep } startDate={ startDate } setStartDate={ setStartDate } previousStep={ backToFourthStep } />
+          {steps.step5.active &&
+            <FloatingWindowDate steps={steps} step={steps.step5} show={show} setShow={setShow} nextStep={sixthStep} startDate={startDate} setStartDate={setStartDate} previousStep={backToFourthStep} />
           }
-          { steps.step6.active &&
-            <FloatingWindowAuth steps={ steps } setSteps={ setSteps } step={ steps.step6 } show={ show } setShow={ setShow } nextStep={ seventhStep } previousStep={ backToFifthStep } />
+          {steps.step6.active &&
+            <FloatingWindowAuth steps={steps} setSteps={setSteps} step={steps.step6} show={show} setShow={setShow} nextStep={seventhStep} previousStep={backToFifthStep} />
           }
-          { steps.step7.active &&
-            <FloatingWindowOverview steps={ steps } setSteps={ setSteps } step={ steps.step7 } show={ show } setShow={ setShow } previousStep={ backToDatePicker } nextStep={ eighthStep } />
+          {steps.step7.active &&
+            <FloatingWindowOverview steps={steps} setSteps={setSteps} step={steps.step7} show={show} setShow={setShow} previousStep={backToDatePicker} payLater={payLater} nextStep={eighthStep} />
           }
-          { steps.step8.active &&
-            <FloatingWindowPayment steps={ steps } setSteps={ setSteps } step={ steps.step8 } show={ show } setShow={ setShow } nextStep={ () => { } } />
+          {steps.step8.active &&
+            <FloatingWindowPayment steps={steps} setSteps={setSteps} step={steps.step8} show={show} setShow={setShow} nextStep={() => { }} />
           }
         </>
       }

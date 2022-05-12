@@ -1,8 +1,8 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useEffect, useRef } from "react"
+import React, { useContext, useEffect, useRef } from "react"
 import Link from 'next/link'
 import { useRouter } from "next/router"
-import { FaPhoneAlt } from "react-icons/fa"
+import { FaPhoneAlt, FaArrowRight, FaUser } from "react-icons/fa"
 import LanguageDropdown from "./LanguageDropdown"
 import { GlobalContext } from "./contexts/GlobalContext"
 
@@ -42,33 +42,86 @@ const Menu = ({ device, isSlider }) => {
     }
     navbarShrink()
     document.addEventListener('scroll', navbarShrink)
-  }, [])
+  }, []);
+
+  const logout = async () => {
+    try {
+      const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/logout`, {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+          'Authorization': `Bearer ${state.auth.token}`,
+          "Accept": "application/json"
+        },
+        body: {}
+      })
+      localStorage.removeItem('login')
+      localStorage.removeItem('token')
+      localStorage.removeItem('user')
+      setState({
+        ...state, "auth": {
+          "isLogin": false,
+          "user": null,
+          "token": ""
+        }
+      })
+
+      if (state.locale == 'en') {
+        window.location.href = "/en";
+      }
+      else {
+        window.location.href = "/";
+      }
+    } catch (error) {
+      console.log(error.message)
+    }
+  }
 
   return (
-    <nav id="main-menu" className={ isSlider ? "navbar navbar-expand-lg navbar-dark" : "navbar navbar-expand-lg navbar-dark bg-black without-slider" } ref={ mainMenuRef }>
+    <nav id="main-menu" className={isSlider ? "navbar navbar-expand-lg navbar-dark" : "navbar navbar-expand-lg navbar-dark bg-black without-slider"} ref={mainMenuRef}>
       <div className="container">
         <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
           <span className="navbar-toggler-icon"></span>
         </button>
         <Link href="/">
           <a className="navbar-brand me-0">
-            <img loading="lazy" src={ imageLogoBig.src } alt="logo2x" width="121px" className="navbar-brand-img d-inline-block align-text-top" ref={ navbarBrandImgRef } />
+            <img loading="lazy" src={imageLogoBig.src} alt="logo2x" width="121px" className="navbar-brand-img d-inline-block align-text-top" ref={navbarBrandImgRef} />
           </a>
         </Link>
 
 
         <form className="d-flex d-lg-none">
-          <button type="button" className="btn btn-sm btn-light rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>{ state.locale === "en" ? state.text.bookNow : flag ? state.text.bookNow : "AFSPRAAK" }</button>
+          <button type="button" className="btn btn-sm btn-light rounded-0 font-weight-900" onClick={() => setState({ ...state, showBooking: !state.showBooking })}>{state.locale === "en" ? state.text.bookNow : flag ? state.text.bookNow : "AFSPRAAK"}</button>
         </form>
 
         <div className="w-100">
-          <div className="top-row row mb-1 d-none d-lg-block" ref={ topRowRef }>
+          <div className="top-row row mb-1 d-none d-lg-block" ref={topRowRef}>
             <div className="col d-flex">
               <ul id="top-menu" className="nav mx-auto mx-md-0 ms-md-auto">
                 <li className="nav-item">
                   <a className="nav-link text-primary" href="#"><FaPhoneAlt /> +31 01 042 591 95</a>
                 </li>
-                <LanguageDropdown id="navbarLang1" navToggle={ false } />
+                {state.auth.isLogin ? (
+                  <React.Fragment>
+                    <li className="nav-item">
+                      <a className="nav-link text-light" href="#"><FaUser /> Hello, {state.auth.user.name}</a>
+                    </li>
+
+                    <li className="nav-item">
+                      <a className="nav-link text-primary" onClick={logout}>Logout</a>
+                    </li>
+                  </React.Fragment>
+                ) : (
+                  <li className="nav-item">
+                    <div className="nav-link linkN">
+                      <Link href="/login">
+                        Login/Register
+                      </Link>
+                    </div>
+                  </li>
+                )}
+
+                <LanguageDropdown id="navbarLang1" navToggle={false} />
               </ul>
             </div>
           </div>
@@ -79,43 +132,43 @@ const Menu = ({ device, isSlider }) => {
                 <ul className="navbar-nav ms-auto">
                   <li className="nav-item">
                     <Link href="/">
-                      <a className={ path == "/" ? "nav-link active" : "nav-link" }>{ state.text.menuHome }</a>
+                      <a className={path == "/" ? "nav-link active" : "nav-link"}>{state.text.menuHome}</a>
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link href="/about">
-                      <a className={ path == "/about" ? "nav-link active" : "nav-link" }>{ state.text.menuAboutUs }</a>
+                      <a className={path == "/about" ? "nav-link active" : "nav-link"}>{state.text.menuAboutUs}</a>
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link href="/services">
-                      <a className={ path == "/services" ? "nav-link active" : "nav-link" }>{ state.text.menuServices }</a>
+                      <a className={path == "/services" ? "nav-link active" : "nav-link"}>{state.text.menuServices}</a>
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link href="/lookbook">
-                      <a className={ path == "/lookbook" ? "nav-link active" : "nav-link" }>{ state.text.menuLookbook }</a>
+                      <a className={path == "/lookbook" ? "nav-link active" : "nav-link"}>{state.text.menuLookbook}</a>
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link href="/career">
-                      <a className={ path == "/career" ? "nav-link active" : "nav-link" }>{ state.text.menuCareer }</a>
+                      <a className={path == "/career" ? "nav-link active" : "nav-link"}>{state.text.menuCareer}</a>
                     </Link>
                   </li>
                   <li className="nav-item">
                     <Link href="/contact">
-                      <a className={ path == "/contact" ? "nav-link active" : "nav-link" }>{ state.text.menuContactUs }</a>
+                      <a className={path == "/contact" ? "nav-link active" : "nav-link"}>{state.text.menuContactUs}</a>
                     </Link>
                   </li>
                 </ul>
                 <ul className="nav-sm-only nav d-lg-none">
-                  <LanguageDropdown id="navbarLang2" navToggle={ true } />
+                  <LanguageDropdown id="navbarLang2" navToggle={true} />
                 </ul>
 
                 <form className="d-none d-lg-flex ms-lg-2">
-                  <button type="button" className="btn-book-now btn btn-sm btn-primary rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>
-                    <img loading="lazy" src={ imageSchedule.src } height="42" alt="schedule" />
-                    <span>{ state.text.bookNow }</span>
+                  <button type="button" className="btn-book-now btn btn-sm btn-primary rounded-0 font-weight-900" onClick={() => setState({ ...state, showBooking: !state.showBooking })}>
+                    <img loading="lazy" src={imageSchedule.src} height="42" alt="schedule" />
+                    <span>{state.text.bookNow}</span>
                   </button>
                 </form>
               </div>
