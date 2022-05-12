@@ -7,7 +7,7 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import { toast } from "react-toastify";
 import { useRouter } from 'next/router';
 
-const register = () => {
+const Register = () => {
     const router = useRouter();
     const [state, setState] = useContext(GlobalContext)
     const [formData, setSetFromData] = useState({
@@ -173,4 +173,4 @@ const register = () => {
     )
 }
 
-export default register;
+export default Register;

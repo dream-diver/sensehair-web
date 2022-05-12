@@ -7,7 +7,7 @@ import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 import { toast } from "react-toastify";
 import { useRouter } from 'next/router';
 
-const login = () => {
+const Login = () => {
     const router = useRouter();
     const [state, setState] = useContext(GlobalContext)
     const [formData, setSetFromData] = useState({
@@ -152,4 +152,4 @@ const login = () => {
     )
 }
 
-export default login
+export default Login;

@@ -63,11 +63,11 @@ const checkout = () => {
       <div className="d-flex justify-content-center">
         {state.locale === 'en' ? (
           <Link href="/en">
-            <a className="btn btn-dark" href="/en"><BiLeftArrowAlt className="me-1" />Back To Home</a>
+            <a className="btn btn-dark"><BiLeftArrowAlt className="me-1" />Back To Home</a>
           </Link>
         ) : (
           <Link href="/">
-            <a className="btn btn-dark" href="/"><BiLeftArrowAlt className="me-1" />Terug naar homepage</a>
+            <a className="btn btn-dark"><BiLeftArrowAlt className="me-1" />Terug naar homepage</a>
           </Link>
         )}
 
