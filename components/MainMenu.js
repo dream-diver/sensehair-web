@@ -2,7 +2,7 @@
 import React, { useContext, useEffect, useRef } from "react"
 import Link from 'next/link'
 import { useRouter } from "next/router"
-import { FaPhoneAlt, FaArrowRight, FaUser } from "react-icons/fa"
+import { FaPhoneAlt, FaArrowRight, FaUserCircle } from "react-icons/fa"
 import LanguageDropdown from "./LanguageDropdown"
 import { GlobalContext } from "./contexts/GlobalContext"
 
@@ -103,17 +103,24 @@ const Menu = ({ device, isSlider }) => {
                 </li>
                 {state.auth.isLogin ? (
                   <React.Fragment>
-                    <li className="nav-item">
-                      <a className="nav-link text-light" href="#"><FaUser /> Hello, {state.auth.user.name}</a>
+                    <li className="nav-item" style={{cursor:"pointer"}}>
+                      <Link href="/profile" >
+                        <div  className="nav-link text-light d-flex align-items-center">
+                          <FaUserCircle />
+                          <div className="ms-2">
+                            {state.text.Hello}, {state.auth.user.name}
+                          </div>
+                        </div>
+                      </Link>
                     </li>
 
-                    <li className="nav-item">
+                    <li className="nav-item" style={{cursor:"pointer"}}>
                       <a className="nav-link text-primary" onClick={logout}>Logout</a>
                     </li>
                   </React.Fragment>
                 ) : (
                   <li className="nav-item">
-                    <div className="nav-link linkN">
+                    <div className="nav-link linkN" style={{cursor:"pointer"}}>
                       <Link href="/login">
                         Login/Register
                       </Link>
@@ -176,7 +183,7 @@ const Menu = ({ device, isSlider }) => {
           </div>
         </div>
       </div>
-    </nav>
+    </nav >
   )
 }
 

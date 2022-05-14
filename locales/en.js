@@ -1,5 +1,10 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default {
+  profileDetailsText:"PROFILE DETAILS",
+  saveChangesText:"Save changes",
+  forgotPassText:"Forgot password ?",
+  sendEmailText:"Send reset link",
+  Hello: 'Hello',
   menuHome: 'HOME',
   menuAboutUs: 'ABOUT US',
   menuServices: 'SERVICES',

@@ -18,7 +18,7 @@ const LanguageDropdown = ({ id, navToggle }) => {
     state.changeLanguage("nl")
   }
   return (
-    <li className="language-dropdown nav-item dropdown">
+    <li className="language-dropdown dropdown">
       <a className="nav-link dropdown-toggle" href="#" id={ id } role="button" data-bs-toggle="dropdown" aria-expanded="false" >
         { state.locale == "en" ?
           <img loading="lazy" src={ imageEn.src } width="40" alt="english" />

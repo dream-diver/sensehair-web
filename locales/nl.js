@@ -1,5 +1,10 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default {
+  profileDetailsText:"PROFIEL DETAILS",
+  saveChangesText:"Wijzigingen Opslaan",
+  forgotPassText:"Wachtwoord vergeten ?",
+  sendEmailText:"Stuur reset-link",
+  Hello: 'Hallo',
   menuHome: 'HOME',
   menuAboutUs: 'OVER ONS',
   menuServices: 'PRIJZEN',

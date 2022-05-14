@@ -1,15 +1,12 @@
-import Head from "next/head"
-import Footer from "../components/Footer"
-import { useRef, useState, useContext } from "react";
-import { GlobalContext } from "../components/contexts/GlobalContext";
-import Link from "next/link";
-import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
+import React, { useState, useContext, useEffect, useRef } from 'react';
+import Footer from "../components/Footer";
+import MainMenu from '../components/MainMenu';
+import Head from 'next/head';
+import { GlobalContext } from '../components/contexts/GlobalContext';
 import { toast } from "react-toastify";
-import { useRouter } from 'next/router';
-import LanguageDropdown from "../components/LanguageDropdown";
+import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
 
-const Register = () => {
-    const router = useRouter();
+function Profile() {
     const [state, setState] = useContext(GlobalContext)
     const [formData, setSetFromData] = useState({
         name: "",
@@ -27,13 +24,20 @@ const Register = () => {
         phone: null
     })
 
-    const register = async (bodyData) => {
+    useEffect( ()=>{
+        console.log(state.auth);
+        if (state.auth.isLogin) {
+            setSetFromData({...formData,name:state.auth.user.name,email:state.auth.user.email,phone:state.auth.user.phone});
+        }
+    },[] )
+    const update = async (bodyData) => {
         try {
-            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/register`, {
-                method: "POST",
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${state.auth.user.id}`, {
+                method: "PATCH",
                 headers: {
                     "Content-type": "application/json",
-                    "Accept": "application/json"
+                    "Accept": "application/json",
+                    'Authorization': `Bearer ${state.auth.token}`,
                 },
                 body: JSON.stringify(bodyData)
             })
@@ -66,12 +70,6 @@ const Register = () => {
             }
             return
         }
-        if (!formData.password) {
-            if (!toast.isActive(formToast.current.password)) {
-                formToast.current.password = toast.warn("Please enter your password")
-            }
-            return
-        }
         if (!formData.phone) {
             if (!toast.isActive(formToast.current.phone)) {
                 formToast.current.phone = toast.warn("Please enter your phone")
@@ -85,61 +83,34 @@ const Register = () => {
             password: formData.password,
             phone: formData.phone,
         }
-        const loginData = await register(bodyData)
-
-        if (loginData.token) {
-            setSetFromData({
-                ...formData,
-                name: "",
-                email: "",
-                password: "",
-                phone: ""
-            })
-            localStorage.setItem('login', "true")
-            localStorage.setItem('token', loginData.token)
-            localStorage.setItem('user', JSON.stringify(loginData.user.data))
-            setState({
-                ...state, "auth": {
-                    "isLogin": true,
-                    "user": { ...loginData.user.data },
-                    "token": loginData.token
-                }
-            })
-            if (state.locale == 'en') {
-                window.location.href = "/en";
+        const loginData = await update(bodyData);
+        localStorage.setItem('user', JSON.stringify(loginData.user.data));
+        setState({
+            ...state, "auth": {
+                ...state.auth,
+                "user": { ...loginData.user.data },
             }
-            else {
-                window.location.href = "/";
-            }
-        } else {
-            if (!toast.isActive(formToast.current.login)) {
-                formToast.current.login = toast.error("Email already taken")
-            }
+        })
+        if (!toast.isActive(formToast.current.login)) {
+            formToast.current.login = toast.success("Profile updated!");
         }
 
     }
+
     return (
         <div>
             <Head>
-                <title>Register | Sense Hair</title>
+                <title>Profile | Sense Hair</title>
                 <meta name="description" content="Sensehair is a saloon shop website with an appointment/booking system." />
                 <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, shrink-to-fit=no" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
-
-            <div className="d-flex align-items-center justify-content-between">
-                <div className="d-flex align-items-center" style={{ fontSize: '3rem' }}>
-                    <div className="btn btn-link" onClick={() => router.back()} style={{ fontSize: '3rem' }}> <BiLeftArrowAlt /></div>
-                    {state.text.Register}
-                </div>
-                <LanguageDropdown id="navbarLang2" navToggle={false} />
-            </div>
-            <div className="row align-items-center justify-content-center" style={{ minHeight: '600px' }}>
-
-                <div className="col-md-6 border rounded shadow p-4">
-                    <h2 className="text-center"> {state.text.Register} </h2>
-
-                    <div className="floating-window-body">
+            <MainMenu />
+            <div className='pb-5' style={{ minHeight: '500px', paddingTop: '100px' }}>
+                <div className='row align-items-center justify-content-center'>
+                    <div className='col-sm-8 border rounded shadow p-4'>
+                        <h1>{state.text.profileDetailsText}</h1>
+                        <hr />
                         <form>
                             <div className="mb-3">
                                 <label htmlFor="inputName" className="form-label">{state.text.bookingName}</label>
@@ -157,16 +128,8 @@ const Register = () => {
                                 <label htmlFor="inputPhone" className="form-label">{state.text.bookingPhone}</label>
                                 <input type="text" name="phone" className="form-control" id="inputPhone" placeholder={state.text.bookingPhonePlaceholder} value={formData.phone} onChange={(e) => setSetFromData({ ...formData, phone: e.target.value })} />
                             </div>
-                            <div className="d-flex flex-column justify-content-center w-100 py-3">
-                                <div className="m-0 p-0">
-                                    {state.text.bookingAccountTextRegister}
-                                    <Link href='/login'>
-                                        <button type="button" className="btn btn-link px-1">{state.text.bookingAccountButtonRegister}</button>
-                                    </Link>
-                                </div>
 
-                            </div>
-                            <a className="btn-next btn btn-dark" onClick={onSignup}>{state.text.bookingSignUp}<BiRightArrowAlt className="ms-1" /></a>
+                            <a className="btn-next btn btn-dark" onClick={onSignup}>{state.text.saveChangesText}<BiRightArrowAlt className="ms-1" /></a>
 
                         </form>
                     </div>
@@ -174,7 +137,7 @@ const Register = () => {
             </div>
             <Footer />
         </div>
-    )
+    );
 }
 
-export default Register;
+export default Profile;
