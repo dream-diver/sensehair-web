@@ -29,7 +29,8 @@ const FormCheck = ({ id, data, checked, setChecked, multiSelect, step, multiChec
       }
       { step.id === 4 && data.avatar_path &&
         <div className="form-check-img user-img">
-          <Image src={ data.avatar_path } alt={ (state.locale === 'en' && step.id !== 4) ? data.name_en : data.name } layout="fill" objectFit="contain" />
+          <img src={ data.avatar_path }/>
+          {/* <Image src={ data.avatar_path } alt={ (state.locale === 'en' && step.id !== 4) ? data.name_en : data.name } layout="fill" objectFit="contain" /> */}
         </div>
       }
       <input className="form-check-input" type={ multiSelect ? "checkbox" : "radio" } name="exampleRadios" value="option1" checked={ !multiSelect ? checked === id : multiChecked.indexOf(id) !== -1 } onChange={ isChecked } id={ id } />
