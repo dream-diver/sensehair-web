@@ -1,5 +1,5 @@
 import { useRouter } from 'next/router'
-import { useContext, useEffect, useRef } from "react"
+import React, { useContext, useEffect, useRef, useState } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 import { fetchServices, makePrice } from "../Helpers"
 import imageSchedule from "../../public/images/schedule.png"
@@ -7,10 +7,11 @@ import imageAbout from "../../public/images/about/home-3-about.png"
 
 /* eslint-disable @next/next/no-img-element */
 const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActiveHairType }) => {
-  const [state, setState] = useContext(GlobalContext)
+  const [state, setState] = useContext(GlobalContext);
+  const [ activeSize, setActive] = useState(null)
   const modalRef = useRef(null)
   const router = useRouter()
-  const { hairSize } = router.query
+  const { hairSize } = router.query;
 
   const PriceModalClose = (e) => {
     if (e.target.classList.contains("btn-close") || e.target.classList.contains("modal")) {
@@ -37,13 +38,26 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
       const optionHairType = options.find(option => option.name === "Hair Type").option
       const hairSize = optionHairSize[activeHairSize[0]].name_fetch
       const hairType = optionHairType[activeHairType[0]] ? optionHairType[activeHairType[0]].name_fetch : ""
-
+      setActive(hairSize);
+      // alert(`Fetching...${hairSize} ${hairType}`);
       const getData = async () => {
-        const data = await fetchServices(hairSize, hairType)
+        const data = await fetchServices(hairSize, hairType);
         if (data) {
-          const services = data.data.map(service => service.data)
+
+          const servicesPre = data.data.map(service => service.data);
+          let servicesGroup = {};
+          if (state.locale === 'en') {
+            servicesGroup = groupBy(servicesPre, 'category_en');
+          }
+          else{
+            servicesGroup = groupBy(servicesPre, 'category');
+          }
+          const servicesList = [];
+          for (let key in servicesGroup) {
+            servicesList.push({ cat: key, data: servicesGroup[key] });
+          }
           setState(prevState => {
-            return { ...prevState, services }
+            return { ...prevState, servicesList }
           })
           setTimeout(() => {
             var priceModal = new bootstrap.Modal(document.getElementById('priceModal'), {})
@@ -59,14 +73,19 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [activeHairSize, activeHairType])
-
+  var groupBy = function (xs, key) {
+    return xs.reduce(function (rv, x) {
+      (rv[x[key]] = rv[x[key]] || []).push(x);
+      return rv;
+    }, {});
+  };
   return (
-    <div className="modal fade show" ref={ modalRef } id="priceModal" tabIndex="-1" aria-labelledby="priceModalLabel" aria-hidden="true" onClick={ PriceModalClose }>
+    <div className="modal fade show" ref={modalRef} id="priceModal" tabIndex="-1" aria-labelledby="priceModalLabel" aria-hidden="true" onClick={PriceModalClose}>
       <div className="modal-dialog">
         <div className="modal-content rounded-0">
           <div className="modal-header bg-black text-white">
-            <h5 className="modal-title" id="priceModalLabel">Knippen & Stylen</h5>
-            <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" onClick={ PriceModalClose }></button>
+            <h5 className="modal-title" id="priceModalLabel"> {`${state.servicesList ? state.locale === 'en' ? state.servicesList[0]?.data[0]?.hair_size : state.servicesList[0]?.data[0]?.hair_size_nl : ""} ${activeSize=='Men' ? "" :"&"} ${state.servicesList? state.locale === 'en' ? state.servicesList[0]?.data[0]?.hair_type ? state.servicesList[0]?.data[0]?.hair_type : "" : state.servicesList[0]?.data[0]?.hair_type_nl ? state.servicesList[0]?.data[0]?.hair_type_nl : "":""}`} </h5>
+            <button type="button" className="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close" onClick={PriceModalClose}></button>
           </div>
           <div className="modal-body">
             <div className="table-responsive">
@@ -80,14 +99,28 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
                   </tr>
                 </thead>
                 <tbody>
-                  { state.services.map((service, index) => (
-                    <tr key={ index }>
-                      <th scope="row">{ service.name }</th>
-                      <td>{ service.duration } min</td>
-                      <td>{ makePrice(service.stylist_price) }</td>
-                      <td>{ makePrice(service.art_director_price) }</td>
-                    </tr>
-                  )).reverse() }
+                  {state.servicesList?.map((service, index) => (
+                    <React.Fragment>
+                      <tr key={index}>
+                        <th scope="row">{service.cat}</th>
+                        <td> </td>
+                        <td> </td>
+                        <td> </td>
+                      </tr>
+                      {
+                        service.data.map((data, index2) => (
+                          <tr>
+
+                            < td > { state.locale === 'en' ? data.name_en : data.name}</td>
+                            < td > {data.duration} min</td>
+                            <td>{makePrice(data.stylist_price)}</td>
+                            <td>{makePrice(data.art_director_price)}</td>
+                          </tr>
+                        ))
+                      }
+                    </React.Fragment>
+
+                  ))}
                 </tbody>
               </table>
             </div>
@@ -99,7 +132,7 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
                     <p className="">Ben je student: dan krijg je 10% korting op al onze behandelingen (ook beauty behandelingen). Sorry, helaas niet op onze producten. Studentenkorting geven wij op de maandag, dinsdag, woensdag en donderdag. Niet op koopavonden en de vrijdag en de zaterdag en uiteraard op vertoon van je studentenpas.</p>
                   </div>
                   <div className="col-md-4 py-5" data-aos="fade-left" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-                    <img loading="lazy" src={ imageAbout.src } alt="home-3-about" className="img-fluid" />
+                    <img loading="lazy" src={imageAbout.src} alt="home-3-about" className="img-fluid" />
                   </div>
                 </div>
               </div>
@@ -107,15 +140,15 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
           </div>
           <div className="modal-footer border-0">
             <div className="w-100 d-flex justify-content-center" data-aos="fade-up" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
-              <button type="button" className="btn-book-now btn btn-dark rounded-0 font-weight-900" onClick={ () => setState({ ...state, showBooking: !state.showBooking }) }>
-                <img loading="lazy" src={ imageSchedule.src } height="43" alt="schedule" />
-                <span>{ state.text.bookNow }</span>
+              <button type="button" className="btn-book-now btn btn-dark rounded-0 font-weight-900" onClick={() => setState({ ...state, showBooking: !state.showBooking })}>
+                <img loading="lazy" src={imageSchedule.src} height="43" alt="schedule" />
+                <span>{state.text.bookNow}</span>
               </button>
             </div>
           </div>
         </div>
       </div>
-    </div>
+    </div >
   )
 }
 

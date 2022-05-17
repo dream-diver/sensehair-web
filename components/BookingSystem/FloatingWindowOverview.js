@@ -1,10 +1,11 @@
 import Link from 'next/link'
-import { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState,useRef } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
 import { BiDollarCircle, BiRightArrowAlt, BiLeftArrowAlt } from "react-icons/bi"
 import { makePrice } from '../Helpers'
 import { en, nl } from 'date-fns/locale'
-import format from 'date-fns/format'
+import format from 'date-fns/format';
+import { toast } from "react-toastify";
 
 const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep, previousStep, payLater }) => {
   const [state] = useContext(GlobalContext)
@@ -34,6 +35,10 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep, previo
     }
   }
 
+  const formToast = useRef({
+    coupon: null,
+  })
+
   const applyCouponCode = async (e) => {
     e.preventDefault()
     const codeFromServer = await coupon(couponCode)
@@ -48,6 +53,11 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep, previo
         },
       })
       setCouponCode('')
+    }
+    else {
+      if (!toast.isActive(formToast.current.coupon)) {
+        formToast.current.coupon = toast.error("This code is not redeemable now!")
+      }
     }
   }
 

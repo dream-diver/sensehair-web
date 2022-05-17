@@ -13,21 +13,21 @@
       {
         "name": "Dames Kort",
         "name_en": "Ladies Short",
-        "name_fetch": "Women Short Hair",
+        "name_fetch": "Ladies Short",
         "image": "https://i.imgur.com/nkXm51q.png",
         "imageLight": "https://i.imgur.com/kyWUX8k.png"
       },
       {
         "name": "Dames Halflang",
         "name_en": "Ladies Midlong",
-        "name_fetch": "Women Medium Hair",
+        "name_fetch": "Ladies Midlong",
         "image": "https://i.imgur.com/RZx1XRU.png",
         "imageLight": "https://i.imgur.com/iWSio1g.png"
       },
       {
         "name": "Dames Lang",
         "name_en": "Ladies Long",
-        "name_fetch": "Women Long Hair",
+        "name_fetch": "Ladies Long",
         "image": "https://i.imgur.com/TudBEeg.png",
         "imageLight": "https://i.imgur.com/kKumdXJ.png"
       }
