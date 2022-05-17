@@ -100,7 +100,7 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
                 </thead>
                 <tbody>
                   {state.servicesList?.map((service, index) => (
-                    <React.Fragment>
+                    <React.Fragment key={Math.random()}>
                       <tr key={index}>
                         <th scope="row">{service.cat}</th>
                         <td> </td>
@@ -109,7 +109,7 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
                       </tr>
                       {
                         service.data.map((data, index2) => (
-                          <tr>
+                          <tr key={index2}>
 
                             < td > { state.locale === 'en' ? data.name_en : data.name}</td>
                             < td > {data.duration} min</td>
