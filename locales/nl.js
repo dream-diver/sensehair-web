@@ -1,5 +1,8 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default {
+  stylist: 'Stilist',
+  Status: 'Toestand',
+  Bookings:"Boekingen",
   profileDetailsText:"PROFIEL DETAILS",
   saveChangesText:"Wijzigingen Opslaan",
   forgotPassText:"Wachtwoord vergeten ?",

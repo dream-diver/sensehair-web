@@ -1,6 +1,8 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default {
   profileDetailsText:"PROFILE DETAILS",
+  Status:"Status",
+  Bookings:"Bookings",
   saveChangesText:"Save changes",
   forgotPassText:"Forgot password ?",
   sendEmailText:"Send reset link",
@@ -191,6 +193,7 @@ export default {
   bookingStep2Title: 'WHAT IS YOUR HAIRSTYLE?',
   bookingStep3Title: 'Choose Services',
   bookingStep4Title: 'Choose Stylist',
+  stylist: 'Stylist',
   bookingStep5Title: 'Choose Date & Time',
   bookingStep6Title: 'Login',
   bookingStep7Title: 'Booking Overview',
