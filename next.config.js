@@ -7,6 +7,7 @@ module.exports = {
       "api.sensehair.nl",
       "sensehair-prod-bucket.s3.us-east-2.amazonaws.com",
       "localhost",
+      'sensehair.nl'
     ]
   },
   i18n: {
