@@ -234,49 +234,50 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
   return (
     <div className="floating-window">
       <div className="floating-window-header">
-        <h4 className="floating-window-heading">{ step.guest.isGuest ? state.text.bookingGuestTitle : isLogin ? step.title : state.text.bookingSignUp }</h4>
-        <button type="button" className="btn-close" aria-label="Close" onClick={ () => setShow(!show) }></button>
+        <h4 className="floating-window-heading">{step.guest.isGuest ? state.text.bookingGuestTitle : isLogin ? step.title : state.text.bookingSignUp}</h4>
+        <button type="button" className="btn-close" aria-label="Close" onClick={() => setShow(!show)}></button>
       </div>
       <div className="floating-window-body">
         <form>
-          { (!isLogin || step.guest.isGuest) &&
+          {(!isLogin || step.guest.isGuest) &&
             <div className="mb-3">
-              <label htmlFor="inputName" className="form-label">{ state.text.bookingName }</label>
-              <input type="text" name="name" className="form-control" id="inputName" placeholder={ state.text.bookingNamePlaceholder } value={ formData.name } onChange={ (e) => setSetFromData({ ...formData, name: e.target.value }) } />
+              <label htmlFor="inputName" className="form-label">{state.text.bookingName}</label>
+              <input type="text" name="name" className="form-control" id="inputName" placeholder={state.text.bookingNamePlaceholder} value={formData.name} onChange={(e) => setSetFromData({ ...formData, name: e.target.value })} />
             </div>
           }
           <div className="mb-3">
-            <label htmlFor="inputEmail" className="form-label">{ state.text.bookingEmail }</label>
-            <input type="email" name="email" className="form-control" id="inputEmail" placeholder={ state.text.bookingEmailPlaceholder } value={ formData.email } onChange={ (e) => setSetFromData({ ...formData, email: e.target.value }) } />
+            <label htmlFor="inputEmail" className="form-label">{state.text.bookingEmail}</label>
+            <input type="email" name="email" className="form-control" id="inputEmail" placeholder={state.text.bookingEmailPlaceholder} value={formData.email} onChange={(e) => setSetFromData({ ...formData, email: e.target.value })} />
           </div>
           {
             !step.guest.isGuest &&
             <div className="mb-3">
-              <label htmlFor="inputPassword" className="form-label">{ state.text.bookingPassword }</label>
-              <input type="password" name="password" className="form-control" id="inputPassword" placeholder={ state.text.bookingPasswordPlaceholder } value={ formData.password } onChange={ (e) => setSetFromData({ ...formData, password: e.target.value }) } />
+              <label htmlFor="inputPassword" className="form-label">{state.text.bookingPassword}</label>
+              <input type="password" name="password" className="form-control" id="inputPassword" placeholder={state.text.bookingPasswordPlaceholder} value={formData.password} onChange={(e) => setSetFromData({ ...formData, password: e.target.value })} />
             </div>
           }
-          { (!isLogin || step.guest.isGuest) &&
+          {(!isLogin || step.guest.isGuest) &&
             <div className="mb-3">
-              <label htmlFor="inputPhone" className="form-label">{ state.text.bookingPhone }</label>
-              <input type="text" name="phone" className="form-control" id="inputPhone" placeholder={ state.text.bookingPhonePlaceholder } value={ formData.phone } onChange={ (e) => setSetFromData({ ...formData, phone: e.target.value }) } />
+              <label htmlFor="inputPhone" className="form-label">{state.text.bookingPhone}</label>
+              <input type="text" name="phone" className="form-control" id="inputPhone" placeholder={state.text.bookingPhonePlaceholder} value={formData.phone} onChange={(e) => setSetFromData({ ...formData, phone: e.target.value })} />
             </div>
           }
+
           <div className="d-flex flex-column justify-content-center w-100 py-3">
-            { !step.guest.isGuest && <div className="m-0 p-0">
-              { isLogin ? state.text.bookingAccountTextLogin : state.text.bookingAccountTextRegister }
-              <button onClick={ () => setIsLogin(!isLogin) } type="button" className="btn btn-link px-1">{ isLogin ? state.text.bookingAccountButtonLogin : state.text.bookingAccountButtonRegister }</button>
-            </div> }
+            {!step.guest.isGuest && <div className="m-0 p-0">
+              {isLogin ? state.text.bookingAccountTextLogin : state.text.bookingAccountTextRegister}
+              <button onClick={() => setIsLogin(!isLogin)} type="button" className="btn btn-link px-1">{isLogin ? state.text.bookingAccountButtonLogin : state.text.bookingAccountButtonRegister}</button>
+            </div>}
             <dir className="m-0 p-0">
-              Or <button button onClick={ toggleGuestMode } type="button" className="btn btn-link px-0">{ step.guest.isGuest ? state.text.bookingUserButton : state.text.bookingGuestButton }</button>
+              Or <button button onClick={toggleGuestMode} type="button" className="btn btn-link px-0">{step.guest.isGuest ? state.text.bookingUserButton : state.text.bookingGuestButton}</button>
             </dir>
           </div>
 
         </form>
       </div>
       <div className="floating-window-footer">
-        <a className={ `btn-next btn btn-dark` } onClick={ previousStep }><BiLeftArrowAlt className="me-1" />{ state.text.bookingBack }</a>
-        <a className="btn-next btn btn-dark" onClick={ step.guest.isGuest ? onGuest : isLogin ? onLogin : onSignup }>{ step.guest.isGuest ? state.text.bookingGuestTitle : isLogin ? state.text.bookingLogin : state.text.bookingSignUp }<BiRightArrowAlt className="ms-1" /></a>
+        <a className={`btn-next btn btn-dark`} onClick={previousStep}><BiLeftArrowAlt className="me-1" />{state.text.bookingBack}</a>
+        <a className="btn-next btn btn-dark" onClick={step.guest.isGuest ? onGuest : isLogin ? onLogin : onSignup}>{step.guest.isGuest ? state.text.bookingGuestTitle : isLogin ? state.text.bookingLogin : state.text.bookingSignUp}<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>
   )

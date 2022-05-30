@@ -1,5 +1,5 @@
 import Link from 'next/link'
-import { useContext, useEffect, useState,useRef } from 'react'
+import { useContext, useEffect, useState, useRef } from 'react'
 import { GlobalContext } from '../contexts/GlobalContext'
 import { BiDollarCircle, BiRightArrowAlt, BiLeftArrowAlt } from "react-icons/bi"
 import { makePrice } from '../Helpers'
@@ -150,6 +150,23 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep, previo
             </div>
           </form>
         }
+
+        <div className="d-flex justify-content-between mt-2">
+
+          <div className="d-flex align-items-center">
+            <input className="form-check-input" type="checkbox" value="" id="smsConfirm" checked/>
+            <label className="form-check-label mx-2" htmlFor="smsConfirm">
+              Send Booking Confirmation SMS and Email
+            </label>
+          </div>
+
+          {/* <div className="d-flex align-items-center">
+            <input className="form-check-input" type="checkbox" value="" id="emailConfirm" />
+            <label className="form-check-label mx-2" htmlFor="emailConfirm">
+              Send Booking Confirmation E-MAIL
+            </label>
+          </div> */}
+        </div>
 
       </div>
       <div className="floating-window-footer">

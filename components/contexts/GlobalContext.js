@@ -88,8 +88,8 @@ export const GlobalProvider = (props) => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
   return (
-    <GlobalContext.Provider value={ [state, setState] }>
-      { props.children }
+    <GlobalContext.Provider value={[state, setState]}>
+      {props.children}
     </GlobalContext.Provider>
   )
 }
