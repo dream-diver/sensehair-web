@@ -84,7 +84,8 @@ const BookingSystem = () => {
       title: state.text.bookingStep7Title,
       value: 0.0,
       couponCode: "",
-      booking: {}
+      booking: {},
+      sendEmailAndSms: false,
     },
     "step8": {
       id: 8,
@@ -112,7 +113,7 @@ const BookingSystem = () => {
   }
 
   // Create Booking
-  const createBooking = async (date, charge, duration, customerId, stylistId, services, promocode = '') => {
+  const createBooking = async (date, charge, duration, customerId, stylistId, services, promocode = '', sendEmailAndSms) => {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/bookings`, {
         method: 'POST',
@@ -127,7 +128,8 @@ const BookingSystem = () => {
           charge,
           duration,
           services,
-          promocode
+          promocode,
+          sendEmailAndSms
         })
       })
       const data = await response.json()
@@ -139,7 +141,7 @@ const BookingSystem = () => {
   }
 
   // Create Booking
-  const createGuestBooking = async (date, charge, duration, name, email, phone, stylistId, services, promocode = '') => {
+  const createGuestBooking = async (date, charge, duration, name, email, phone, stylistId, services, promocode = '',sendEmailAndSms) => {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/guest/bookings`, {
         method: 'POST',
@@ -156,7 +158,8 @@ const BookingSystem = () => {
           promocode,
           name,
           email,
-          phone
+          phone,
+          sendEmailAndSms
         })
       })
       const data = await response.json()
@@ -291,11 +294,12 @@ const BookingSystem = () => {
     const duration = state.services.filter(({ id }) => services.includes(id)).map(services => services.duration).reduce((a, b) => a + b, 0)
     const stylistId = steps.step4.value
     const promocode = steps.step7.couponCode
+    const sendEmailAndSms = steps.step7.sendEmailAndSms;
     if (steps.step6.guest.isGuest) {
       const name = steps.step6.guest.name
       const email = steps.step6.guest.email
       const phone = steps.step6.guest.phone
-      const guestBookingFromServer = await createGuestBooking(date, charge, duration, name, email, phone, stylistId, services, promocode)
+      const guestBookingFromServer = await createGuestBooking(date, charge, duration, name, email, phone, stylistId, services, promocode,sendEmailAndSms)
       if (guestBookingFromServer.id) {
         const bookingId = guestBookingFromServer.id
         const amount = guestBookingFromServer.charge
@@ -305,8 +309,8 @@ const BookingSystem = () => {
       }
     } else {
       const customerId = state.auth.user.id
-      const bookingFromServer = await createBooking(date, charge, duration, customerId, stylistId, services, promocode)
-      if (bookingFromServer.booking) {
+      const bookingFromServer = await createBooking(date, charge, duration, customerId, stylistId, services, promocode,sendEmailAndSms)
+      if (bookingFromServer?.booking) {
         const bookingId = bookingFromServer.booking.data.id
         const amount = bookingFromServer.booking.data.charge
         getPaymentIntent(bookingId, amount, bookingFromServer.booking.data)
@@ -326,11 +330,12 @@ const BookingSystem = () => {
     const duration = state.services.filter(({ id }) => services.includes(id)).map(services => services.duration).reduce((a, b) => a + b, 0)
     const stylistId = steps.step4.value
     const promocode = steps.step7.couponCode
+    const sendEmailAndSms = steps.step7.sendEmailAndSms;
     if (steps.step6.guest.isGuest) {
       const name = steps.step6.guest.name
       const email = steps.step6.guest.email
       const phone = steps.step6.guest.phone
-      const guestBookingFromServer = await createGuestBooking(date, charge, duration, name, email, phone, stylistId, services, promocode)
+      const guestBookingFromServer = await createGuestBooking(date, charge, duration, name, email, phone, stylistId, services, promocode,sendEmailAndSms)
       if (guestBookingFromServer.id) {
         if (state.locale == 'en') {
           window.location.href = "/en/checkout?payment=paylater";
@@ -343,8 +348,8 @@ const BookingSystem = () => {
       }
     } else {
       const customerId = state.auth.user.id
-      const bookingFromServer = await createBooking(date, charge, duration, customerId, stylistId, services, promocode)
-      if (bookingFromServer.booking) {
+      const bookingFromServer = await createBooking(date, charge, duration, customerId, stylistId, services, promocode,sendEmailAndSms)
+      if (bookingFromServer?.booking) {
         if (state.locale == 'en') {
           window.location.href = "/en/checkout?payment=paylater";
         }

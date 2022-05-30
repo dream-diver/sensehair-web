@@ -103,9 +103,9 @@ const Menu = ({ device, isSlider }) => {
                 </li>
                 {state.auth.isLogin ? (
                   <React.Fragment>
-                    <li className="nav-item" style={{cursor:"pointer"}}>
+                    <li className="nav-item" style={{ cursor: "pointer" }}>
                       <Link href="/profile" >
-                        <div  className="nav-link text-light d-flex align-items-center">
+                        <div className="nav-link text-light d-flex align-items-center">
                           <FaUserCircle />
                           <div className="ms-2">
                             {state.text.Hello}, {state.auth.user.name}
@@ -114,13 +114,13 @@ const Menu = ({ device, isSlider }) => {
                       </Link>
                     </li>
 
-                    <li className="nav-item" style={{cursor:"pointer"}}>
+                    <li className="nav-item" style={{ cursor: "pointer" }}>
                       <a className="nav-link text-primary" onClick={logout}>Logout</a>
                     </li>
                   </React.Fragment>
                 ) : (
                   <li className="nav-item">
-                    <div className="nav-link linkN" style={{cursor:"pointer"}}>
+                    <div className="nav-link linkN" style={{ cursor: "pointer" }}>
                       <Link href="/login">
                         Login/Register
                       </Link>
@@ -168,6 +168,44 @@ const Menu = ({ device, isSlider }) => {
                     </Link>
                   </li>
                 </ul>
+
+
+                <ul className="nav-sm-only nav d-lg-none">
+                  {state.auth.isLogin ? (
+                    <React.Fragment>
+                      <li className="nav-item dropdown" style={{ cursor: "pointer" }}>
+                        <div className="nav-link text-light d-flex align-items-center dropdown-toggle" data-bs-toggle="dropdown">
+                          <FaUserCircle />
+                          <div className="ms-2">
+                            {state.text.Hello}, {state.auth.user.name}
+                          </div>
+                        </div>
+
+                        <ul className="dropdown-menu">
+                          <li className="dropdown-item">
+                            <Link href='/profile'>
+                              Profile
+                            </Link>
+                          </li>
+                          <li className="dropdown-item">
+                            <a className="" onClick={logout}>Logout</a>
+                          </li>
+                        </ul>
+                      </li>
+
+
+                    </React.Fragment>
+                  ) : (
+                    <li className="nav-item">
+                      <div className="nav-link linkN" style={{ cursor: "pointer" }}>
+                        <Link href="/login">
+                          Login/Register
+                        </Link>
+                      </div>
+                    </li>
+                  )}
+                </ul>
+
                 <ul className="nav-sm-only nav d-lg-none">
                   <LanguageDropdown id="navbarLang2" navToggle={true} />
                 </ul>

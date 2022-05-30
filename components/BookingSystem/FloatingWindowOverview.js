@@ -72,6 +72,39 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep, previo
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  const toggleSend = () => {
+    const element = document.getElementById('smsConfirm');
+    if (element.checked) {
+      console.log("checking...")
+      element.setAttribute('checked', true);
+      setSteps({
+        ...steps,
+        "step7": {
+          ...steps.step7,
+          sendEmailAndSms: true,
+        }
+      })
+    }
+    else {
+      console.log("unChecking...")
+      element.removeAttribute('checked');
+      setSteps({
+        ...steps,
+        "step7": {
+          ...steps.step7,
+          sendEmailAndSms: false,
+        }
+      })
+
+    }
+    // e.target.checked = ! e.target.checked;
+    // if (e.checked) {
+
+    // }
+    // else {
+
+    // }
+  }
 
   return (
     <div className="floating-window">
@@ -154,7 +187,7 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep, previo
         <div className="d-flex justify-content-between mt-2">
 
           <div className="d-flex align-items-center">
-            <input className="form-check-input" type="checkbox" value="" id="smsConfirm" checked/>
+            <input onChange={e => toggleSend(e)} className="form-check-input" type="checkbox" id="smsConfirm" />
             <label className="form-check-label mx-2" htmlFor="smsConfirm">
               Send Booking Confirmation SMS and Email
             </label>
