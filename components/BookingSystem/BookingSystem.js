@@ -141,7 +141,7 @@ const BookingSystem = () => {
   }
 
   // Create Booking
-  const createGuestBooking = async (date, charge, duration, name, email, phone, stylistId, services, promocode = '',sendEmailAndSms) => {
+  const createGuestBooking = async (date, charge, duration, name, email, phone, stylistId, services, promocode = '', sendEmailAndSms) => {
     try {
       const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/guest/bookings`, {
         method: 'POST',
@@ -299,7 +299,7 @@ const BookingSystem = () => {
       const name = steps.step6.guest.name
       const email = steps.step6.guest.email
       const phone = steps.step6.guest.phone
-      const guestBookingFromServer = await createGuestBooking(date, charge, duration, name, email, phone, stylistId, services, promocode,sendEmailAndSms)
+      const guestBookingFromServer = await createGuestBooking(date, charge, duration, name, email, phone, stylistId, services, promocode, sendEmailAndSms)
       if (guestBookingFromServer.id) {
         const bookingId = guestBookingFromServer.id
         const amount = guestBookingFromServer.charge
@@ -309,7 +309,7 @@ const BookingSystem = () => {
       }
     } else {
       const customerId = state.auth.user.id
-      const bookingFromServer = await createBooking(date, charge, duration, customerId, stylistId, services, promocode,sendEmailAndSms)
+      const bookingFromServer = await createBooking(date, charge, duration, customerId, stylistId, services, promocode, sendEmailAndSms)
       if (bookingFromServer?.booking) {
         const bookingId = bookingFromServer.booking.data.id
         const amount = bookingFromServer.booking.data.charge
@@ -335,7 +335,7 @@ const BookingSystem = () => {
       const name = steps.step6.guest.name
       const email = steps.step6.guest.email
       const phone = steps.step6.guest.phone
-      const guestBookingFromServer = await createGuestBooking(date, charge, duration, name, email, phone, stylistId, services, promocode,sendEmailAndSms)
+      const guestBookingFromServer = await createGuestBooking(date, charge, duration, name, email, phone, stylistId, services, promocode, sendEmailAndSms)
       if (guestBookingFromServer.id) {
         if (state.locale == 'en') {
           window.location.href = "/en/checkout?payment=paylater";
@@ -348,7 +348,7 @@ const BookingSystem = () => {
       }
     } else {
       const customerId = state.auth.user.id
-      const bookingFromServer = await createBooking(date, charge, duration, customerId, stylistId, services, promocode,sendEmailAndSms)
+      const bookingFromServer = await createBooking(date, charge, duration, customerId, stylistId, services, promocode, sendEmailAndSms)
       if (bookingFromServer?.booking) {
         if (state.locale == 'en') {
           window.location.href = "/en/checkout?payment=paylater";
@@ -482,7 +482,7 @@ const BookingSystem = () => {
         id: 8,
         active: false,
         title: state.text.bookingStep8Title,
-        paymentIntent: "",
+        paymentIntent: state.paymentIntent,
       },
     })
   }, [state.text, router.pathname])
@@ -516,7 +516,7 @@ const BookingSystem = () => {
           {steps.step7.active &&
             <FloatingWindowOverview steps={steps} setSteps={setSteps} step={steps.step7} show={show} setShow={setShow} previousStep={backToDatePicker} payLater={payLater} nextStep={eighthStep} />
           }
-          {steps.step8.active &&
+          {(steps.step8.active || state.currentStep == 8) &&
             <FloatingWindowPayment steps={steps} setSteps={setSteps} step={steps.step8} show={show} setShow={setShow} nextStep={() => { }} />
           }
         </>

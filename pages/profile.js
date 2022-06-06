@@ -32,6 +32,52 @@ function Profile() {
             getBookings(state.auth.user.id);
         }
     }, [])
+
+    const fetchPaymentIntent = async (bookingId, amount) => {
+        try {
+            const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/bookings/${bookingId}/getPaymentIntent?amount=${amount}`, {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Accept': 'application/json'
+                }
+            })
+            const data = await getTextFromStream(response.body)
+            return data
+        } catch (error) {
+            console.log(error.message)
+            return null
+        }
+    }
+
+    const getTextFromStream = async (readableStream) => {
+        let reader = readableStream.getReader()
+        let utf8Decoder = new TextDecoder()
+        let nextChunk
+
+        let resultStr = ''
+
+        while (!(nextChunk = await reader.read()).done) {
+            let partialData = nextChunk.value
+            resultStr += utf8Decoder.decode(partialData)
+        }
+
+        return resultStr
+    }
+
+    const getPaymentIntent = async (bookingId, amount, bookingResponse) => {
+        const paymentIntentFromServer = await fetchPaymentIntent(bookingId, amount)
+        if (typeof paymentIntentFromServer === 'string' && paymentIntentFromServer.startsWith('pi_')) {
+            setState({...state,showBooking:true,currentStep:8,paymentIntent:paymentIntentFromServer});
+            // setSteps({
+            //     ...steps,
+            //     "step7": { ...steps.step7, active: false, booking: bookingResponse },
+            //     "step8": { ...steps.step8, paymentIntent: paymentIntentFromServer, active: true }
+            // })
+        } else {
+            console.log('Payment Intent Error')
+        }
+    }
     const update = async (bodyData) => {
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/users/${state.auth.user.id}`, {
@@ -131,7 +177,7 @@ function Profile() {
                         <nav>
                             <div className="nav nav-tabs" id="nav-tab" role="tablist">
                                 <button className="nav-link active" id="nav-details-tab" data-bs-toggle="tab" data-bs-target="#nav-details" type="button" role="tab" aria-controls="nav-home" aria-selected="true">{state.text.profileDetailsText}</button>
-                                <button className="nav-link" style={{textTransform:'uppercase'}} id="nav-booking-tab" data-bs-toggle="tab" data-bs-target="#nav-booking" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">{state.text.Bookings}</button>
+                                <button className="nav-link" style={{ textTransform: 'uppercase' }} id="nav-booking-tab" data-bs-toggle="tab" data-bs-target="#nav-booking" type="button" role="tab" aria-controls="nav-profile" aria-selected="false">{state.text.Bookings}</button>
                             </div>
                         </nav>
                         <div className="tab-content mt-3" id="nav-tabContent">
@@ -161,7 +207,7 @@ function Profile() {
                                 </form>
                             </div>
                             <div className="tab-pane fade" id="nav-booking" role="tabpanel" aria-labelledby="nav-booking-tab">
-                            <h1>{state.text.Bookings}</h1>
+                                <h1>{state.text.Bookings}</h1>
                                 <div className='table-responsive'>
                                     <table className='table table-light'>
                                         <thead>
@@ -185,7 +231,10 @@ function Profile() {
                                                     <td> {booking.data.duration} min </td>
                                                     <td> {booking.data.server?.data.name} </td>
                                                     <td> {`€${parseInt(booking.data.charge).toFixed(2)}`} </td>
-                                                    <td> {booking.data.payment_status} </td>
+                                                    <td>
+                                                        {booking.data.payment_status} {booking.data.payment_status == "Unpaid" &&
+                                                            <button onClick={()=>getPaymentIntent(booking.data.id, booking.data.charge, booking.data)} className='btn btn-sm btn-success ms-2'>Pay now</button>}
+                                                    </td>
                                                 </tr>
                                             ))}
                                         </tbody>

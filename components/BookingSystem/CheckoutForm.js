@@ -23,7 +23,7 @@ export default function CheckoutForm({ step, steps }) {
 
     const idealBank = elements.getElement(IdealBankElement)
 
-    const { error } = await stripe.confirmIdealPayment(step.paymentIntent, {
+    const { error } = await stripe.confirmIdealPayment(step.paymentIntent || state.paymentIntent, {
       payment_method: {
         ideal: idealBank,
         billing_details: {
