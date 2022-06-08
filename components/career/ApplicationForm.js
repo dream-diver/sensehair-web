@@ -1,9 +1,90 @@
-import { useContext, useRef } from "react"
+import axios from "axios";
+import { useContext, useRef, useState } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 
 const ApplicationForm = () => {
   const [state] = useContext(GlobalContext)
-  const applicationFormRef = useRef(null)
+  const applicationFormRef = useRef(null);
+
+  const [type, setType] = useState(null);
+  const [employment, setEmployment] = useState(null);
+  const [hrsWeek, setHours] = useState(0);
+  const [weekDays, setWeekDays] = useState([]);
+
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [dob, setDob] = useState("");
+  const [email, setEmail] = useState("");
+  const [phone, setPhone] = useState("");
+  const [address, setAddress] = useState("");
+  const [zip, setZip] = useState("");
+  const [city, setCity] = useState("");
+
+  const [education1, setEducation1] = useState({
+    school: "",
+    from: "",
+    to: "",
+    finished: false,
+  });
+  const [education2, setEducation2] = useState({
+    school: "",
+    from: "",
+    to: "",
+    finished: false,
+  });
+  const [education3, setEducation3] = useState({
+    school: "",
+    from: "",
+    to: "",
+    finished: false,
+  });
+
+  const [exp1, setExp1] = useState({
+    company: "",
+    from: "",
+    to: "",
+    current: false,
+  });
+  const [exp2, setExp2] = useState({
+    company: "",
+    from: "",
+    to: "",
+    current: false,
+  });
+  const [exp3, setExp3] = useState({
+    company: "",
+    from: "",
+    to: "",
+    current: false,
+  });
+
+  const [motivation, setMotivation] = useState("");
+
+  const getWeekDays = () => {
+    const allDays = document.getElementsByClassName('weekDays');
+    const availableDays = [];
+    for (let i = 0; i < allDays.length; i++) {
+      const element = allDays[i];
+      if (element.checked) {
+        availableDays.push(element.value);
+        setWeekDays(availableDays);
+      }
+    }
+  }
+
+  const compileData = () => {
+    setWeekDays(weekDays.toString());      
+    applyNow();
+  }
+
+  const applyNow = async () => {
+    axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/career/apply`, {
+      type, employment, hrsWeek, weekDays, firstName, lastName, dob, email, phone, address, zip, city, education1, education2, education3,
+      exp1, exp2, exp3, motivation
+    })
+      .then(res => { })
+      .catch(err => { console.log(err) });
+  }
 
   const executeScroll = () => {
     setTimeout(() => {
@@ -13,16 +94,24 @@ const ApplicationForm = () => {
     }, 150);
   }
 
+  const onSubmit = (e) => {
+    e.preventDefault();
+    for (let i = 0; i < e.target.elements.length; i++) {
+      const element = e.target.elements[i];
+      console.log(element.value);
+    }
+    console.log("Form data", applicationFormRef.value);
+  }
   return (
     <section id="application_form">
       <div className="container pb-5">
-        <button className="apply-btn btn btn-primary btn-lg" onClick={ executeScroll } id="apply_btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseApplicationForm" aria-expanded="false" aria-controls="collapseApplicationForm">{ state.text.applyNow }</button>
+        <button className="apply-btn btn btn-primary btn-lg" onClick={executeScroll} id="apply_btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseApplicationForm" aria-expanded="false" aria-controls="collapseApplicationForm">{state.text.applyNow}</button>
       </div>
-      <div className="application-wrapper collapse" id="collapseApplicationForm" ref={ applicationFormRef }>
+      <div className="application-wrapper collapse" id="collapseApplicationForm" ref={applicationFormRef}>
         <div className="container">
           <div className="row">
             <div className="col pt-5">
-              <h1 className="text-center">{ state.text.careerFormTitle }</h1>
+              <h1 className="text-center">{state.text.careerFormTitle}</h1>
             </div>
           </div>
         </div>
@@ -32,34 +121,37 @@ const ApplicationForm = () => {
               <div className="col">
                 <form>
                   <fieldset className="mb-3">
-                    <legend className="text-danger fw-bold">{ state.text.careerFormJobDescription }</legend>
+                    <legend className="text-danger fw-bold">{state.text.careerFormJobDescription}</legend>
                     <div className="mb-3">
-                      <label htmlFor="vacancy" className="form-label">{ state.text.careerFormJobDescriptionDesc }</label>
-                      <select className="form-select" name="vacancy" id="vacancy">
-                        <option selected disabled>Dropdown</option>
-                        <option value="1">{ state.text.careerFormJobDescriptionOption1 }</option>
-                        <option value="2">{ state.text.careerFormJobDescriptionOption2 }</option>
-                        <option value="3">{ state.text.careerFormJobDescriptionOption3 }</option>
+                      <label htmlFor="vacancy" className="form-label">{state.text.careerFormJobDescriptionDesc}</label>
+                      <select defaultValue={"none"} onChange={e => setType(e.target.value)} className="form-select" name="vacancy" id="vacancy">
+                        <option value="none" disabled>Please select</option>
+                        <option value="stylist">{state.text.careerFormJobDescriptionOption1}</option>
+                        <option value="entrepreneur">{state.text.careerFormJobDescriptionOption2}</option>
+                        <option value="letter">{state.text.careerFormJobDescriptionOption3}</option>
                       </select>
                     </div>
+
                     <div className="mb-3">
-                      <label className="form-label fw-bold">{ state.text.careerFormEmployment }</label>
+                      <label className="form-label fw-bold">{state.text.careerFormEmployment}</label>
                       <div className="row">
                         <div className="col-md-6">
+
                           <div className="d-flex">
                             <div className="d-flex align-items-center">
-                              <div className="form-check form-check-inline mb-3">
-                                <input className="form-check-input" type="checkbox" name="employment" value="full" id="full_time" />
-                                <label className="form-check-label" htmlFor="full_time">{ state.text.careerFormEmploymentOption1 }</label>
+
+                              <div className="form-check form-check-inline">
+                                <input onChange={e => { e.target.checked && setEmployment(e.target.id) }} className="form-check-input" type="radio" name="employment" value="full_time" id="full_time" />
+                                <label className="form-check-label" htmlFor="full_time">{state.text.careerFormEmploymentOption1}</label>
                               </div>
-                              <div className="form-check form-check-inline mb-3">
-                                <input className="form-check-input" type="checkbox" name="employment" value="part" id="part_time" />
-                                <label className="form-check-label" htmlFor="part_time">{ state.text.careerFormEmploymentOption2 }</label>
+                              <div className="form-check form-check-inline">
+                                <input onChange={e => { e.target.checked && setEmployment(e.target.id) }} className="form-check-input" type="radio" name="employment" value="part_time" id="part_time" />
+                                <label className="form-check-label" htmlFor="part_time">{state.text.careerFormEmploymentOption2}</label>
                               </div>
                             </div>
                             <div className="flex-grow-1">
                               <div className="mb-3">
-                                <input className="form-control" type="number" min="0" max="99" name="employment" id="hours_per_week" placeholder={ state.text.careerFormEmploymentOption3 } />
+                                <input value={hrsWeek} onChange={e => setHours(e.target.value)} className="form-control" type="number" min="0" max="99" name="employment" id="hours_per_week" placeholder={state.text.careerFormEmploymentOption3} />
                               </div>
                             </div>
                           </div>
@@ -67,215 +159,226 @@ const ApplicationForm = () => {
                       </div>
                     </div>
                     <div className="mb-3">
-                      <label className="form-label fw-bold">{ state.text.careerFormAvailability }</label>
+                      <label className="form-label fw-bold">{state.text.careerFormAvailability}</label>
                       <div className="d-block">
                         <div className="form-check form-check-inline">
-                          <input className="form-check-input" type="checkbox" name="availability" value="1" id="mon" />
-                          <label className="form-check-label" htmlFor="mon">{ state.text.careerFormAvailabilityDay1 }</label>
+                          <input onChange={getWeekDays} className="weekDays form-check-input" type="checkbox" name="availability" value="mon" id="mon" />
+                          <label className="form-check-label" htmlFor="mon">{state.text.careerFormAvailabilityDay1}</label>
                         </div>
                         <div className="form-check form-check-inline">
-                          <input className="form-check-input" type="checkbox" name="availability" value="2" id="tue" />
-                          <label className="form-check-label" htmlFor="tue">{ state.text.careerFormAvailabilityDay2 }</label>
+                          <input onChange={getWeekDays} className="weekDays form-check-input" type="checkbox" name="availability" value="tue" id="tue" />
+                          <label className="form-check-label" htmlFor="tue">{state.text.careerFormAvailabilityDay2}</label>
                         </div>
                         <div className="form-check form-check-inline">
-                          <input className="form-check-input" type="checkbox" name="availability" value="3" id="wed" />
-                          <label className="form-check-label" htmlFor="wed">{ state.text.careerFormAvailabilityDay3 }</label>
+                          <input onChange={getWeekDays} className="weekDays form-check-input" type="checkbox" name="availability" value="wed" id="wed" />
+                          <label className="form-check-label" htmlFor="wed">{state.text.careerFormAvailabilityDay3}</label>
                         </div>
                         <div className="form-check form-check-inline">
-                          <input className="form-check-input" type="checkbox" name="availability" value="4" id="thu" />
-                          <label className="form-check-label" htmlFor="thu">{ state.text.careerFormAvailabilityDay4 }</label>
+                          <input onChange={getWeekDays} className="weekDays form-check-input" type="checkbox" name="availability" value="thu" id="thu" />
+                          <label className="form-check-label" htmlFor="thu">{state.text.careerFormAvailabilityDay4}</label>
                         </div>
                         <div className="form-check form-check-inline">
-                          <input className="form-check-input" type="checkbox" name="availability" value="5" id="fri" />
-                          <label className="form-check-label" htmlFor="fri">{ state.text.careerFormAvailabilityDay5 }</label>
+                          <input onChange={getWeekDays} className="weekDays form-check-input" type="checkbox" name="availability" value="fri" id="fri" />
+                          <label className="form-check-label" htmlFor="fri">{state.text.careerFormAvailabilityDay5}</label>
                         </div>
                         <div className="form-check form-check-inline">
-                          <input className="form-check-input" type="checkbox" name="availability" value="6" id="sat" />
-                          <label className="form-check-label" htmlFor="sat">{ state.text.careerFormAvailabilityDay6 }</label>
+                          <input onChange={getWeekDays} className="weekDays form-check-input" type="checkbox" name="availability" value="sat" id="sat" />
+                          <label className="form-check-label" htmlFor="sat">{state.text.careerFormAvailabilityDay6}</label>
                         </div>
                         <div className="form-check form-check-inline">
-                          <input className="form-check-input" type="checkbox" name="availability" value="7" id="sun" />
-                          <label className="form-check-label" htmlFor="sun">{ state.text.careerFormAvailabilityDay7 }</label>
+                          <input onChange={getWeekDays} className="weekDays form-check-input" type="checkbox" name="availability" value="sun" id="sun" />
+                          <label className="form-check-label" htmlFor="sun">{state.text.careerFormAvailabilityDay7}</label>
                         </div>
                       </div>
                     </div>
                   </fieldset>
                   <fieldset className="mb-3">
-                    <legend className="text-danger fw-bold">{ state.text.careerFormPersonalInformation }</legend>
+                    <legend className="text-danger fw-bold">{state.text.careerFormPersonalInformation}</legend>
                     <div className="mb-3">
-                      <label htmlFor="name" className="form-label">{ state.text.careerFormName }</label>
+                      <label htmlFor="name" className="form-label">{state.text.careerFormName}</label>
                       <div className="row">
                         <div className="col">
-                          <input className="form-control" type="text" name="first_name" placeholder={ state.text.careerFormNamePlaceholder1 } />
+                          <input value={firstName} onChange={e => setFirstName(e.target.value)} className="form-control" type="text" name="first_name" placeholder={state.text.careerFormNamePlaceholder1} />
                         </div>
                         <div className="col">
-                          <input className="form-control" type="text" name="last_name" placeholder={ state.text.careerFormNamePlaceholder2 } />
+                          <input value={lastName} onChange={e => setLastName(e.target.value)} className="form-control" type="text" name="last_name" placeholder={state.text.careerFormNamePlaceholder2} />
                         </div>
                       </div>
                     </div>
                     <div className="row mb-3">
                       <div className="col">
-                        <label htmlFor="date_of_birth" className="form-label">{ state.text.careerFormDOB }</label>
-                        <input className="form-control" type="date" name="date_of_birth" id="date_of_birth" />
+                        <label htmlFor="date_of_birth" className="form-label">{state.text.careerFormDOB}</label>
+                        <input value={dob} onChange={e => setDob(e.target.value)} className="form-control" type="date" name="date_of_birth" id="date_of_birth" />
                       </div>
                       <div className="col">
-                        <label htmlFor="gender" className="form-label">{ state.text.careerFormGender }</label>
+                        <label htmlFor="gender" className="form-label">{state.text.careerFormGender}</label>
                         <div className="d-block">
                           <div className="form-check form-check-inline">
                             <input className="form-check-input" type="checkbox" name="gender" value="1" id="men" />
-                            <label className="form-check-label" htmlFor="men">{ state.text.careerFormGenderOption1 }</label>
+                            <label className="form-check-label" htmlFor="men">{state.text.careerFormGenderOption1}</label>
                           </div>
                           <div className="form-check form-check-inline">
                             <input className="form-check-input" type="checkbox" name="gender" value="2" id="women" />
-                            <label className="form-check-label" htmlFor="women">{ state.text.careerFormGenderOption2 }</label>
+                            <label className="form-check-label" htmlFor="women">{state.text.careerFormGenderOption2}</label>
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="row mb-3">
                       <div className="col">
-                        <label htmlFor="email" className="form-label">{ state.text.careerFormEmail }</label>
-                        <input className="form-control" type="email" name="email" id="email" placeholder={ state.text.careerFormEmailPlaceholder } />
+                        <label htmlFor="email" className="form-label">{state.text.careerFormEmail}</label>
+                        <input value={email} onChange={e => setEmail(e.target.value)} className="form-control" type="email" name="email" id="email" placeholder={state.text.careerFormEmailPlaceholder} />
                       </div>
                       <div className="col">
-                        <label htmlFor="phone" className="form-label">{ state.text.careerFormPhone }</label>
-                        <input className="form-control" type="text" name="phone" id="phone" placeholder={ state.text.careerFormPhone } />
+                        <label htmlFor="phone" className="form-label">{state.text.careerFormPhone}</label>
+                        <input value={phone} onChange={e => setPhone(e.target.value)} className="form-control" type="text" name="phone" id="phone" placeholder={state.text.careerFormPhone} />
                       </div>
                     </div>
                     <div className="mb-3">
-                      <label htmlFor="address" className="form-label">{ state.text.careerFormAddress }</label>
-                      <input className="form-control mb-3" type="text" name="address" id="street_address" placeholder={ state.text.careerFormAddressPlaceholder1 } />
+                      <label htmlFor="address" className="form-label">{state.text.careerFormAddress}</label>
+                      <input value={address} onChange={e => setAddress(e.target.value)} className="form-control mb-3" type="text" name="address" id="street_address" placeholder={state.text.careerFormAddressPlaceholder1} />
                       <div className="row">
                         <div className="col">
-                          <input className="form-control" type="text" name="postal_zip_code" id="postal_zip_code" placeholder={ state.text.careerFormAddressPlaceholder2 } />
+                          <input value={zip} onChange={e => setZip(e.target.value)} className="form-control" type="text" name="postal_zip_code" id="postal_zip_code" placeholder={state.text.careerFormAddressPlaceholder2} />
                         </div>
                         <div className="col">
-                          <input className="form-control" type="text" name="city" id="city" placeholder={ state.text.careerFormAddressPlaceholder3 } />
+                          <input value={city} onChange={e => setCity(e.target.value)} className="form-control" type="text" name="city" id="city" placeholder={state.text.careerFormAddressPlaceholder3} />
                         </div>
                       </div>
                     </div>
                   </fieldset>
                   <fieldset className="mb-3">
-                    <legend className="text-danger fw-bold">{ state.text.careerFormEducation }</legend>
+                    <legend className="text-danger fw-bold">{state.text.careerFormEducation}</legend>
                     <div className="row">
                       <div className="col">
-                        <label htmlFor="school" className="form-label">{ state.text.careerFormSchool }</label>
+                        <label htmlFor="school" className="form-label">{state.text.careerFormSchool}</label>
                       </div>
                       <div className="col">
-                        <label htmlFor="when" className="form-label">{ state.text.careerFormWhen }</label>
+                        <label htmlFor="when" className="form-label">{state.text.careerFormWhen}</label>
                       </div>
                       <div className="col">
-                        <label htmlFor="finished" className="form-label">{ state.text.careerFormFinished }</label>
+                        <label htmlFor="finished" className="form-label">{state.text.careerFormFinished}</label>
                       </div>
                     </div>
                     <div className="row mb-3">
                       <div className="col">
-                        <input className="form-control mb-3" type="text" name="school[]" id="school_1" placeholder={ state.text.careerFormSchool } />
+                        <input value={education1.school} onChange={e => setEducation1({ ...education1, school: e.target.value })} className="form-control mb-3" type="text" name="school[]" id="school_1" placeholder={state.text.careerFormSchool} />
                       </div>
                       <div className="col d-md-flex">
-                        <input className="form-control mb-3 me-md-2" type="text" name="whenfrom[]" id="when_form_1" placeholder={ state.text.careerFormWhenPlaceholder1 } />
-                        <input className="form-control mb-3" type="text" name="whento[]" id="when_to_1" placeholder={ state.text.careerFormWhenPlaceholder2 } />
+                        <input value={education1.from} onChange={e => setEducation1({ ...education1, from: e.target.value })} className="form-control mb-3 me-md-2" type="date" name="whenfrom[]" id="when_form_1" placeholder={state.text.careerFormWhenPlaceholder1} />
+                        <input value={education1.to} onChange={e => setEducation1({ ...education1, to: e.target.value })} className="form-control mb-3" type="date" name="whento[]" id="when_to_1" placeholder={state.text.careerFormWhenPlaceholder2} />
                       </div>
                       <div className="col">
                         <div className="form-check">
-                          <input className="form-check-input" type="checkbox" name="finished[]" value="1" id="finished_1" />
-                          <label className="form-check-label" htmlFor="finished_1">{ state.text.careerFormFinishedPlaceholder }</label>
+                          <input onChange={e => { e.target.checked && setEducation1({ ...education1, finished: true }) }} className="form-check-input" type="checkbox" name="finished[]" id="finished_1" />
+                          <label className="form-check-label" htmlFor="finished_1">{state.text.careerFormFinishedPlaceholder}</label>
                         </div>
                       </div>
                     </div>
+
                     <div className="row mb-3">
                       <div className="col">
-                        <input className="form-control mb-3" type="text" name="school[]" id="school_2" placeholder={ state.text.careerFormSchool } />
+                        <input value={education2.school} onChange={e => setEducation2({ ...education2, school: e.target.value })} className="form-control mb-3" type="text" name="school[]" id="school_1" placeholder={state.text.careerFormSchool} />
                       </div>
                       <div className="col d-md-flex">
-                        <input className="form-control mb-3 me-md-2" type="text" name="whenfrom[]" id="when_form_2" placeholder={ state.text.careerFormWhenPlaceholder1 } />
-                        <input className="form-control mb-3" type="text" name="whento[]" id="when_to_2" placeholder={ state.text.careerFormWhenPlaceholder2 } />
+                        <input value={education2.from} onChange={e => setEducation2({ ...education2, from: e.target.value })} className="form-control mb-3 me-md-2" type="date" name="whenfrom[]" id="when_form_1" placeholder={state.text.careerFormWhenPlaceholder1} />
+                        <input value={education2.to} onChange={e => setEducation2({ ...education2, to: e.target.value })} className="form-control mb-3" type="date" name="whento[]" id="when_to_1" placeholder={state.text.careerFormWhenPlaceholder2} />
                       </div>
                       <div className="col">
                         <div className="form-check">
-                          <input className="form-check-input" type="checkbox" name="finished[]" value="2" id="finished_2" />
-                          <label className="form-check-label" htmlFor="finished_2">{ state.text.careerFormFinishedPlaceholder }</label>
+                          <input onChange={e => { e.target.checked && setEducation2({ ...education2, finished: true }) }} className="form-check-input" type="checkbox" name="finished[]" id="finished_1" />
+                          <label className="form-check-label" htmlFor="finished_1">{state.text.careerFormFinishedPlaceholder}</label>
                         </div>
                       </div>
                     </div>
+
                     <div className="row mb-3">
                       <div className="col">
-                        <input className="form-control mb-3" type="text" name="school[]" id="school_3" placeholder={ state.text.careerFormSchool } />
+                        <input value={education3.school} onChange={e => setEducation3({ ...education3, school: e.target.value })} className="form-control mb-3" type="text" name="school[]" id="school_1" placeholder={state.text.careerFormSchool} />
                       </div>
                       <div className="col d-md-flex">
-                        <input className="form-control mb-3 me-md-2" type="text" name="whenfrom[]" id="when_form_3" placeholder={ state.text.careerFormWhenPlaceholder1 } />
-                        <input className="form-control mb-3" type="text" name="whento[]" id="when_to_3" placeholder={ state.text.careerFormWhenPlaceholder2 } />
+                        <input value={education3.from} onChange={e => setEducation3({ ...education3, from: e.target.value })} className="form-control mb-3 me-md-2" type="date" name="whenfrom[]" id="when_form_1" placeholder={state.text.careerFormWhenPlaceholder1} />
+                        <input value={education3.to} onChange={e => setEducation3({ ...education3, to: e.target.value })} className="form-control mb-3" type="date" name="whento[]" id="when_to_1" placeholder={state.text.careerFormWhenPlaceholder2} />
                       </div>
                       <div className="col">
                         <div className="form-check">
-                          <input className="form-check-input" type="checkbox" name="finished[]" value="3" id="finished_3" />
-                          <label className="form-check-label" htmlFor="finished_3">{ state.text.careerFormFinishedPlaceholder }</label>
+                          <input onChange={e => { e.target.checked && setEducation3({ ...education3, finished: true }) }} className="form-check-input" type="checkbox" name="finished[]" id="finished_1" />
+                          <label className="form-check-label" htmlFor="finished_1">{state.text.careerFormFinishedPlaceholder}</label>
                         </div>
                       </div>
                     </div>
                   </fieldset>
+
                   <fieldset className="mb-3">
-                    <legend className="text-danger fw-bold">{ state.text.careerFormExperience }</legend>
+                    <legend className="text-danger fw-bold">{state.text.careerFormExperience}</legend>
+
                     <div className="row mb-3">
                       <div className="col">
-                        <label htmlFor="company" className="form-label">{ state.text.careerFormCompany }</label>
-                        <input className="form-control mb-3" type="text" name="company[]" id="company" placeholder={ state.text.careerFormCompanyPlaceholder } />
+                        <label htmlFor="company" className="form-label">{state.text.careerFormCompany}</label>
+                        <input value={exp1.company} onChange={e => setExp1({ ...exp1, company: e.target.value })} className="form-control mb-3" type="text" name="company[]" id="company" placeholder={state.text.careerFormCompanyPlaceholder} />
                       </div>
                       <div className="col">
-                        <label htmlFor="company_when" className="form-label">{ state.text.careerFormWhen }</label>
+                        <label htmlFor="company_when" className="form-label">{state.text.careerFormWhen}</label>
                         <div className="row">
                           <div className="col-md-6">
-                            <input className="form-control mb-3" type="text" name="company_when_from[]" id="company_when_from_1" placeholder={ state.text.careerFormWhenPlaceholder1 } />
+                            <input value={exp1.from} onChange={e => setExp1({ ...exp1, from: e.target.value })} className="form-control mb-3" type="date" name="company_when_from[]" id="company_when_from_1" placeholder={state.text.careerFormWhenPlaceholder1} />
                           </div>
                           <div className="col-md-6">
-                            <input className="form-control mb-3" type="text" name="company_when_to[]" id="company_when_to_1" placeholder={ state.text.careerFormWhenPlaceholder2 } />
+                            <input value={exp1.to} onChange={e => setExp1({ ...exp1, to: e.target.value })} className="form-control mb-3" type="date" name="company_when_to[]" id="company_when_to_1" placeholder={state.text.careerFormWhenPlaceholder2} />
                           </div>
                         </div>
                       </div>
                     </div>
+
                     <div className="row mb-3">
                       <div className="col">
-                        <input className="form-control mb-3" type="text" name="company[]" id="company" placeholder={ state.text.careerFormCompanyPlaceholder } />
+                        <label htmlFor="company" className="form-label">{state.text.careerFormCompany}</label>
+                        <input value={exp2.company} onChange={e => setExp2({ ...exp2, company: e.target.value })} className="form-control mb-3" type="text" name="company[]" id="company" placeholder={state.text.careerFormCompanyPlaceholder} />
                       </div>
                       <div className="col">
+                        <label htmlFor="company_when" className="form-label">{state.text.careerFormWhen}</label>
                         <div className="row">
                           <div className="col-md-6">
-                            <input className="form-control mb-3" type="text" name="company_when_from[]" id="company_when_from_2" placeholder={ state.text.careerFormWhenPlaceholder1 } />
+                            <input value={exp2.from} onChange={e => setExp2({ ...exp2, from: e.target.value })} className="form-control mb-3" type="date" name="company_when_from[]" id="company_when_from_1" placeholder={state.text.careerFormWhenPlaceholder1} />
                           </div>
                           <div className="col-md-6">
-                            <input className="form-control mb-3" type="text" name="company_when_to[]" id="company_when_to_2" placeholder={ state.text.careerFormWhenPlaceholder2 } />
+                            <input value={exp2.to} onChange={e => setExp2({ ...exp2, to: e.target.value })} className="form-control mb-3" type="date" name="company_when_to[]" id="company_when_to_1" placeholder={state.text.careerFormWhenPlaceholder2} />
                           </div>
                         </div>
                       </div>
                     </div>
+
                     <div className="row mb-3">
                       <div className="col">
-                        <input className="form-control mb-3" type="text" name="company[]" id="company" placeholder={ state.text.careerFormCompanyPlaceholder } />
+                        <label htmlFor="company" className="form-label">{state.text.careerFormCompany}</label>
+                        <input value={exp3.company} onChange={e => setExp3({ ...exp3, company: e.target.value })} className="form-control mb-3" type="text" name="company[]" id="company" placeholder={state.text.careerFormCompanyPlaceholder} />
                       </div>
                       <div className="col">
+                        <label htmlFor="company_when" className="form-label">{state.text.careerFormWhen}</label>
                         <div className="row">
                           <div className="col-md-6">
-                            <input className="form-control mb-3" type="text" name="company_when_from[]" id="company_when_from_3" placeholder={ state.text.careerFormWhenPlaceholder1 } />
+                            <input value={exp3.from} onChange={e => setExp3({ ...exp3, from: e.target.value })} className="form-control mb-3" type="date" name="company_when_from[]" id="company_when_from_1" placeholder={state.text.careerFormWhenPlaceholder1} />
                           </div>
                           <div className="col-md-6">
-                            <input className="form-control mb-3" type="text" name="company_when_to[]" id="company_when_to_3" placeholder={ state.text.careerFormWhenPlaceholder2 } />
+                            <input value={exp3.to} onChange={e => setExp3({ ...exp3, to: e.target.value })} className="form-control mb-3" type="date" name="company_when_to[]" id="company_when_to_1" placeholder={state.text.careerFormWhenPlaceholder2} />
                           </div>
                         </div>
                       </div>
                     </div>
+
                   </fieldset>
                   <fieldset className="mb-3">
-                    <legend className="text-danger fw-bold">{ state.text.careerFormMotivation }</legend>
+                    <legend className="text-danger fw-bold">{state.text.careerFormMotivation}</legend>
                     <div className="mb-3">
-                      <textarea className="form-control mb-3" name="motivation" id="motivation" rows="3" placeholder={ state.text.careerFormMotivationPlaceholder }></textarea>
+                      <textarea value={motivation} onChange={e => setMotivation(e.target.value)} className="form-control mb-3" name="motivation" id="motivation" rows="3" placeholder={state.text.careerFormMotivationPlaceholder}></textarea>
                     </div>
                   </fieldset>
                   <div className="mb-3">
                     <input className="form-control mb-3" type="file" name="attachments[]" multiple />
-                    <p><i className="fas fa-paperclip me-2"></i> { state.text.careerFormAttachment }</p>
+                    <p><i className="fas fa-paperclip me-2"></i> {state.text.careerFormAttachment}</p>
                   </div>
                   <div className="d-flex justify-content-center w-100">
-                    <button type="submit" className="btn btn-black rounded-0 text-white font-weight-700 px-5">{ state.text.careerFormButton }</button>
+                    <button onClick={compileData} type="button" className="btn btn-black rounded-0 text-white font-weight-700 px-5">{state.text.careerFormButton}</button>
                   </div>
                 </form>
               </div>
