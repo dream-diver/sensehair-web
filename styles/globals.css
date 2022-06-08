@@ -23,7 +23,9 @@ body {
 .linkN a:hover{
   color: #f86624 !important;
 }
-
+.validate{
+  border: 1px solid red !important;
+}
 h1,
 h2,
 h3,

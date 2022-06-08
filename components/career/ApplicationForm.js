@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useRef, useState } from "react"
+import { useContext, useRef, useState,useEffect } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 
 const ApplicationForm = () => {
@@ -73,17 +73,22 @@ const ApplicationForm = () => {
   }
 
   const compileData = () => {
-    setWeekDays(weekDays.toString());      
+    setWeekDays(weekDays.toString());
     applyNow();
   }
 
   const applyNow = async () => {
-    axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/career/apply`, {
-      type, employment, hrsWeek, weekDays, firstName, lastName, dob, email, phone, address, zip, city, education1, education2, education3,
-      exp1, exp2, exp3, motivation
-    })
-      .then(res => { })
-      .catch(err => { console.log(err) });
+    if (filledRequired()) {
+      axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/career/apply`, {
+        type, employment, hrsWeek, weekDays, firstName, lastName, dob, email, phone, address, zip, city, education1, education2, education3,
+        exp1, exp2, exp3, motivation
+      })
+        .then(res => {
+          alert("Application submitted successfully!")
+          window.location.reload();
+        })
+        .catch(err => { console.log(err) });
+    }
   }
 
   const executeScroll = () => {
@@ -94,14 +99,36 @@ const ApplicationForm = () => {
     }, 150);
   }
 
-  const onSubmit = (e) => {
-    e.preventDefault();
-    for (let i = 0; i < e.target.elements.length; i++) {
-      const element = e.target.elements[i];
-      console.log(element.value);
+  const filledRequired = () => {
+    let flag = 0;
+    const elements = document.getElementsByClassName('required');
+    for (let i = 0; i < elements.length; i++) {
+      const element = elements[i];
+      element.classList.remove("validate");
+      if (!(element.value.length > 0)) {
+        element.classList.add("validate");
+        flag++;
+      }
+      else if (parseInt(element.value) === 0) {
+        element.classList.add("validate");
+        flag++;
+      }
+      else if (element.value === "none" || element.value == null) {
+        element.classList.add("validate");
+        flag++;
+      }
     }
-    console.log("Form data", applicationFormRef.value);
+    if (flag > 0) {
+      return false;
+    }
+    return true;
   }
+  useEffect(()=>{
+    filledRequired();
+  },[
+    type, employment, hrsWeek, weekDays, firstName, lastName, dob, email, phone, address, zip, city, education1, education2, education3,
+    exp1, exp2, exp3, motivation
+  ]);
   return (
     <section id="application_form">
       <div className="container pb-5">
@@ -124,7 +151,7 @@ const ApplicationForm = () => {
                     <legend className="text-danger fw-bold">{state.text.careerFormJobDescription}</legend>
                     <div className="mb-3">
                       <label htmlFor="vacancy" className="form-label">{state.text.careerFormJobDescriptionDesc}</label>
-                      <select defaultValue={"none"} onChange={e => setType(e.target.value)} className="form-select" name="vacancy" id="vacancy">
+                      <select defaultValue={"none"} onChange={e => setType(e.target.value)} className="form-select required" name="vacancy" id="vacancy">
                         <option value="none" disabled>Please select</option>
                         <option value="stylist">{state.text.careerFormJobDescriptionOption1}</option>
                         <option value="entrepreneur">{state.text.careerFormJobDescriptionOption2}</option>
@@ -198,17 +225,17 @@ const ApplicationForm = () => {
                       <label htmlFor="name" className="form-label">{state.text.careerFormName}</label>
                       <div className="row">
                         <div className="col">
-                          <input value={firstName} onChange={e => setFirstName(e.target.value)} className="form-control" type="text" name="first_name" placeholder={state.text.careerFormNamePlaceholder1} />
+                          <input value={firstName} onChange={e => setFirstName(e.target.value)} className="form-control required" type="text" name="first_name" placeholder={state.text.careerFormNamePlaceholder1} />
                         </div>
                         <div className="col">
-                          <input value={lastName} onChange={e => setLastName(e.target.value)} className="form-control" type="text" name="last_name" placeholder={state.text.careerFormNamePlaceholder2} />
+                          <input value={lastName} onChange={e => setLastName(e.target.value)} className="form-control required" type="text" name="last_name" placeholder={state.text.careerFormNamePlaceholder2} />
                         </div>
                       </div>
                     </div>
                     <div className="row mb-3">
                       <div className="col">
                         <label htmlFor="date_of_birth" className="form-label">{state.text.careerFormDOB}</label>
-                        <input value={dob} onChange={e => setDob(e.target.value)} className="form-control" type="date" name="date_of_birth" id="date_of_birth" />
+                        <input value={dob} onChange={e => setDob(e.target.value)} className="form-control required" type="date" name="date_of_birth" id="date_of_birth" />
                       </div>
                       <div className="col">
                         <label htmlFor="gender" className="form-label">{state.text.careerFormGender}</label>
@@ -227,11 +254,11 @@ const ApplicationForm = () => {
                     <div className="row mb-3">
                       <div className="col">
                         <label htmlFor="email" className="form-label">{state.text.careerFormEmail}</label>
-                        <input value={email} onChange={e => setEmail(e.target.value)} className="form-control" type="email" name="email" id="email" placeholder={state.text.careerFormEmailPlaceholder} />
+                        <input value={email} onChange={e => setEmail(e.target.value)} className="form-control required" type="email" name="email" id="email" placeholder={state.text.careerFormEmailPlaceholder} />
                       </div>
                       <div className="col">
                         <label htmlFor="phone" className="form-label">{state.text.careerFormPhone}</label>
-                        <input value={phone} onChange={e => setPhone(e.target.value)} className="form-control" type="text" name="phone" id="phone" placeholder={state.text.careerFormPhone} />
+                        <input value={phone} onChange={e => setPhone(e.target.value)} className="form-control required" type="text" name="phone" id="phone" placeholder={state.text.careerFormPhone} />
                       </div>
                     </div>
                     <div className="mb-3">
@@ -262,11 +289,11 @@ const ApplicationForm = () => {
                     </div>
                     <div className="row mb-3">
                       <div className="col">
-                        <input value={education1.school} onChange={e => setEducation1({ ...education1, school: e.target.value })} className="form-control mb-3" type="text" name="school[]" id="school_1" placeholder={state.text.careerFormSchool} />
+                        <input value={education1.school} onChange={e => setEducation1({ ...education1, school: e.target.value })} className="form-control required mb-3" type="text" name="school[]" id="school_1" placeholder={state.text.careerFormSchool} />
                       </div>
                       <div className="col d-md-flex">
-                        <input value={education1.from} onChange={e => setEducation1({ ...education1, from: e.target.value })} className="form-control mb-3 me-md-2" type="date" name="whenfrom[]" id="when_form_1" placeholder={state.text.careerFormWhenPlaceholder1} />
-                        <input value={education1.to} onChange={e => setEducation1({ ...education1, to: e.target.value })} className="form-control mb-3" type="date" name="whento[]" id="when_to_1" placeholder={state.text.careerFormWhenPlaceholder2} />
+                        <input value={education1.from} onChange={e => setEducation1({ ...education1, from: e.target.value })} className="form-control required mb-3 me-md-2" type="date" name="whenfrom[]" id="when_form_1" placeholder={state.text.careerFormWhenPlaceholder1} />
+                        <input value={education1.to} onChange={e => setEducation1({ ...education1, to: e.target.value })} className="form-control required mb-3" type="date" name="whento[]" id="when_to_1" placeholder={state.text.careerFormWhenPlaceholder2} />
                       </div>
                       <div className="col">
                         <div className="form-check">
@@ -315,16 +342,16 @@ const ApplicationForm = () => {
                     <div className="row mb-3">
                       <div className="col">
                         <label htmlFor="company" className="form-label">{state.text.careerFormCompany}</label>
-                        <input value={exp1.company} onChange={e => setExp1({ ...exp1, company: e.target.value })} className="form-control mb-3" type="text" name="company[]" id="company" placeholder={state.text.careerFormCompanyPlaceholder} />
+                        <input value={exp1.company} onChange={e => setExp1({ ...exp1, company: e.target.value })} className="form-control required mb-3" type="text" name="company[]" id="company" placeholder={state.text.careerFormCompanyPlaceholder} />
                       </div>
                       <div className="col">
                         <label htmlFor="company_when" className="form-label">{state.text.careerFormWhen}</label>
                         <div className="row">
                           <div className="col-md-6">
-                            <input value={exp1.from} onChange={e => setExp1({ ...exp1, from: e.target.value })} className="form-control mb-3" type="date" name="company_when_from[]" id="company_when_from_1" placeholder={state.text.careerFormWhenPlaceholder1} />
+                            <input value={exp1.from} onChange={e => setExp1({ ...exp1, from: e.target.value })} className="form-control required mb-3" type="date" name="company_when_from[]" id="company_when_from_1" placeholder={state.text.careerFormWhenPlaceholder1} />
                           </div>
                           <div className="col-md-6">
-                            <input value={exp1.to} onChange={e => setExp1({ ...exp1, to: e.target.value })} className="form-control mb-3" type="date" name="company_when_to[]" id="company_when_to_1" placeholder={state.text.careerFormWhenPlaceholder2} />
+                            <input value={exp1.to} onChange={e => setExp1({ ...exp1, to: e.target.value })} className="form-control required mb-3" type="date" name="company_when_to[]" id="company_when_to_1" placeholder={state.text.careerFormWhenPlaceholder2} />
                           </div>
                         </div>
                       </div>
