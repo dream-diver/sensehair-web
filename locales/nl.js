@@ -192,7 +192,7 @@ export default {
   careerFormCompanyPlaceholder: 'Bedrijf',
   careerFormMotivation: 'Motivatie',
   careerFormMotivationPlaceholder: 'Vertel ons waarom je solliciteert',
-  careerFormAttachment: 'Optioneel: voeg hier je bijlagen toe, zoals CV, motivatiebrief of portfolio.',
+  careerFormAttachment: 'Optioneel: voeg hier je bijlagen toe, zoals CV, motivatiebrief of portfolio.  Maximum size: 5 MB',
   careerFormButton: 'Verzenden',
   bookingStep1Title: 'KIES JOUW STYLE',
   bookingStep2Title: 'WAT VOOR TYPE HAAR HEB JE?',

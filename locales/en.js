@@ -187,7 +187,7 @@ export default {
   careerFormCompanyPlaceholder: 'Company',
   careerFormMotivation: 'Motivation',
   careerFormMotivationPlaceholder: 'Tell us why you are applying',
-  careerFormAttachment: 'Optional: add attachments like your CV, letter of motivation, portfolio here.',
+  careerFormAttachment: 'Optional: add attachments like your CV, letter of motivation, portfolio here. Maximum size: 5 MB',
   careerFormButton: 'APPLY',
   bookingStep1Title: 'CHOOSE YOUR STYLE',
   bookingStep2Title: 'WHAT IS YOUR HAIRSTYLE?',

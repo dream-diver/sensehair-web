@@ -1,5 +1,5 @@
 import axios from "axios";
-import { useContext, useRef, useState,useEffect } from "react"
+import { useContext, useRef, useState, useEffect } from "react"
 import { GlobalContext } from "../contexts/GlobalContext"
 
 const ApplicationForm = () => {
@@ -59,6 +59,7 @@ const ApplicationForm = () => {
   });
 
   const [motivation, setMotivation] = useState("");
+  const [resumeFile, setResumeFile] = useState(null);
 
   const getWeekDays = () => {
     const allDays = document.getElementsByClassName('weekDays');
@@ -78,14 +79,33 @@ const ApplicationForm = () => {
   }
 
   const applyNow = async () => {
-    if (filledRequired()) {
-      axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/career/apply`, {
-        type, employment, hrsWeek, weekDays, firstName, lastName, dob, email, phone, address, zip, city, education1, education2, education3,
-        exp1, exp2, exp3, motivation
-      })
+    if (true) {
+      const body = new FormData();
+      if (resumeFile) {
+        body.append("resume", resumeFile);
+      }
+      body.append("type", type); body.append("employment", employment);
+      body.append("hrsWeek", hrsWeek);
+      body.append("weekDays", weekDays);
+      body.append("firstName", firstName);
+      body.append("lastName", lastName);
+      body.append("dob", dob);
+      body.append("email", email);
+      body.append("phone", phone);
+      body.append("address", address);
+      body.append("zip", zip); body.append("city", city);
+      body.append("education1", JSON.stringify(education1));
+      body.append("education2", JSON.stringify(education2));
+      body.append("education3", JSON.stringify(education3));
+      body.append("exp1", JSON.stringify(exp1));
+      body.append("exp2", JSON.stringify(exp2));
+      body.append("exp3", JSON.stringify(exp3));
+      body.append("motivation", motivation)
+
+      axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/career/apply`, body)
         .then(res => {
           alert("Application submitted successfully!")
-          window.location.reload();
+          // window.location.reload();
         })
         .catch(err => { console.log(err) });
     }
@@ -123,9 +143,15 @@ const ApplicationForm = () => {
     }
     return true;
   }
-  useEffect(()=>{
+  const selectFile = (event) => {
+    if (event.target.files && event.target.files[0]) {
+      const i = event.target.files[0];
+      setResumeFile(i);
+    }
+  }
+  useEffect(() => {
     filledRequired();
-  },[
+  }, [
     type, employment, hrsWeek, weekDays, firstName, lastName, dob, email, phone, address, zip, city, education1, education2, education3,
     exp1, exp2, exp3, motivation
   ]);
@@ -401,7 +427,7 @@ const ApplicationForm = () => {
                     </div>
                   </fieldset>
                   <div className="mb-3">
-                    <input className="form-control mb-3" type="file" name="attachments[]" multiple />
+                    <input onChange={selectFile} accept="image/png, image/jpeg, .pdf,.doc, .docx" className="form-control mb-3" type="file" name="attachments[]" />
                     <p><i className="fas fa-paperclip me-2"></i> {state.text.careerFormAttachment}</p>
                   </div>
                   <div className="d-flex justify-content-center w-100">
