@@ -235,4 +235,9 @@ export default {
   bookingCouponText: 'Use a Coupon Code:',
   bookingCouponCode: 'Coupon Code',
   bookingApply: 'Apply',
+
+  bookingCancelConfirmTitle:"Cancel booking",
+  bookingCancelConfirmBody:"Are you sure you want to cancel this booking ?",
+  confirmYes:"Yes",
+  confirmNo:"No",
 }

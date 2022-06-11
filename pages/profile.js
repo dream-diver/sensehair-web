@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { GlobalContext } from '../components/contexts/GlobalContext';
 import { toast } from "react-toastify";
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
+import axios from 'axios';
 
 function Profile() {
     const [state, setState] = useContext(GlobalContext);
@@ -16,6 +17,7 @@ function Profile() {
     });
 
     const [bookings, setBookings] = useState([])
+    const [bookingToDelete, setBookingToDelete] = useState(null);
 
     const formToast = useRef({
         name: null,
@@ -30,6 +32,11 @@ function Profile() {
         if (state.auth.isLogin) {
             setSetFromData({ ...formData, name: state.auth.user.name, email: state.auth.user.email, phone: state.auth.user.phone });
             getBookings(state.auth.user.id);
+        }
+        else if (localStorage.getItem("login") == "true") {
+            const user = JSON.parse(localStorage.getItem("user"));
+            setSetFromData({ ...formData, name: user.name, email: user.email, phone: user.phone });
+            getBookings(user.id);
         }
     }, [])
 
@@ -68,7 +75,7 @@ function Profile() {
     const getPaymentIntent = async (bookingId, amount, bookingResponse) => {
         const paymentIntentFromServer = await fetchPaymentIntent(bookingId, amount)
         if (typeof paymentIntentFromServer === 'string' && paymentIntentFromServer.startsWith('pi_')) {
-            setState({...state,showBooking:true,currentStep:8,paymentIntent:paymentIntentFromServer});
+            setState({ ...state, showBooking: true, currentStep: 8, paymentIntent: paymentIntentFromServer });
             // setSteps({
             //     ...steps,
             //     "step7": { ...steps.step7, active: false, booking: bookingResponse },
@@ -152,15 +159,50 @@ function Profile() {
                 headers: {
                     "Content-type": "application/json",
                     "Accept": "application/json",
-                    'Authorization': `Bearer ${state.auth.token}`,
+                    'Authorization': `Bearer ${state.auth.token || localStorage.getItem("token")}`,
                 },
             })
             const data = await response.json();
-            console.log("bookings", data);
-            setBookings(data.data)
+            if (data.data.length) {
+                setBookings(data.data)
+            }
         } catch (error) {
             console.log(error.message)
         }
+    }
+
+    const cancelBooking = async () => {
+        if (bookingToDelete) {
+            axios.post(`${process.env.NEXT_PUBLIC_API_URL}/api/bookings/cancel`, { booking_id: bookingToDelete.id }, {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            })
+                .then(res => {
+                    closeConfirmModal();
+                    deleteBookingFromList();
+                })
+                .catch(err => {
+                    alert("An error occurred! Please try again!");
+                    closeConfirmModal();
+                })
+        }
+    }
+
+    const closeConfirmModal = () => {
+        const myModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('bookingCancelConfirm'));
+        myModal.hide();
+    }
+
+    const showConfirmModal = () => {
+        const myModal = bootstrap.Modal.getOrCreateInstance(document.getElementById('bookingCancelConfirm'));
+        myModal.show();
+    }
+
+    const deleteBookingFromList = () => {
+        const tmp = bookings.filter(e => e.data.id != bookingToDelete.id);
+        setBookings(tmp);
+        setBookingToDelete(null);
     }
     return (
         <div>
@@ -231,14 +273,35 @@ function Profile() {
                                                     <td> {booking.data.duration} min </td>
                                                     <td> {booking.data.server?.data.name} </td>
                                                     <td> {`€${parseInt(booking.data.charge).toFixed(2)}`} </td>
-                                                    <td>
+                                                    <td >
                                                         {booking.data.payment_status} {booking.data.payment_status == "Unpaid" &&
-                                                            <button onClick={()=>getPaymentIntent(booking.data.id, booking.data.charge, booking.data)} className='btn btn-sm btn-success ms-2'>Pay now</button>}
+                                                            <React.Fragment>
+                                                                <button onClick={() => getPaymentIntent(booking.data.id, booking.data.charge, booking.data)} className='btn btn-sm btn-success ms-2'> {state.text.bookingPayNow} </button>
+                                                                <button onClick={() => { setBookingToDelete(booking.data); showConfirmModal() }} className='btn btn-sm btn-link ms-2'> Cancel </button>
+                                                            </React.Fragment>
+                                                        }
                                                     </td>
                                                 </tr>
                                             ))}
                                         </tbody>
                                     </table>
+                                </div>
+                                <div id='bookingCancelConfirm' className="modal fade" tabIndex="-1">
+                                    <div className="modal-dialog modal-dialog-centered">
+                                        <div className="modal-content">
+                                            <div className="modal-header">
+                                                <h5 className="modal-title"> {state.text.bookingCancelConfirmTitle} </h5>
+                                                <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                            </div>
+                                            <div className="modal-body">
+                                                <p>{state.text.bookingCancelConfirmBody}</p>
+                                            </div>
+                                            <div className="modal-footer">
+                                                <button type="button" className="btn btn-danger" data-bs-dismiss="modal">{state.text.confirmNo}</button>
+                                                <button onClick={cancelBooking} type="button" className="btn btn-success">{state.text.confirmYes}</button>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
                         </div>

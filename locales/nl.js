@@ -232,11 +232,16 @@ export default {
   bookingStylist: 'Afspraak met',
   bookingDateTime: 'Datum en tijd',
   bookingServices: 'Diensten',
-  bookingDuration: 'Duur',
+  bookingDuration: 'Looptijd',
   bookingPrice: 'Prijs',
   bookingTotalPrice: 'Totale prijs',
   bookingDiscountPrice: 'Kortingsprijs',
   bookingCouponText: 'Vul hier je kortingscode in:',
   bookingCouponCode: 'coupon code',
   bookingApply: 'Toevoegen',
+
+  bookingCancelConfirmTitle:"Annuleer boeking",
+  bookingCancelConfirmBody:"Weet je zeker dat je deze boeking wilt annuleren ?",
+  confirmYes:"Ja",
+  confirmNo:"Nee",
 }
