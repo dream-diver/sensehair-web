@@ -184,7 +184,6 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
 
   const onGuest = (e) => {
     e.preventDefault()
-
     //Validation
     if (!formData.name) {
       if (!toast.isActive(formToast.current.name)) {
@@ -206,6 +205,12 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
       }
       return
     }
+    if (!formData.phone.charAt(0) != '+') {
+      if (!toast.isActive(formToast.current.phone)) {
+        formToast.current.phone = toast.warn("Please add your country code of your mobile number!")
+      }
+      return;
+    };
     setSteps({
       ...steps,
       "step6": {
@@ -230,7 +235,17 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
     })
     setIsLogin(!isLogin)
   }
-
+  const checkAndAddCountryCode = () => {
+    const phoneNumber = formData.phone;
+    if (phoneNumber.length >= 6) {
+      if (phoneNumber.charAt(0) != '+') {
+        const phoneWithCountryCode = `+31${phoneNumber}`;
+        setSetFromData({ ...formData, phone: phoneWithCountryCode });
+        return true;
+      }
+    }
+    return false;
+  }
   return (
     <div className="floating-window">
       <div className="floating-window-header">
@@ -259,7 +274,7 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
           {(!isLogin || step.guest.isGuest) &&
             <div className="mb-3">
               <label htmlFor="inputPhone" className="form-label">{state.text.bookingPhone}</label>
-              <input type="text" name="phone" className="form-control" id="inputPhone" placeholder={state.text.bookingPhonePlaceholder} value={formData.phone} onChange={(e) => setSetFromData({ ...formData, phone: e.target.value })} />
+              <input type="text" name="phone" className="form-control" id="inputPhone" placeholder={state.text.bookingPhonePlaceholder} value={formData.phone} onChange={(e) => setSetFromData({ ...formData, phone: e.target.value })} onBlur={checkAndAddCountryCode} />
             </div>
           }
 

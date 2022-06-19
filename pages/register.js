@@ -78,6 +78,12 @@ const Register = () => {
             }
             return
         }
+        if (!formData.phone.charAt(0) != '+') {
+            if (!toast.isActive(formToast.current.phone)) {
+                formToast.current.phone = toast.warn("Please add your country code of your mobile number!")
+            }
+            return;
+        };
 
         const bodyData = {
             name: formData.name,
@@ -118,6 +124,16 @@ const Register = () => {
         }
 
     }
+
+    const checkAndAddCountryCode = () => {
+        const phoneNumber = formData.phone;
+        if (phoneNumber.length >= 6) {
+            if (phoneNumber.charAt(0) != '+') {
+                const phoneWithCountryCode = `+31${phoneNumber}`;
+                setSetFromData({ ...formData, phone: phoneWithCountryCode });
+            }
+        }
+    }
     return (
         <div>
             <Head>
@@ -155,7 +171,7 @@ const Register = () => {
                             </div>
                             <div className="mb-3">
                                 <label htmlFor="inputPhone" className="form-label">{state.text.bookingPhone}</label>
-                                <input type="text" name="phone" className="form-control" id="inputPhone" placeholder={state.text.bookingPhonePlaceholder} value={formData.phone} onChange={(e) => setSetFromData({ ...formData, phone: e.target.value })} />
+                                <input onBlur={checkAndAddCountryCode} type="text" name="phone" className="form-control" id="inputPhone" placeholder={state.text.bookingPhonePlaceholder} value={formData.phone} onChange={(e) => setSetFromData({ ...formData, phone: e.target.value })} />
                             </div>
                             <div className="d-flex flex-column justify-content-center w-100 py-3">
                                 <div className="m-0 p-0">

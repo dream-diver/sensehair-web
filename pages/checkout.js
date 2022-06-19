@@ -9,7 +9,7 @@ import { GlobalContext } from '../components/contexts/GlobalContext'
 
 const checkout = () => {
   const [state, setState] = useContext(GlobalContext)
-  const [paymentSubmit, setPaymentSubmit] = useState(false)
+  const [paymentSubmit, setPaymentSubmit] = useState(true)
   const toastId = useRef(null)
   const router = useRouter()
   const { payment, redirect_status, payment_intent } = router.query
@@ -30,11 +30,16 @@ const checkout = () => {
 
   useEffect(() => {
     setState({ ...state, showBooking: false })
+    console.log("Submitting start....!", payment_intent);
     // Submit Payment Success Info
+    window.addEventListener('load', () => {
+       
+    })
     const submitPaymentSuccessInfo = async () => {
       try {
-        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/bookings/submitPaymentSuccess?payment_intent_id=${payment_intent}`)
-        const data = await response.json()
+        const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/bookings/submitPaymentSuccess?payment_intent_id=${payment_intent||getQueryVariable('payment_intent')}`)
+        const data = await response.json();
+        console.log("Submitting success....!");
         return data
       } catch (error) {
         console.log(error.message)
@@ -42,15 +47,26 @@ const checkout = () => {
       }
     }
 
-    if (payment_intent) {
+    if (payment_intent || getQueryVariable('payment_intent')) {
       if (paymentSubmit) {
         submitPaymentSuccessInfo()
-        setPaymentSubmit(true)
+        setPaymentSubmit(false)
       }
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
+  function getQueryVariable(variable) {
+    var query = window.location.search.substring(1);
+    var vars = query.split('&');
+    for (var i = 0; i < vars.length; i++) {
+      var pair = vars[i].split('=');
+      if (decodeURIComponent(pair[0]) == variable) {
+        return decodeURIComponent(pair[1]);
+      }
+    }
+    return false;
+  }
 
   return (
     <div>
