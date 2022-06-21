@@ -36,7 +36,7 @@ const FloatingWindowServices = ({ steps, setSteps, step, show, setShow, checked,
       const hairSize = optionHairSize[steps.step1.value].name_fetch
       const hairType = optionHairType[steps.step2.value] ? optionHairType[steps.step2.value].name_fetch : ""
       const data = await fetchServices(hairSize, hairType)
-      setServices(data.data.map(service => service.data))
+      setServices(data.data.reverse().map(service => service.data))
       setState({ ...state, services: data.data.map(service => service.data) })
     }
     getData()

@@ -2,7 +2,6 @@ import { createContext, useEffect, useState } from "react"
 import { useRouter } from 'next/router'
 import en from '../../locales/en'
 import nl from '../../locales/nl'
-import { toast } from "react-toastify"
 import optionsDb from "../../db/options.json"
 
 export const GlobalContext = createContext()

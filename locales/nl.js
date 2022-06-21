@@ -239,7 +239,8 @@ export default {
   bookingCouponText: 'Vul hier je kortingscode in:',
   bookingCouponCode: 'coupon code',
   bookingApply: 'Toevoegen',
-
+  discountText:"Wordt een VIP en krijg 10% korting op al onze behandelingen en producten, 50.- voor een jaar.",
+  discountTitle:"VIP leden",
   bookingCancelConfirmTitle:"Annuleer boeking",
   bookingCancelConfirmBody:"Weet je zeker dat je deze boeking wilt annuleren ?",
   confirmYes:"Ja",

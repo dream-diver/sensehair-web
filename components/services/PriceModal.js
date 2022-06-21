@@ -128,8 +128,8 @@ const PriceModal = ({ activeHairSize, setActiveHairSize, activeHairType, setActi
               <div className="container">
                 <div className="row">
                   <div className="col-md-8 py-5">
-                    <h4 className="font-weight-700 mb-3">STUDENTEN</h4>
-                    <p className="">Ben je student: dan krijg je 10% korting op al onze behandelingen (ook beauty behandelingen). Sorry, helaas niet op onze producten. Studentenkorting geven wij op de maandag, dinsdag, woensdag en donderdag. Niet op koopavonden en de vrijdag en de zaterdag en uiteraard op vertoon van je studentenpas.</p>
+                    <h4 className="font-weight-700 mb-3">{state.text.discountTitle}</h4>
+                    <p className="">{state.text.discountText}</p>
                   </div>
                   <div className="col-md-4 py-5" data-aos="fade-left" data-aos-duration="750" data-aos-delay="500" data-aos-once="true">
                     <img loading="lazy" src={imageAbout.src} alt="home-3-about" className="img-fluid" />

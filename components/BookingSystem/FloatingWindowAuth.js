@@ -2,6 +2,7 @@ import { useContext, useRef, useState } from "react"
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi"
 import { GlobalContext } from "../contexts/GlobalContext"
 import { toast } from "react-toastify"
+import Link from "next/link"
 
 const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, previousStep }) => {
   const [state, setState] = useContext(GlobalContext)
@@ -205,7 +206,7 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
       }
       return
     }
-    if (!formData.phone.charAt(0) != '+') {
+    if (formData.phone.charAt(0) != '+') {
       if (!toast.isActive(formToast.current.phone)) {
         formToast.current.phone = toast.warn("Please add your country code of your mobile number!")
       }
@@ -280,6 +281,11 @@ const FloatingWindowAuth = ({ steps, setSteps, step, show, setShow, nextStep, pr
 
           <div className="d-flex flex-column justify-content-center w-100 py-3">
             {!step.guest.isGuest && <div className="m-0 p-0">
+              {isLogin && <div>
+                <Link className="me-2" href="/forget">
+                  {state.text.forgotPassText}
+                </Link>
+              </div>}
               {isLogin ? state.text.bookingAccountTextLogin : state.text.bookingAccountTextRegister}
               <button onClick={() => setIsLogin(!isLogin)} type="button" className="btn btn-link px-1">{isLogin ? state.text.bookingAccountButtonLogin : state.text.bookingAccountButtonRegister}</button>
             </div>}

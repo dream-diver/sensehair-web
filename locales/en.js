@@ -1,11 +1,11 @@
 /* eslint-disable import/no-anonymous-default-export */
 export default {
-  profileDetailsText:"PROFILE DETAILS",
-  Status:"Status",
-  Bookings:"Bookings",
-  saveChangesText:"Save changes",
-  forgotPassText:"Forgot password ?",
-  sendEmailText:"Send reset link",
+  profileDetailsText: "PROFILE DETAILS",
+  Status: "Status",
+  Bookings: "Bookings",
+  saveChangesText: "Save changes",
+  forgotPassText: "Forgot password ?",
+  sendEmailText: "Send reset link",
   Hello: 'Hello',
   menuHome: 'HOME',
   menuAboutUs: 'ABOUT US',
@@ -235,9 +235,10 @@ export default {
   bookingCouponText: 'Use a Coupon Code:',
   bookingCouponCode: 'Coupon Code',
   bookingApply: 'Apply',
-
-  bookingCancelConfirmTitle:"Cancel booking",
-  bookingCancelConfirmBody:"Are you sure you want to cancel this booking ?",
-  confirmYes:"Yes",
-  confirmNo:"No",
+  discountText: "Become a VIP and receive 10% discount on all treatments and products, 50.- for a year.",
+  discountTitle:"VIP member",
+  bookingCancelConfirmTitle: "Cancel booking",
+  bookingCancelConfirmBody: "Are you sure you want to cancel this booking ?",
+  confirmYes: "Yes",
+  confirmNo: "No",
 }

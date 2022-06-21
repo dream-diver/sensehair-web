@@ -24,22 +24,33 @@ function MyApp({ Component, pageProps }) {
   }, [])
   return (
     <GlobalProvider>
-      <Component { ...pageProps } />
+      <Component {...pageProps} />
       <BookingSystemWrapper />
       <ToastContainer
         toastClassName="toastifyToastContainer"
         position="top-right"
-        autoClose={ 5 * 1000 }
+        autoClose={5 * 1000}
         newestOnTop
         closeOnClick
-        rtl={ false }
+        rtl={false}
         pauseOnFocusLoss
         draggable
         pauseOnHover
-        limit={ 5 }
-        transition={ Slide }
+        limit={5}
+        transition={Slide}
       />
       <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" strategy="lazyOnload" />
+      <Script strategy='lazyOnload' src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}></Script>
+      <Script>
+        {
+
+          `window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+
+        gtag('config', 'UA-222774280-1');`
+        }
+      </Script>
     </GlobalProvider>
   )
 }

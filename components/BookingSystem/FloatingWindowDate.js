@@ -42,32 +42,42 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startDate])
 
+  const checkAndSelectDate = (date) => {
+    if (date < new Date().setHours(0, 0, 0, 0)) {
+      alert("Pleas choose a valid date");
+    }
+    else {
+      setStartDate(date)
+    }
+  }
+
   return (
     <div className="floating-window">
       <div className="floating-window-header">
-        <h4 className="floating-window-heading">{ step.title }</h4>
-        <button type="button" className="btn-close" aria-label="Close" onClick={ () => setShow(!show) }></button>
+        <h4 className="floating-window-heading">{step.title}</h4>
+        <button type="button" className="btn-close" aria-label="Close" onClick={() => setShow(!show)}></button>
       </div>
       <div className="floating-window-body">
         <form>
           <div className="d-flex flex-column flex-md-row">
             <div className="me-1 me-md-5">
               <ReactDatePicker
-                selected={ startDate }
-                onChange={ (date) => setStartDate(date) }
-                // locale="en"
+                selected={startDate}
+                onChange={(date) => checkAndSelectDate(date)}
                 inline
+                minDate={new Date()}
+                maxDate={new Date(new Date().getFullYear(), new Date().getMonth()+1, new Date().getDate())}
               />
             </div>
             <ReactDatePicker
-              selected={ startDate }
-              onChange={ (date) => setStartDate(date) }
+              selected={startDate}
+              onChange={(date) => checkAndSelectDate(date)}
               showTimeSelect
               showTimeSelectOnly
-              timeIntervals={ 15 }
-              minTime={ setHours(setMinutes(new Date(), 0), 10) }
-              maxTime={ setHours(setMinutes(new Date(), 40), 17) }
-              includeTimes={ includeTimes }
+              timeIntervals={15}
+              minTime={setHours(setMinutes(new Date(), 0), 10)}
+              maxTime={setHours(setMinutes(new Date(), 40), 17)}
+              includeTimes={includeTimes}
               timeCaption="Time"
               dateFormat="h:mm aa"
               // locale={ state.locale }
@@ -77,8 +87,8 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
         </form>
       </div>
       <div className="floating-window-footer">
-        <a className={ `btn-next btn btn-dark` } onClick={ previousStep }><BiLeftArrowAlt className="me-1" />{ state.text.bookingBack }</a>
-        <a className="btn-next btn btn-dark" onClick={ nextStep }>{ state.text.bookingNext }<BiRightArrowAlt className="ms-1" /></a>
+        <a className={`btn-next btn btn-dark`} onClick={previousStep}><BiLeftArrowAlt className="me-1" />{state.text.bookingBack}</a>
+        <a className="btn-next btn btn-dark" onClick={nextStep}>{state.text.bookingNext}<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>
   )

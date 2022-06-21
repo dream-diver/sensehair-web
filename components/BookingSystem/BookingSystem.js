@@ -85,7 +85,7 @@ const BookingSystem = () => {
       value: 0.0,
       couponCode: "",
       booking: {},
-      sendEmailAndSms: false,
+      sendEmailAndSms: true,
     },
     "step8": {
       id: 8,

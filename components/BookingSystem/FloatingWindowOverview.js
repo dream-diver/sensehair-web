@@ -62,11 +62,14 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep, previo
   }
 
   useEffect(() => {
+    const element = document.getElementById('smsConfirm');
+    element.setAttribute('checked',true);
     setSteps({
       ...steps,
       "step7": {
         ...steps.step7,
         value: parseFloat(selectedServicesPrice),
+        sendEmailAndSms: true,
       },
     })
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -75,7 +78,6 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep, previo
   const toggleSend = () => {
     const element = document.getElementById('smsConfirm');
     if (element.checked) {
-      console.log("checking...")
       element.setAttribute('checked', true);
       setSteps({
         ...steps,
@@ -86,7 +88,6 @@ const FloatingWindow = ({ steps, setSteps, step, show, setShow, nextStep, previo
       })
     }
     else {
-      console.log("unChecking...")
       element.removeAttribute('checked');
       setSteps({
         ...steps,
