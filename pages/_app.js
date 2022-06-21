@@ -41,7 +41,7 @@ function MyApp({ Component, pageProps }) {
       />
       <Script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" strategy="lazyOnload" />
       <Script strategy='lazyOnload' src={`https://www.googletagmanager.com/gtag/js?id=${process.env.NEXT_PUBLIC_GOOGLE_ANALYTICS}`}></Script>
-      <Script>
+      <Script id='analytic'>
         {
 
           `window.dataLayer = window.dataLayer || [];
