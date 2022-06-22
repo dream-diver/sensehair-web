@@ -1,5 +1,5 @@
 import Head from 'next/head';
-import React, { useState, useContext,useRef } from 'react';
+import React, { useState, useContext, useRef } from 'react';
 import Footer from '../components/Footer';
 import { useRouter } from 'next/router';
 import { BiLeftArrowAlt, BiRightArrowAlt } from "react-icons/bi";
@@ -13,11 +13,10 @@ function ForgetPassword() {
         email: "",
     });
     const formToast = useRef({
-
         email: null,
-
     })
     const login = async (bodyData) => {
+        document.getElementById('sendButton').classList.add('disabled');
         try {
             const response = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/auth/forget-password`, {
                 method: "POST",
@@ -27,7 +26,8 @@ function ForgetPassword() {
                 },
                 body: JSON.stringify(bodyData)
             })
-            const data = await response.json()
+            const data = await response.json();
+            document.getElementById('sendButton').classList.remove('disabled');
             return data
         } catch (error) {
             console.log(error.message)
@@ -57,8 +57,11 @@ function ForgetPassword() {
         }
         const reset = await login(bodyData)
 
-        if (!toast.isActive(formToast.current.email)) {
-            formToast.current.login = toast.success("Reset link has been sent to your e-mail")
+        if (!toast.isActive(formToast.current.email) && reset.status === "success") {
+            formToast.current.login = toast.success(reset.msg)
+        }
+        else if (!toast.isActive(formToast.current.email) && reset.status === "error") {
+            formToast.current.login = toast.error(reset.msg)
         }
     }
     return (
@@ -82,7 +85,7 @@ function ForgetPassword() {
                                 <input type="email" name="email" className="form-control" id="inputEmail" placeholder={state.text.bookingEmailPlaceholder} value={formData.email} onChange={(e) => setSetFromData({ ...formData, email: e.target.value })} />
                             </div>
                         </form>
-                        <button className="btn-next btn btn-dark w-25" onClick={onLogin}>{state.text.sendEmailText}<BiRightArrowAlt className="ms-1" /></button>
+                        <button id='sendButton' className="btn-next btn btn-dark w-25" onClick={onLogin}>{state.text.sendEmailText}<BiRightArrowAlt className="ms-1" /></button>
                     </div>
                 </div>
             </div>

@@ -10,7 +10,9 @@ import addDays from 'date-fns/addDays'
 
 const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, setStartDate, previousStep }) => {
   const [state] = useContext(GlobalContext)
-  const [includeTimes, setIncludeTimes] = useState([])
+  const [includeTimes, setIncludeTimes] = useState([]);
+  const [minDate, setMinDate] = useState(new Date())
+  const [minTime, setMinTime] = useState(setHours(setMinutes(new Date(startDate), 0), 10));
   // fetch including times
   const fetchIncludeTimes = async (stylist, duration, date) => {
     try {
@@ -22,7 +24,7 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
     }
   }
 
-  useEffect(() => {
+  useEffect(async () => {
     const getIncludeTimes = async () => {
       const selectedServices = steps.step3.value
       const servicesTotalDuration = state.services.filter(({ id }) => selectedServices.includes(id)).map(services => services.duration).reduce((a, b) => a + b, 0)
@@ -34,21 +36,51 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
           return setHours(setMinutes(setSeconds(new Date(), 0), regExTimeArr[2]), regExTimeArr[1])
         })
         setIncludeTimes(convertedIncludeTimesFromServer)
-      } else {
+      }
+      else {
         setStartDate(addDays(startDate, 1))
       }
     }
-    getIncludeTimes()
+
+    if (new Date().toDateString() === startDate.toDateString()) {
+      if (new Date().getHours() >= 17) {
+        setMinDate(addDays(startDate, 1));
+      }
+      else {
+        await getIncludeTimes();
+        const timeDiffer = new Date().getMinutes() + 30 <= 60 ? 60 : 0;
+        setMinTime(setHours(setMinutes(new Date(), timeDiffer), new Date().getHours()))
+      }
+    }
+    else {
+      await getIncludeTimes();
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startDate])
 
   const checkAndSelectDate = (date) => {
-    if (date < new Date().setHours(0, 0, 0, 0)) {
-      alert("Pleas choose a valid date");
+    console.log({ date });
+    if (!validateDate(date)) {
+      alert("Pleas choose a valid time");
     }
     else {
+      console.log({ date });
       setStartDate(date)
     }
+  }
+
+  const validateDate = (date) => {
+    const tmpDate = new Date(date);
+    if (tmpDate.setHours(0, 0, 0) < new Date().setHours(0, 0, 0)) {
+      return false;
+    }
+    else if (new Date().toDateString() === tmpDate.toDateString()) {
+      if (tmpDate.getHours() < new Date().getHours()) {
+        return false;
+      }
+    }
+    return true;
   }
 
   return (
@@ -65,8 +97,8 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
                 selected={startDate}
                 onChange={(date) => checkAndSelectDate(date)}
                 inline
-                minDate={new Date()}
-                maxDate={new Date(new Date().getFullYear(), new Date().getMonth()+1, new Date().getDate())}
+                minDate={minDate}
+                maxDate={new Date(new Date().getFullYear(), new Date().getMonth() + 1, new Date().getDate())}
               />
             </div>
             <ReactDatePicker
@@ -75,8 +107,8 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
               showTimeSelect
               showTimeSelectOnly
               timeIntervals={15}
-              minTime={setHours(setMinutes(new Date(), 0), 10)}
-              maxTime={setHours(setMinutes(new Date(), 40), 17)}
+              minTime={minTime}
+              maxTime={setHours(setMinutes(new Date(startDate), 40), 17)}
               includeTimes={includeTimes}
               timeCaption="Time"
               dateFormat="h:mm aa"
@@ -88,7 +120,7 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
       </div>
       <div className="floating-window-footer">
         <a className={`btn-next btn btn-dark`} onClick={previousStep}><BiLeftArrowAlt className="me-1" />{state.text.bookingBack}</a>
-        <a className="btn-next btn btn-dark" onClick={nextStep}>{state.text.bookingNext}<BiRightArrowAlt className="ms-1" /></a>
+        <a className="btn-next btn btn-dark" onClick={() => { validateDate(startDate) && nextStep() }}>{state.text.bookingNext}<BiRightArrowAlt className="ms-1" /></a>
       </div>
     </div>
   )
