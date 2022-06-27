@@ -36,6 +36,7 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
           return setHours(setMinutes(setSeconds(new Date(), 0), regExTimeArr[2]), regExTimeArr[1])
         })
         setIncludeTimes(convertedIncludeTimesFromServer)
+        setMinTime(setHours(setMinutes(new Date(startDate), 0), 10))
       }
       else {
         setStartDate(addDays(startDate, 1))
@@ -43,24 +44,25 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
     }
 
     if (new Date().toDateString() === startDate.toDateString()) {
+      console.log("today")
       if (new Date().getHours() >= 17) {
         setMinDate(addDays(startDate, 1));
       }
       else {
         await getIncludeTimes();
-        const timeDiffer = new Date().getMinutes() + 30 <= 60 ? 60 : 0;
-        setMinTime(setHours(setMinutes(new Date(), timeDiffer), new Date().getHours()))
+        const minDiffer = (new Date().getMinutes() + 30) <= 60 ? 30 : (new Date().getMinutes() + 30) - 60;
+        const hour = (new Date().getMinutes() + 30) <= 60 ? new Date().getHours() : new Date().getHours() + 1;
+        console.log(minDiffer, hour);
+        setMinTime(setHours(setMinutes(new Date(), minDiffer), hour))
       }
     }
     else {
       await getIncludeTimes();
     }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [startDate])
 
   const checkAndSelectDate = (date) => {
-    console.log({ date });
     if (!validateDate(date)) {
       alert("Pleas choose a valid time");
     }
@@ -72,13 +74,15 @@ const FloatingWindowDate = ({ steps, step, show, setShow, nextStep, startDate, s
 
   const validateDate = (date) => {
     const tmpDate = new Date(date);
-    if (tmpDate.setHours(0, 0, 0) < new Date().setHours(0, 0, 0)) {
-      return false;
-    }
-    else if (new Date().toDateString() === tmpDate.toDateString()) {
+    if (new Date().toDateString() === tmpDate.toDateString()) {
+      console.log("today");
       if (tmpDate.getHours() < new Date().getHours()) {
+        console.log("today", tmpDate.getHours(), new Date().getHours());
         return false;
       }
+    }
+    else if (tmpDate.setHours(0, 0, 0) < new Date().setHours(0, 0, 0)) {
+      return false;
     }
     return true;
   }
