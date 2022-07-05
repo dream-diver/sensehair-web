@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import { useContext, useState, useEffect } from 'react'
+import { useContext, useState, useEffect, Fragment } from 'react'
 import { useRouter } from 'next/router'
 import { GlobalContext } from '../contexts/GlobalContext'
 import FloatingWindow from './FloatingWindow'
@@ -491,9 +491,14 @@ const BookingSystem = () => {
     <div id="bookingSystem">
 
       {!show ?
-        <button className="btn-floating btn btn-lg btn-dark rounded-circle bookingFloatingButton" onClick={() => setShow(!show)}>
-          <img src={imageSchedule.src} alt="Booking System" className="booking-img bookingFloatingButton" width="18px" height="18px" />
-        </button>
+        <Fragment>
+          <button className="btn-floating btn btn-lg btn-dark rounded-circle d-none d-lg-block" onClick={() => setShow(!show)}>
+            <img src={imageSchedule.src} alt="Booking System" className="booking-img" width="18px" height="18px" />
+          </button>
+          <button className="btn-floating btn btn-lg btn-dark rounded-circle bookingFloatingButton d-lg-none" onClick={() => setShow(!show)}>
+            <img src={imageSchedule.src} alt="Booking System" className="booking-img bookingFloatingButton" width="18px" height="18px" />
+          </button>
+        </Fragment>
         : <>
           {steps.step1.active &&
             <FloatingWindow step={steps.step1} options={optionHairSize} show={show} setShow={setShow} checked={checked} setChecked={setChecked} nextStep={secondStep} />
