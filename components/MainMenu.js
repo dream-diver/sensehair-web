@@ -90,7 +90,7 @@ const Menu = ({ device, isSlider }) => {
         </Link>
 
 
-        <form className="d-flex d-lg-none">
+        <form id="bookNowNavbarButton" className="d-flex d-lg-none">
           <button type="button" className="btn btn-sm btn-light rounded-0 font-weight-900" onClick={() => setState({ ...state, showBooking: !state.showBooking })}>{state.locale === "en" ? state.text.bookNow : flag ? state.text.bookNow : "AFSPRAAK"}</button>
         </form>
 
