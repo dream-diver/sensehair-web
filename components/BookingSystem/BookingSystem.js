@@ -491,7 +491,7 @@ const BookingSystem = () => {
     <div id="bookingSystem">
 
       {!show ?
-        <button id='bookingFloatingButton' className="btn-floating btn btn-lg btn-dark rounded-circle" onClick={() => setShow(!show)}>
+        <button className="btn-floating btn btn-lg btn-dark rounded-circle bookingFloatingButton" onClick={() => setShow(!show)}>
           <img src={imageSchedule.src} alt="Booking System" className="booking-img" width="18px" height="18px" />
         </button>
         : <>

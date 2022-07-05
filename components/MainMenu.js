@@ -91,7 +91,7 @@ const Menu = ({ device, isSlider }) => {
 
 
         <form className="d-flex d-lg-none">
-          <button id="bookNowNavbarButton" type="button" className="btn btn-sm btn-light rounded-0 font-weight-900" onClick={() => setState({ ...state, showBooking: !state.showBooking })}>{state.locale === "en" ? state.text.bookNow : flag ? state.text.bookNow : "AFSPRAAK"}</button>
+          <button type="button" className="btn btn-sm btn-light rounded-0 font-weight-900 bookNowNavbarButton" onClick={() => setState({ ...state, showBooking: !state.showBooking })}>{state.locale === "en" ? state.text.bookNow : flag ? state.text.bookNow : "AFSPRAAK"}</button>
         </form>
 
         <div className="w-100">
