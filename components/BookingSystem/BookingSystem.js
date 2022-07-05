@@ -492,7 +492,7 @@ const BookingSystem = () => {
 
       {!show ?
         <button className="btn-floating btn btn-lg btn-dark rounded-circle bookingFloatingButton" onClick={() => setShow(!show)}>
-          <img src={imageSchedule.src} alt="Booking System" className="booking-img" width="18px" height="18px" />
+          <img src={imageSchedule.src} alt="Booking System" className="booking-img bookingFloatingButton" width="18px" height="18px" />
         </button>
         : <>
           {steps.step1.active &&
