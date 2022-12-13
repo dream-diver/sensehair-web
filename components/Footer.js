@@ -133,31 +133,31 @@ const Footer = () => {
               <div className="d-flex justify-content-center justify-content-md-start">
                 <p className="text-center text-md-start me-3 me-xl-5">
                   {/* { state.text.openingTimes1Day }<br /> */}
-                  <p>{state.text.openingTimes2Day}</p>
-
-                  <p>{state.text.openingTimes3Day}</p>
-
-                  <p>{state.text.openingTimes4Day}</p>
-
-                  <p>{state.text.openingTimes5Day}</p>
-
-                  <p>{state.text.openingTimes6Day}</p>
-
-                  <p>{state.text.openingTimes7Day}</p>
+                  {state.text.openingTimes2Day}
+                  <p></p>
+                  {state.text.openingTimes3Day}
+                  <p></p>
+                  {state.text.openingTimes4Day}
+                  <p></p>
+                  {state.text.openingTimes5Day}
+                  <p></p>
+                  {state.text.openingTimes6Day}
+                  <p></p>
+                  {state.text.openingTimes7Day}
                 </p>
                 <p>
                   {/* { state.text.openingTimes1 }<br /> */}
-                  <p>{state.text.openingTimes2}</p>
-
-                  <p>{state.text.openingTimes3}</p>
-
-                  <p>{state.text.openingTimes4}</p>
-
-                  <p>{state.text.openingTimes5}</p>
-
-                  <p>{state.text.openingTimes6}</p>
-
-                  <p>{state.text.openingTimes7}</p>
+                  {state.text.openingTimes2}
+                  <p></p>
+                  {state.text.openingTimes3}
+                  <p></p>
+                  {state.text.openingTimes4}
+                  <p></p>
+                  {state.text.openingTimes5}
+                  <p></p>
+                  {state.text.openingTimes6}
+                  <p></p>
+                  {state.text.openingTimes7}
                 </p>
               </div>
             </div>
