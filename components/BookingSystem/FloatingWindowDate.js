@@ -154,7 +154,7 @@ const FloatingWindowDate = ({
               showTimeSelectOnly
               timeIntervals={15}
               minTime={minTime}
-              maxTime={setHours(setMinutes(new Date(startDate), 40), 17)}
+              maxTime={setHours(setMinutes(new Date(startDate), 40), 20)}
               includeTimes={includeTimes}
               timeCaption="Time"
               dateFormat="h:mm aa"
