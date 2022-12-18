@@ -41,6 +41,7 @@ const Contact = () => {
                         {state.text.openingTimes6Day}
                         <p></p>
                         {state.text.openingTimes7Day}
+                        <p></p>
                       </p>
                       <p className="text-center text-md-start">
                         {/* { state.text.openingTimes1 }<br /> */}
@@ -55,6 +56,7 @@ const Contact = () => {
                         {state.text.openingTimes6}
                         <p></p>
                         {state.text.openingTimes7}
+                        <p></p>
                       </p>
                     </div>
                   </div>
